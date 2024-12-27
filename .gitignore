@@ -16,7 +16,8 @@
 /pages/
 /pages/api/
 pages/
-
+telegram.ts
+/telegram.ts
 # next.js
 /.next/
 /out/
