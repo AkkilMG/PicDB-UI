@@ -13,6 +13,10 @@
 # testing
 /coverage
 
+/pages/
+/pages/api/
+pages/
+
 # next.js
 /.next/
 /out/

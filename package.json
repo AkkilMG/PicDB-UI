@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/dotenv": "^6.1.1",
+    "@types/formidable": "^3.4.5",
     "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "formidable": "^3.5.2",
+    "mongodb": "^6.12.0",
     "next": "15.1.2",
     "qrcode.react": "^4.2.0",
     "react": "^19.0.0",
