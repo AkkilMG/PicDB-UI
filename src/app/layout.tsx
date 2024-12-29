@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
+import Cookies from "@/components/pop/cookies";
+import React from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 // Metadata for SEO
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "PicDB - Free Picture Storage",
   description: "PicDB is a free, anonymously and fast picture storage web application built by AvianInTek. Store, organize, and access your images easily from any device.",
   keywords: ["akkil", "akkilmg", "free", "image", "storage", "freemium", "anonymous", "picture storage", "image storage", "photo storage", "secure photo storage", "Next.js", "PicDB", "AvianInTek"],
@@ -43,7 +45,6 @@ export const metadata: Metadata = {
     apple: "/assets/logo/PicDB.png", // Apple Touch icon
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -53,6 +54,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Cookies />
         {children}
         <SpeedInsights />
         <Analytics mode="production" />

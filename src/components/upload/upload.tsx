@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Message from "../pop/message";
 
 
 export default function Upload({ uploadFile, progress, result, setId }: { uploadFile: (file: File) => Promise<any>, progress: number, result: any, setId: any }) {
     const [fileName, setFilename] = useState<string | null>(null)
     const [fileSize, setFileSize] = useState<string | null>(null)
+    const [success, setSuccess] = useState<boolean>(false)
     
     const formatFileSize = (size: number) => {
         if (size >= 1073741824) {
@@ -29,11 +31,17 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
             console.log("File uploaded.");
             setFileSize(null)
             setFilename(null)
+            setSuccess(true)
+            setTimeout(() => {
+                setSuccess(false);
+            }, 3000);
         }
     };
 
 
     return (
+        <>
+        { success && <Message message={`Successfully uploaded the image..`} color={1} />}
         <div className="pb-4 p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center w-full py-20 pb-20 min-h-80 lg:min-h-screen bg-gray-100">
             <div className="w-full max-w-4xl mx-auto p-4 sm:p-5 md:p-6 lg:p-8 bg-white shadow-md rounded-lg">
                 <div className="p-3 sm:p-4 md:p-5">
@@ -75,7 +83,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                                                 <span className="text-orange-500 text-xs sm:text-sm">{fileName.split('.').pop()}</span>
                                             </div>
                                             <div className="flex flex-col w-full">
-                                                <span id="filename" className="text-gray-700 font-medium text-sm sm:text-base">{fileName}</span>
+                                                <span id="filename" className="text-gray-700 font-medium text-sm sm:text-base">{fileName} <button className='mt-1 ml-2 bg-blue-500 text-white uppercase px-2 rounded text-sm'>Wait..</button></span>
                                                 <span className="text-gray-500 text-xs sm:text-sm">{fileSize}</span>
                                                 <div id="progress" className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
                                                     <div className="bg-blue-600 h-1.5 rounded-full" style={{ width: `${progress}%` }}></div>
@@ -91,17 +99,13 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                                 )}
 
                                 {result && result.map((file: any, index: number) => (
-                                    <li 
-                                        key={index} 
-                                        onClick={() => setId(file['id'])} 
-                                        className="bg-gray-50 p-2 sm:p-3 rounded-md flex items-center justify-between"
-                                    >
+                                    <li key={index} onClick={() => setId(file['id'])} className="bg-gray-50 p-2 sm:p-3 rounded-md flex items-center justify-between">
                                         <div className="flex items-center">
                                             <div className="bg-orange-100 p-2 rounded-md mr-2">
                                                 <span className="text-orange-500 text-xs sm:text-sm uppercase">{file.title.split('.').pop()}</span>
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="text-gray-700 font-medium text-sm sm:text-base">{file.title}</span>
+                                                <span className="text-gray-700 font-medium text-sm sm:text-base">{file.title} <button className='mt-1 py-0 ml-2 bg-green-500 text-white uppercase px-2 rounded text-sm'>Click Me</button></span>
                                                 <span className="text-gray-500 text-xs sm:text-sm">{formatFileSize(file.size)}</span>
                                             </div>
                                         </div>
@@ -118,5 +122,6 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                 </div>
             </div>
         </div>
+        </>
     );
 }

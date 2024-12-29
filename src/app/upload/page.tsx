@@ -2,7 +2,6 @@
 
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
-import Cookies from "@/components/pop/cookies";
 import DropUpload from "@/components/upload/drop_upload";
 import Upload from "@/components/upload/upload";
 import UploadResult from "@/components/upload/upload_result";
@@ -56,11 +55,11 @@ export default function UploadPage() {
             }
         };
 
-        handleResize(); // Set initial component based on current window size
-        window.addEventListener('resize', handleResize); // Add resize event listener
+        handleResize();
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            window.removeEventListener('resize', handleResize); // Cleanup event listener on component unmount
+            window.removeEventListener('resize', handleResize);
         };
     }, [view, link, title, close]);
 
@@ -131,12 +130,11 @@ export default function UploadPage() {
     return (
         <div>
             { (id && !close) && (uploadComponent)}
-            {/* <Cookies /> */}
             <DropUpload uploadFile={uploadFile}/>
             <div>
-            <Header />
-            <Upload uploadFile={uploadFile} progress={progress} result={result} setId={setId} />
-            <Footer />
+                <Header />
+                <Upload uploadFile={uploadFile} progress={progress} result={result} setId={setId} />
+                <Footer />
             </div>
         </div>
     );
