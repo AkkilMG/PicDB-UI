@@ -4,7 +4,6 @@ import {QRCodeSVG} from 'qrcode.react';
 interface UploadResultProps { view: string; link: string; title: string; close: {close: boolean, setClose: any};}
 
 export default function UploadResult({ view, link, title, close }: UploadResultProps) {
-    console.log(view, link, title);
     
     const handleCopyToClipboard = async (clip: any) => {
         try {
