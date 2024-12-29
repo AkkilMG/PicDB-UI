@@ -98,7 +98,7 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
                     <p className="text-gray-500 text-sm mb-4">This provides you a link to view the image.</p>
                     <div className="flex justify-center mb-4">
                       {link && (
-                        <img src={link || 'assets/icons/error.png'} alt="Preview" className="max-w-full max-h-80 object-cover rounded-lg border"
+                        <img src={link || 'assets/icons/error.png'} alt="Preview" className="max-w-full max-h-60 object-cover rounded-lg border"
                         />
                       )}
                     </div>

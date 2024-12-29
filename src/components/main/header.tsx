@@ -5,7 +5,7 @@ import React from 'react';
 const Header = () => {
     return (
       <nav className="sticky top-0 bg-black z-20">
-        <div className="container mx-auto flex justify-between items-center py-3">
+        <div className="container mx-auto flex justify-between items-center">
           <div className="ml-8">
             <img onClick={() => window.location.href = "/"} src='assets/images/letter.png' alt='PicDB logo' width={100} height={40} />
           </div>

@@ -30,7 +30,7 @@ export default function AboutSection () {
                     className="object-cover object-center w-full h-full"
                   />
                 </div>
-              <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mt-16 z-10  max-w-md">
+              {/* <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mt-16 z-10  max-w-md">
                <div className="grid grid-cols-1 bg-white shadow-lg rounded-xl">
                   <div className="flex items-center bg-opacity-90 p-4">
                       <div className="mr-3 p-2 bg-blue-50 rounded-full w-11 h-11 flex justify-center items-center">
@@ -58,7 +58,7 @@ export default function AboutSection () {
                     <span className="text-gray-900 font-medium text-2xl">Worldwide coverage</span>
                   </div>
                 </div>
-               </div>
+               </div> */}
             </div>
           </div>
         </div>

@@ -1,19 +1,46 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../main/header';
 
 const HeroSection = () => {
+
+  const [device, setDevice] = useState("assets/images/computer.png");
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    device == "" && window.innerWidth < 600 ? setDevice("assets/images/computer.png") : setDevice("assets/images/mobile.png");
+    const handleResize = () => {
+      if (window.innerWidth < 600) {
+        setDevice("assets/images/computer.png");
+      } else {
+        setDevice("assets/images/mobile.png");
+      }
+    };
+    
+    const size = () => setWindowWidth(window.innerWidth);
+
+    size();
+    window.addEventListener("resize", size);
+
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", size);
+    };
+
+  });
   return (
-    <section className="relative bg-black text-white h-screen">
+    <section className="relative bg-black text-white min-h-screen">
       {/* Navigation Bar */}
       <Header />
 
       {/* Hero Content */}
       <div className="py-4">
-        <div className="container mx-auto text-center">
+        <div className="container mx-auto text-center ">
           {/* Main Heading */}
-          <h1 className="text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight pt-6 md:pt-2 lg:pt-0 xl:pt-0">
             Save your image for<br /> free with PicDB
           </h1>
 
@@ -40,7 +67,7 @@ const HeroSection = () => {
         </div>
 
 
-        <div className="absolute bottom-1/2 left-52 z-10 bg-gray-800 rounded-xl p-4 shadow-lg">
+        <div className="absolute hidden lg:block xl:block bottom-1/2 lg:left-8 xl:left-28 z-10 bg-gray-800 rounded-xl p-4 shadow-lg">
           <h2 className="text-lg font-medium mb-3 text-white">Translation</h2>
           <div className="grid grid-cols-2 gap-y-4 gap-x-3">
             <div className="flex items-center space-x-3">
@@ -71,7 +98,7 @@ const HeroSection = () => {
         </div>
 
         {/* Saiesh chat box */}
-        <div className="absolute bottom-[12%] left-40 z-10">
+        <div className="absolute bottom-[12%] hidden lg:block xl:block bottom-1/2 lg:left-14 xl:left-28 z-10">
           <div className="relative bg-blue-500 rounded-md py-4 px-6 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden">
               <img src="assets/images/profile.png" width={64} height={64} alt="Saiesh Sawant" />
@@ -83,8 +110,8 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Srujnn chat box */}
-        <div className="absolute top-1/3 right-64 z-10">
+        {/* Srujan chat box */}
+        <div className="absolute top-1/3 hidden lg:block xl:block bottom-1/2 lg:right-8 xl:right-28 z-10">
           <div className="relative bg-purple-500 rounded-md py-2 px-5 flex items-center">
             <div className="h-12 w-12 rounded-full overflow-hidden">
               <img src="assets/images/profile.png" width={56} height={56} alt="Srujan Rai" />
@@ -99,7 +126,7 @@ const HeroSection = () => {
         </div>
 
         {/* Akkil chat box */}
-        <div className="absolute bottom-1/4 right-48 z-10">
+        <div className="absolute bottom-1/4 hidden lg:block xl:block bottom-1/2 lg:right-6 xl:right-20 z-10">
           <div className="relative bg-purple-500 rounded-md py-4 px-6 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden">
               <img src="assets/images/profile.png" width={64} height={64} alt="Akkil" />
@@ -112,9 +139,9 @@ const HeroSection = () => {
         </div>
 
 
-        {/* Mock Mobile Phone Image */}
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 z-0 w-[338px] lg:w-[450px]">
-          <img src="assets/images/mobile.png" alt="Mobile" width={6000} height={10000} />
+        {/* Device Image */}
+        <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${windowWidth < 600 ? "w-[400px] lg:w-[420px] xl:w-[440px]" : "w-[338px] lg:w-[350px] xl:w-[380px]"}`}>
+          <img alt="Device" width={6000} height={10000} src={device} />
         </div>
       </div>
     </section>
