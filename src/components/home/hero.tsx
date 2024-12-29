@@ -97,27 +97,27 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Saiesh chat box */}
+        {/* Etherea chat box */}
         <div className="absolute bottom-[12%] hidden lg:block xl:block bottom-1/2 lg:left-14 xl:left-28 z-10">
-          <div className="relative bg-blue-500 rounded-md py-4 px-6 flex items-center">
-            <div className="h-16 w-16 rounded-full overflow-hidden">
-              <img src="assets/images/profile.png" width={64} height={64} alt="Saiesh Sawant" />
+          <div className="relative bg-blue-500 rounded-md py-2 px-4 flex items-center">
+            <div className="h-16 w-16 rounded-full overflow-hidden flex items-center justify-center">
+              <img src="assets/icons/Etherea.webp" width={32} height={32} alt="Etherea" />
             </div>
             <div className="ml-4">
-              <p className="text-lg font-semibold">Saiesh Sawant</p>
-              <p className="text-base">Welcome to PicDB!</p>
+              <p className="text-lg font-semibold">Etherea</p>
+              <p className="text-base">Why do even worry?</p>
             </div>
           </div>
         </div>
 
-        {/* Srujan chat box */}
+        {/* Lucy chat box */}
         <div className="absolute top-1/3 hidden lg:block xl:block bottom-1/2 lg:right-8 xl:right-28 z-10">
           <div className="relative bg-purple-500 rounded-md py-2 px-5 flex items-center">
             <div className="h-12 w-12 rounded-full overflow-hidden">
-              <img src="assets/images/profile.png" width={56} height={56} alt="Srujan Rai" />
+              <img src="assets/icons/lucy.svg" width={56} height={56} alt="" />
             </div>
             <div className="ml-3">
-              <p className="text-lg px-3 font-semibold">Srujan Rai</p>
+              <p className="text-lg px-3 font-semibold">Lucy: Agent</p>
             </div>
             <div className="ml-3 bg-black w-9 h-9 rounded-full flex items-center justify-center">
               <span className="text-white">7</span>

@@ -17,14 +17,14 @@ const geistMono = Geist_Mono({
 // Metadata for SEO
 export const metadata: Metadata = {
   title: "PicDB - Free Picture Storage",
-  description: "PicDB is a secure and fast picture storage web application built by AvianInTek. Store, organize, and access your images easily from any device.",
+  description: "PicDB is a free, anonymously and fast picture storage web application built by AvianInTek. Store, organize, and access your images easily from any device.",
   keywords: ["akkil", "akkilmg", "free", "image", "storage", "freemium", "anonymous", "picture storage", "image storage", "photo storage", "secure photo storage", "Next.js", "PicDB", "AvianInTek"],
   authors: [{ name: "AkkilMG" }],
   openGraph: {
     type: "website",
     url: "https://picdb.vercel.app/",
     title: "PicDB - Free Picture Storage",
-    description: "Store your images securely with PicDB, a fast and easy-to-use picture storage service built with Next.js.",
+    description: "Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js.",
     images: [
       {
         url: "/assets/logo/PicDB.png",
