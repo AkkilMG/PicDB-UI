@@ -89,7 +89,7 @@ export default function UploadPage() {
             };
 
             await axios
-                .post('https://sangrahdb.izaries.workers.dev/upload', formData, config)
+                .post('https://picdb.avianintek.workers.dev/upload', formData, config)
                 .then(async (response: any) => {
                     console.log(response.data);
                 if (response.data['success'] === true) {
