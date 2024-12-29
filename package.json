@@ -11,6 +11,8 @@
   "dependencies": {
     "@types/dotenv": "^6.1.1",
     "@types/formidable": "^3.4.5",
+    "@vercel/analytics": "^1.4.1",
+    "@vercel/speed-insights": "^1.1.0",
     "axios": "^1.7.9",
     "dotenv": "^16.4.7",
     "formidable": "^3.5.2",
