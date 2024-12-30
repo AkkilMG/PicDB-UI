@@ -80,7 +80,7 @@ export default function UploadPage() {
         }
         if (file.size / (1024 * 1024) > 65) {
             alert('Please select an image under 60MB. As its a limit.');
-            return;
+            return { success: false };
         }
         try {
             const formData = new FormData();
@@ -124,18 +124,20 @@ export default function UploadPage() {
                         });
                         localStorage.setItem('links', JSON.stringify(existingLinks));
                     }
+                    return { success: true }
                 } else {
                     setError(true);
                     setProgress(0);
                     console.log("Error: "+response.data['message']);
                     alert('File uploaded not successful.');
-                    return { success: true}
+                    return { success: false }
                 }
                 })
                 .catch((error: any) => {
                     alert('Error uploading file: ' + error.message);
                     return  { success: false }
                 });
+            return { success: false }
         } catch (error) {
             alert('Error uploading file:' + (error as any).messages);
             return { success: false }

@@ -27,16 +27,13 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
             setFilename(file.name);
             setFileSize(formatFileSize(file.size));
             var data = await uploadFile(file);
+            setFileSize(null)
+            setFilename(null)
             if (data.success) {
-                setFileSize(null)
-                setFilename(null)
                 setSuccess(true)
                 setTimeout(() => {
                     setSuccess(false);
                 }, 3000);
-            } else {
-                setFileSize(null)
-                setFilename(null)
             }
         }
     };
