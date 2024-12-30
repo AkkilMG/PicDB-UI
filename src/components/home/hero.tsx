@@ -60,8 +60,12 @@ const HeroSection = () => {
           </div> */}
           <div className="flex justify-center space-x-4 mb-12">
             <button onClick={() => window.location.href = "/upload"} className="bg-white text-black font-medium py-2 px-6 rounded-md flex items-center space-x-2">
-              <img src="assets/images/image.png" width={26} height={26} alt="Upload logo" />
-              <span className='text-lg'>Upload the image</span>
+              <img src="assets/icons/image.png" width={26} height={26} alt="Upload logo" />
+              <span className='text-lg'>Upload</span>
+            </button>
+            <button onClick={() => window.location.href = "/dashboard"} className="bg-white text-black font-medium py-2 px-6 rounded-md flex items-center space-x-2">
+              <img src="assets/icons/dashboard.svg" width={26} height={26} alt="Dashboard" />
+              <span className='text-lg'>Dashboard</span>
             </button>
           </div>
         </div>

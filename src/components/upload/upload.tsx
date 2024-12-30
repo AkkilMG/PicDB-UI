@@ -26,15 +26,18 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
             const file = e.target.files[0];
             setFilename(file.name);
             setFileSize(formatFileSize(file.size));
-            console.log("Uploading file...");
-            await uploadFile(file);
-            console.log("File uploaded.");
-            setFileSize(null)
-            setFilename(null)
-            setSuccess(true)
-            setTimeout(() => {
-                setSuccess(false);
-            }, 3000);
+            var data = await uploadFile(file);
+            if (data.success) {
+                setFileSize(null)
+                setFilename(null)
+                setSuccess(true)
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 3000);
+            } else {
+                setFileSize(null)
+                setFilename(null)
+            }
         }
     };
 

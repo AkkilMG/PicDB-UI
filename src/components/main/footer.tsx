@@ -11,7 +11,8 @@ const Footer = () => {
             <div>
               <h4 className="font-bold mb-3 text-gray-100">Services</h4>
               <ul>
-                <li className="mb-1 text-gray-300 text-sm">Image Storage</li>
+                <li className="mb-1 text-gray-300 text-sm"><a href="upload">Image Upload</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a href="dashboard">Dashboard</a></li>
               </ul>
             </div>
             <div>

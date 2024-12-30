@@ -2,6 +2,7 @@
 
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
+import Policy from "@/components/pop/policy";
 import DropUpload from "@/components/upload/drop_upload";
 import Upload from "@/components/upload/upload";
 import UploadResult from "@/components/upload/upload_result";
@@ -34,6 +35,11 @@ export default function UploadPage() {
     };
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(false);
+    const [policy, setPolicy] = useState(false);
+    useEffect(() => {
+        const policyAccepted = localStorage.getItem("policyAccepted") === "true";
+        setPolicy(policyAccepted ? true : false);
+    }, []);
     useEffect(() => {
         if (id) {
             searchById(id);
@@ -64,6 +70,10 @@ export default function UploadPage() {
     }, [view, link, title, close]);
 
     const uploadFile = async (file: any) => {
+        if (!policy) {
+            alert('Please accept the policy to upload images.');
+            return { success: false };
+        }
         if (!file) {
             alert('Please select an image before uploading.');
             return  { success: false };
@@ -102,13 +112,18 @@ export default function UploadPage() {
                             view: response.data['vurl']
                         }
                     ]);
-                    console.log({
-                        id: response.data['id'],
-                        link: response.data['durl'],
-                        title: file.name,
-                        size: file.size,
-                        view: response.data['vurl']
-                    });
+                    if (typeof window !== 'undefined') {
+                        const existingLinks = JSON.parse(localStorage.getItem('links') || '[]') || [];
+                        existingLinks.push({
+                            id: response.data['id'],
+                            link: response.data['durl'],
+                            title: file.name,
+                            size: file.size,
+                            view: response.data['vurl'],
+                            type: file.type
+                        });
+                        localStorage.setItem('links', JSON.stringify(existingLinks));
+                    }
                 } else {
                     setError(true);
                     setProgress(0);
@@ -129,6 +144,7 @@ export default function UploadPage() {
     
     return (
         <div>
+            <Policy />
             { (id && !close) && (uploadComponent)}
             <DropUpload uploadFile={uploadFile}/>
             <div>
