@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Card from "./card";
 import UploadMobileResult from "../upload/upload_result_mobile";
 import UploadResult from "../upload/upload_result";
-import Loading from "../main/loading";
 
 export default function Dashboard() {
     const [link, setLink] = useState<string>('');
