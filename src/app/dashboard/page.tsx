@@ -10,10 +10,12 @@ import { useEffect, useState } from "react";
 export default function DashboardPage() {
     
     const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 2000); // Simulated loading time
         return () => clearTimeout(timer);
     }, []);
+
     return (
         <div className="h-screen">
             {loading && <Loading />}
@@ -22,5 +24,5 @@ export default function DashboardPage() {
             <Dashboard />
             <Footer />
         </div>
-    )
+    );
 }
