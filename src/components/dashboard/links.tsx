@@ -20,8 +20,6 @@ export default function Dashboard() {
         if (!policyAccepted) {
             setPolicy(false);
         } else setPolicy(true)
-        const storedLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('links') || '[]') : [];
-        setResult(storedLinks);
     }, []);
     
     const searchById = (id: String) => {
@@ -35,6 +33,12 @@ export default function Dashboard() {
             alert('No result found with the given ID.');
         }
     };
+
+    useEffect(() => {
+        const storedLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('links') || '[]') : [];
+        setResult(storedLinks);
+    })
+
     useEffect(() => {
         if (id) {
             searchById(id);

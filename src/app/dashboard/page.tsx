@@ -12,8 +12,10 @@ export default function DashboardPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const timer = setTimeout(() => setLoading(false), 2000); // Simulated loading time
-        return () => clearTimeout(timer);
+        if (typeof window !== "undefined") {
+            const timer = setTimeout(() => setLoading(false), 2000); // Simulated loading time
+            return () => clearTimeout(timer);
+        }
     }, []);
 
     return (
