@@ -36,7 +36,7 @@ export default function Dashboard() {
     useEffect(() => {
         const storedLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('links') || '[]') : [];
         setResult(storedLinks);
-    })
+    }, [])
 
     useEffect(() => {
         if (id) {

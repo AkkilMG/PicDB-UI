@@ -8,19 +8,18 @@ import Policy from "@/components/pop/policy";
 import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
-    
     const [loading, setLoading] = useState(true);
+    const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            const timer = setTimeout(() => setLoading(false), 2000); // Simulated loading time
-            return () => clearTimeout(timer);
-        }
+        setIsClient(true); 
+        const timer = setTimeout(() => setLoading(false), 2000);
+        return () => clearTimeout(timer);
     }, []);
 
     return (
         <div className="h-screen">
-            {/* {loading && <Loading />} */}
+            {loading && isClient && <Loading />}
             <Policy />
             <Header />
             <Dashboard />
