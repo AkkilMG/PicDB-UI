@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function DropUpload({ uploadFile }: { uploadFile: (file: File) => Promise<any> }) {
+export default function DropUpload({ uploadFile }: { uploadFile: (file: any) => Promise<any> }) {
     const [dragging, setDragging] = useState(false);
     useEffect(() => {
         const handleWindowDragOver = (event: any) => {
@@ -9,7 +9,7 @@ export default function DropUpload({ uploadFile }: { uploadFile: (file: File) =>
         };
         const handleWindowDrop = async (event: any) => {
             setDragging(false);
-            await uploadFile(event.dataTransfer.files[0]);
+            await uploadFile(event.dataTransfer);
             event.preventDefault();
         };
 

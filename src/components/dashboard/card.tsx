@@ -26,7 +26,7 @@ export default function Card({data, setId, id}: {data: any, setId: any, id: any}
             <div className="relative bg-black text-white rounded-xl p-6 shadow-xl">
                 <div className="mb-6">
                     <div className="text-sm text-gray-400">Image</div>
-                    <div className="text-xl lg:text-2xl xl:text-2xl font-bold">{data.title}</div>
+                    <div className="text-xl lg:text-2xl xl:text-2xl font-bold">{data.title.length > 15 ? data.title.substring(0, 15) + '...' : data.title}</div>
                     <div className="text-gray-500 text-sm mt-2 uppercase p-2">{data.type.split('/').pop()}</div>
                 </div>
                 <div className="flex items-center justify-between text-sm">

@@ -53,7 +53,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar`}>
         <Cookies />
         {children}
         <SpeedInsights />

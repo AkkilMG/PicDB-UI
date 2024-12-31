@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Card from "./card";
 import UploadMobileResult from "../upload/upload_result_mobile";
 import UploadResult from "../upload/upload_result";
+import Loading from "../main/loading";
 
 export default function Dashboard() {
     const [link, setLink] = useState<string>('');
@@ -19,7 +20,10 @@ export default function Dashboard() {
         if (!policyAccepted) {
             setPolicy(false);
         } else setPolicy(true)
+        const storedLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('links') || '[]') : [];
+        setResult(storedLinks);
     }, []);
+    
     const searchById = (id: String) => {
         const found = result.find(item => item.id === id.toString());
         if (found) {
@@ -31,12 +35,6 @@ export default function Dashboard() {
             alert('No result found with the given ID.');
         }
     };
-    useEffect(() => {
-        console.log(JSON.parse(localStorage.getItem('links') || '[]'))
-        const storedLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('links') || '[]') : [];
-        setResult(storedLinks);
-    }, []);
-    
     useEffect(() => {
         if (id) {
             searchById(id);
@@ -76,8 +74,8 @@ export default function Dashboard() {
                 })}
                 </div>
             ): (
-                <div className="min-h-80 flex items-center justify-center">
-                    <div className="text-center flex items-center justify-center text-bold text-3xl">{!policy ? `Please accept the policy to access uploaded images.` : `...`}</div>
+                <div className="min-h-[65vh] flex items-center justify-center">
+                    <div className="text-center flex items-center justify-center text-bold text-3xl">{!policy ? `Please accept the policy to access uploaded images.` : `You haven't uploaded any images..`}</div>
                 </div>
             )}
         </div>

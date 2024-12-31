@@ -35,11 +35,7 @@ export default function UploadPage() {
     };
     const [progress, setProgress] = useState(0);
     const [error, setError] = useState(false);
-    const [policy, setPolicy] = useState(false);
-    useEffect(() => {
-        const policyAccepted = localStorage.getItem("policyAccepted") === "true";
-        setPolicy(policyAccepted ? true : false);
-    }, []);
+
     useEffect(() => {
         if (id) {
             searchById(id);
@@ -70,6 +66,7 @@ export default function UploadPage() {
     }, [view, link, title, close]);
 
     const uploadFile = async (file: any) => {
+        const policy = localStorage.getItem("policyAccepted")?.toLowerCase() === "true";
         if (!policy) {
             alert('Please accept the policy to upload images.');
             return { success: false };
@@ -100,7 +97,6 @@ export default function UploadPage() {
             await axios
                 .post('https://picdb.avianintek.workers.dev/upload', formData, config)
                 .then(async (response: any) => {
-                    console.log(response.data);
                 if (response.data['success'] === true) {
                     setResult(prevResult => [
                         ...prevResult,
@@ -148,7 +144,6 @@ export default function UploadPage() {
         <div>
             <Policy />
             { (id && !close) && (uploadComponent)}
-            <DropUpload uploadFile={uploadFile}/>
             <div>
                 <Header />
                 <Upload uploadFile={uploadFile} progress={progress} result={result} setId={setId} />

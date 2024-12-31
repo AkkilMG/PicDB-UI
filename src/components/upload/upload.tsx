@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Message from "../pop/message";
+import DropUpload from "./drop_upload";
 
 
 export default function Upload({ uploadFile, progress, result, setId }: { uploadFile: (file: File) => Promise<any>, progress: number, result: any, setId: any }) {
@@ -21,19 +22,20 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
         }
     };
 
-    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files.length > 0) {
-            const file = e.target.files[0];
-            setFilename(file.name);
-            setFileSize(formatFileSize(file.size));
-            var data = await uploadFile(file);
-            setFileSize(null)
-            setFilename(null)
-            if (data.success) {
-                setSuccess(true)
-                setTimeout(() => {
-                    setSuccess(false);
-                }, 3000);
+    const handleFileChange = async (data: any) => {
+        if (data.files && data.files.length > 0) {
+            for (const file of data.files) {
+                setFilename(file.name);
+                setFileSize(formatFileSize(file.size));
+                var data = await uploadFile(file);
+                setFileSize(null)
+                setFilename(null)
+                if (data.success) {
+                    setSuccess(true)
+                    setTimeout(() => {
+                        setSuccess(false);
+                    }, 3000);
+                }
             }
         }
     };
@@ -41,6 +43,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
 
     return (
         <>
+        <DropUpload uploadFile={handleFileChange}/>
         { success && <Message message={`Successfully uploaded the image..`} color={1} />}
         <div className="pb-4 p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center w-full py-20 pb-20 min-h-80 lg:min-h-screen bg-gray-100">
             <div className="w-full max-w-4xl mx-auto p-4 sm:p-5 md:p-6 lg:p-8 bg-white shadow-md rounded-lg">
@@ -68,14 +71,15 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                                     type="file" 
                                     className="hidden" 
                                     accept="image/*" 
-                                    onChange={handleFileChange} 
+                                    onChange={(e: any) => handleFileChange(e.target)} 
+                                    multiple 
                                     required 
                                 />
                             </div>
                         </div>
 
                         <div className="pt-3 sm:pt-4 md:pt-5">
-                            <ul className="space-y-2 max-h-60 sm:max-h-72 overflow-y-auto">
+                            <ul className="space-y-2 max-h-60 sm:max-h-72 overflow-y-auto scrollbar">
                                 {fileName && (
                                     <li className="bg-gray-50 p-2 sm:p-3 rounded-md flex items-center justify-between">
                                         <div className="flex items-center">

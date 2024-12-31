@@ -1,8 +1,16 @@
+"use client";
 
-
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
+    const [button, setButton] = useState(<button onClick={() => window.location.href = "/dashboard"} className="border-2 text-white rounded-md py-1 px-4">Dashboard</button>);
+    useEffect(() => {
+        if (window.location.pathname !== "/dashboard") {
+            setButton(<button onClick={() => window.location.href = "/dashboard"} className="border-2 text-white rounded-md py-1 px-4">Dashboard</button>);
+        } else {
+            setButton(<button onClick={() => window.location.href = "/upload"} className="border-2 text-white rounded-md py-1 px-4">Upload</button>);
+        }
+    }, []);
     return (
       <nav className="sticky top-0 bg-black z-20">
         <div className="container mx-auto flex justify-between items-center">
@@ -10,7 +18,7 @@ const Header = () => {
             <img onClick={() => window.location.href = "/"} src='assets/images/letter.png' alt='PicDB logo' width={100} height={40} />
           </div>
           <div className="mr-8 flex items-center space-x-4">
-            <button onClick={() => window.location.href = "/dashboard"} className="border-2 text-white rounded-md py-1 px-4">Dashboard</button>
+            {button}    
             <button className="ml-2 text-white">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="3" cy="3" r="2.5" fill="currentColor" />
