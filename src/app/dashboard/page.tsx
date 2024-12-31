@@ -8,22 +8,23 @@ import Policy from "@/components/pop/policy";
 import { useEffect, useState } from "react";
 
 export default function DashboardPage() {
-  const [loading, setLoading] = useState(true);
+    
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000); // Simulated loading time
-    return () => clearTimeout(timer);
-  }, []);
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const timer = setTimeout(() => setLoading(false), 2000); // Simulated loading time
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
-  return (
-    <div className="h-screen">
-      {loading && <Loading />} 
-      <div className="relative"> {/* Add a relative container */}
-        <Header /> 
-        <Dashboard /> 
-        <Footer />
-      </div>
-      <Policy /> 
-    </div>
-  );
+    return (
+        <div className="h-screen">
+            {/* {loading && <Loading />} */}
+            <Policy />
+            <Header />
+            <Dashboard />
+            <Footer />
+        </div>
+    );
 }
