@@ -58,7 +58,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                             onClick={() => document.getElementById('file')?.click()}
                         >
                             <div className="flex flex-col items-center justify-center">
-                                <img src="assets/icons/upload.png" alt="upload" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mb-4" />
+                                <img draggable={false} src="assets/icons/upload.png" alt="upload" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mb-4" />
                                 <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-2">
                                     Drop your files here.
                                 </p>

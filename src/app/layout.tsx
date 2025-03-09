@@ -41,8 +41,8 @@ const metadata: Metadata = {
     initialScale: 1,
   },
   icons: {
-    icon: "/assets/logo/PicDB.png", // Favicon path
-    apple: "/assets/logo/PicDB.png", // Apple Touch icon
+    icon: "assets/logo/PicDB.png", // Favicon path
+    apple: "assets/logo/PicDB.png", // Apple Touch icon
   },
 };
 export default function RootLayout({

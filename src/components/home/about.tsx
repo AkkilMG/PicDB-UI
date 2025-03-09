@@ -1,24 +1,44 @@
+"use client";
 
-
-// components/HeroSection.js
-
-import React from 'react';
+import { enHome, esHome, hiHome, ruHome } from '@/config/text/home.text';
+import React, { useEffect, useState } from 'react';
 
 export default function AboutSection () {
+  const [data, setData] = useState(enHome.sections[0]);
+  
+    useEffect(() => {
+      const checkLanguage = () => {
+        const lang = localStorage.getItem("lang");
+        if (lang === "es") {
+          setData(esHome.sections[0]);
+        } else if (lang === "ru") {
+          setData(ruHome.sections[0]);
+        } else if (lang === "hi") {
+          setData(hiHome.sections[0]);
+        } else {
+          setData(enHome.sections[0]);
+        }
+      };
+  
+      checkLanguage();
+      const intervalId = setInterval(checkLanguage, 2000);
+  
+      return () => clearInterval(intervalId);
+    }, []);
     return (
       <div className="relative bg-white">
         <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-16">
              <div className="relative lg:col-start-1">
                <h2 className="text-5xl font-extrabold text-gray-900 tracking-tight mb-8 leading-tight">
-                The best solution for
+                {data['title'][0]}
                 <br />
-                <span className="text-gray-900"> image storage</span>
+                <span className="text-gray-900"> {data['title'][1]}</span>
                 <br />
-                <span className="text-gray-900"> around</span>
+                <span className="text-gray-900"> {data['title'][2]}</span>
               </h2>
                <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-               PicDB is a cutting-edge image storage application developed by AvianInTek, designed to cater to all your image storage needs. This powerful platform combines simplicity with robust functionality, providing users with a seamless experience for storing image seemlessly.
+               {data['description']}
               </p>
   
             </div>

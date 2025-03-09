@@ -21,7 +21,7 @@ export default function Message({ message, color }: { message: string; color: 1 
         <div className="fixed bottom-4 left-4 z-50 w-11/12 md:w-3/4 lg:w-1/3 mx-auto">
             <div className="bg-gray-800 text-white rounded-xl md:rounded-full lg:rounded-full flex flex-col md:flex-row items-start md:items-center justify-between p-4">
                 <div className="flex items-start md:items-center px-4 py-2 flex-grow">
-                    <img src="assets/icons/notify.svg" alt="Notify Icon" className="h-8 w-8 mr-4 text-black"/>
+                    <img draggable={false} src="assets/icons/notify.svg" alt="Notify Icon" className="h-8 w-8 mr-4 text-black"/>
                     <div>
                         <p className="text-sm md:text-base lg:text-lg font-medium">{message}</p>
                     </div>

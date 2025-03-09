@@ -36,7 +36,7 @@ export default function Card({data, setId, id}: {data: any, setId: any, id: any}
                     {/* onClick={() => setId(data['id'])} className="absolute right-4 bottom-4 flex flex-col items-center text-white"> */}
                     <div className="bg-gradient-to-r from-green-400 to-green-500 w-16 h-32 rounded-full flex items-center justify-center">
                         <div className={`bg-white w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'translate-y-[-50%]' : 'translate-y-[50%]'}`}>
-                            <span className="text-black font-medium px-4">Open</span>
+                            <span className="text-black font-medium px-4">{isOpen ? 'Close': 'Open'}</span>
                         </div>
                     </div>
                 </div>

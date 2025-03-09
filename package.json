@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@types/dotenv": "^6.1.1",
     "@types/formidable": "^3.4.5",
     "@vercel/analytics": "^1.4.1",

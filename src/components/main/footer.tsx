@@ -1,6 +1,31 @@
+"use client";
+import { enFooter, esFooter, hiFooter, ruFooter } from '@/config/text/footer.text';
+import { useState, useEffect } from 'react';
+
+
 import React from 'react';
 
 const Footer = () => {
+  const [data, setData] = useState(enFooter);
+  useEffect(() => {
+    const checkLanguage = () => {
+      const lang = localStorage.getItem("lang");
+      if (lang === "es") {
+        setData(esFooter);
+      } else if (lang === "ru") {
+        setData(ruFooter);
+      } else if (lang === "hi") {
+        setData(hiFooter);
+      } else {
+        setData(enFooter);
+      }
+    };
+
+    checkLanguage();
+    const intervalId = setInterval(checkLanguage, 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
   return (
     <footer className="bg-black text-white py-12">
       <div className="container mx-auto px-4">
@@ -9,32 +34,50 @@ const Footer = () => {
           {/* Footer Links */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
             <div>
-              <h4 className="font-bold mb-3 text-gray-100">Services</h4>
+              <h4 className="font-bold mb-3 text-gray-100">{data.services.title}</h4>
               <ul>
-                <li className="mb-1 text-gray-300 text-sm"><a href="upload">Image Upload</a></li>
-                <li className="mb-1 text-gray-300 text-sm"><a href="dashboard">Dashboard</a></li>
+                {data.services.available.map((service: any, index: number) => (
+                  <li key={index} className="mb-1 text-gray-300 text-sm">
+                    <a draggable={false} href={service.link}>{service.title} </a>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-3 text-gray-100">Insights</h4>
+              <h4 className="font-bold mb-3 text-gray-100">{data.insights.title}</h4>
               <ul>
-                <li className="mb-1 text-gray-300 text-sm">Product Insights</li>
-                <li className="mb-1 text-gray-300 text-sm">About Us</li>
+                {data.insights.available.map((insight: any, index: number) => (
+                  <li key={index} className="mb-1 text-gray-300 text-sm">
+                    <a draggable={false} href={insight.link}>{insight.title}</a>
+                  </li>
+                ))}
+                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/insights">Product Insights</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/https://avianintek.vercel.app/">About Team</a></li> */}
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-3 text-gray-100">Resources</h4>
+              <h4 className="font-bold mb-3 text-gray-100">{data.resources.title}</h4>
               <ul>
-                <li className="mb-1 text-gray-300 text-sm">Documentation</li>
-                <li className="mb-1 text-gray-300 text-sm">API Service</li>
+                {data.resources.available.map((resource: any, index: number) => (
+                  <li key={index} className="mb-1 text-gray-300 text-sm">
+                    <a draggable={false} href={resource.link}>{resource.title}</a>
+                  </li>
+                ))}
+                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/#">Documentation</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/#">API Service</a></li> */}
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-3 text-gray-100">Legal</h4>
+              <h4 className="font-bold mb-3 text-gray-100">{data.legals.title}</h4>
               <ul>
-                <li className="mb-1 text-gray-300 text-sm">Terms of Service</li>
-                <li className="mb-1 text-gray-300 text-sm">Privacy Policy</li>
-                <li className="mb-1 text-gray-300 text-sm">Cookies Policy</li>
+                {data.legals.available.map((legal: any, index: number) => (
+                  <li key={index} className="mb-1 text-gray-300 text-sm">
+                    <a draggable={false} href={legal.link}>{legal.title}</a>
+                  </li>
+                ))}
+                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/policy/terms-of-service">Terms of Service</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/policy/privacy">Privacy Policy</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/policy/cookies">Cookies Policy</a></li> */}
               </ul>
             </div>
           </div>
@@ -44,7 +87,7 @@ const Footer = () => {
             <div className="flex space-x-3 mb-2">
               <div className="h-8 w-8 rounded-full overflow-hidden bg-white my-2">
                 <img
-                  src="assets/logo/company.png"
+                  src="/assets/logo/company.png"
                   alt="AvianInTek profile"
                   className="w-full h-full object-cover"
                 />
@@ -74,14 +117,14 @@ const Footer = () => {
           </div>
 
           <div className="flex space-x-4">
-            <a href='https://www.linkedin.com/company/avianintek/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
-              <img src="assets/icons/linkedin.png" width={24} height={24} alt="instagram" />
+            <a draggable={false} href='https://www.linkedin.com/company/avianintek/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
+              <img draggable={false} src="/assets/icons/linkedin.png" width={24} height={24} alt="instagram" />
             </a>
-            <a href='https://github.com/AvianInTek' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
-              <img src="assets/icons/github.png" width={24} height={24} alt="facebook" />
+            <a draggable={false} href='https://github.com/AvianInTek' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
+              <img draggable={false} src="/assets/icons/github.png" width={24} height={24} alt="facebook" />
             </a>
-            <a href='https://www.instagram.com/heimancreation/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center">
-              <img src="assets/icons/instagram.png" width={24} height={24} alt="twitter" />
+            <a draggable={false} href='https://www.instagram.com/heimancreation/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center">
+              <img draggable={false} src="/assets/icons/instagram.png" width={24} height={24} alt="twitter" />
             </a>
           </div>
         </div>

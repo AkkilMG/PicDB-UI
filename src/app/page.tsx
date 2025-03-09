@@ -1,6 +1,5 @@
 import AboutSection from "@/components/home/about";
 import HeroSection from "@/components/home/hero";
-import ReviewSlider from "@/components/home/review";
 import Footer from "@/components/main/footer";
 
 export default function Home() {
@@ -12,9 +11,6 @@ export default function Home() {
       <div className="py-16">
         <AboutSection />
       </div>
-      {/* <div>
-        <ReviewSlider />
-      </div> */}
       <Footer />
     </>
   );

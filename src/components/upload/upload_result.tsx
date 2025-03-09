@@ -1,28 +1,52 @@
-import {QRCodeSVG} from 'qrcode.react';
+"use client";
+import { enUpload, esUpload, hiUpload, ruUpload } from '@/config/text/upload.text';
 
+import {QRCodeSVG} from 'qrcode.react';
+import { useEffect, useState } from 'react';
 
 interface UploadResultProps { view: string; link: string; title: string; close: {close: boolean, setClose: any};}
 
 export default function UploadResult({ view, link, title, close }: UploadResultProps) {
     
+    const [data, setData] = useState(enUpload);
+    useEffect(() => {
+        const checkLanguage = () => {
+        const lang = localStorage.getItem("lang");
+        if (lang === "es") {
+            setData(esUpload);
+        } else if (lang === "ru") {
+            setData(ruUpload);
+        } else if (lang === "hi") {
+            setData(hiUpload);
+        } else {
+            setData(enUpload);
+        }
+        };
+    
+        checkLanguage();
+        const intervalId = setInterval(checkLanguage, 2000);
+    
+        return () => clearInterval(intervalId);
+    }, []);
+
     const handleCopyToClipboard = async (clip: any) => {
         try {
             await navigator.clipboard.writeText(clip);
             if (clip.includes('/v/')) {
                 let copyView = document.getElementById("copyView");
                 if (copyView) {
-                copyView.innerText = "Copied";
+                copyView.innerText = data.copied;
                     setTimeout(() => {
-                        copyView.innerText = "Copy";
+                        copyView.innerText = data.copy;
                     }, 1650);
                 }
                 return;
             }
             let copyBtn = document.getElementById("copyBtn");
             if (copyBtn) {
-                copyBtn.innerText = "Copied";
+                copyBtn.innerText = data.copied;
                 setTimeout(() => {
-                    copyBtn.innerText = "Copy";
+                    copyBtn.innerText = data.copy;
                 }, 1650);
             }
         } catch (error) {
@@ -57,15 +81,15 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
                     <div className="bg-white p-2 rounded-lg relative transform w-full">
                         <div className="flex items-center justify-between p-4">
                             <h2 className="text-xl font-semibold">{title} <button className='ml-2 bg-green-300 text-white uppercase px-2 rounded text-base'>{title.split('.').pop()}</button></h2>
-                            <button onClick={() => close.setClose(true)} className="text-red-500 hover:text-red-700">Close</button>
+                            <button onClick={() => close.setClose(true)} className="text-red-500 hover:text-red-700">{data.close}</button>
                         </div>
                         <div className="bg-white w-full max-w-7xl relative transform transition-all duration-300 ease-in-out">
                             <div className="flex">
                                 <div className="w-4/10 p-4 border border-gray-200 rounded-lg shadow-xl mr-2">
-                                    <h2 className="text-xl font-semibold mb-2">Image Download:</h2>
-                                    <p className="text-gray-500 text-sm mb-4">This provides you link to download image.</p>
+                                    <h2 className="text-xl font-semibold mb-2">{data.downloads.title}</h2>
+                                    <p className="text-gray-500 text-sm mb-4">{data.downloads.description}</p>
                                     <div className="mb-4">
-                                        <label className="text-gray-600 text-sm block mb-1">Download link</label>
+                                        <label className="text-gray-600 text-sm block mb-1">{data.downloads.link}</label>
                                         <div className="flex border rounded-md border-gray-300">
                                             <input type="text" value={link} className="flex-1 px-3 py-2 focus:outline-none text-gray-700" readOnly/>
                                             <button id="copyBtn" onClick={() => handleCopyToClipboard(link)} className="bg-gray-100 hover:bg-gray-200 px-2 py-2 border-l border-gray-300 text-gray-600 focus:outline-none">
@@ -88,7 +112,7 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
                                     <div className="relative w-fit mx-auto">
                                         <div className="flex items-center mt-4">
                                             <div className="flex-grow h-0.5 bg-gray-300"></div>
-                                            <span className="text-center text-sm text-gray-600 mb-2 mx-3">Scan to download</span>
+                                            <span className="text-center text-sm text-gray-600 mb-2 mx-3">{data.scan}</span>
                                             <div className="flex-grow h-0.5 bg-gray-300"></div>
                                         </div>
                                         <div className="flex flex-col items-center justify-center m-10 mb-5">
@@ -117,21 +141,21 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
                                                     </div>
                                                 </div>
                                             </div>
-                                            <p className="text-center text-sm text-gray-600 mt-2">Scan this code with your phone to <br />download the image.</p>
+                                            <p className="text-center text-sm text-gray-600 mt-2">{data.scan}</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="w-6/10 p-4 border border-gray-200 rounded-lg shadow-xl">
-                                    <h2 className="text-xl font-semibold mb-2">Image View:</h2>
-                                    <p className="text-gray-500 text-sm">This provides you link to view image.</p>
+                                    <h2 className="text-xl font-semibold mb-2">{data.views.title}</h2>
+                                    <p className="text-gray-500 text-sm">{data.views.description}</p>
                                     <div className="relative w-fit mx-auto mt-2 m-5">
                                         <div className="flex items-center mt-4">
                                             <div className="flex-grow h-0.5 bg-gray-300"></div>
-                                            <span className="text-center text-sm text-gray-600 mb-2 mx-3">Image View</span>
+                                            <span className="text-center text-sm text-gray-600 mb-2 mx-3">{data.views.title}</span>
                                             <div className="flex-grow h-0.5 bg-gray-300"></div>
                                         </div>
                                         <div className="flex items-center justify-center border border-grey-400 rounded-md relative w-fit overflow-hidden m-5 p-1">
-                                            { link && (<img src={link || "assets/icons/error.png"} alt="Image" className="w-64 h-auto object-cover"/>) }
+                                            { link && (<img draggable={false} src={link || "assets/icons/error.png"} alt="Image" className="w-64 h-auto object-cover"/>) }
                                         </div>
                                     </div>
                                     <div className="mb-4">

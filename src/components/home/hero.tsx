@@ -2,11 +2,33 @@
 
 import React, { useEffect, useState } from 'react';
 import Header from '../main/header';
+import { enHome, esHome, ruHome, hiHome } from '../../config/text/home.text';
 
 const HeroSection = () => {
 
   const [device, setDevice] = useState("assets/images/computer.png");
   const [windowWidth, setWindowWidth] = useState(0);
+  const [data, setData] = useState(enHome);
+
+  useEffect(() => {
+    const checkLanguage = () => {
+      const lang = localStorage.getItem("lang");
+      if (lang === "es") {
+        setData(esHome);
+      } else if (lang === "ru") {
+        setData(ruHome);
+      } else if (lang === "hi") {
+        setData(hiHome);
+      } else {
+        setData(enHome);
+      }
+    };
+
+    checkLanguage();
+    const intervalId = setInterval(checkLanguage, 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
     device == "" && window.innerWidth < 600 ? setDevice("assets/images/computer.png") : setDevice("assets/images/mobile.png");
@@ -31,41 +53,35 @@ const HeroSection = () => {
     };
 
   });
+
   return (
     <section className="relative bg-black text-white min-h-screen">
-      {/* Navigation Bar */}
       <Header />
-
-      {/* Hero Content */}
       <div className="py-4">
         <div className="container mx-auto text-center ">
-          {/* Main Heading */}
-          <h1 className="text-4xl lg:text-6xl font-bold mb-4 leading-tight pt-6 md:pt-2 lg:pt-0 xl:pt-0">
-            Save your image for<br /> free with PicDB
+          <h1 className="text-3xl lg:text-5xl font-bold mb-4 leading-tight pt-2 lg:pt-0 xl:pt-0">
+            {data['main'][0]}<br /> {data['main'][1]}
           </h1>
+          <p className="text-gray-300 mb-8">{data['sub']}</p>
 
-          {/* Subheading */}
-          <p className="text-gray-300 mb-8">The best app for your communication</p>
-
-          {/* Buttons */}
           {/* <div className="flex justify-center space-x-4 mb-12">
             <button className="bg-white text-black font-medium py-1 px-6 rounded-md flex items-center space-x-2">
-              <img src="assets/images/apple_app_store.png" width={26} height={26} alt="apple logo" />
+              <img draggable={false} src="assets/images/apple_app_store.png" width={26} height={26} alt="apple logo" />
               <span>App store</span>
             </button>
             <button className="bg-white text-black font-medium py-1 px-6 rounded-md flex items-center space-x-2">
-              <img src="assets/images/google_play.png" width={26} height={26} alt="google play logo" />
+              <img draggable={false} src="assets/images/google_play.png" width={26} height={26} alt="google play logo" />
               <span>Google play</span>
             </button>
           </div> */}
           <div className="flex justify-center space-x-4 mb-12">
             <button onClick={() => window.location.href = "/upload"} className="bg-white text-black font-medium py-2 px-6 rounded-md flex items-center space-x-2">
-              <img src="assets/icons/image.png" width={26} height={26} alt="Upload logo" />
-              <span className='text-lg'>Upload</span>
+              <img draggable={false} src="assets/icons/image.png" width={26} height={26} alt="Upload logo" />
+              <span className='text-base'>{data['upload']}</span>
             </button>
             <button onClick={() => window.location.href = "/dashboard"} className="bg-white text-black font-medium py-2 px-6 rounded-md flex items-center space-x-2">
-              <img src="assets/icons/dashboard.svg" width={26} height={26} alt="Dashboard" />
-              <span className='text-lg'>Dashboard</span>
+              <img draggable={false} src="assets/icons/dashboard.svg" width={26} height={26} alt="Dashboard" />
+              <span className='text-base'>{data['dashboard']}</span>
             </button>
           </div>
         </div>
@@ -76,27 +92,27 @@ const HeroSection = () => {
           <div className="grid grid-cols-2 gap-y-4 gap-x-3">
             <div className="flex items-center space-x-3">
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img src="assets/images/english.png" alt="English" className="w-8 h-8 object-cover" />
+          <img draggable={false} src="assets/images/english.png" alt="English" className="w-8 h-8 object-cover" />
               </div>
               <span className="text-white text-md">English</span>
             </div>
             <div className="flex items-center space-x-3">
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img src="assets/images/hindi.png" alt="Hindi" className="w-8 h-8 object-cover" />
+          <img draggable={false} src="assets/images/hindi.png" alt="Hindi" className="w-8 h-8 object-cover" />
               </div>
-              <span className="text-white text-md">Hindi</span>
+              <span className="text-white text-md">हिन्दी</span>
             </div>
             <div className="flex items-center space-x-3">
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img src="assets/images/spanish.png" alt="Spanish" className="w-8 h-8 object-cover" />
+          <img draggable={false} src="assets/images/spanish.png" alt="Spanish" className="w-8 h-8 object-cover" />
               </div>
-              <span className="text-white text-md">Spanish</span>
+              <span className="text-white text-md">Español</span>
             </div>
             <div className="flex items-center space-x-3">
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img src="assets/images/russian.png" alt="Russian" className="w-8 h-8 object-cover" />
+          <img draggable={false} src="assets/images/russian.png" alt="Russian" className="w-8 h-8 object-cover" />
               </div>
-              <span className="text-white text-md">Russian</span>
+              <span className="text-white text-md">русский</span>
             </div>
           </div>
         </div>
@@ -105,11 +121,11 @@ const HeroSection = () => {
         <div className="absolute bottom-[12%] hidden lg:block xl:block bottom-1/2 lg:left-14 xl:left-28 z-10">
           <div className="relative bg-blue-500 rounded-md py-2 px-4 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden flex items-center justify-center">
-              <img src="assets/icons/Etherea.webp" width={32} height={32} alt="Etherea" />
+              <img draggable={false} src="/assets/icons/Etherea.webp" width={32} height={32} alt="Etherea" />
             </div>
             <div className="ml-4">
               <p className="text-lg font-semibold">Etherea</p>
-              <p className="text-base">Why do even worry?</p>
+              <p className="text-base">{data['etherea']}</p>
             </div>
           </div>
         </div>
@@ -118,7 +134,7 @@ const HeroSection = () => {
         <div className="absolute top-1/3 hidden lg:block xl:block bottom-1/2 lg:right-8 xl:right-28 z-10">
           <div className="relative bg-purple-500 rounded-md py-2 px-5 flex items-center">
             <div className="h-12 w-12 rounded-full overflow-hidden">
-              <img src="assets/icons/lucy.svg" width={56} height={56} alt="" />
+              <img draggable={false} src="/assets/icons/lucy.svg" width={56} height={56} alt="" />
             </div>
             <div className="ml-3">
               <p className="text-lg px-3 font-semibold">Lucy: Agent</p>
@@ -133,11 +149,11 @@ const HeroSection = () => {
         <div className="absolute bottom-1/4 hidden lg:block xl:block bottom-1/2 lg:right-6 xl:right-20 z-10">
           <div className="relative bg-purple-500 rounded-md py-4 px-6 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden">
-              <img src="assets/images/profile.png" width={64} height={64} alt="Akkil" />
+              <img draggable={false} src="/assets/icons/lucy.svg" width={64} height={64} alt="Akkil" />
             </div>
             <div className="ml-4">
-              <p className="text-lg font-semibold">Akkil</p>
-              <p className="text-base">Welcome to PicDB!</p>
+              <p className="text-lg font-semibold">Lucy</p>
+              <p className="text-base">{data['lucy']}</p>
             </div>
           </div>
         </div>
@@ -145,7 +161,7 @@ const HeroSection = () => {
 
         {/* Device Image */}
         <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${windowWidth < 600 ? "w-[400px] lg:w-[420px] xl:w-[440px]" : "w-[338px] lg:w-[350px] xl:w-[380px]"}`}>
-          <img alt="Device" width={6000} height={10000} src={device} />
+          <img draggable={false} alt="Device" width={6000} height={10000} src={device} />
         </div>
       </div>
     </section>
