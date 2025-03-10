@@ -68,18 +68,18 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      <div id="dropdownHover" className="absolute right-0 -mt-3 mr-8 z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
+      <div id="dropdownHover" className="fixed right-0 top-12 mt-14 mr-6 z-20 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700">
         <ul className="py-2 text-sm text-gray-200" aria-labelledby="dropdownHoverButton">
           <li>
-            <div className="flex justify-between items-center px-2 py-2">
-              <button onClick={(e) => changeLanguage(1)} className="text-gray-200 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
-                <img src="/assets/icons/left_arrow.svg" alt="English" className='h-6 w-6' />
-              </button>
-                <span className='flex items-center font-semibold'><img src="/assets/icons/translation.svg" alt="Language" className='h-4 w-4 mr-2' /> {Language[lang].name} <img src={Language[lang].icon} alt={Language[lang].name} className='h-6 w-6 ml-2' /></span>
-              <button onClick={(e) => changeLanguage(0)} className="text-gray-200 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
-                <img src="/assets/icons/right_arrow.svg" alt="English" className='h-6 w-6' />
-              </button>
-            </div>
+        <div className="flex justify-between items-center px-2 py-2">
+          <button onClick={(e) => changeLanguage(1)} className="text-gray-200 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
+            <img src="/assets/icons/left_arrow.svg" alt="English" className='h-6 w-6' />
+          </button>
+            <span className='flex items-center font-semibold'><img src="/assets/icons/translation.svg" alt="Language" className='h-4 w-4 mr-2' /> {Language[lang].name} <img src={Language[lang].icon} alt={Language[lang].name} className='h-6 w-6 ml-2' /></span>
+          <button onClick={(e) => changeLanguage(0)} className="text-gray-200 hover:bg-gray-100 hover:bg-gray-600 hover:text-white">
+            <img src="/assets/icons/right_arrow.svg" alt="English" className='h-6 w-6' />
+          </button>
+        </div>
           </li>
           {/* <li><a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a></li> */}
         </ul>

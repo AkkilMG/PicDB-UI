@@ -3,12 +3,33 @@
 import { useEffect, useState } from "react";
 import Message from "../pop/message";
 import DropUpload from "./drop_upload";
+import { enUpload, esUpload, hiUpload, ruUpload } from "@/config/text/upload.text";
 
 
 export default function Upload({ uploadFile, progress, result, setId }: { uploadFile: (file: File) => Promise<any>, progress: number, result: any, setId: any }) {
     const [fileName, setFilename] = useState<string | null>(null)
     const [fileSize, setFileSize] = useState<string | null>(null)
     const [success, setSuccess] = useState<boolean>(false)
+    const [data, setData] = useState(enUpload);
+    useEffect(() => {
+        const checkLanguage = () => {
+          const lang = localStorage.getItem("lang");
+          if (lang === "es") {
+            setData(esUpload);
+          } else if (lang === "ru") {
+            setData(ruUpload);
+          } else if (lang === "hi") {
+            setData(hiUpload);
+          } else {
+            setData(enUpload);
+          }
+        };
+    
+        checkLanguage();
+        const intervalId = setInterval(checkLanguage, 2000);
+    
+        return () => clearInterval(intervalId);
+    }, []);
     
     const formatFileSize = (size: number) => {
         if (size >= 1073741824) {
@@ -49,7 +70,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
             <div className="w-full max-w-4xl mx-auto p-4 sm:p-5 md:p-6 lg:p-8 bg-white shadow-md rounded-lg">
                 <div className="p-3 sm:p-4 md:p-5">
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-blue-500 mb-3 sm:mb-4 lg:mb-5">
-                        UPLOAD FILES
+                        {data.main['title']}
                     </h2>
 
                     <div className="flex flex-col space-y-3 sm:space-y-4 md:space-y-5">
@@ -60,10 +81,10 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                             <div className="flex flex-col items-center justify-center">
                                 <img draggable={false} src="assets/icons/upload.png" alt="upload" className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mb-4" />
                                 <p className="text-sm sm:text-base lg:text-lg text-gray-700 mb-2">
-                                    Drop your files here.
+                                    {data.main['desc']}.
                                 </p>
                                 <p className="text-sm sm:text-base lg:text-lg text-blue-500 cursor-pointer">
-                                    or <span className="font-semibold">Browse</span>
+                                    {data.main['browser'][0]} <span className="font-semibold">{data.main['browser'][1]}</span>
                                 </p>
                                 <input 
                                     id="file" 

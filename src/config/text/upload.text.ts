@@ -1,5 +1,9 @@
-
 export const enUpload = {
+    main: {
+        title: "UPLOAD FILES",
+        desc: "Drop your files here",
+        browser: ["or", "Browse"],
+    },
     drop: "Drop image anywhere",
     download: "Download",
     view: "View",
@@ -20,6 +24,11 @@ export const enUpload = {
 }
 
 export const esUpload = {
+    main: {
+        title: "SUBIR ARCHIVOS",
+        desc: "Suelta tus archivos aquí",
+        browser: ["o", "Explorar"],
+    },
     drop: "Suelta la imagen en cualquier lugar",
     download: "Descargar",
     view: "Ver",
@@ -40,15 +49,20 @@ export const esUpload = {
 }
 
 export const ruUpload = {
+    main: {
+        title: "ЗАГРУЗИТЬ ФАЙЛЫ",
+        desc: "Перетащите файлы сюда",
+        browser: ["или", "Обзор"],
+    },
     drop: "Перетащите изображение в любое место",
     download: "Скачать",
     view: "Просмотр",
     copied: "Скопировано",
     copy: "Копировать",
     close: "Закрыть",
-    scan: "Отсканируйте этот код, чтобы скачать изображение",
+    scan: "Сканируйте этот код для скачивания изображения",
     downloads: {
-        title: "Загрузка изображения:",
+        title: "Скачивание изображения:",
         description: "Это предоставляет вам ссылку для скачивания изображения.",
         link: "Ссылка для скачивания"
     },
@@ -60,7 +74,12 @@ export const ruUpload = {
 }
 
 export const hiUpload = {
-    drop: "कहीं भी छवि छोड़ें",
+    main: {
+        title: "फाइलें अपलोड करें",
+        desc: "अपनी फाइलें यहां छोड़ें",
+        browser: ["या", "ब्राउज़ करें"],
+    },
+    drop: "छवि को कहीं भी छोड़ें",
     download: "डाउनलोड करें",
     view: "देखें",
     copied: "कॉपी किया गया",
@@ -75,6 +94,6 @@ export const hiUpload = {
     views: {
         title: "छवि दृश्य:",
         description: "यह आपको छवि देखने के लिए एक लिंक प्रदान करता है।",
-        link: "दृश्य लिंक"
+        link: "देखने का लिंक"
     }
 }
