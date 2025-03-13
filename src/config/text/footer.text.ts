@@ -11,7 +11,7 @@ export const enFooter = {
         title: "Insights",
         available: [
             {title: "Product Insights", link: "/insights" },
-            {title: "About Team", link: "https://avianintek.vercel.app/" }
+            {title: "About Team", link: "https://avianintek.com/" }
         ]
     },
     resources: {

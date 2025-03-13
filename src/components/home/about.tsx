@@ -45,9 +45,9 @@ export default function AboutSection () {
             <div className="mt-12 relative lg:mt-0 lg:col-start-2">
                 <div className="shadow-2xl rounded-2xl overflow-hidden ">
                   <img
-                    src="/dashboard.png"
+                    src="/assets/images/phone.png"
                     alt="Dashboard"
-                    className="object-cover object-center w-full h-full"
+                    className="object-cover object-center w-full h-250"
                   />
                 </div>
               {/* <div className="absolute top-1/2 right-0 transform -translate-y-1/2 mt-16 z-10  max-w-md">

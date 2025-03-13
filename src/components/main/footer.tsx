@@ -52,7 +52,7 @@ const Footer = () => {
                   </li>
                 ))}
                 {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/insights">Product Insights</a></li>
-                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/https://avianintek.vercel.app/">About Team</a></li> */}
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="https://avianintek.com/">About Team</a></li> */}
               </ul>
             </div>
             <div>
