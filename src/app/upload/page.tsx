@@ -3,17 +3,14 @@
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
 import Policy from "@/components/pop/policy";
-import DropUpload from "@/components/upload/drop_upload";
+// import DropUpload from "@/components/upload/drop_upload";
 import Upload from "@/components/upload/upload";
 import UploadResult from "@/components/upload/upload_result";
 import UploadMobileResult from "@/components/upload/upload_result_mobile";
 import axios from "axios";
-import { link } from "fs";
 import { useEffect, useState } from "react";
 
-
 export default function UploadPage() {
-    
     const [link, setLink] = useState<string>('');
     const [title, setTitle] = useState<string>('');
     const [view, setView] = useState<string>('');

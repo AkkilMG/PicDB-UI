@@ -19,9 +19,11 @@
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
     "next": "15.1.2",
+    "next-seo": "^6.6.0",
     "qrcode.react": "^4.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-google-adsense": "^0.0.5",
     "react-icons": "^5.4.0"
   },
   "devDependencies": {

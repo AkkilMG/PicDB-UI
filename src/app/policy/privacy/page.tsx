@@ -1,9 +1,8 @@
+"use client";
+
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
 import { PolicyBody } from "@/components/policy/body";
-
-
-
 
 export default function PrivacyPolicyPage() {
     return (

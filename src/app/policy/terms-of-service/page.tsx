@@ -1,10 +1,13 @@
+"use client";
+
+
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
 import { PolicyBody } from "@/components/policy/body";
 
-export default function TermsAndConditionsPage() {
+
+export default function TermsOfServicePage() {
     return (
-        
         <div>
             <Header />
             <div className="font-sans antialiased bg-white text-gray-900">
