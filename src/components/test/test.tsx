@@ -7,7 +7,7 @@ import MainDashboardList from './main/list';
 
 
 
-export default function PrivacyPolicyPage() {
+export default function TestPage() {
     return (
       <div className="flex h-screen bg-gray-50">
         {/* Sidebar */}
