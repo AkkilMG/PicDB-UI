@@ -14,6 +14,7 @@
     "@types/formidable": "^3.4.5",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
+    "apexcharts": "^4.5.0",
     "axios": "^1.8.2 ",
     "dotenv": "^16.4.7",
     "lottie-react": "^2.4.0",

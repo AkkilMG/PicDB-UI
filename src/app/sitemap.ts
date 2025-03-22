@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE = "https://avianintek.com";
+const BASE = "https://picdb.avianintek.com";
 
 export default async function SiteMap(): Promise<MetadataRoute.Sitemap> {
     return [

@@ -39,6 +39,19 @@ export default function RootLayout({
     document.head.appendChild(inlineScript);
   }, []);
 
+  useEffect(() => {
+    const disableContextMenu = (e: MouseEvent) => e.preventDefault();
+    const disableSelect = (e: Event) => e.preventDefault();
+
+    document.addEventListener("contextmenu", disableContextMenu);
+    document.addEventListener("selectstart", disableSelect);
+
+    return () => {
+      document.removeEventListener("contextmenu", disableContextMenu);
+      document.removeEventListener("selectstart", disableSelect);
+    };
+  }, []);
+
   return (
     <html lang="en">
       <head>
