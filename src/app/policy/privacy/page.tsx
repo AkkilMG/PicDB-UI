@@ -126,7 +126,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={10} title="Contact Us" body={[
-                        "If you have questions or concerns about our Privacy Policy, please contact us at support [at] picdb.com."
+                        "If you have questions or concerns about our Privacy Policy, please contact us at support@avianintek.com."
                     ]} />
                 </div>
             </div>

@@ -86,7 +86,7 @@ export default function CookiesPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={7} title="Contact Us" body={[
-                        "If you have any questions about our Cookies Policy, contact us at support [at] picdb.com."
+                        "If you have any questions about our Cookies Policy, contact us at support@avianintek.com."
                     ]} />
                 </div>
             </div>

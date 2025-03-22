@@ -113,7 +113,7 @@ export default function TermsOfServicePage() {
 
                     {/* Section */}
                     <PolicyBody no={11} title="Contact Us" body={[
-                        "If you have questions about these Terms of Service, please contact us at support [at] picdb.com."
+                        "If you have questions about these Terms of Service, please contact us at support@avianintek.com."
                     ]} />
                 </div>
             </div>
