@@ -68,7 +68,7 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
                   </button>
                 </h2>
                 <button onClick={() => close.setClose(true)} className="text-red-500 hover:text-red-700">
-                  [data.close]
+                  {data.close}
                 </button>
               </div>
 
