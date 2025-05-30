@@ -55,9 +55,9 @@ export default function Sidenav() {
               <a href="/dashboard/notification" className="flex items-center rounded-lg px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-50 hover:bg-[#7DAE78] relative">
                 <BellIcon className="h-5 w-5 mr-2" />
                 Notifications
-                <span className="absolute top-1 right-1 bg-[#FFCF47] text-gray-800 text-xs rounded-full px-2 py-0.5">
+                {/* <span className="absolute top-1 right-1 bg-[#FFCF47] text-gray-800 text-xs rounded-full px-2 py-0.5">
                   3
-                </span>
+                </span> */}
               </a>
             </li>
             <li>

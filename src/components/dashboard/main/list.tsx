@@ -53,12 +53,12 @@ export default function MainDashboardList({data, setId, deleteList, favoriteList
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase">{file.type.split('/').pop()}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatFileSize(file.size)}</td>
-                  <td onClick={(e) => deleteList(file['id'])}  className="pl-4 pr-12- py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <td onClick={(e) => { e.stopPropagation(); deleteList(file['id'])}}  className="pl-4 pr-12- py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button className="text-red-500 hover:text-red-700">
                       <TrashIcon className="h-5 w-5" />
                     </button>
                   </td>
-                  <td onClick={(e) => favoriteList(file['id'])} className="pr-8 py-4 whitespace-nowrap text-right text-sm font-medium">
+                  <td onClick={(e) => { e.stopPropagation(); favoriteList(file['id'])}} className="pr-8 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <button className="focus:outline-none">
                       <StarIcon className="h-5 w-5" stroke={file.favorite ? "#f59e42" : "#3b82f6"} 
                         fill={file.favorite ? "#f59e42" : "none"}/>

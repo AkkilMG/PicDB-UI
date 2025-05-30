@@ -127,7 +127,7 @@ export default function Dashboard() {
       <Sidenav />
       <main className="flex-1 p-8">
         <MainDashboardHeader />
-        <MainDashboardFolders />
+        {/* <MainDashboardFolders /> */}
         <MainDashboardList data={result} setId={setId} deleteList={deleteList} favoriteList={favoriteList} />
       </main>
       <Statistics />

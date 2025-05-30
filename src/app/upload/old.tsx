@@ -1,6 +1,5 @@
 "use client";
 
-import Sidenav from "@/components/dashboard/sidenav";
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
 import Policy from "@/components/pop/policy";
@@ -139,17 +138,13 @@ export default function UploadPage() {
     };
     
     return (
-        <div className="h-screen bg-gray-50">
+        <div>
             <Policy />
             { (id && !close) && (uploadComponent)}
             <div>
-                
-            </div>
-            <div className="flex h-screen bg-gray-50">
-                <Sidenav />
-                <main className="flex-1 p-8 bg-gray-50">
-                    <Upload uploadFile={uploadFile} progress={progress} result={result} setId={setId} />
-                </main>
+                <Header />
+                <Upload uploadFile={uploadFile} progress={progress} result={result} setId={setId} />
+                <Footer />
             </div>
         </div>
     );

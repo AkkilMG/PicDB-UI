@@ -13,8 +13,6 @@
 # testing
 /coverage
 
-/lib
-lib/
 /pages/
 /pages/api/
 pages/

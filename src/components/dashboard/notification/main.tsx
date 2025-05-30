@@ -47,12 +47,21 @@ export default function Notification() {
   const [result, setResult] = useState<any[]>([]);
   const [id, setId] = useState<string>('');
 
+
+  useEffect(() => {
+    setResult([
+      { id: '1', title: "Notification 1", text: "The notification your seeing is part of broadcast 1" },
+      { id: '2', title: "Notification 2", text: "The notification your seeing is part of broadcast 2" },
+      { id: '3', title: "Notification 3", text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur incidunt, temporibus deleniti esse nam saepe ipsum ducimus harum necessitatibus eius? Praesentium sequi ullam non omnis vel, blanditiis voluptatum cumque. Eum rerum odit tempora possimus corrupti fugiat consequuntur sint cupiditate nobis accusamus. Cupiditate adipisci veritatis culpa quisquam magnam voluptate modi enim, dolorem veniam praesentium incidunt sed dolores autem rem odio? Qui fuga animi iste quisquam et soluta reiciendis in nesciunt minima perferendis sit repudiandae officiis rerum sequi totam libero, ea pariatur." },
+    ])
+  }, []);
   const deleteList = (id: string) => {
     setResult(result.filter(item => item.id !== id));
   };
   
   return (
     <>
+    {!id && <></> }
     <div className="flex h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-8">

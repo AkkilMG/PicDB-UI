@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
-import animationData from '../assets/seach_image.json'; 
+import animationData from '@/assets/seach_image.json'; 
 
 const Loading = () => {
   const containerRef = useRef(null);

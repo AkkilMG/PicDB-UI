@@ -66,8 +66,8 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
         <>
         <DropUpload uploadFile={handleFileChange}/>
         { success && <Message message={`Successfully uploaded the image..`} color={1} />}
-        <div className="pb-4 p-4 sm:p-6 md:p-8 lg:p-10 flex items-center justify-center w-full py-20 pb-20 min-h-80 lg:min-h-screen bg-gray-100">
-            <div className="w-full max-w-4xl mx-auto p-4 sm:p-5 md:p-6 lg:p-8 bg-white shadow-md rounded-lg">
+        <div className="p-2 sm:p-4 md:p-6 lg:p-8 pb-1 flex items-center justify-center w-full pt-20 min-h-80 lg:min-h-[80vh]">
+            <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-5 lg:p-6 pb-1 shadow-md bg-white rounded-lg">
                 <div className="p-3 sm:p-4 md:p-5">
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-blue-500 mb-3 sm:mb-4 lg:mb-5">
                         {data.main['title']}
@@ -100,7 +100,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                         </div>
 
                         <div className="pt-3 sm:pt-4 md:pt-5">
-                            <ul className="space-y-2 max-h-60 sm:max-h-72 overflow-y-auto scrollbar">
+                            <ul className="space-y-2 max-h-60 sm:max-h-72 pr-2 overflow-y-auto scrollbar">
                                 {fileName && (
                                     <li className="bg-gray-50 p-2 sm:p-3 rounded-md flex items-center justify-between">
                                         <div className="flex items-center">

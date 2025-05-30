@@ -1,8 +1,6 @@
 
 
 
-
-
 export default function FolderPage() {
     return (
         <div className="h-screen">
