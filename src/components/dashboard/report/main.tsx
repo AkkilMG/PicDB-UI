@@ -2,9 +2,9 @@
 
 
 import React, { useEffect, useState } from 'react';
+import Sidenav from '../sidenav';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
 import ReportForm from './form';
-import AdminSidenav from '../sidenav';
 
 
 export default function Report() {
@@ -43,7 +43,7 @@ export default function Report() {
     <>
     {!id && <></> }
     <div className="flex h-screen bg-gray-50">
-      <AdminSidenav />
+      <Sidenav />
       <main className="flex-1 p-8">
         <ReportForm />
       </main>

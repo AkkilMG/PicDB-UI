@@ -17,21 +17,6 @@ export async function verifyToken(token: string): Promise<string | null> {
   }
 }
 
-
-export async function verifyEmailIdentity(token: string): Promise<any> {
-  if (!token) return false;
-
-  try {
-    if (token === TOKEN_AUTH_IDENTITY) {
-      return true;
-    }
-    return false;
-  } catch (error) {
-    return false;
-  }
-}
-
-
 // UI components
 
 

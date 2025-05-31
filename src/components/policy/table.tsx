@@ -16,7 +16,7 @@ export default function PrivacyPolicyTable({title, headings, tables}: any) {
                             </th>
                         ))}
                     </tr></thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
+                    <tbody className="cursor-pointer bg-white divide-y divide-gray-200">
                         {tables.map((table: any, index: number) => (
                             <tr key={index}>
                                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{table.title}</td>

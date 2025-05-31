@@ -41,7 +41,7 @@ export default function MainTrashList({data, setId, deleteList}: {data: any, set
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-300">
+            <tbody className="cursor-pointer bg-white divide-y divide-gray-300">
               {/* Mock Data (Replace with your actual data) */}
               {data.length > 0 ? data.map((file: any, index: number) => (
                 <tr key={index} onClick={() => setId(file['id']) } >

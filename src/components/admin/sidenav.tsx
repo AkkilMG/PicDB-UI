@@ -38,14 +38,14 @@ export default function AdminSidenav() {
               </a>
             </li>
             <li>
-              <a href="/admin/analysis" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-gray-50">
+              <a href="/admin/notification/new" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-gray-50">
                 <PaperAirplaneIcon className="h-5 w-5 mr-2" />
                 Send Notification
               </a>
             </li>
             
             <li>
-              <a href="/admin/analysis" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-gray-50">
+              <a href="/admin/notification" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-gray-50">
                 <MdNotifications className="h-5 w-5 mr-2" />
                 Notifications
               </a>

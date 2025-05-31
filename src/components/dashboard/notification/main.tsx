@@ -3,12 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Sidenav from '../sidenav';
-import UploadMobileResult from '../../upload/upload_result_mobile';
-import UploadResult from '../../upload/upload_result';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
-import MainDashboardHeader from '../main/header';
-import MainDashboardList from '../main/list';
-import Statistics from '../main/statistics';
 import MainNotifyList from './notify';
 
 

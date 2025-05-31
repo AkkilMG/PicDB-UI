@@ -12,7 +12,7 @@ import {
     TrashIcon,
   } from '@heroicons/react/24/outline';
 import { LiaCookieSolid } from "react-icons/lia";
-import { MdOutlinePrivacyTip, MdOutlinePolicy } from "react-icons/md";
+import { MdOutlinePrivacyTip, MdOutlinePolicy, MdReportProblem } from "react-icons/md";
 
 
 
@@ -58,6 +58,12 @@ export default function Sidenav() {
                 {/* <span className="absolute top-1 right-1 bg-[#FFCF47] text-gray-800 text-xs rounded-full px-2 py-0.5">
                   3
                 </span> */}
+              </a>
+            </li>
+            <li>
+              <a href="/dashboard/report" className="flex items-center rounded-lg px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-50 hover:bg-[#7DAE78]">
+                <MdReportProblem className="h-5 w-5 mr-2" />
+                Report
               </a>
             </li>
             <li>

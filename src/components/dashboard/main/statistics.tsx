@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import ApexCharts from 'apexcharts';
+// import ApexCharts from 'apexcharts';
 // import {
 //     UsersIcon,
 //     TrashIcon,
@@ -11,7 +11,7 @@ import ApexCharts from 'apexcharts';
 
 export default function Statistics() {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<{ type: string; size: number }[]>([]);
   const [totalSize, setTotalSize] = useState(0);
 
   async function fetchData() {
@@ -24,7 +24,7 @@ export default function Statistics() {
     });
     const result = Object.entries(typeSizeMap).map(([type, size]) => ({ type, size }));
     const totalSize = result.reduce((sum, item) => sum + item.size, 0);
-    console.log("Result: ", result);
+    // console.log("Result: ", result);
     setData(result);
     setTotalSize(totalSize);
   }
@@ -192,7 +192,7 @@ export default function Statistics() {
               label: "Total",
               fontFamily: "Inter, sans-serif",
               formatter: () => {
-                const totalSize = data.reduce((acc, item) => acc + item.size, 0);
+                const totalSize = data.reduce((acc: any, item: any) => acc + item.size, 0);
                 return formatFileSize(totalSize);
               },
             },
@@ -210,19 +210,30 @@ export default function Statistics() {
   });
 
   useEffect(() => {
-    if (document.getElementById("image-storage-chart") && typeof ApexCharts !== 'undefined') {
-      const totalSize = data.reduce((acc, item) => acc + item.size, 0);
+    let chart: any = null;
+    let isMounted = true;
 
-      const labels = data.map((item) => `${item.type.toUpperCase()} (${formatFileSize(item.size)})`);
-      const series = data.map((item) => +((item.size / totalSize) * 100).toFixed(2)); // in %
-
-      const chart = new ApexCharts(document.getElementById("image-storage-chart"), getChartOptions(series, labels));
-      chart.render();
-
-      return () => {
-        chart.destroy();
-      };
+    async function loadChart() {
+      if (typeof window === 'undefined') return;
+      const ApexCharts = (await import('apexcharts')).default;
+      const chartContainer = document.getElementById("image-storage-chart");
+      if (chartContainer && data.length > 0) {
+        const totalSize = data.reduce((acc: any, item: any) => acc + item.size, 0);
+        const labels = data.map((item: any) => `${item.type.toUpperCase()} (${formatFileSize(item.size)})`);
+        const series = data.map((item: any) => +((item.size / totalSize) * 100).toFixed(2)); // in %
+        chart = new ApexCharts(chartContainer, getChartOptions(series, labels));
+        chart.render();
+      }
     }
+
+    loadChart();
+
+    return () => {
+      if (chart) {
+        chart.destroy();
+      }
+      isMounted = false;
+    };
   }, [data]);
 
 

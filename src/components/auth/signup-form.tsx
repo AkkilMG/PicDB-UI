@@ -63,7 +63,7 @@ export default function SignupForm() {
           return
         }
         await signUp(email, password, name)
-      // Redirect or show success message here
+        window.location.href = "/admin/analysis"
     } catch (err) {
       setError("Failed to create account")
     } finally {
