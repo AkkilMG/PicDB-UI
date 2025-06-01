@@ -1,38 +1,48 @@
 import { MetadataRoute } from "next";
 
-const BASE = "https://picdb.avianintek.com";
+const BASE_URL = "https://picdb.avianintek.com";
 
 export default async function SiteMap(): Promise<MetadataRoute.Sitemap> {
     return [
         {
-            url: `${BASE}/`,
-            lastModified: "2025-03-14",
+            url: `${BASE_URL}/`,
+            lastModified: "2025-06-01",
             changeFrequency: "weekly",
             priority: 1.0
         }, {
-            url: `${BASE}/upload`,
-            lastModified: "2025-03-14",
-            changeFrequency: "weekly",
-            priority: 1.0
+            url: `${BASE_URL}/upload`,
+            lastModified: "2025-06-01",
+            changeFrequency: "weekly" as const,
+            priority: 0.9
         }, {
-            url: `${BASE}/dashboard`,
-            lastModified: "2025-03-14",
-            changeFrequency: "weekly",
-            priority: 1.0
+            url: `${BASE_URL}/dashboard`,
+            lastModified: "2025-06-01",
+            changeFrequency: "weekly" as const,
+            priority: 0.9
         }, {
-            url: `${BASE}/policy/terms-of-service`,
+            url: `${BASE_URL}/dashboard/favorite`,
+            lastModified: "2025-06-01",
+            changeFrequency: "weekly" as const,
+            priority: 0.7
+        }, {
+            url: `${BASE_URL}/dashboard/report`,
+            lastModified: "2025-06-01",
+            changeFrequency: "weekly" as const,
+            priority: 0.7
+        }, {
+            url: `${BASE_URL}/policy/terms-of-service`,
             lastModified: "2025-03-14",
-            changeFrequency: "monthly",
+            changeFrequency: "yearly" as const,
+            priority: 0.5
+        }, {
+            url: `${BASE_URL}/policy/policy`,
+            lastModified: "2025-03-14",
+            changeFrequency: "yearly" as const,
             priority: 0.3
         }, {
-            url: `${BASE}/policy/policy`,
+            url: `${BASE_URL}/policy/cookies`,
             lastModified: "2025-03-14",
-            changeFrequency: "monthly",
-            priority: 0.3
-        }, {
-            url: `${BASE}/policy/cookies`,
-            lastModified: "2025-03-14",
-            changeFrequency: "monthly",
+            changeFrequency: "yearly" as const,
             priority: 0.3
         }
     ]
