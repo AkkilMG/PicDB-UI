@@ -7,30 +7,6 @@ import { cookies } from 'next/headers';
 export async function POST(req: NextRequest) {
   var { report, contact, link } = await req.json();
 
-  var token: any = (await cookies()).get('token');
-  if (!token) {
-    console.log("No token found")
-    return NextResponse.json({ success: false, message: "No token found" })
-  }
-  if (!token.value) {
-    return NextResponse.json({ success: false, message: "No token found" })
-  }
-  var authorization = token.value;
-  if (!authorization) {
-    return NextResponse.json(
-      { success: false, message: 'authorization is required.' },
-      { status: 400 }
-    );
-  }
-
-  const verify = await verifyToken(authorization);
-  if (!verify) {
-    return NextResponse.json(
-      { success: false, message: 'Unauthorized' },
-      { status: 401 }
-    );
-  }
-
   if ( !report || !contact || !link ) {
     return NextResponse.json(
       { success: false, message: 'report, contact and link are required.' },
