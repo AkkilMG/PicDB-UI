@@ -3,14 +3,11 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Check, AlertCircle, Send } from "lucide-react"
+import { Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { TOKEN_AUTH_IDENTITY } from "@/config/env.config"
-import { saveReport } from "@/lib/report"
 import { sendNotification } from "@/lib/notification"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -60,17 +57,17 @@ export default function EmailForm() {
       })
       setIsEmailValid(null)
 
-      var send = await sendNotification({ ...formData })
+      var send = await sendNotification(formData)
       if (send.success) {
-        alert("Message sent successfully!")
+        alert("Notification sent successfully!")
         window.location.href = "/admin/notification";
       } else {
-        alert("Failed to send message. Please try again.")
+        alert("Failed to send notification. Please try again.")
       }
 
     } catch (error) {
-      console.error("Error sending message:", error)
-      alert("Failed to send message. Please try again.")
+      console.log("Error sending notification:", error)
+      alert("Failed to send notification. Please try again due to error.")
     } finally {
       setIsSubmitting(false)
     }

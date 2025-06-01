@@ -11,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { TOKEN_AUTH_IDENTITY } from "@/config/env.config"
 import { saveReport } from "@/lib/report"
+import { sendNotification } from "./notification"
 
 interface FormData {
   title: string
@@ -67,7 +68,7 @@ export default function EmailForm() {
       }
 
     } catch (error) {
-      console.error("Error sending message:", error)
+      console.log("Error sending message:", error)
       alert("Failed to send message. Please try again.")
     } finally {
       setIsSubmitting(false)

@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       message: "Email is valid"
     })
   } catch (error) {
-    console.error("Error verifying email:", error)
+    console.log("Error verifying email:", error)
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
 }

@@ -9,9 +9,9 @@ import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/tex
 export default function Analysis() {
   return (
     <>
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50">
         <AdminSidenav />
-        <main className="flex-1 p-8">
+        <main className="flex-1 p-4 md:p-8">
             
         </main>
     </div>

@@ -8,21 +8,16 @@ export async function sendNotification(notifyData: any): Promise<any> {
         },
         body: JSON.stringify(notifyData),
       })
-  
-      if (!response.ok) {
-        console.log("Failed to send email")
-        return { success: false, message: "Failed to send email" }
-      }
-  
+
       const data = await response.json()
-      return { success: true, data: data.data }
+      return data
     } catch (error) {
-      console.error("Error sending email:", error)
+      console.log("Error sending email:", error)
       return { success: false, message: "Error sending email" }
     }
 }
 
-export async function deleteNotification(notifyData: any): Promise<any> {
+export async function deleteNotification(id: any): Promise<any> {
     try {
 
       const response = await fetch("/api/notification", {
@@ -30,18 +25,12 @@ export async function deleteNotification(notifyData: any): Promise<any> {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(notifyData),
+        body: JSON.stringify({ _id: id }),
       })
-  
-      if (!response.ok) {
-        console.log("Failed to send email")
-        return { success: false, message: "Failed to send email" }
-      }
-  
       const data = await response.json()
-      return { success: true, data: data.data }
+      return data
     } catch (error) {
-      console.error("Error sending email:", error)
+      console.log("Error sending email:", error)
       return { success: false, message: "Error sending email" }
     }
 }
@@ -55,15 +44,10 @@ export async function getNotification(): Promise<any> {
         }
       })
   
-      if (!response.ok) {
-        console.log("Failed to send email")
-        return { success: false, message: "Failed to send email" }
-      }
-  
       const data = await response.json()
-      return { success: true, data: data.notifications }
+      return data
     } catch (error) {
-      console.error("Error sending email:", error)
+      console.log("Error sending email:", error)
       return { success: false, message: "Error sending email" }
     }
 }

@@ -5,15 +5,15 @@ import { verifyToken } from '@/lib/auth';
 import { cookies } from 'next/headers';
 
 export async function POST(req: NextRequest) {
-  const { report, contact, link } = await req.json();
+  var { report, contact, link } = await req.json();
 
   var token: any = (await cookies()).get('token');
   if (!token) {
     console.log("No token found")
-    return { success: false, message: "No token found" }
+    return NextResponse.json({ success: false, message: "No token found" })
   }
   if (!token.value) {
-    return { success: false, message: "No token found" }
+    return NextResponse.json({ success: false, message: "No token found" })
   }
   var authorization = token.value;
   if (!authorization) {
@@ -38,6 +38,10 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  if (typeof link === 'string' && (link.includes('/d/') || link.includes('/download/'))) {
+    link = link.replace(/\/d\/|\/download\//, '/v/');
+  }
+
   const db = await getMongoClient();
   await db.collection('reports').insertOne({ report, contact, link, closed: false });
   return NextResponse.json({ success: true });
@@ -50,10 +54,10 @@ export async function PUT(req: NextRequest) {
   var token: any = (await cookies()).get('token');
   if (!token) {
     console.log("No token found")
-    return { success: false, message: "No token found" }
+    return NextResponse.json({ success: false, message: "No token found" })
   }
   if (!token.value) {
-    return { success: false, message: "No token found" }
+    return NextResponse.json({ success: false, message: "No token found" })
   }
   var authorization = token.value;
   if (!authorization) {
@@ -93,10 +97,10 @@ export async function GET(req: NextRequest) {
   var token: any = (await cookies()).get('token');
   if (!token) {
     console.log("No token found")
-    return { success: false, message: "No token found" }
+    return NextResponse.json({ success: false, message: "No token found" })
   }
   if (!token.value) {
-    return { success: false, message: "No token found" }
+    return NextResponse.json({ success: false, message: "No token found" })
   }
   var authorization = token.value;
   if (!authorization) {

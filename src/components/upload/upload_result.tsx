@@ -50,7 +50,7 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
                 }, 1650);
             }
         } catch (error) {
-            console.error('Failed to copy to clipboard:', error);
+            console.log('Failed to copy to clipboard:', error);
         }
     };
     const handleShare = async (url: string) => {
@@ -65,7 +65,7 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
             await navigator.share(shareData);
             console.log("Content shared successfully!");
           } catch (error) {
-            console.error("Error sharing content:", error);
+            console.log("Error sharing content:", error);
           }
         } else {
           console.warn("Web Share API is not supported in this browser.");

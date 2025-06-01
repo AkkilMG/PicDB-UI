@@ -104,9 +104,9 @@ export default function Trash() {
   return (
     <>
     { (id && !close) && (uploadComponent)}
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4 md:p-8">
         <MainDashboardHeader />
         <MainTrashList data={result} setId={setId} deleteList={deleteList} />
       </main>

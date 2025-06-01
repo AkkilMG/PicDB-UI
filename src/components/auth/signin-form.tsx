@@ -58,7 +58,7 @@ export default function SigninForm() {
     try {
       var data = await signIn(email, password)
       if (data.success) {
-        window.location.href = "/dashboard"
+        window.location.href = "/admin/analysis"
       } else {
         setError("Invalid email or password")
       }

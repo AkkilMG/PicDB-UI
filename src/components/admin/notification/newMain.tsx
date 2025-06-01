@@ -42,9 +42,9 @@ export default function Report() {
   return (
     <>
     {!id && <></> }
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <AdminSidenav />
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4 md:p-8">
         <ReportForm />
       </main>
     </div>

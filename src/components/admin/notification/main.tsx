@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
 import MainNotifyList from './notify';
 import AdminSidenav from '../sidenav';
+import { deleteNotification, getNotification } from '@/lib/notification';
+import NotificationPopup from '@/components/pop/notification';
 
 
 
@@ -42,25 +44,58 @@ export default function Notification() {
   const [result, setResult] = useState<any[]>([]);
   const [id, setId] = useState<string>('');
 
-
+  async function fetchResult() {
+    try {
+      var data = await getNotification();
+      if (data.success) {
+        setResult(data.notifications);
+      }else {
+        console.log("Failed to fetch notifications:", data.message);
+      }
+    } catch (error) {
+      console.log("Error fetching notifications:", error);
+    }
+  }
   useEffect(() => {
-    setResult([
-      { id: '1', title: "Notification 1", text: "The notification your seeing is part of broadcast 1" },
-      { id: '2', title: "Notification 2", text: "The notification your seeing is part of broadcast 2" },
-      { id: '3', title: "Notification 3", text: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur incidunt, temporibus deleniti esse nam saepe ipsum ducimus harum necessitatibus eius? Praesentium sequi ullam non omnis vel, blanditiis voluptatum cumque. Eum rerum odit tempora possimus corrupti fugiat consequuntur sint cupiditate nobis accusamus. Cupiditate adipisci veritatis culpa quisquam magnam voluptate modi enim, dolorem veniam praesentium incidunt sed dolores autem rem odio? Qui fuga animi iste quisquam et soluta reiciendis in nesciunt minima perferendis sit repudiandae officiis rerum sequi totam libero, ea pariatur." },
-    ])
+    fetchResult();
   }, []);
-  const deleteList = (id: string) => {
-    setResult(result.filter(item => item.id !== id));
+
+  const deleteList = async (id: string) => {
+    try {
+      var data = await deleteNotification(id);
+      if (data.success) {
+        alert("Notification deleted successfully");
+      }else {
+        console.log("Failed to fetch notifications:", data.message);
+      }
+    } catch (error) {
+      console.log("Error fetching notifications:", error);
+    }
   };
+
+
+    const [notificationOpen, setNotificationOpen] = useState(false);
+    const [notificationData, setNotificationData] = useState<any>({});
+    const handleNotificationClick = (id: string) => {
+      const notification = result.find((notify) => notify._id === id);
+      if (!notification) {
+        console.log("Notification not found for ID:", id);
+        return;
+      }
+      setNotificationData(notification);
+      setNotificationOpen(true)
+    }
+    const handleNotificationClose = () => {
+      setNotificationOpen(false)
+    }
   
   return (
     <>
-    {!id && <></> }
-    <div className="flex h-screen bg-gray-50">
+    {notificationData && notificationOpen && <NotificationPopup isOpen={notificationOpen} onClose={handleNotificationClose} data={notificationData} /> }
+    <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <AdminSidenav />
-      <main className="flex-1 p-8">
-        <MainNotifyList data={result} setId={setId} deleteList={deleteList} />
+      <main className="flex-1 p-4 md:p-8">
+        <MainNotifyList data={result} deleteList={deleteList} handleNotificationClick={handleNotificationClick} />
       </main>
     </div>
     </>

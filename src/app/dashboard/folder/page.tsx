@@ -1,6 +1,6 @@
+"use client"
+
 import { use, useEffect } from "react";
-
-
 
 export default function FolderToMainPage() {
     useEffect(() => {

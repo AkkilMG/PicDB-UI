@@ -145,9 +145,9 @@ export default function UploadPage() {
             <div>
                 
             </div>
-            <div className="flex h-screen bg-gray-50">
+            <div className="flex flex-col md:flex-row h-screen bg-gray-50">
                 <Sidenav />
-                <main className="flex-1 p-8 bg-gray-50">
+                <main className="flex-1 p-4 md:p-8 bg-gray-50">
                     <Upload uploadFile={uploadFile} progress={progress} result={result} setId={setId} />
                 </main>
             </div>

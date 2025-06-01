@@ -255,12 +255,12 @@ export default function Statistics() {
   };
 
   return (
-    <aside className="w-80 p-6 m-4 shadow-lg" style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
+    <aside className="hidden xl:block w-80 p-6 m-4 shadow-lg " style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
       <h2 className="text-lg font-medium text-gray-800 mb-4">Storage</h2>
 
       {/* Chart */}
       <div className="w-full rounded-lg shadow-sm -mt-6">
-      <div className="py-6" id="image-storage-chart"></div>
+        <div className="py-6" id="image-storage-chart"></div>
       </div>
 
       {/* Storage info */}

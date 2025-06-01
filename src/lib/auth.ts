@@ -31,14 +31,10 @@ export async function verifyEmail(email: string, which: number): Promise<boolean
       body: JSON.stringify({ email, which }),
     })
 
-    if (!response.ok) {
-      console.log("Email verification failed")
-    }
-
     const data = await response.json()
     return data.valid
   } catch (error) {
-    console.error("Error verifying email:", error)
+    console.log("Error verifying email:", error)
     // For demo purposes, we'll return true to simulate a successful verification
     // In a real application, you would handle the error appropriately
     return true
@@ -55,15 +51,10 @@ export async function signIn(email: string, password: string): Promise<any> {
       body: JSON.stringify({ email, password }),
     })
 
-    if (!response.ok) {
-      console.log("Sign in failed")
-      return { success: false, message: "Sign in failed" }
-    }
-
     const data = await response.json()
     return data
   } catch (error) {
-    console.error("Error signing in:", error)
+    console.log("Error signing in:", error)
     return { success: false, message: "Error signing in" }
   }
 }
@@ -78,14 +69,10 @@ export async function signUp(email: string, password: string, name: string): Pro
       body: JSON.stringify({ email, password, name }),
     })
 
-    if (!response.ok) {
-      console.log("Sign up failed")
-    }
-
     const data = await response.json()
     return data
   } catch (error) {
-    console.error("Error signing up:", error)
+    console.log("Error signing up:", error)
     throw error
   }
 }

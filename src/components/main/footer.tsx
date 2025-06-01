@@ -51,8 +51,8 @@ const Footer = () => {
                     <a draggable={false} href={insight.link}>{insight.title}</a>
                   </li>
                 ))}
-                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/insights">Product Insights</a></li>
-                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="https://avianintek.com/">About Team</a></li> */}
+                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="/insights">Product Insights</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="https://avianintek.com/">About Team</a></li> */}
               </ul>
             </div>
             <div>
@@ -63,8 +63,8 @@ const Footer = () => {
                     <a draggable={false} href={resource.link}>{resource.title}</a>
                   </li>
                 ))}
-                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/#">Documentation</a></li>
-                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/#">API Service</a></li> */}
+                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="/#">Documentation</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="/#">API Service</a></li> */}
               </ul>
             </div>
             <div>
@@ -75,9 +75,9 @@ const Footer = () => {
                     <a draggable={false} href={legal.link}>{legal.title}</a>
                   </li>
                 ))}
-                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/policy/terms-of-service">Terms of Service</a></li>
-                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/policy/privacy">Privacy Policy</a></li>
-                <li className="mb-1 text-gray-300 text-sm"><a draggable={false} href="/policy/cookies">Cookies Policy</a></li> */}
+                {/* <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="/policy/terms-of-service">Terms of Service</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="/policy/privacy">Privacy Policy</a></li>
+                <li className="mb-1 text-gray-300 text-sm"><a draggable={false}draggable={false} href="/policy/cookies">Cookies Policy</a></li> */}
               </ul>
             </div>
           </div>

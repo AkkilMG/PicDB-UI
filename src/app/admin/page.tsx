@@ -1,14 +1,13 @@
 
 "use client";
 import dynamic from "next/dynamic";
-
-import Image from 'next/image';
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+import Image from 'next/image';
 import uploadAniData from "@/assets/upload.json";
 import SigninForm from "@/components/auth/signin-form";
 
 
-export default function SignInPage() {
+export default function AdminSignInPage() {
   return (
     <main className="flex min-h-screen">
       <div className="flex flex-1">
@@ -16,9 +15,9 @@ export default function SignInPage() {
           <div className="w-full max-w-md">
             <div className="absolute top-5 left-5">
               <div className="flex items-center gap-2">
-                <div className="-mt-4 ml-3 flex items-center">
-                  <Image src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
-                </div>
+                <a draggable={false}href="/" className="-mt-4 ml-3 flex items-center">
+                  <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+                </a>
               </div>
             </div>
 

@@ -9,7 +9,6 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { TOKEN_AUTH_IDENTITY } from "@/config/env.config"
 import { saveReport } from "@/lib/report"
 
 interface FormData {
@@ -28,6 +27,7 @@ export default function EmailForm() {
   const [otherReason, setOtherReason] = useState<string>("")
   const [isEmailValid, setIsEmailValid] = useState<boolean | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isLinkValid, setIsLinkValid] = useState<boolean | null>(null)
 
   // List of report options
 const reportOptions = [
@@ -50,7 +50,7 @@ const reportOptions = [
   }
 
   const validateLink = (link: string): boolean => {
-    const urlRegex = /^https:\/\/picdb\.avianintek\.workers\.dev\/d\/[A-Za-z0-9]+$/
+    const urlRegex = /^https:\/\/picdb\.avianintek\.workers\.dev\/(d|download|v|view)\/[A-Za-z0-9]+$/
     return urlRegex.test(link)
   }
 
@@ -67,6 +67,15 @@ const reportOptions = [
         setIsEmailValid(validateEmail(value))
       }
     }
+
+    if (name === "link") {
+      if (value === "") {
+        setIsLinkValid(null)
+      } else {
+        setIsLinkValid(validateLink(value))
+      }
+    }
+
   }
 
   // Handle report selection
@@ -117,22 +126,22 @@ const reportOptions = [
 
       var send = await saveReport({ ...formData })
       if (send.success) {
-        alert("Message sent successfully!")
+        alert("notification sent successfully!")
         window.location.href = "/dashboard";
       } else {
-        alert("Failed to send message. Please try again.")
+        alert("Failed to send notification. Please try again.")
       }
 
     } catch (error) {
-      console.error("Error sending message:", error)
-      alert("Failed to send message. Please try again.")
+      console.log("Error sending notification:", error)
+      alert("Failed to send notification. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <Card className="shadow-lg bg-white border-slate-200 m-6">
+    <Card className="shadow-lg bg-white border-slate-200 mt-2 xl:m-6">
       <form onSubmit={handleSubmit}>
         <CardHeader className="border-b rounded-t-lg">
           <h2 className="text-xl font-semibold text-slate-800">Report Now!</h2>
@@ -179,9 +188,9 @@ const reportOptions = [
               <Input id="contact" name="contact" type="email" value={formData.contact} 
                 onChange={handleChange} placeholder="contact@example.com"
                 className={`pr-10 ${
-                  isEmailValid === false
+                  isLinkValid === false
                     ? "border-red-300 focus-visible:ring-red-500"
-                    : isEmailValid === true
+                    : isLinkValid === true
                       ? "border-green-300 focus-visible:ring-green-500"
                       : ""
                 }`}
@@ -199,19 +208,36 @@ const reportOptions = [
             {isEmailValid === false && <p className="text-sm text-red-500 mt-1">Please enter a valid email address</p>}
           </div>
 
-          {/* link */}
+          
+
+          {/* link with validation */}
           <div className="space-y-2">
             <Label htmlFor="link" className="text-sm font-medium">
               Link
             </Label>
-            <Input
-              id="link"
-              name="link"
-              value={formData.link}
-              onChange={handleChange}
-              placeholder="Enter message link"
-            />
-          </div>
+            <div className="relative">
+              <Input id="link" name="link" type="text" value={formData.link} 
+                onChange={handleChange} placeholder="Enter the link to the content"
+                className={`pr-10 ${
+                  isEmailValid === false
+                    ? "border-red-300 focus-visible:ring-red-500"
+                    : isEmailValid === true
+                      ? "border-green-300 focus-visible:ring-green-500"
+                      : ""
+                }`}
+              />
+              {isLinkValid !== null && (
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  {isLinkValid ? (
+                    <Check className="h-5 w-5 text-green-500" />
+                  ) : (
+                    <AlertCircle className="h-5 w-5 text-red-500" />
+                  )}
+                </div>
+              )}
+            </div>
+            {isLinkValid === false && <p className="text-sm text-red-500 mt-1">Please enter a valid link</p>}
+           </div>
         </CardContent>
 
         <CardFooter className="flex justify-end border-t p-6 text-lg rounded-b-lg">

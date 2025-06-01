@@ -1,7 +1,6 @@
 
 "use client";
 import dynamic from "next/dynamic";
-
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 import uploadAniData from "@/assets/upload.json";
 import SignupForm from "@/components/auth/signup-form";
@@ -27,7 +26,7 @@ export default function SignUpPage() {
             <div className="absolute top-5 left-5">
               <div className="flex items-center gap-2">
                 <div className="-mt-4 ml-3 flex items-center">
-                  <Image src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+                  <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
                 </div>
               </div>
             </div>

@@ -52,7 +52,7 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
                 }, 1650);
             }
         } catch (error) {
-            console.error('Failed to copy to clipboard:', error);
+            console.log('Failed to copy to clipboard:', error);
         }
     };
 
