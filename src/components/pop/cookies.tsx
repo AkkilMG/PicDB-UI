@@ -44,7 +44,7 @@ export default function Cookies() {
     }
 
     return (
-        <div className="fixed bottom-4 left-4 z-50 w-11/12 md:w-3/4 lg:w-1/2 mx-auto">
+        <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 w-11/12 md:w-3/4 lg:w-1/2 mx-auto">
             <div className="bg-gray-800 text-white rounded-xl md:rounded-full lg:rounded-full flex flex-col md:flex-row items-start md:items-center justify-between p-4">
                 <div className="flex items-start md:items-center px-4 py-2 md:py-3 flex-grow">
                     <img draggable={false} src="/assets/icons/cookies.svg" alt="Cookie Icon" className="h-8 w-8 mr-4 text-teal-400" />
