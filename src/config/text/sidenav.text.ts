@@ -39,13 +39,13 @@ export const hiSideNav = {
 
 export const ruSideNav = {
     upload: "Загрузить",
-    dashboard: "Панель управления",
+    dashboard: "Панель",
     favorite: "Избранное",
-    notification: "Уведомления",
+    notification: "Уведомл.",
     report: "Отчет",
     trash: "Корзина",
     policies: "Политики",
-    termsOfService: "Условия обслуживания",
-    privacyPolicy: "Политика конфиденциальности",
-    cookiesPolicy: "Политика использования файлов cookie",
+    termsOfService: "Усл. сервиса",
+    privacyPolicy: "Конфиденц.",
+    cookiesPolicy: "Куки",
 }

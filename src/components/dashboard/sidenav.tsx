@@ -20,6 +20,7 @@ import {
   MdReportProblem
 } from "react-icons/md";
 import { enSideNav, esSideNav, hiSideNav, ruSideNav } from "@/config/text/sidenav.text";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 
 
@@ -46,6 +47,38 @@ export default function Sidenav() {
 
       return () => clearInterval(intervalId);
   }, []);
+    
+  const [lang, setLang] = useState(0);
+  const Language = [
+    { id: "en", name: "English", icon: "/assets/images/english.png" },
+    { id: "es", name: "Español", icon: "/assets/images/spanish.png" },
+    { id: "ru", name: "русский", icon: "/assets/images/russian.png" },
+    { id: "hi", name: "हिन्दी", icon: "/assets/images/hindi.png" },
+  ]
+
+  useEffect(() => {
+    const storedLang = localStorage.getItem('lang');
+    if (storedLang){
+      const langIndex = storedLang ? Language.findIndex(lang => lang.id === storedLang) : 0;
+      setLang(langIndex !== -1 ? langIndex : 0);
+    } else {
+      localStorage.setItem('lang', Language[0].id);
+      setLang(0);
+    }
+  }, []);
+  
+
+  const changeLanguage = async (c: number) => {
+    let newLang;
+    if (c===0) {
+      newLang = lang===Language.length-1 ? 0 : lang + 1; 
+    } else {
+      newLang = lang===0 ? Language.length-1 : lang - 1;
+    }
+    setLang(newLang);
+    localStorage.setItem('lang', Language[newLang].id);
+  }
+
   return (
     <>
       {/* Hamburger for mobile */}
@@ -82,8 +115,33 @@ export default function Sidenav() {
         </div>
 
         {/* Navigation */}
-        <nav className="mt-6">
+        <nav className="-mt-6">
           <ul className="space-y-2">
+            <li>
+              <div className="flex justify-center">
+          <div className="flex items-center rounded-lg px-3 py-2">
+            <button
+              onClick={() => changeLanguage(1)}
+              className="p-1 black hover:text-gray-800 hover:bg-gray-200 rounded transition"
+              aria-label="Previous language"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <span className="flex items-center justify-center mr-3 font-medium text-gray-700">
+              <img src="/assets/icons/translation.svg" alt="Language" className="h-4 w-4 mr-2" />
+              {Language[lang].name}
+              <img src={Language[lang].icon} alt={Language[lang].name} className="h-6 w-6 ml-2" />
+            </span>
+            <button
+              onClick={() => changeLanguage(0)}
+              className="p-1 text-black hover:text-gray-800 hover:bg-gray-200 rounded transition"
+              aria-label="Next language"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
+        </div>
+            </li>
             <li>
               <a draggable={false} href="/upload" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
                 <CloudArrowUpIcon className="h-5 w-5 mr-2" />
@@ -124,6 +182,7 @@ export default function Sidenav() {
         </nav>
 
         <hr className="my-4 border-gray-300" />
+        
         <h1 className="ml-4 text-lg font-semibold text-gray-800 mb-4">Policies</h1>
 
         <nav>
@@ -148,6 +207,7 @@ export default function Sidenav() {
             </li>
           </ul>
         </nav>
+        
       </aside>
     </>
   );
