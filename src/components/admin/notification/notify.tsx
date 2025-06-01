@@ -36,8 +36,8 @@ export default function MainNotifyList({data, handleNotificationClick, deleteLis
                     </div>
                   </td>
                   <td className="px-3 xl:px-6 py-4 whitespace-nowrap text-base text-gray-500 text-left">
-                    {notify.body.length > (window.innerWidth < 640 ? 20 : 140)
-                        ? notify.body.substring(0, window.innerWidth < 640 ? 20 : 140) + '...'
+                    {notify.body.length > (window.innerWidth < 640 ? 20 : 80)
+                        ? notify.body.substring(0, window.innerWidth < 640 ? 20 : 80) + '...'
                         : notify.body}
                   </td>
                   <td onClick={(e) => deleteList(notify['_id'])}  className="pl-2 xl:pl-4 pr-5 xl:pr-10 py-4 whitespace-nowrap text-right text-base font-medium">

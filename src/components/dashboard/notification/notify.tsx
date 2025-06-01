@@ -34,8 +34,8 @@ export default function MainNotifyList({text, data, handleNotificationClick}: {t
                   </td> 
                   <td className="px-3 xl:px-6 py-4 whitespace-nowrap text-base text-gray-500 text-left">
                     {/* {notify.body.length > 140 ? notify.body.substring(0, 140) + '...' : notify.body} */}
-                      {notify.body.length > (window.innerWidth < 640 ? 20 : 140)
-                        ? notify.body.substring(0, window.innerWidth < 640 ? 20 : 140) + '...'
+                      {notify.body.length > (window.innerWidth < 640 ? 20 : 80)
+                        ? notify.body.substring(0, window.innerWidth < 640 ? 20 : 80) + '...'
                         : notify.body}
                   </td>
                 </tr>
