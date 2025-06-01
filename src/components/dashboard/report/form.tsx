@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Check, AlertCircle, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
@@ -17,7 +17,7 @@ interface FormData {
   link: string
 }
 
-export default function EmailForm() {
+export default function EmailForm({data}: {data: any}) {
   const [formData, setFormData] = useState<FormData>({
     report: "",
     contact: "",
@@ -31,16 +31,16 @@ export default function EmailForm() {
 
   // List of report options
 const reportOptions = [
-    { value: "violent", label: "Violent Content" },
-    { value: "restricted", label: "Restricted Content" },
-    { value: "18+", label: "18+ / Adult Content" },
-    { value: "copyright", label: "Copyright Violation" },
-    { value: "hate", label: "Hate Speech or Harassment" },
-    { value: "misinfo", label: "Misinformation or Fake Content" },
-    { value: "spam", label: "Spam or Scam" },
-    { value: "sensitive", label: "Sensitive or Disturbing Content" },
-    { value: "privacy", label: "Privacy Violation" },
-    { value: "others", label: "Others" }
+    { value: "violent", label: data.options.violent },
+    { value: "restricted", label: data.options.restricted },
+    { value: "18+", label: data.options.adult },
+    { value: "copyright", label: data.options.copyright },
+    { value: "hate", label: data.options.hate },
+    { value: "misinfo", label: data.options.misinfo },
+    { value: "spam", label: data.options.spam },
+    { value: "sensitive", label: data.options.sensitive },
+    { value: "privacy", label: data.options.privacy },
+    { value: "others", label: data.options.others }
 ]
 
   // Email validation function
@@ -144,7 +144,7 @@ const reportOptions = [
     <Card className="shadow-lg bg-white border-slate-200 mt-2 xl:m-6">
       <form onSubmit={handleSubmit}>
         <CardHeader className="border-b rounded-t-lg">
-          <h2 className="text-xl font-semibold text-slate-800">Report Now!</h2>
+          <h2 className="text-xl font-semibold text-slate-800">{data.form.title}</h2>
         </CardHeader>
 
         <CardContent className="space-y-6 pt-6">
@@ -152,7 +152,7 @@ const reportOptions = [
           <div className="flex gap-4 items-end">
             <div className="flex-1 space-y-1">
               <Label htmlFor="report" className="text-sm font-medium">
-                Type
+                {data.form.type}
               </Label>
               <Select value={formData.report} onValueChange={handleReportChange}>
                 <SelectTrigger id="report" className="w-full focus:ring-2 focus:ring-emerald-500">
@@ -170,7 +170,7 @@ const reportOptions = [
             {formData.report === "others" && (
               <div className="flex-1 space-y-1">
                 <Label htmlFor="otherReason" className="text-sm font-medium">
-                  Specify Reason
+                  {data.form.reason}
                 </Label>
                 <input type="text" id="otherReason" value={otherReason} onChange={(e) => setOtherReason(e.target.value)}
                   placeholder="Describe the issue..." className="min-h-[38px] w-full rounded-md px-3 focus:ring-2 focus:ring-emerald-500"
@@ -182,7 +182,7 @@ const reportOptions = [
           {/* contact Email with validation */}
           <div className="space-y-2">
             <Label htmlFor="contact" className="text-sm font-medium">
-              Contact
+              {data.form.contact}
             </Label>
             <div className="relative">
               <Input id="contact" name="contact" type="email" value={formData.contact} 
@@ -213,7 +213,7 @@ const reportOptions = [
           {/* link with validation */}
           <div className="space-y-2">
             <Label htmlFor="link" className="text-sm font-medium">
-              Link
+              {data.form.link}
             </Label>
             <div className="relative">
               <Input id="link" name="link" type="text" value={formData.link} 
@@ -257,12 +257,12 @@ const reportOptions = [
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                   ></path>
                 </svg>
-                Reporting...
+                {data.form.reporting}
               </>
             ) : (
               <>
                 <Send className="mr-2 h-4 w-4" />
-                Send Report
+                {data.form.send}
               </>
             )}
           </Button>

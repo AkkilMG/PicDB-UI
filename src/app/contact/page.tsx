@@ -1,10 +1,15 @@
 "use client";
 
+import { useEffect } from "react";
 
 export default function ContactPage() {
+    useEffect(() => {
+        // Redirect to the contact form
+        window.location.href = "https://desk.avianintek.com/";
+    }, []);
     return (
-        <div>
-            <h1>Contact Page</h1>
+        <div className="flex justify-center items-center h-screen text-2xl font-bold">
+            <h1>Redirecting you to helpdesk...</h1>
         </div>
     );
 }

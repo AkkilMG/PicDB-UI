@@ -126,10 +126,10 @@ export default function Dashboard() {
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">
-        <MainDashboardHeader />
-        <MainDashboardList data={result} setId={setId} deleteList={deleteList} favoriteList={favoriteList} />
+        <MainDashboardHeader data={data} />
+        <MainDashboardList text={data} data={result} setId={setId} deleteList={deleteList} favoriteList={favoriteList} />
       </main>
-      <Statistics />
+      <Statistics text={data} />
     </div>
 
     </>

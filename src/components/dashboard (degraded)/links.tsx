@@ -101,7 +101,7 @@ export default function Dashboard() {
                 </div>
             ): (
                 <div className="min-h-[65vh] flex items-center justify-center">
-                    <div className="text-center flex items-center justify-center text-bold text-3xl">{!policy ? data.policyIssue : data.noImage}</div>
+                    <div className="text-center flex items-center justify-center text-bold text-3xl">{!policy ? "data.policyIssue" : "data.noImage"}</div>
                 </div>
             )}
         </div>

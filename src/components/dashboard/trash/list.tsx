@@ -7,7 +7,7 @@ import {
     FolderIcon,
   } from '@heroicons/react/24/outline';
 
-export default function MainTrashList({data, setId, deleteList}: {data: any, setId: any, deleteList: any}) {
+export default function MainTrashList({text, data, setId, deleteList}: {text: any, data: any, setId: any, deleteList: any}) {
     const formatFileSize = (size: number) => {
         if (size >= 1073741824) {
             return ((size / 1073741824).toFixed(2) + ' GB');
@@ -22,22 +22,22 @@ export default function MainTrashList({data, setId, deleteList}: {data: any, set
 
     return (
       <section>
-        <h2 className="text-lg font-medium text-gray-800 mb-4">All Images in Trash</h2>
+        <h2 className="text-lg font-medium text-gray-800 mb-4">{text.trash.title}</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
               <tr>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Name
+                  {text.list.name}
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Type
+                  {text.list.type}
                 </th>
                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  File size
+                  {text.list.fileSize}
                 </th>
                 <th scope="col" className="relative px-6 py-3">
-                  <span className="sr-only">Edit</span>
+                  <span className="sr-only">{text.list.edit}</span>
                 </th>
               </tr>
             </thead>
@@ -62,7 +62,7 @@ export default function MainTrashList({data, setId, deleteList}: {data: any, set
               )): (
                 <tr>
                   <td colSpan={5} className="px-6 py-4 text-center bg-gray-50 text-gray-600">
-                    No images found.
+                    {text.list.noImage}
                   </td>
                 </tr>
               )}

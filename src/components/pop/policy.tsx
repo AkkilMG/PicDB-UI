@@ -3,7 +3,7 @@
 import { enPop, esPop, hiPop, ruPop } from "@/config/text/pop.text";
 import { useState, useEffect } from "react";
 
-export default function Policy() {
+export default function Policy() { 
     const [isVisible, setIsVisible] = useState(false);
     const [data, setData] = useState(enPop.policy);
     useEffect(() => {

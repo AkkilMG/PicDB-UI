@@ -3,24 +3,24 @@
 
 import React, { useEffect, useState } from 'react';
 import Sidenav from '../sidenav';
-import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
+import { enReport, esReport, hiReport, ruReport } from '@/config/text/report.text';
 import ReportForm from './form';
 
 
 export default function Report() {
   const [policy, setPolicy] = useState<boolean>(true);
-  const [data, setData] = useState(enDashboard);
+  const [data, setData] = useState(enReport);
   useEffect(() => {
     const checkLanguage = () => {
       const lang = localStorage.getItem("lang");
       if (lang === "es") {
-        setData(esDashboard);
+        setData(esReport);
       } else if (lang === "ru") {
-        setData(ruDashboard);
+        setData(ruReport);
       } else if (lang === "hi") {
-        setData(hiDashboard);
+        setData(hiReport);
       } else {
-        setData(enDashboard);
+        setData(enReport);
       }
     };
 
@@ -42,7 +42,7 @@ export default function Report() {
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">
-        <ReportForm />
+        <ReportForm data={data} />
       </main>
     </div>
     </>

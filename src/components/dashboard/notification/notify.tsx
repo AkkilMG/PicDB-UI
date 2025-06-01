@@ -6,20 +6,20 @@ import {
     TrashIcon,
 } from '@heroicons/react/24/outline';
 
-export default function MainNotifyList({data, handleNotificationClick}: {data: any, handleNotificationClick: any }) {
+export default function MainNotifyList({text, data, handleNotificationClick}: {text: any, data: any, handleNotificationClick: any }) {
     return (
       <section>
-        <h2 className="text-lg font-medium text-gray-800 mb-4">All Notification</h2>
+        <h2 className="text-lg font-medium text-gray-800 mb-4">{text.list.title}</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200">
             
             <thead className="bg-gray-50">
               <tr>
                 <th scope="col" className="relative px-3 xl:px-6 py-3">
-                  <span className="sr-only">Title</span>
+                  <span className="sr-only">{text.list.titleHeader}</span>
                 </th>
                 <th scope="col" className="relative px-3 xl:px-6 py-3">
-                  <span className="sr-only">Body</span>
+                  <span className="sr-only">{text.list.bodyHeader}</span>
                 </th>
               </tr>
             </thead>
@@ -42,7 +42,7 @@ export default function MainNotifyList({data, handleNotificationClick}: {data: a
               )): (
                 <tr>
                   <td colSpan={5} className="px-6 py-4 text-center bg-gray-50 text-gray-600">
-                    No Notifications found.
+                    {text.list.noNotification}
                   </td>
                 </tr>
               )}

@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 //     FolderIcon,
 //   } from '@heroicons/react/24/outline';
 
-export default function Statistics() {
+export default function Statistics({text}: {text: any}) {
 
   const [data, setData] = useState<{ type: string; size: number }[]>([]);
   const [totalSize, setTotalSize] = useState(0);
@@ -256,7 +256,7 @@ export default function Statistics() {
 
   return (
     <aside className="hidden xl:block w-80 p-6 m-4 shadow-lg " style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
-      <h2 className="text-lg font-medium text-gray-800 mb-4">Storage</h2>
+      <h2 className="text-lg font-medium text-gray-800 mb-4">{text.statistics.title}</h2>
 
       {/* Chart */}
       <div className="w-full rounded-lg shadow-sm -mt-6">
@@ -266,11 +266,11 @@ export default function Statistics() {
       {/* Storage info */}
       <div className="flex justify-between items-center">
       <div>
-        <p className="text-sm text-gray-600">Used Space</p>
+        <p className="text-sm text-gray-600">{text.statistics.used}</p>
         <p className="font-medium text-gray-800">{formatFileSize(totalSize)}</p>
       </div>
       <div>
-        <p className="text-sm text-gray-600">Saved</p>
+        <p className="text-sm text-gray-600">{text.statistics.saved}</p>
         <p className="font-medium text-gray-800">{costFileSize(totalSize)}$</p>
       </div>
       </div>

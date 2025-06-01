@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Sidenav from '../sidenav';
-import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
+import { enNotification, esNotification, hiNotification, ruNotification } from '@/config/text/notification.text';
 import MainNotifyList from './notify';
 import { getNotification } from '@/lib/notification';
 import NotificationPopup from '@/components/pop/notification';
@@ -12,18 +12,18 @@ import NotificationPopup from '@/components/pop/notification';
 
 export default function Notification() {
   const [policy, setPolicy] = useState<boolean>(true);
-  const [data, setData] = useState(enDashboard);
+  const [data, setData] = useState(enNotification);
   useEffect(() => {
     const checkLanguage = () => {
       const lang = localStorage.getItem("lang");
       if (lang === "es") {
-        setData(esDashboard);
+        setData(esNotification);
       } else if (lang === "ru") {
-        setData(ruDashboard);
+        setData(ruNotification);
       } else if (lang === "hi") {
-        setData(hiDashboard);
+        setData(hiNotification);
       } else {
-        setData(enDashboard);
+        setData(enNotification);
       }
     };
 
@@ -40,9 +40,7 @@ export default function Notification() {
       } else setPolicy(true)
   }, []);
   
-
   const [result, setResult] = useState<any[]>([]);
-
   
   async function fetchResult() {
     try {
@@ -81,7 +79,7 @@ export default function Notification() {
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">
-        <MainNotifyList data={result} handleNotificationClick={handleNotificationClick} />
+        <MainNotifyList text={data} data={result} handleNotificationClick={handleNotificationClick} />
       </main>
     </div>
     </>
