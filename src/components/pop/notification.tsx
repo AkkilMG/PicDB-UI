@@ -16,8 +16,8 @@ interface NotificationPopupProps {
 
 export default function NotificationPopup({ isOpen, onClose, data }: NotificationPopupProps) {
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+    <Dialog open={isOpen} onOpenChange={onClose} >
+      <DialogContent className="sm:max-w-sm rounded-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <Bell className="w-5 h-5 text-blue-500" />

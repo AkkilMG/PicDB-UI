@@ -6,7 +6,7 @@ export const enDashboard = {
     // noImage: "You haven't uploaded any images..",
     header: {
         title: "Your Cloud",
-        search: "Type for search your files..."
+        search: "Type for search your image..."
     },
     list: {
         title: "All Images",
@@ -31,7 +31,7 @@ export const esDashboard = {
     noImage: "No has subido ninguna imagen.",
     header: {
         title: "Tu Nube",
-        search: "Escribe para buscar tus archivos..."
+        search: "Escribe para buscar tus imágenes..."
     },
     list: {
         title: "Todas las Imágenes",
@@ -56,7 +56,7 @@ export const ruDashboard = {
     noImage: "Вы не загрузили ни одного изображения.",
     header: {
         title: "Ваше Облако",
-        search: "Введите для поиска ваших файлов..."
+        search: "Введите для поиска вашего изображения..."
     },
     list: {
         title: "Все Изображения",
@@ -81,7 +81,7 @@ export const hiDashboard = {
     noImage: "आपने कोई छवि अपलोड नहीं की है।",
     header: {
         title: "आपका क्लाउड",
-        search: "अपने फ़ाइलों को खोजने के लिए टाइप करें..."
+        search: "अपनी छवियों को खोजने के लिए टाइप करें..."
     },
     list: {
         title: "सभी छवियाँ",

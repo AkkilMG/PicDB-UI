@@ -19,6 +19,7 @@ export default function Favorite() {
   const [close, setClose] = useState<boolean>(true);
   const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
   const [result, setResult] = useState<any[]>([]);
+  const [fullResult, setFullResult] = useState<any[]>([]);
   const [policy, setPolicy] = useState<boolean>(true);
 
   const [data, setData] = useState(enDashboard);
@@ -63,6 +64,7 @@ export default function Favorite() {
       const storedLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('links') || '[]') : [];
       const favoriteLinks = storedLinks.filter((item: any) => item.favorite === true);
       setResult(favoriteLinks);
+      setFullResult(favoriteLinks);
   }, [])
 
   useEffect(() => {
@@ -100,7 +102,12 @@ export default function Favorite() {
   const deleteList = (id: string) => {
     const updatedResult = result.filter(item => item.id !== id);
     setResult(updatedResult);
-    localStorage.setItem('links', JSON.stringify(updatedResult));
+    const updatedFullResult = fullResult.filter(item => item.id !== id);
+    setFullResult(updatedFullResult);
+    const trash = localStorage.getItem('trash')
+    const updatedTrash = trash ? [...JSON.parse(trash), ...updatedFullResult] : updatedFullResult;
+    localStorage.setItem('trash', JSON.stringify(updatedTrash));
+    localStorage.setItem('links', JSON.stringify(updatedFullResult));
   };
 
   const favoriteList = (id: string) => {
@@ -111,9 +118,24 @@ export default function Favorite() {
       return item;
     });
     setResult(updatedResult);
-    localStorage.setItem('links', JSON.stringify(updatedResult));
+    const updatedFullResult = fullResult.map(item => {
+      if (item.id === id) {
+        return { ...item, favorite: !item.favorite };
+      }
+      return item;
+    });
+    setFullResult(updatedFullResult);
+    localStorage.setItem('links', JSON.stringify(updatedFullResult));
   }
 
+  const searchForImage = (text: string) => {
+    if (text) {
+      const filteredResult = fullResult.filter(item => item.title.toLowerCase().includes(text.toLowerCase()));
+      setResult(filteredResult);
+    } else {
+      setResult(fullResult);
+    }
+  }
 
   return (
     <>
@@ -121,7 +143,7 @@ export default function Favorite() {
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">
-        <MainDashboardHeader data={data} />
+        <MainDashboardHeader data={data} searchForImage={searchForImage} />
         <MainDashboardList text={data} data={result} setId={setId} deleteList={deleteList} favoriteList={favoriteList} />
       </main>
     </div>

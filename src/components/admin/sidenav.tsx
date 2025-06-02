@@ -114,7 +114,7 @@ export default function AdminSidenav() {
       {/* Sidenav */}
       <aside
         className={`
-          fixed top-0 left-0 z-50 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md
+          fixed top-0 left-0 z-40 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block
         `}

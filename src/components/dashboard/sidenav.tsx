@@ -104,43 +104,37 @@ export default function Sidenav() {
       {/* Sidenav */}
       <aside
         className={`
-          fixed top-0 left-0 z-50 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md
+          fixed top-0 left-0 z-40 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block
         `}
       >
         {/* Logo */}
-        <div className="-mt-4 ml-3 flex items-center">
+        <div className="ml-3 flex items-center">
           <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
         </div>
 
         {/* Navigation */}
-        <nav className="-mt-6">
+        <nav className="mt-4">
           <ul className="space-y-2">
             <li>
-              <div className="flex justify-center">
-          <div className="flex items-center rounded-lg px-3 py-2">
-            <button
-              onClick={() => changeLanguage(1)}
-              className="p-1 black hover:text-gray-800 hover:bg-gray-200 rounded transition"
-              aria-label="Previous language"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <span className="flex items-center justify-center mr-3 font-medium text-gray-700">
-              <img src="/assets/icons/translation.svg" alt="Language" className="h-4 w-4 mr-2" />
-              {Language[lang].name}
-              <img src={Language[lang].icon} alt={Language[lang].name} className="h-6 w-6 ml-2" />
-            </span>
-            <button
-              onClick={() => changeLanguage(0)}
-              className="p-1 text-black hover:text-gray-800 hover:bg-gray-200 rounded transition"
-              aria-label="Next language"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
+              <div className="flex justify-center -ml-7">
+                <div className="flex items-center rounded-lg px-3 py-2">
+                  <button onClick={() => changeLanguage(1)} aria-label="Previous language"
+                    className="p-1 black hover:text-gray-800 hover:bg-gray-200 rounded transition">
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <span className="flex items-center justify-center mr-3 font-medium text-gray-700">
+                    <img src="/assets/icons/translation.svg" alt="Language" className="h-4 w-4 mr-2" />
+                    {Language[lang].name}
+                    <img src={Language[lang].icon} alt={Language[lang].name} className="h-6 w-6 ml-2" />
+                  </span>
+                  <button onClick={() => changeLanguage(0)} aria-label="Next language"
+                    className="p-1 text-black hover:text-gray-800 hover:bg-gray-200 rounded transition">
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
             </li>
             <li>
               <a draggable={false} href="/upload" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
