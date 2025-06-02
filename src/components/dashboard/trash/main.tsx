@@ -17,6 +17,7 @@ export default function Trash() {
   const [close, setClose] = useState<boolean>(true);
   const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
   const [result, setResult] = useState<any[]>([]);
+    const [fullResult, setFullResult] = useState<any[]>([]);
   const [policy, setPolicy] = useState<boolean>(true);
 
   const [data, setData] = useState(enDashboard);
@@ -60,6 +61,7 @@ export default function Trash() {
   useEffect(() => {
       const trashLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('trash') || '[]') : [];
       setResult(trashLinks);
+      setFullResult(trashLinks);
   }, [])
 
   useEffect(() => {
@@ -97,9 +99,23 @@ export default function Trash() {
   const deleteList = (id: string) => {
     const updatedResult = result.filter(item => item.id !== id);
     setResult(updatedResult);
-    localStorage.setItem('trash', JSON.stringify(updatedResult));
+    const updatedFullResult = fullResult.filter(item => item.id !== id);
+    setFullResult(updatedFullResult);
+    const trash = localStorage.getItem('trash')
+    const updatedTrash = trash ? [...JSON.parse(trash), ...updatedFullResult] : updatedFullResult;
+    localStorage.setItem('trash', JSON.stringify(updatedTrash));
+    localStorage.setItem('links', JSON.stringify(updatedFullResult));
   };
 
+  
+  const searchForImage = (text: string) => {
+    if (text) {
+      const filteredResult = fullResult.filter(item => item.title.toLowerCase().includes(text.toLowerCase()));
+      setResult(filteredResult);
+    } else {
+      setResult(fullResult);
+    }
+  }
 
   return (
     <>
@@ -107,7 +123,7 @@ export default function Trash() {
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">
-        <MainDashboardHeader data={data} />
+        <MainDashboardHeader data={data} searchForImage={searchForImage} />
         <MainTrashList text={data} data={result} setId={setId} deleteList={deleteList} />
       </main>
     </div>
