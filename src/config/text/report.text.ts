@@ -15,10 +15,10 @@ export const enReport = {
     }, 
     form: {
         title: "Report Now!",
-        type: "Type",
+        type: "Select Type",
         reason: "Specify Reason",
-        contact: "Contact",
-        link: "Link",
+        contact: "Contact (Email)",
+        link: "Link of the Image",
         reporting: "Reporting...",
         send: "Send Report",
     }
@@ -39,10 +39,10 @@ export const esReport = {
     },
     form: {
         title: "¡Reportar Ahora!",
-        type: "Tipo",
+        type: "Seleccionar Tipo",
         reason: "Especificar Motivo",
-        contact: "Contacto",
-        link: "Enlace",
+        contact: "Contacto (Correo Electrónico)",
+        link: "Enlace de la Imagen",
         reporting: "Reportando...",
         send: "Enviar Reporte",
     }
@@ -62,13 +62,13 @@ export const ruReport = {
         others: "Другое"
     },
     form: {
-        title: "Сообщить Сейчас!",
-        type: "Тип",
-        reason: "Укажите Причину",
-        contact: "Контакт",
-        link: "Ссылка",
-        reporting: "Сообщение...",
-        send: "Отправить Сообщение",
+        title: "Сообщить сейчас!",
+        type: "Выберите тип",
+        reason: "Укажите причину",
+        contact: "Контакт (Email)",
+        link: "Ссылка на изображение",
+        reporting: "Отправка отчёта...",
+        send: "Отправить отчёт",
     }
 }
 
@@ -87,10 +87,10 @@ export const hiReport = {
     },
     form: {
         title: "अभी रिपोर्ट करें!",
-        type: "प्रकार",
+        type: "प्रकार चुनें",
         reason: "कारण निर्दिष्ट करें",
-        contact: "संपर्क",
-        link: "लिंक",
+        contact: "संपर्क (ईमेल)",
+        link: "छवि का लिंक",
         reporting: "रिपोर्टिंग...",
         send: "रिपोर्ट भेजें",
     }

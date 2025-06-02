@@ -7,7 +7,6 @@ import { cookies } from 'next/headers';
 export async function POST(req: NextRequest) {
   const { title, body } = await req.json();
   var token: any = (await cookies()).get('token');
-  console.log("Token:", token);
   if (!token) {
     console.log("No token found")
     return NextResponse.json({ success: false, message: "No token found" })
@@ -46,7 +45,6 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   const { _id } = await req.json();
-  console.log(_id);
   var token: any = (await cookies()).get('token');
   if (!token) {
     console.log("No token found")
@@ -90,7 +88,6 @@ export async function DELETE(req: NextRequest) {
 
 
 export async function GET(req: NextRequest) {
-  console.log("Fetching notification...");
   const db = await getMongoClient();
   
   const notifications = await db.collection('notifications').find({ deleted: false }).toArray();

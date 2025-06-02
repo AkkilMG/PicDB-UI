@@ -105,7 +105,7 @@ export default function Favorite() {
     const updatedFullResult = fullResult.filter(item => item.id !== id);
     setFullResult(updatedFullResult);
     const trash = localStorage.getItem('trash')
-    const updatedTrash = trash ? [...JSON.parse(trash), ...updatedFullResult] : updatedFullResult;
+    const updatedTrash = trash ? [...JSON.parse(trash), ...fullResult.filter(item => item.id === id)] : fullResult.filter(item => item.id === id);
     localStorage.setItem('trash', JSON.stringify(updatedTrash));
     localStorage.setItem('links', JSON.stringify(updatedFullResult));
   };

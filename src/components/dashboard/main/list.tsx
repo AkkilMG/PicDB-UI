@@ -41,7 +41,11 @@ export default function MainDashboardList({text, data, setId, deleteList, favori
                 </th>
               </tr>
             </thead>
-            <tbody className="cursor-pointer bg-white divide-y divide-gray-300">
+            <tbody className="cursor-pointer bg-white divide-y divide-gray-300 w-full" 
+              style={{
+                maxHeight: 'calc(100vh - 250px)',
+                overflowY: 'auto',
+              }}>
               {/* Mock Data (Replace with your actual data) */}
               {data.length > 0 ? data.map((file: any, index: number) => (
                 <tr key={index} onClick={() => setId(file['id']) } >

@@ -17,7 +17,7 @@ export default function Trash() {
   const [close, setClose] = useState<boolean>(true);
   const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
   const [result, setResult] = useState<any[]>([]);
-    const [fullResult, setFullResult] = useState<any[]>([]);
+  const [fullResult, setFullResult] = useState<any[]>([]);
   const [policy, setPolicy] = useState<boolean>(true);
 
   const [data, setData] = useState(enDashboard);
@@ -101,10 +101,7 @@ export default function Trash() {
     setResult(updatedResult);
     const updatedFullResult = fullResult.filter(item => item.id !== id);
     setFullResult(updatedFullResult);
-    const trash = localStorage.getItem('trash')
-    const updatedTrash = trash ? [...JSON.parse(trash), ...updatedFullResult] : updatedFullResult;
-    localStorage.setItem('trash', JSON.stringify(updatedTrash));
-    localStorage.setItem('links', JSON.stringify(updatedFullResult));
+    localStorage.setItem('trash', JSON.stringify(updatedFullResult));
   };
 
   

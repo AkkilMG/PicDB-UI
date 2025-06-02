@@ -66,7 +66,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
         <>
         <DropUpload uploadFile={handleFileChange}/>
         { success && <Message message={`Successfully uploaded the image..`} color={1} />}
-        <div className="p-2 sm:p-4 md:p-6 lg:p-8 pb-1 flex items-center justify-center w-full pt-20 min-h-80 lg:min-h-[80vh]">
+        <div className="p-2 sm:p-4 md:p-6 lg:p-8 pb-1 flex items-center justify-center w-full min-h-80 lg:min-h-[80vh]">
             <div className="w-full max-w-4xl mx-auto p-3 sm:p-4 md:p-5 lg:p-6 pb-1 shadow-md bg-white rounded-lg">
                 <div className="p-3 sm:p-4 md:p-5">
                     <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-blue-500 mb-3 sm:mb-4 lg:mb-5">
