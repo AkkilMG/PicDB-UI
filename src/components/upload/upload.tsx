@@ -100,7 +100,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
                         </div>
 
                         <div className="pt-3 sm:pt-4 md:pt-5">
-                            <ul className="space-y-2 max-h-60 sm:max-h-72 pr-2 overflow-y-auto scrollbar">
+                            <ul className="space-y-2 max-h-96 sm:max-h-72 pr-2 overflow-y-auto scrollbar">
                                 {fileName && (
                                     <li className="bg-gray-50 p-2 sm:p-3 rounded-md flex items-center justify-between">
                                         <div className="flex items-center">

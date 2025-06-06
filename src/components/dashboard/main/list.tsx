@@ -23,9 +23,10 @@ export default function MainDashboardList({text, data, setId, deleteList, favori
     return (
       <section>
         <h2 className="text-lg font-medium text-gray-800 mb-4">{text.list.title}</h2>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto w-full max-h-60 sm:max-h-72 pr-2 overflow-y-auto scrollbar"
+          style={{ maxHeight: 'calc(100vh - 250px)', overflowY: 'auto', }}>
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-gray-50 sticky top-0 z-10">
               <tr>
                 <th scope="col" className="px-3 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   {text.list.name}
@@ -39,13 +40,12 @@ export default function MainDashboardList({text, data, setId, deleteList, favori
                 <th scope="col" className="relative px-3 xl:px-6 py-3">
                   <span className="sr-only">{text.list.edit}</span>
                 </th>
+                <th scope="col" className="relative px-3 xl:px-6 py-3">
+                  <span className="sr-only">{text.list.edit}</span>
+                </th>
               </tr>
             </thead>
-            <tbody className="cursor-pointer bg-white divide-y divide-gray-300 w-full" 
-              style={{
-                maxHeight: 'calc(100vh - 250px)',
-                overflowY: 'auto',
-              }}>
+            <tbody className="cursor-pointer bg-white divide-y divide-gray-300">
               {/* Mock Data (Replace with your actual data) */}
               {data.length > 0 ? data.map((file: any, index: number) => (
                 <tr key={index} onClick={() => setId(file['id']) } >
