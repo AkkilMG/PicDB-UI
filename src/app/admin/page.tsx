@@ -15,7 +15,7 @@ export default function AdminSignInPage() {
           <div className="w-full max-w-md">
             <div className="absolute top-5 left-5">
               <div className="flex items-center gap-2">
-                <a draggable={false}href="/" className="-mt-4 ml-3 flex items-center">
+                <a draggable={false} href="/" className="-mt-4 ml-3 flex items-center">
                   <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
                 </a>
               </div>

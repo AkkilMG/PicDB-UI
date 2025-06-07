@@ -83,7 +83,9 @@ export default function Sidenav() {
     <>
       {/* Hamburger for mobile */}
       <div className="md:hidden p-4 flex justify-between items-center bg-white border-b shadow-sm">
-        <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+        <a draggable={false} href="/">
+          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+        </a>
         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none">
           {isOpen ? (
             <XMarkIcon className="h-6 w-6" />
@@ -110,9 +112,9 @@ export default function Sidenav() {
         `}
       >
         {/* Logo */}
-        <div className="ml-3 flex items-center">
+        <a draggable={false} href="/" className="ml-3 flex items-center">
           <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
-        </div>
+        </a>
 
         {/* Navigation */}
         <nav className="mt-4">

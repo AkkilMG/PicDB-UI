@@ -10,10 +10,14 @@ export const enHome = {
     dashboard: "Dashboard",
     sections: [
         {
-            title: ["The best solution for","image storage","around"],
-            description: "PicDB is a cutting-edge image storage application developed by AvianInTek, designed to cater to all your image storage needs. This powerful platform combines simplicity with robust functionality, providing users with a seamless experience for storing image seemlessly.",
+            title: ["The best solution for", "image storage", "around"],
+            description: "PicDB by AvianInTek offers secure, anonymous image storage with an intuitive dashboard. Manage favorites and trash easily, report unwanted links, and enjoy our freemium service designed for seamless image management.",
             image: "assets/icons/image.png"
-        },
+        }, {
+            title: ["Your private", "secure image storage", "made simple"],
+            description: "Experience privacy-first image storage with PicDB. Our freemium platform ensures anonymity, easy dashboard controls for favorites and trash, plus reporting tools to keep shared content safe and appropriate.",
+            image: "assets/icons/image.png"
+        }
     ]
 }
 
@@ -26,15 +30,19 @@ export const esHome = {
     dashboard: "Tablero",
     sections: [
         {
-            title: ["La mejor solución para", "almacenamiento de imágenes", "en todo el mundo"],
-            description: "PicDB es una aplicación de almacenamiento de imágenes de vanguardia desarrollada por AvianInTek, diseñada para satisfacer todas tus necesidades de almacenamiento de imágenes. Esta potente plataforma combina simplicidad con una funcionalidad robusta, brindando a los usuarios una experiencia perfecta para almacenar imágenes sin problemas.",
+            title: ["Solución para", "almacenamiento de imágenes", "disponible"],
+            description: "PicDB ofrece almacenamiento seguro y anónimo con un panel intuitivo. Administra favoritos y papelera fácilmente y disfruta de nuestro servicio freemium.",
             image: "assets/icons/image.png"
-        },
+        }, {
+            title: ["Almacenamiento privado", "y seguro", "hecho simple"],
+            description: "Experimenta almacenamiento enfocado en la privacidad con PicDB. Garantiza anonimato y controles sencillos para favoritos y papelera.",
+            image: "assets/icons/image.png"
+        }
     ]
 }
 
 export const ruHome = {
-    main: ["Сохраняйте свои изображения", "бесплатно с PicDB"],
+    main: ["Сохраняйте изображения", "бесплатно с PicDB"],
     sub: "Лучшее приложение для хранения изображений без ограничений.",
     etherea: "Зачем вообще беспокоиться?",
     lucy: "Добро пожаловать в PicDB!",
@@ -42,10 +50,14 @@ export const ruHome = {
     dashboard: "Панель управления",
     sections: [
         {
-            title: ["Лучшее решение для", "хранения изображений", "по всему миру"],
-            description: "PicDB — это передовое приложение для хранения изображений, разработанное AvianInTek, которое удовлетворяет все ваши потребности в хранении изображений. Эта мощная платформа сочетает простоту с надежным функционалом, обеспечивая пользователям беспроблемный опыт хранения изображений.",
+            title: ["Лучшее решение", "для хранения", "изображений"],
+            description: "PicDB — это безопасное и анонимное хранение изображений с удобной панелью. Управляйте избранным и корзиной, сообщайте о ссылках и пользуйтесь нашим freemium-сервисом.",
             image: "assets/icons/image.png"
-        },
+        }, {
+            title: ["Частное", "безопасное хранение", "изображений"],
+            description: "PicDB обеспечивает анонимность, простое управление избранным и корзиной, а также инструменты для отчетности.",
+            image: "assets/icons/image.png"
+        }
     ]
 }
 
@@ -58,10 +70,14 @@ export const hiHome = {
     dashboard: "डैशबोर्ड",
     sections: [
         {
-            title: ["छवि भंडारण के लिए", "सर्वश्रेष्ठ समाधान", "दुनिया भर में"],
-            description: "PicDB एक अत्याधुनिक छवि भंडारण एप्लिकेशन है जिसे AvianInTek द्वारा विकसित किया गया है, जो आपकी सभी छवि भंडारण आवश्यकताओं को पूरा करने के लिए डिज़ाइन किया गया है। यह शक्तिशाली प्लेटफ़ॉर्म सादगी को मजबूत कार्यक्षमता के साथ जोड़ता है, उपयोगकर्ताओं को बिना किसी रुकावट के छवियों को संग्रहीत करने का सहज अनुभव प्रदान करता है।",
+            title: ["छवि संग्रहण के लिए", "सर्वश्रेष्ठ समाधान", "यहां है"],
+            description: "PicDB द्वारा AvianInTek सुरक्षित, गुमनाम छवि संग्रहण और सहज डैशबोर्ड प्रदान करता है। पसंदीदा और कचरा प्रबंधन करें, अवांछित लिंक की रिपोर्ट करें, और हमारे फ्रीमियम सेवा का आनंद लें।",
             image: "assets/icons/image.png"
-        },
+        }, {
+            title: ["आपका निजी", "सुरक्षित छवि संग्रहण", "सरल बनाया गया"],
+            description: "PicDB के साथ गोपनीयता-प्रथम छवि संग्रहण का अनुभव करें। हमारा फ्रीमियम प्लेटफ़ॉर्म गुमनामी, पसंदीदा और कचरा के लिए आसान डैशबोर्ड नियंत्रण, और साझा सामग्री को सुरक्षित और उपयुक्त रखने के लिए रिपोर्टिंग उपकरण सुनिश्चित करता है।",
+            image: "assets/icons/image.png"
+        }
     ]
 }
 

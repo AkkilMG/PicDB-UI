@@ -17,7 +17,7 @@ export default function UploadPage() {
     const [view, setView] = useState<string>('');
     const [id, setId] = useState<string>('');
     const [close, setClose] = useState<boolean>(true);
-    const [result, setResult] = useState<{ id: string; link: string; title: string; view: string }[]>([]);
+    const [result, setResult] = useState<{ id: string; link: string; title: string; view: string, createdOn: any }[]>([]);
     const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
 
     const searchById = (id: String) => {
@@ -103,7 +103,8 @@ export default function UploadPage() {
                             link: response.data['durl'],
                             title: file.name,
                             size: file.size,
-                            view: response.data['vurl']
+                            view: response.data['vurl'],
+                            createdOn: new Date().toISOString(),
                         }
                     ]);
                     if (typeof window !== 'undefined') {
@@ -114,7 +115,8 @@ export default function UploadPage() {
                             title: file.name,
                             size: file.size,
                             view: response.data['vurl'],
-                            type: file.type
+                            type: file.type,
+                            createdOn: new Date().toISOString(),
                         });
                         localStorage.setItem('links', JSON.stringify(existingLinks));
                     }

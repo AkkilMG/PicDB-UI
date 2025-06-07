@@ -11,6 +11,7 @@ import UploadResult from '../../upload/upload_result';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
 import Statistics from './statistics';
 import MainDashboardFolders from './folders';
+import { linkSync } from 'fs';
 
 
 
