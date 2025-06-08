@@ -5,10 +5,10 @@ import { DollarSign, FileSlidersIcon as Slider, Calculator, TrendingUp } from "l
 import { motion } from "framer-motion"
 import { storageProviders } from "@/config/home.details"
 
-export function SavingsCalculator() {
-  const [storageSize, setStorageSize] = useState(50) // GB
+export function SavingsCalculator({text}: { text: any }) {
+  const [storageSize, setStorageSize] = useState(50) 
   const [customProvider, setCustomProvider] = useState({
-    name: "Custom Provider",
+    name: text.saving.custom,
     costPerGB: 0.025,
     color: "#6B7280",
   })
@@ -68,53 +68,33 @@ export function SavingsCalculator() {
   return (
     <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          className="text-center mb-16"
-        >
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeIn} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Calculate Your{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600">Savings</span>
+            {text.saving.title[0]}{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-blue-600">{text.saving.title[1]}</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            See how much you could save by switching to PicDB's free image storage
+            {text.saving.description}
           </p>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          className="max-w-6xl mx-auto"
-        >
+        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeIn} className="max-w-6xl mx-auto">
           {/* Slider Card */}
-          <motion.div
-            variants={fadeIn}
-            className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mb-8"
-          >
+          <motion.div variants={fadeIn} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mb-8">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-blue-100 rounded-xl">
                 <Slider className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Storage Size Calculator</h3>
+              <h3 className="text-2xl font-bold text-gray-900">{text.saving.calculator.title}</h3>
             </div>
 
             <div className="mb-8">
               <div className="flex items-center justify-between mb-4">
-                <label className="text-lg font-medium text-gray-700">Storage Size</label>
+                <label className="text-lg font-medium text-gray-700">{text.saving.calculator.storageSize}</label>
                 <div className="text-2xl font-bold text-blue-600">{storageSize} GB</div>
               </div>
 
-              <input
-                type="range"
-                min="1"
-                max="1000"
-                value={storageSize}
-                onChange={(e) => setStorageSize(Number(e.target.value))}
+              <input type="range" min="1" max="1000" value={storageSize} onChange={(e) => setStorageSize(Number(e.target.value))}
                 className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
                 style={{
                   background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${(storageSize / 1000) * 100}%, #E5E7EB ${(storageSize / 1000) * 100}%, #E5E7EB 100%)`,
@@ -130,41 +110,22 @@ export function SavingsCalculator() {
             {/* Custom Input */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Custom Provider Name</label>
-                <input
-                  type="text"
-                  value={customProvider.name}
-                  onChange={(e) =>
-                    setCustomProvider((prev) => ({ ...prev, name: e.target.value }))
-                  }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">{text.saving.calculator.custom}</label>
+                <input type="text" value={customProvider.name} onChange={(e) => setCustomProvider((prev) => ({ ...prev, name: e.target.value }))}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Cost per GB/month ($)</label>
-                <input
-                  type="number"
-                  step="0.001"
-                  value={customProvider.costPerGB}
-                  onChange={(e) =>
-                    setCustomProvider((prev) => ({ ...prev, costPerGB: Number(e.target.value) }))
-                  }
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
-                />
+                <label className="block text-sm font-medium text-gray-700 mb-2">{text.saving.calculator.cost} ($)</label>
+                <input type="number" step="0.001" value={customProvider.costPerGB} onChange={(e) =>
+                  setCustomProvider((prev) => ({ ...prev, costPerGB: Number(e.target.value) }))}
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500" />
               </div>
             </div>
           </motion.div>
 
           {/* Provider Cards */}
-          <motion.div
-            variants={fadeIn}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
-          >
-            {/* Free PicDB Card */}
-            <motion.div
-              whileHover={{ scale: 1.03 }}
-              className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-lg"
-            >
+          <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <motion.div whileHover={{ scale: 1.03 }} className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-4">
                 <h4 className="text-xl font-bold">PicDB</h4>
                 <div className="p-2 bg-white/20 rounded-lg">
@@ -172,32 +133,24 @@ export function SavingsCalculator() {
                 </div>
               </div>
               <div className="text-4xl font-bold mb-2">$0.00</div>
-              <p className="text-sm opacity-90">per month • {storageSize} GB</p>
+              <p className="text-sm opacity-90">{text.saving.calculator.perMonth} • {storageSize} GB</p>
               <div className="mt-4 p-3 bg-white/10 rounded-lg">
-                <p className="text-sm font-medium">✨ Completely FREE!</p>
+                <p className="text-sm font-medium">✨ {text.saving.calculator.free}</p>
               </div>
             </motion.div>
-
-            {/* Comparison Cards */}
+            
             {allProviders.slice(0, 2).map((provider) => (
-              <motion.div
-                key={provider.name}
-                whileHover={{ scale: 1.03 }}
-                className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100"
-              >
+              <motion.div key={provider.name} whileHover={{ scale: 1.03 }} className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                 <div className="flex items-center justify-between mb-4">
                   <h4 className="text-xl font-bold text-gray-900">{provider.name}</h4>
-                  <div
-                    className="p-2 rounded-lg"
-                    style={{ backgroundColor: `${provider.color}20` }}
-                  >
+                  <div className="p-2 rounded-lg" style={{ backgroundColor: `${provider.color}20` }}>
                     <Calculator className="w-5 h-5" style={{ color: provider.color }} />
                   </div>
                 </div>
                 <div className="text-4xl font-bold text-gray-900 mb-2">
                   ${calculateMonthlyCost(provider, storageSize).toFixed(2)}
                 </div>
-                <p className="text-sm text-gray-600">per month • {storageSize} GB</p>
+                <p className="text-sm text-gray-600">{text.saving.calculator.perMonth} • {storageSize} GB</p>
                 <div className="mt-4 p-3 bg-red-50 rounded-lg">
                   <p className="text-sm font-medium text-red-600">
                     ${calculateYearlyCost(provider, storageSize).toFixed(2)}/year
@@ -208,33 +161,30 @@ export function SavingsCalculator() {
           </motion.div>
 
           {/* Savings Block */}
-          <motion.div
-            variants={fadeIn}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white shadow-lg"
-          >
+          <motion.div variants={fadeIn} className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white shadow-lg">
             <div className="flex items-center gap-3 mb-6">
               <div className="p-3 bg-white/20 rounded-xl">
                 <TrendingUp className="w-6 h-6" />
               </div>
-              <h3 className="text-2xl font-bold">Your Actual Savings with PicDB</h3>
+              <h3 className="text-2xl font-bold">{text.saving.calculator.actualSaving}</h3>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6 text-center">
               <div>
                 <div className="text-3xl font-bold mb-1">{userSavingsData.currentStorageUsed} GB</div>
-                <p className="text-sm opacity-90">Currently Using</p>
+                <p className="text-sm opacity-90">{text.saving.calculator.saving[0]}</p>
               </div>
               <div>
                 <div className="text-3xl font-bold mb-1">{userSavingsData.totalImagesSaved.toLocaleString()}</div>
-                <p className="text-sm opacity-90">Images Stored</p>
+                <p className="text-sm opacity-90">{text.saving.calculator.saving[1]}</p>
               </div>
               <div>
                 <div className="text-3xl font-bold mb-1">{userSavingsData.monthsUsed}</div>
-                <p className="text-sm opacity-90">Months Using PicDB</p>
+                <p className="text-sm opacity-90">{text.saving.calculator.saving[2]}</p>
               </div>
               <div>
                 <div className="text-3xl font-bold mb-1">$0</div>
-                <p className="text-sm opacity-90">Total Paid</p>
+                <p className="text-sm opacity-90">{text.saving.calculator.saving[3]}</p>
               </div>
             </div>
 
@@ -242,15 +192,11 @@ export function SavingsCalculator() {
               {storageProviders.map((provider) => {
                 const savings = calculateUserSavings(provider)
                 return (
-                  <motion.div
-                    key={provider.name}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white/10 rounded-xl p-4 text-center"
-                  >
+                  <motion.div key={provider.name} whileHover={{ scale: 1.05 }} className="bg-white/10 rounded-xl p-4 text-center">
                     <h4 className="font-semibold mb-2">vs {provider.name}</h4>
                     <div className="text-2xl font-bold mb-1">${savings.totalSaved.toFixed(4)}</div>
-                    <p className="text-xs opacity-90">Total Saved</p>
-                    <p className="text-xs opacity-75 mt-1">${savings.monthlySavings.toFixed(4)}/month</p>
+                    <p className="text-xs opacity-90">{text.saving.calculator.saved}</p>
+                    <p className="text-xs opacity-75 mt-1">${savings.monthlySavings.toFixed(4)}/{text.saving.calculator.month}</p>
                   </motion.div>
                 )
               })}

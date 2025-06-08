@@ -4,14 +4,12 @@
 import React, { useEffect, useState } from 'react';
 import Sidenav from '../sidenav';
 import MainDashboardHeader from './header';
-// import MainDashboardOverview from './main/overview';
 import MainDashboardList from './list';
 import UploadMobileResult from '../../upload/upload_result_mobile';
 import UploadResult from '../../upload/upload_result';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
 import Statistics from './statistics';
 import MainDashboardFolders from './folders';
-import { linkSync } from 'fs';
 
 
 
@@ -27,25 +25,25 @@ export default function Dashboard() {
   const [policy, setPolicy] = useState<boolean>(true);
 
   const [data, setData] = useState(enDashboard);
-    useEffect(() => {
-      const checkLanguage = () => {
-        const lang = localStorage.getItem("lang");
-        if (lang === "es") {
-          setData(esDashboard);
-        } else if (lang === "ru") {
-          setData(ruDashboard);
-        } else if (lang === "hi") {
-          setData(hiDashboard);
-        } else {
-          setData(enDashboard);
-        }
-      };
-  
-      checkLanguage();
-      const intervalId = setInterval(checkLanguage, 2000);
-  
-      return () => clearInterval(intervalId);
-    }, []);
+  useEffect(() => {
+    const checkLanguage = () => {
+      const lang = localStorage.getItem("lang");
+      if (lang === "es") {
+        setData(esDashboard);
+      } else if (lang === "ru") {
+        setData(ruDashboard);
+      } else if (lang === "hi") {
+        setData(hiDashboard);
+      } else {
+        setData(enDashboard);
+      }
+    };
+
+    checkLanguage();
+    const intervalId = setInterval(checkLanguage, 2000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   useEffect(() => {
       const policyAccepted = localStorage.getItem("policyAccepted") === "true";

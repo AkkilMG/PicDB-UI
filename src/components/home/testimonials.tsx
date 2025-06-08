@@ -167,7 +167,7 @@ import { motion } from "framer-motion"
  */
 
 
-export function TestimonialsSection() {
+export function TestimonialsSection({text}: {text: any}) {
   const testimonialsData = [
     {
       id: 1,
@@ -292,7 +292,6 @@ export function TestimonialsSection() {
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100 overflow-hidden">
-      {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-purple-300 to-pink-300 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-purple-400 to-pink-400 rounded-full opacity-20 translate-x-1/2 translate-y-1/2" />
       <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-gradient-to-br from-purple-200 to-pink-200 rounded-full opacity-30" />
@@ -301,12 +300,12 @@ export function TestimonialsSection() {
         {/* Header */}
         <div className="text-center mb-20 px-2">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-            Let's make something amazing together
+            {text.testimonials.title[0]}
           </h2>
           <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
-            Start by{" "}
+            {text.testimonials.title[1]}{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
-              Saving Hi
+              {text.testimonials.title[2]}
             </span>{" "}
             👋
           </p>
@@ -314,18 +313,13 @@ export function TestimonialsSection() {
 
         {/* Testimonials Interactive Area */}
         <div className="relative mb-20">
-          {/* Extra Code */}
           <div className="max-w-7xl mx-auto px-4 pt-10 pb-10" style={{ paddingTop: "3rem" }}>
-              <div ref={sliderRef}
-                  className="py-7 flex gap-6 overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing scroll-smooth select-none scrollbar-hide">
-                  {testimonialsData.map((testimonial) => (
-                  <div
-                      key={testimonial.id}
-                      className="min-w-[300px] max-w-xs flex-shrink-0"
-                  >
-                      <TestimonialCard testimonial={testimonial} />
-                  </div>
-                  ))}
+              <div ref={sliderRef} className="py-7 flex gap-6 overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing scroll-smooth select-none scrollbar-hide">
+                {testimonialsData.map((testimonial) => (
+                <div key={testimonial.id} className="min-w-[300px] max-w-xs flex-shrink-0">
+                  <TestimonialCard testimonial={testimonial} />
+                </div>
+                ))}
               </div>
           </div>
         </div>

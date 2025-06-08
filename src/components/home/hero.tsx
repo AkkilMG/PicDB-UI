@@ -56,7 +56,7 @@ const HeroSection = () => {
 
   return (
     <section className="relative bg-black text-white min-h-screen">
-      <Header />
+      {/* <Header /> */}
       <div className="py-4">
         <div className="container mx-auto text-center ">
           <h1 className="text-3xl lg:text-5xl font-bold mb-4 leading-tight pt-2 lg:pt-0 xl:pt-0">
