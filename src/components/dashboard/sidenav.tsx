@@ -178,7 +178,7 @@ export default function Sidenav() {
           </ul>
         </nav>
 
-        <hr className="my-4 border-gray-300" />
+        <hr className="my-2 border-gray-300" />
         
         <h1 className="ml-4 text-lg font-semibold text-gray-800 mb-4">Policies</h1>
         <nav>
@@ -203,11 +203,9 @@ export default function Sidenav() {
             </li>
           </ul>
         </nav>
-
         
-        <hr className="my-4 border-gray-300" />
+        <hr className="my-2 border-gray-300" />
         
-        <h1 className="ml-4 text-lg font-semibold text-gray-800 mb-4">Others</h1>
         <nav>
           <ul className="space-y-2">
             <li>
