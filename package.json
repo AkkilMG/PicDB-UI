@@ -46,6 +46,7 @@
     "react-google-adsense": "^0.0.5",
     "react-hook-form": "^7.57.0",
     "react-icons": "^5.4.0",
+    "react-joyride": "^2.9.3",
     "recharts": "^2.15.3",
     "tailwind-merge": "^3.3.0",
     "tailwindcss-animate": "^1.0.7"

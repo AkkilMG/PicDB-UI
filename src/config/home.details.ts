@@ -1,22 +1,22 @@
 export const storageProviders = [
   {
-    name: "AWS S3",
-    costPerGB: 0.0265, // $0.0265 per GB per month (S3 Standard first 50 TB)
-    color: "#FF9900",
-  },
-  {
-    name: "Google Cloud",
-    costPerGB: 0.022, // ~$0.022 per GB per month for multi-region Standard
+    name: "Google Drive / Photos",
+    costPerGB: 0.020, // $1.99/month for 100GB ≈ $0.020 per GB
     color: "#4285F4",
   },
   {
-    name: "Azure Blob",
-    costPerGB: 0.018, // $0.018 per GB per month for Hot tier
-    color: "#0078D4",
+    name: "iCloud",
+    costPerGB: 0.029, // ₹75/month for 50GB ≈ $0.029 per GB
+    color: "#A2AAAD",
   },
   {
     name: "Dropbox",
-    costPerGB: 0.083, // ~$10/month for 120GB = $0.083 per GB
+    costPerGB: 0.083, // $9.99/month for 120GB ≈ $0.083 per GB
     color: "#0061FF",
+  },
+  {
+    name: "OneDrive",
+    costPerGB: 0.020, // $1.99/month for 100GB ≈ $0.020 per GB
+    color: "#094AB2",
   },
 ];
