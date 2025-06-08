@@ -11,6 +11,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { MdNotifications } from "react-icons/md";
 import { User2Icon } from "lucide-react";
+import { RiChatSmileAiLine } from "react-icons/ri";
 
 
 export default function AdminSidenav() {
@@ -53,7 +54,7 @@ export default function AdminSidenav() {
           <a draggable={false} href="/" className="ml-3 flex items-center">
             <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
           </a>
-          <p className="relative -mt-8 ml-4 mb-6 text-lg font-semibold text-gray-800">
+          <p className="relative mt-1 ml-4 mb-6 text-lg font-semibold text-gray-800">
             Admin Panel
           </p>
         </div>
@@ -72,7 +73,14 @@ export default function AdminSidenav() {
               <a draggable={false} href="/admin/reports"
                 className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
                 <FlagIcon className="h-5 w-5 mr-2" />
-                Report
+                Reports
+              </a>
+            </li>
+            <li>
+              <a draggable={false} href="/admin/testimonials"
+                className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
+                <RiChatSmileAiLine className="h-5 w-5 mr-2" />
+                Testimonials
               </a>
             </li>
             <li>

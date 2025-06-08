@@ -21,6 +21,7 @@ import {
 } from "react-icons/md";
 import { enSideNav, esSideNav, hiSideNav, ruSideNav } from "@/config/text/sidenav.text";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { RiChatSmileAiLine } from "react-icons/ri";
 
 
 
@@ -180,7 +181,6 @@ export default function Sidenav() {
         <hr className="my-4 border-gray-300" />
         
         <h1 className="ml-4 text-lg font-semibold text-gray-800 mb-4">Policies</h1>
-
         <nav>
           <ul className="space-y-2">
             <li>
@@ -203,7 +203,22 @@ export default function Sidenav() {
             </li>
           </ul>
         </nav>
+
         
+        <hr className="my-4 border-gray-300" />
+        
+        <h1 className="ml-4 text-lg font-semibold text-gray-800 mb-4">Others</h1>
+        <nav>
+          <ul className="space-y-2">
+            <li>
+              <a draggable={false} href="/testimonials"
+                className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
+                <RiChatSmileAiLine className="h-5 w-5 mr-2" />
+                Give Testimonial
+              </a>
+            </li>
+          </ul>
+        </nav>
       </aside>
     </>
   );
