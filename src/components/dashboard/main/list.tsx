@@ -191,11 +191,8 @@ export default function MainDashboardList({
   return (
     <>
       <section>
-        {/* Header with View Toggle */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-medium text-gray-800">{text.list.title}</h2>
-
-          {/* View Toggle */}
           <div className="flex items-center bg-gray-100 rounded-lg p-1">
             <button
               onClick={() => setViewMode("list")}
