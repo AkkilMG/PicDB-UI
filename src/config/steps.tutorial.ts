@@ -49,17 +49,5 @@ export const dashboardSteps: Step[] = [
     }, {
         target: ".delete",
         content: "Click on this to delete the image from your collection.",
-    }, {
-        target: ".statistics",
-        content: "This section provides you with the statistics of your uploads.",
-    }, {
-        target: ".delete-confirm",
-        content: "This is the confirmation dialog that appears when you try to delete an image.",
-    }, {
-        target: ".delete-cancel-button",
-        content: "Click on this to cancel the deletion of the image.",
-    }, {
-        target: ".delete-confirm-button",
-        content: "Click on this to confirm the deletion of the image. This will move it to trash.",
     }
 ];
