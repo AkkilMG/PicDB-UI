@@ -17,6 +17,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
     const [runTutorial, setRunTutorial] = useState(false);
     const [isClient, setIsClient] = useState(false);
     const [stepIndex, setStepIndex] = useState(0);
+    
 
     useEffect(() => {
         const tutorial = localStorage.getItem("tutorial");

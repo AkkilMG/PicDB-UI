@@ -8,6 +8,7 @@ import Policy from "@/components/pop/policy";
 import Upload from "@/components/upload/upload";
 import UploadResult from "@/components/upload/upload_result";
 import UploadMobileResult from "@/components/upload/upload_result_mobile";
+import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -19,6 +20,7 @@ export default function UploadPage() {
     const [close, setClose] = useState<boolean>(true);
     const [result, setResult] = useState<{ id: string; link: string; title: string; view: string, createdOn: any }[]>([]);
     const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
+    const { toast } = useToast()
 
     const searchById = (id: String) => {
         const found = result.find(item => item.id === id.toString());
@@ -96,6 +98,7 @@ export default function UploadPage() {
                 .post('https://picdb.avianintek.workers.dev/upload', formData, config)
                 .then(async (response: any) => {
                 if (response.data['success'] === true) {
+                    toast({ title: 'Image uploaded successfully', description: `Image file: ${file.name}` });
                     setResult(prevResult => [
                         ...prevResult,
                         {

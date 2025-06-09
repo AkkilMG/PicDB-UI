@@ -156,3 +156,35 @@ export function StarRating({ rating, onRatingChange }: StarRatingProps) {
     </div>
   )
 }
+
+
+export function HeroStarRating({ rating }: { rating: number }) {
+  const displayRating = rating
+
+  const renderStars = () => {
+    const stars = []
+
+    for (let i = 1; i <= 5; i++) {
+      const starFill = Math.max(0, Math.min(1, displayRating - (i - 1)))
+
+      stars.push(
+        <div key={i} className="relative w-6 h-6 transition-all duration-200 scale-100">
+          <Star className="w-6 h-6 text-gray-200 absolute transition-colors duration-200" />
+          <div className="absolute overflow-hidden transition-all duration-300 ease-out" style={{ width: `${starFill * 100}%` }}>
+            <Star className={`w-6 h-6 transition-all duration-300 ${ starFill > 0 ? "text-yellow-400 fill-yellow-400 drop-shadow-sm" : "text-gray-200" }`} />
+          </div>
+        </div>,
+      )
+    }
+    return stars
+  }
+
+  return (
+    <div className="flex flex-col items-center space-y-6">
+      <div className="flex items-center space-x-1 select-none rounded-2xl bg-white/50 backdrop-blur-sm border border-white/30 transition-all duration-300">
+        {renderStars()} <span className="text-black text-medium">({displayRating.toFixed(2)}/5)</span>
+      </div>
+
+    </div>
+  )
+}

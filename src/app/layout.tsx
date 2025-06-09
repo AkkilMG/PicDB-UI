@@ -6,6 +6,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import Cookies from "@/components/pop/cookies";
 import React, { useEffect } from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +83,8 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <Analytics mode="production" />
+    
+        <Toaster />
       </body>
     </html>
   );

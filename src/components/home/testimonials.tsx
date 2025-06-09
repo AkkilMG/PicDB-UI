@@ -167,64 +167,7 @@ import { motion } from "framer-motion"
  */
 
 
-export function TestimonialsSection({text}: {text: any}) {
-  const testimonialsData = [
-    {
-      id: 1,
-      logo: "",
-      logoColor: "text-blue-600",
-      rating: 4.9,
-      quote: "PicDB is incredibly easy to use and has streamlined our workflow. Uploading and managing images is now effortless for our whole team.",
-      name: "Rahul Sharma",
-      username: "",
-      location: "Delhi, India",
-      company: "Delhi Digital Services",
-    },
-    {
-      id: 2,
-      logo: "",
-      logoColor: "text-green-600",
-      rating: 4.8,
-      quote: "The free plan is generous and lets us get started without worrying about costs. It’s perfect for startups and small businesses.",
-      name: "Arjun Rao",
-      username: "",
-      location: "Bengaluru, India",
-      company: "StartupLab",
-    },
-    {
-      id: 3,
-      logo: "",
-      logoColor: "text-purple-700",
-      rating: 4.9,
-      quote: "Support is always quick to respond and genuinely helpful. Any questions we had were resolved in no time, which is rare these days.",
-      name: "Naveen Shetty",
-      username: "",
-      location: "Mangaluru, India",
-      company: "Creative Studios",
-    },
-    {
-      id: 4,
-      logo: "",
-      logoColor: "text-pink-600",
-      rating: 5.0,
-      quote: "It’s great to see a product made in India that matches global standards. We’re proud to use PicDB for our projects.",
-      name: "Rakesh Pai",
-      username: "",
-      location: "Mangaluru, India",
-      company: "Design Agency",
-    },
-    {
-      id: 5,
-      logo: "",
-      logoColor: "text-yellow-600",
-      rating: 4.7,
-      quote: "PicDB is reliable and simple, but also powerful enough for our growing needs. Our team collaboration has improved a lot.",
-      name: "Dilan Perera",
-      username: "",
-      location: "Colombo, Sri Lanka",
-      company: "SL Media Solutions",
-    },
-  ]
+export function TestimonialsSection({text, testimonialsData}: {text: any, testimonialsData: any}) {
     
   const sliderRef = useRef<HTMLDivElement>(null);
 
@@ -315,7 +258,7 @@ export function TestimonialsSection({text}: {text: any}) {
         <div className="relative mb-20">
           <div className="max-w-7xl mx-auto px-4 pt-10 pb-10" style={{ paddingTop: "3rem" }}>
               <div ref={sliderRef} className="py-7 flex gap-6 overflow-x-auto overflow-y-hidden cursor-grab active:cursor-grabbing scroll-smooth select-none scrollbar-hide">
-                {testimonialsData.map((testimonial) => (
+                {testimonialsData.map((testimonial: any) => (
                 <div key={testimonial.id} className="min-w-[300px] max-w-xs flex-shrink-0">
                   <TestimonialCard testimonial={testimonial} />
                 </div>
@@ -330,7 +273,7 @@ export function TestimonialsSection({text}: {text: any}) {
 
 
 
-function TestimonialCard({ testimonial }: { testimonial: any }) {
+export function TestimonialCard({ testimonial }: { testimonial: any }) {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:-rotate-3 transition-all duration-300 ease-out cursor-pointer group">
       <div className="flex items-center justify-between mb-4">

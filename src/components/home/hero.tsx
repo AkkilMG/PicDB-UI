@@ -3,16 +3,19 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../main/header';
 import { enHome, esHome, ruHome, hiHome } from '../../config/text/home.text';
+import { TestimonialCard } from './testimonials';
+import { HeroStarRating } from '../testimonials/star';
 
-const HeroSection = () => {
+export default function HeroSection({testimonialsData}: {testimonialsData: any}){
 
   const [device, setDevice] = useState("assets/images/computer.png");
   const [windowWidth, setWindowWidth] = useState(0);
   const [data, setData] = useState(enHome);
-
+  const [lang, setLang] = useState("en");
   useEffect(() => {
     const checkLanguage = () => {
       const lang = localStorage.getItem("lang");
+      setLang(lang || "en");
       if (lang === "es") {
         setData(esHome);
       } else if (lang === "ru") {
@@ -55,7 +58,7 @@ const HeroSection = () => {
   });
 
   return (
-    <section className="relative bg-black text-white min-h-screen">
+    <section className="relative bg-black text-white min-h-screen overflow-hidden">
       {/* <Header /> */}
       <div className="py-4">
         <div className="container mx-auto text-center ">
@@ -86,38 +89,37 @@ const HeroSection = () => {
           </div>
         </div>
 
-
         <div className="absolute hidden lg:block xl:block bottom-1/2 lg:left-8 xl:left-28 z-10 bg-gray-800 rounded-xl p-4 shadow-lg">
           <h2 className="text-lg font-medium mb-3 text-white">Translation</h2>
           <div className="grid grid-cols-2 gap-y-4 gap-x-3">
-            <div className="flex items-center space-x-3">
+            <div className={`flex items-center p-2 space-x-3 ${lang === "en" && "bg-gray-700 rounded-xl"}`}>
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img draggable={false} src="assets/images/english.png" alt="English" className="w-8 h-8 object-cover" />
+                <img draggable={false} src="assets/images/english.png" alt="English" className="w-8 h-8 object-cover" />
               </div>
               <span className="text-white text-md">English</span>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className={`flex items-center p-2 space-x-3 ${lang === "es" && "bg-gray-700 rounded-xl"}`}>
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img draggable={false} src="assets/images/hindi.png" alt="Hindi" className="w-8 h-8 object-cover" />
-              </div>
-              <span className="text-white text-md">हिन्दी</span>
-            </div>
-            <div className="flex items-center space-x-3">
-              <div className="rounded-full overflow-hidden w-8 h-8">
-          <img draggable={false} src="assets/images/spanish.png" alt="Spanish" className="w-8 h-8 object-cover" />
+                <img draggable={false} src="assets/images/spanish.png" alt="Spanish" className="w-8 h-8 object-cover" />
               </div>
               <span className="text-white text-md">Español</span>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className={`flex items-center p-2 space-x-3 ${lang === "ru" && "bg-gray-700 rounded-xl"}`}>
               <div className="rounded-full overflow-hidden w-8 h-8">
-          <img draggable={false} src="assets/images/russian.png" alt="Russian" className="w-8 h-8 object-cover" />
+                <img draggable={false} src="assets/images/russian.png" alt="Russian" className="w-8 h-8 object-cover" />
               </div>
               <span className="text-white text-md">русский</span>
+            </div>
+            <div className={`flex items-center p-2 space-x-3 ${lang === "hi" && "bg-gray-700 rounded-xl"}`}>
+              <div className="rounded-full overflow-hidden w-8 h-8">
+                <img draggable={false} src="assets/images/hindi.png" alt="Hindi" className="w-8 h-8 object-cover" />
+              </div>
+              <span className="text-white text-md">हिन्दी</span>
             </div>
           </div>
         </div>
 
-        {/* Etherea chat box */}
+
         <div className="absolute bottom-[12%] hidden lg:block xl:block bottom-1/2 lg:left-14 xl:left-28 z-10">
           <div className="relative bg-blue-500 rounded-md py-2 px-4 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden flex items-center justify-center">
@@ -129,9 +131,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
-
-        {/* Lucy chat box */}
-        <div className="absolute top-1/3 hidden lg:block xl:block bottom-1/2 lg:right-8 xl:right-28 z-10">
+        {/* <div className="absolute top-1/3 hidden lg:block xl:block bottom-1/2 lg:right-8 xl:right-28 z-10">
           <div className="relative bg-purple-500 rounded-md py-2 px-5 flex items-center">
             <div className="h-12 w-12 rounded-full overflow-hidden">
               <img draggable={false} src="/assets/icons/lucy.svg" width={56} height={56} alt="" />
@@ -143,10 +143,8 @@ const HeroSection = () => {
               <span className="text-white">7</span>
             </div>
           </div>
-        </div>
-
-        {/* Akkil chat box */}
-        <div className="absolute bottom-1/4 hidden lg:block xl:block bottom-1/2 lg:right-6 xl:right-20 z-10">
+        </div> */}
+        {/* <div className="absolute bottom-1/4 hidden lg:block xl:block bottom-1/2 lg:right-6 xl:right-20 z-10">
           <div className="relative bg-purple-500 rounded-md py-4 px-6 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden">
               <img draggable={false} src="/assets/icons/lucy.svg" width={64} height={64} alt="Akkil" />
@@ -156,11 +154,17 @@ const HeroSection = () => {
               <p className="text-base">{data['lucy']}</p>
             </div>
           </div>
+        </div> */}
+
+        <div className="absolute bottom-1/4 hidden lg:block xl:block bottom-1/2 lg:right-6 xl:right-20 z-10">
+          <div className='min-w-[300px] max-w-xs flex-shrink-0 -p-2'>
+            <HeroTestimonialCard testimonial={testimonialsData[1]} />
+          </div>
         </div>
 
 
         {/* Device Image */}
-        <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${windowWidth < 600 ? "w-[400px] lg:w-[420px] xl:w-[440px]" : "w-[338px] lg:w-[350px] xl:w-[380px]"}`}>
+        <div className={`absolute -mt-19 bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${windowWidth < 600 ? "w-[400px] lg:w-[420px] xl:w-[440px]" : "w-[338px] lg:w-[350px] xl:w-[380px]"}`}>
           <img draggable={false} alt="Device" width={6000} height={10000} src={device} />
         </div>
       </div>
@@ -168,4 +172,24 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+
+
+function HeroTestimonialCard({ testimonial }: { testimonial: any }) {
+  return (
+    <div className="bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:-rotate-1 transition-all duration-300 ease-out cursor-pointer group z-50 relative">
+      <div className="flex items-center justify-between mb-1">
+        <div className=" flex items-center">
+          <span className="text-black text-lg font-semibold">{testimonial.name}</span>
+        </div>
+      </div>
+      <div className="mb-1 flex justify-start">
+        <HeroStarRating rating={testimonial.rating} />
+      </div>
+
+      <blockquote className="text-gray-700 text-sm leading-relaxed mb-1 group-hover:text-gray-800 transition-colors duration-200">
+        "{testimonial.quote}"
+      </blockquote>
+
+    </div>
+  )
+}
