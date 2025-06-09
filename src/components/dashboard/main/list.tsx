@@ -178,7 +178,7 @@ export default function MainDashboardList({
             ))
           ) : (
             <tr>
-              <td colSpan={5} className="px-1 xl:px-6 py-4 text-center bg-gray-50 text-gray-600">
+              <td colSpan={5} className="px-3 xl:px-6 py-4 text-center bg-gray-50 text-gray-600">
                 {text.list.noImage}
               </td>
             </tr>

@@ -37,7 +37,7 @@ export default function MainDashboardList({ text, data, setId, deleteList}: { te
     else return size + " bytes"
   }
 
-  const GridView = () => (
+  const GridView = () => ( 
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 overflow-x-auto w-full max-h-60 sm:max-h-58 pr-2 overflow-y-auto mr-6 scrollbar" style={{ maxHeight: "calc(100vh - 250px)", overflowY: "auto" }}>
       {data.length > 0 ? (
         data.map((file: any, index: number) => (
@@ -107,16 +107,16 @@ export default function MainDashboardList({ text, data, setId, deleteList}: { te
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50 sticky top-0 z-10">
           <tr>
-            <th scope="col" className="px-3 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> 
+            <th scope="col" className="px-1 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> 
               {text.list.name}
             </th>
-            <th scope="col" className="px-3 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> 
+            <th scope="col" className="px-1 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> 
               {text.list.type}
             </th>
-            <th scope="col" className="px-3 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> 
+            <th scope="col" className="px-1 xl:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> 
               {text.list.fileSize}
             </th>
-            <th scope="col" className="relative px-3 xl:px-6 py-3"> <span className="sr-only">{text.list.edit}</span>
+            <th scope="col" className="relative px-1 xl:px-6 py-3"> <span className="sr-only">{text.list.edit}</span>
             </th>
           </tr>
         </thead>
@@ -124,7 +124,7 @@ export default function MainDashboardList({ text, data, setId, deleteList}: { te
           {data.length > 0 ? (
             data.map((file: any, index: number) => (
               <tr key={index} onClick={() => setId(file["id"])} className="hover:bg-gray-50 transition-colors">
-                <td className="px-3 xl:px-6 py-4 whitespace-nowrap">
+                <td className="px-1 xl:px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-8 w-8 mr-3"> {file.url ? (
                         <img src={file.url || "/placeholder.svg"} alt={file.title} className="h-8 w-8 rounded object-cover" />
@@ -141,13 +141,13 @@ export default function MainDashboardList({ text, data, setId, deleteList}: { te
                     </div>
                   </div>
                 </td>
-                <td className="px-3 xl:px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase">
+                <td className="px-1 xl:px-6 py-4 whitespace-nowrap text-sm text-gray-500 uppercase">
                   {file.type.split("/").pop()}
                 </td>
-                <td className="px-3 xl:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-1 xl:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   {formatFileSize(file.size)}
                 </td>
-                <td onClick={(e) => { e.stopPropagation(); openModal(file["id"]); }} className="pl-2 pr-14- py-4 whitespace-nowrap text-right text-sm font-medium" >
+                <td onClick={(e) => { e.stopPropagation(); openModal(file["id"]); }} className="pl-1 pr-14- py-4 whitespace-nowrap text-right text-sm font-medium" >
                   <button className="text-red-500 hover:text-red-700 p-1 rounded hover:bg-red-50 transition-colors">
                     <TrashIcon className="h-5 w-5" />
                   </button>
