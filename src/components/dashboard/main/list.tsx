@@ -10,20 +10,15 @@ import {
 } from "@heroicons/react/24/outline"
 import { Dialog, Transition } from "@headlessui/react"
 
-export default function MainDashboardList({
-  text,
-  data,
-  setId,
-  deleteList,
-  favoriteList,
-}: { text: any; data: any; setId: any; deleteList: any; favoriteList: any }) {
+export default function MainDashboardList({ text, data, setId, deleteList, favoriteList, setStepIndex }: { text: any; data: any; setId: any; deleteList: any; favoriteList: any, setStepIndex?: any }) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [viewMode, setViewMode] = useState<"list" | "grid">("list")
 
   const openModal = (id: string) => {
     setSelectedId(id)
-    setIsOpen(true)
+    setIsOpen(true);
+    if (setStepIndex) setTimeout(() => setStepIndex(8), 0);
   }
 
   const closeModal = () => {
@@ -48,7 +43,7 @@ export default function MainDashboardList({
       {data.length > 0 ? (
         data.map((file: any, index: number) => (
           console.log(file),
-          <div key={index} className="group relative bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden" onClick={() => setId(file["id"])}>
+          <div key={index} className="group collection-item relative bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden" onClick={() => setId(file["id"])}>
             {/* Image Thumbnail */}
             <div className="aspect-square bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">
               <div className="relative w-full h-full flex items-center justify-center">
@@ -76,10 +71,10 @@ export default function MainDashboardList({
               {/* Overlay Actions */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
                 <div className="flex space-x-2">
-                  <button onClick={(e) => { e.stopPropagation(); favoriteList(file["id"]); }} className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors" >
+                  <button onClick={(e) => { e.stopPropagation(); favoriteList(file["id"]); }} className="favorite p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors" >
                     <StarIcon className="h-4 w-4" stroke={file.favorite ? "#f59e42" : "#6b7280"} fill={file.favorite ? "#f59e42" : "none"} />
                   </button>
-                  <button onClick={(e) => { e.stopPropagation(); openModal(file["id"]); }} className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors" >
+                  <button onClick={(e) => { e.stopPropagation(); openModal(file["id"]); }} className="delete p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors" >
                     <TrashIcon className="h-4 w-4 text-red-500" />
                   </button>
                 </div>
@@ -136,7 +131,7 @@ export default function MainDashboardList({
         <tbody className="cursor-pointer bg-white divide-y divide-gray-300">
           {data.length > 0 ? (
             data.map((file: any, index: number) => (
-              <tr key={index} onClick={() => setId(file["id"])} className="hover:bg-gray-50 transition-colors">
+              <tr key={index} onClick={() => setId(file["id"])} className="collection-item hover:bg-gray-50 transition-colors">
                 <td className="px-1 xl:px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-8 w-8 mr-3"> {file.url ? (
@@ -161,17 +156,13 @@ export default function MainDashboardList({
                   {formatFileSize(file.size)}
                 </td>
                 <td onClick={(e) => { e.stopPropagation(); openModal(file["id"]); }} className="pl-1 pr-14- py-4 whitespace-nowrap text-right text-sm font-medium" >
-                  <button className="text-red-500 hover:text-red-700 p-1 rounded hover:bg-red-50 transition-colors">
+                  <button className="delete text-red-500 hover:text-red-700 p-1 rounded hover:bg-red-50 transition-colors">
                     <TrashIcon className="h-5 w-5" />
                   </button>
                 </td>
                 <td onClick={(e) => { e.stopPropagation(); favoriteList(file["id"]); }} className="pr-1 pl-1 py-4 whitespace-nowrap text-right text-sm font-medium">
-                  <button className="focus:outline-none p-1 rounded hover:bg-amber-50 transition-colors">
-                    <StarIcon
-                      className="h-5 w-5"
-                      stroke={file.favorite ? "#f59e42" : "#3b82f6"}
-                      fill={file.favorite ? "#f59e42" : "none"}
-                    />
+                  <button className="favorite focus:outline-none p-1 rounded hover:bg-amber-50 transition-colors">
+                    <StarIcon className="h-5 w-5" stroke={file.favorite ? "#f59e42" : "#3b82f6"} fill={file.favorite ? "#f59e42" : "none"}/>
                   </button>
                 </td>
               </tr>
@@ -193,22 +184,18 @@ export default function MainDashboardList({
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-medium text-gray-800">{text.list.title}</h2>
-          <div className="flex items-center bg-gray-100 rounded-lg p-1">
-            <button
-              onClick={() => setViewMode("list")}
+          <div className="flex items-center bg-gray-100 rounded-lg p-1 list-grid">
+            <button onClick={() => setViewMode("list")}
               className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 viewMode === "list" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
+              }`}>
               <ListBulletIcon className="h-4 w-4 mr-2" />
               List
             </button>
-            <button
-              onClick={() => setViewMode("grid")}
+            <button onClick={() => setViewMode("grid")}
               className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                 viewMode === "grid" ? "bg-white text-gray-900 shadow-sm" : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
+              }`}>
               <Squares2X2Icon className="h-4 w-4 mr-2" />
               Grid
             </button>
@@ -216,7 +203,7 @@ export default function MainDashboardList({
         </div>
 
         {/* Content based on view mode */}
-        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+        <div className="bg-white rounded-lg border border-gray-200 overflow-hidden collection">
           {viewMode === "list" ? <ListView /> : <GridView />}
         </div>
       </section>
@@ -224,29 +211,15 @@ export default function MainDashboardList({
       {/* Delete Confirmation Modal */}
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+          <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100"
+            leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
             <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
             <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-              >
+              <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200" leaveFrom="opacity-100 scale-100" leaveTo="opacity-0 scale-95">
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title as="h3" className="text-lg font-semibold leading-6 text-gray-900">
                     Confirm Deletion
@@ -257,19 +230,13 @@ export default function MainDashboardList({
                     </p>
                   </div>
 
-                  <div className="mt-6 flex justify-end space-x-3">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
-                      onClick={closeModal}
-                    >
+                  <div className="delete-confirm mt-6 flex justify-end space-x-3">
+                    <button type="button" onClick={closeModal}
+                      className="delete-cancel-button inline-flex justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
                       Cancel
                     </button>
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-lg bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-600 transition-colors shadow-sm"
-                      onClick={confirmDelete}
-                    >
+                    <button type="button" onClick={confirmDelete} 
+                      className="delete-confirm-button inline-flex justify-center rounded-lg bg-red-500 px-4 py-2 text-sm font-medium text-white hover:bg-red-600 transition-colors shadow-sm">
                       Delete
                     </button>
                   </div>

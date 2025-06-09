@@ -33,131 +33,6 @@ export default function Statistics({text}: {text: any}) {
       fetchData();
   }, [])
 
-  // const getChartOptions = () => {
-  //   return {
-  //     series: [35.1, 23.5, 2.4, 5.4],
-  //     colors: ["#1C64F2", "#16BDCA", "#FDBA8C", "#E74694"],
-  //     chart: {
-  //       height: 320,
-  //       width: "100%",
-  //       type: "donut",
-  //     },
-  //     stroke: {
-  //       colors: ["transparent"],
-  //       lineCap: "",
-  //     },
-  //     plotOptions: {
-  //       pie: {
-  //         donut: {
-  //           labels: {
-  //             show: true,
-  //             name: {
-  //               show: true,
-  //               fontFamily: "Inter, sans-serif",
-  //               offsetY: 20,
-  //             },
-  //             total: {
-  //               showAlways: true,
-  //               show: true,
-  //               label: "Unique visitors",
-  //               fontFamily: "Inter, sans-serif",
-  //               formatter: function (w: any) {
-  //                 const sum = w.globals.seriesTotals.reduce((a: any, b: any) => {
-  //                   return a + b;
-  //                 }, 0);
-  //                 return '$' + sum + 'k';
-  //               },
-  //             },
-  //             value: {
-  //               show: true,
-  //               fontFamily: "Inter, sans-serif",
-  //               offsetY: -20,
-  //               formatter: function (value: any) {
-  //                 return value + "k";
-  //               },
-  //             },
-  //           },
-  //           size: "80%",
-  //         },
-  //       },
-  //     },
-  //     grid: {
-  //       padding: {
-  //         top: -2,
-  //       },
-  //     },
-  //     labels: ["Direct", "Sponsor", "Affiliate", "Email marketing"],
-  //     dataLabels: {
-  //       enabled: false,
-  //     },
-  //     legend: {
-  //       position: "bottom",
-  //       fontFamily: "Inter, sans-serif",
-  //     },
-  //     yaxis: {
-  //       labels: {
-  //         formatter: function (value: any) {
-  //           return value + "k";
-  //         },
-  //       },
-  //     },
-  //     xaxis: {
-  //       labels: {
-  //         formatter: function (value: any) {
-  //           return value + "k";
-  //         },
-  //       },
-  //       axisTicks: {
-  //         show: false,
-  //       },
-  //       axisBorder: {
-  //         show: false,
-  //       },
-  //     },
-  //   };
-  // };
-
-  // useEffect(() => {
-  //   if (document.getElementById("image-storage-chart") && typeof ApexCharts !== 'undefined') {
-  //     const chart = new ApexCharts(document.getElementById("image-storage-chart"), getChartOptions());
-  //     chart.render();
-
-  //     const checkboxes = document.querySelectorAll('#devices input[type="checkbox"]');
-
-  //     function handleCheckboxChange(event: any) {
-  //       const checkbox = event.target;
-  //       if (checkbox.checked) {
-  //         switch (checkbox.value) {
-  //           case 'desktop':
-  //             chart.updateSeries([15.1, 22.5, 4.4, 8.4]);
-  //             break;
-  //           case 'tablet':
-  //             chart.updateSeries([25.1, 26.5, 1.4, 3.4]);
-  //             break;
-  //           case 'mobile':
-  //             chart.updateSeries([45.1, 27.5, 8.4, 2.4]);
-  //             break;
-  //           default:
-  //             chart.updateSeries([55.1, 28.5, 1.4, 5.4]);
-  //         }
-  //       } else {
-  //         chart.updateSeries([35.1, 23.5, 2.4, 5.4]);
-  //       }
-  //     }
-
-  //     checkboxes.forEach((checkbox) => {
-  //       checkbox.addEventListener('change', handleCheckboxChange);
-  //     });
-
-  //     return () => {
-  //       chart.destroy();
-  //       checkboxes.forEach((checkbox) => {
-  //         checkbox.removeEventListener('change', handleCheckboxChange);
-  //       });
-  //     };
-  //   }
-  // }, []);
-
   const getChartOptions = (series: number[], labels: string[]) => ({
     series,
     labels,
@@ -255,7 +130,7 @@ export default function Statistics({text}: {text: any}) {
   };
 
   return (
-    <aside className="hidden xl:block w-80 p-6 m-4 shadow-lg " style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
+    <aside className="hidden statistics xl:block w-80 p-6 m-4 shadow-lg " style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
       <h2 className="text-lg font-medium text-gray-800 mb-4">{text.statistics.title}</h2>
 
       {/* Chart */}

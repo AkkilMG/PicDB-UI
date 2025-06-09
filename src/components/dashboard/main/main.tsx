@@ -9,8 +9,11 @@ import UploadMobileResult from '../../upload/upload_result_mobile';
 import UploadResult from '../../upload/upload_result';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
 import Statistics from './statistics';
-import MainDashboardFolders from './folders';
+// import MainDashboardFolders from './folders';
 
+import Joyride, { CallBackProps, STATUS } from "react-joyride";
+import { FaLightbulb } from "react-icons/fa6";
+import { dashboardSteps } from '@/config/steps.tutorial';
 
 
 export default function Dashboard() {
@@ -138,15 +141,67 @@ export default function Dashboard() {
     }
   }
 
+  const [runTutorial, setRunTutorial] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+  const [stepIndex, setStepIndex] = useState(0);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    const tutorial = localStorage.getItem("tutorial");
+    if (tutorial) {
+        try {
+            const tutorialObj = JSON.parse(tutorial);
+            if (!tutorialObj.dashboard) {
+                setRunTutorial(true);
+                localStorage.setItem("tutorial", JSON.stringify({ ...tutorialObj, dashboard: true }));
+            }
+        } catch (e) {
+            console.log("Error parsing tutorial data:", e);
+        }
+    } else {
+        setRunTutorial(true);
+        localStorage.setItem("tutorial", JSON.stringify({upload: false, dashboard: false, trash: false, report: false}));
+    }
+  }, []);
+
+  const handleJoyrideCallback = (data: CallBackProps) => {
+    const { status, index, type }: any = data;
+    const finished = [STATUS.FINISHED, STATUS.SKIPPED].includes(status);
+    if (finished) {
+        setRunTutorial(false);
+        setStepIndex(0);
+    } else {
+        setStepIndex(index + (type === "step:after" ? 1 : 0));
+    }
+  };
+
 
   return (
     <>
+    {isClient && (
+        <Joyride steps={dashboardSteps} continuous showSkipButton scrollToFirstStep showProgress run={runTutorial}
+            stepIndex={stepIndex} callback={handleJoyrideCallback} styles={{ options: { primaryColor: "#3b82f6", zIndex: 10000 } }}
+        />
+    )}
+    
+    <button className="fixed bottom-10 right-10 bg-yellow-500 border-yellow-500 text-white px-4 py-4 rounded-full shadow-xl shadow-yellow-400/60 z-40 flex items-center group"
+        onClick={() => setRunTutorial(true)}>
+        <FaLightbulb className="w-5 h-5 inline-block" />
+        <span className="ml-2 transition-opacity duration-200  font-semibold whitespace-nowrap">
+            Tutorial
+        </span>
+    </button>
+    
+
     { (id && !close) && (uploadComponent)}
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">
         <MainDashboardHeader data={data} searchForImage={searchForImage} />
-        <MainDashboardList text={data} data={result} setId={setId} deleteList={deleteList} favoriteList={favoriteList} />
+        <MainDashboardList setStepIndex={setStepIndex} text={data} data={result} setId={setId} deleteList={deleteList} favoriteList={favoriteList} />
       </main>
       <Statistics text={data} />
     </div>

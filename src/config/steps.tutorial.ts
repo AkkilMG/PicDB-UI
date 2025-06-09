@@ -29,19 +29,37 @@ export const dashboardSteps: Step[] = [
     {
         target: "body",
         placement: "center",
-        content: "Welcome! This quick tutorial will guide you to upload an image.",
+        content: "Welcome! This quick tutorial will guide you to through dashboard's options.",
         disableBeacon: true
     }, {
-        target: ".upload-zone",
-        content: "Now go ahead and click it to choose your image file.",
+        target: ".search-zone",
+        content: "This is search zone, where you can search and easily get the image with image name.",
     }, {
-        target: ".uploading-file",
-        content: "This section shows the file being uploaded.",
+        target: ".list-grid",
+        content: "This provides you option to change view as per the need, you can opt for list view or grid view in one click.",
     }, {
-        target: ".uploaded-file",
-        content: "Click on this to get window to copy or view the image link.",
+        target: ".collection",
+        content: "This is where the collection of all the uploaded images could be viewed.",
     }, {
-        target: ".side-nav-dashboard",
-        content: "You can visit your dashboard to view all your uploads anytime.",
+        target: ".collection-item",
+        content: "Click on any such item to view its details, copy the links.",
+    }, {
+        target: ".favorite",
+        content: "Click on this to mark the image as favorite, so you can easily find it later.",
+    }, {
+        target: ".delete",
+        content: "Click on this to delete the image from your collection.",
+    }, {
+        target: ".statistics",
+        content: "This section provides you with the statistics of your uploads.",
+    }, {
+        target: ".delete-confirm",
+        content: "This is the confirmation dialog that appears when you try to delete an image.",
+    }, {
+        target: ".delete-cancel-button",
+        content: "Click on this to cancel the deletion of the image.",
+    }, {
+        target: ".delete-confirm-button",
+        content: "Click on this to confirm the deletion of the image. This will move it to trash.",
     }
 ];
