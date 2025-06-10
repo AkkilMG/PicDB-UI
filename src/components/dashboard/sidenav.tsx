@@ -83,7 +83,7 @@ export default function Sidenav() {
   return (
     <>
       {/* Hamburger for mobile */}
-      <div className="md:hidden p-4 flex justify-between items-center bg-white border-b shadow-sm">
+      <div className="md:hidden p-4 sticky flex justify-between items-center bg-white border-b shadow-sm">
         <a draggable={false} href="/">
           <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
         </a>
@@ -98,20 +98,12 @@ export default function Sidenav() {
 
       {/* Overlay */}
       {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-30 z-30 md:hidden"
-          onClick={() => setIsOpen(false)}
-        />
+        <div className="fixed inset-0 bg-black bg-opacity-30 z-30 md:hidden" onClick={() => setIsOpen(false)} />
       )}
 
       {/* Sidenav */}
-      <aside
-        className={`
-          fixed top-0 left-0 z-40 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md
-          transform transition-transform duration-300 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block
-        `}
-      >
+      <aside className={`fixed top-0 left-0 z-40 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md transform transition-transform duration-300 ease-in-out
+          ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block`}>
         {/* Logo */}
         <a draggable={false} href="/" className="ml-3 flex items-center">
           <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />

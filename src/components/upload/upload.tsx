@@ -17,6 +17,7 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
     const [runTutorial, setRunTutorial] = useState(false);
     const [isClient, setIsClient] = useState(false);
     const [stepIndex, setStepIndex] = useState(0);
+      const [drawerOpen, setDrawerOpen] = useState(true);
 
     useEffect(() => {
         setIsClient(true);
@@ -94,6 +95,23 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
         }
     };
 
+    
+    useEffect(() => {
+    const timer = setTimeout(() => {
+        setDrawerOpen(false);
+    }, 10000);
+    return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+    if (drawerOpen) {
+        const timer = setTimeout(() => {
+        setDrawerOpen(false);
+        }, 10000);
+        return () => clearTimeout(timer);
+    }
+    }, [drawerOpen]);
+
     return (
         <>
         {isClient && (
@@ -102,13 +120,22 @@ export default function Upload({ uploadFile, progress, result, setId }: { upload
             />
         )}
 
-        <button className="fixed bottom-10 right-10 bg-yellow-500 border-yellow-500 text-white px-4 py-4 rounded-full shadow-xl shadow-yellow-400/60 z-40 flex items-center group"
-            onClick={() => setRunTutorial(true)}>
+        {!drawerOpen && (
+        <div className="fixed -mr-2 bottom-6 right-2 sm:bottom-10 sm:right-2 z-40 cursor-pointer group" onClick={() => setDrawerOpen(true)}>
+            <div className="w-5 h-20 bg-yellow-500 rounded-l-full shadow-lg flex items-center justify-center hover:bg-yellow-600 transition-colors">
+            <FaLightbulb className="text-white w-4 h-4 group-hover:animate-pulse" />
+            </div>
+        </div>
+        )}
+
+        <div className={`fixed bottom-6 transition-all duration-500 ease-in-out z-40 ${ drawerOpen ? 'right-6 sm:right-10' : '-right-full'}`}>
+        <button className="bg-yellow-500 border-yellow-500 text-white px-4 py-4 rounded-full shadow-xl shadow-yellow-400/60 flex items-center group" onClick={() => setRunTutorial(true)}>
             <FaLightbulb className="w-5 h-5 inline-block" />
-            <span className="ml-2 transition-opacity duration-200  font-semibold whitespace-nowrap">
-                Tutorial
+            <span className="hidden sm:block ml-2 transition-opacity duration-200 font-semibold whitespace-nowrap">
+            Tutorial
             </span>
         </button>
+        </div>
 
         <DropUpload uploadFile={handleFileChange} />
         {success && <Message message={`Successfully uploaded the image..`} color={1} />}
