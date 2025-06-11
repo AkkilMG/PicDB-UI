@@ -78,7 +78,7 @@ export function ReportsList() {
       <TableBody className="pb-4">
         {reports.length > 0 ? reports.map((report: any, index: number) => (
           <TableRow key={index} onClick={(e) => handleReportClick(report._id)}>
-            <TableCell className="font-medium"><a draggable={false}className="text-black" href={report.contact}>{report.contact}</a></TableCell>
+            <TableCell className="font-medium"><a draggable={false} className="text-black" href={`mailto:${report.contact}`}>{report.contact}</a></TableCell>
             <TableCell>
               <div className="flex items-center gap-2">
                 <MdReportProblem className="h-4 w-4 text-muted-foreground" />

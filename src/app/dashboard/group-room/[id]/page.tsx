@@ -1,11 +1,11 @@
 'use client'
 
-import GroupRoomPage from '@/components/dashboard/group-room/main'
+import GroupRoomIdPage from '@/components/dashboard/group-room/main_id'
 import NotificationButtons from '@/components/dashboard/notification'
 import Sidenav from '@/components/dashboard/sidenav'
 import Policy from '@/components/pop/policy'
 
-export default function GroupRoom() {
+export default function GroupRoomId({ params }: { params: { id: string } }) {
   // return (
   //   <ComingSoonPage />
   // )
@@ -17,7 +17,7 @@ export default function GroupRoom() {
       <div className="flex flex-col md:flex-row h-screen bg-gray-50">
           <Sidenav />
           <main className="flex-1 bg-gray-50">
-              <GroupRoomPage />
+              <GroupRoomIdPage params={params} />
           </main>
       </div>
     </div>

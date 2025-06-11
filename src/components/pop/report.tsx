@@ -88,13 +88,12 @@ export default function ReportPopup({ isOpen, onClose, data, closeReportById }: 
           </div>
 
           <div className="flex justify-end gap-2 pt-4">
+            <Button type="button" variant="outline" onClick={(e) => onClose()} className="flex bg-blue-50 border border-blue-500 text-blue-500  items-center gap-2">
+              Close Pop
+            </Button>
             <Button type="button" variant="outline" onClick={(e) => closeReportById(data._id)} className="flex bg-red-50 border border-red-500 text-red-500 items-center gap-2">
               <X className="w-4 h-4" />
               Close Report
-            </Button>
-            <Button type="button" variant="outline" onClick={(e) => onClose()} className="flex bg-blue-50 border border-blue-500 text-blue-500  items-center gap-2">
-              <X className="w-4 h-4" />
-              Close Pop
             </Button>
           </div>
         </form>
