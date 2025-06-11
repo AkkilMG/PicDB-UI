@@ -169,9 +169,9 @@ export default function Dashboard() {
       )}
 
       {!drawerOpen && (
-        <div className="fixed -mr-2 bottom-6 right-2 sm:bottom-10 sm:right-2 z-40 cursor-pointer group" onClick={() => setDrawerOpen(true)}>
-          <div className="w-5 h-20 bg-yellow-500 rounded-l-full shadow-lg flex items-center justify-center hover:bg-yellow-600 transition-colors">
-            <FaLightbulb className="text-white w-4 h-4 group-hover:animate-pulse" />
+        <div className="fixed -mr-2 bottom-6 right-2 sm:bottom-6 sm:right-2 z-40 cursor-pointer group" onClick={() => setDrawerOpen(true)}>
+          <div className="w-7 h-16 bg-yellow-500 rounded-l-full shadow-lg flex items-center justify-center hover:bg-yellow-600 transition-colors">
+            <FaLightbulb className="text-white w-5 h-5 pl-1 group-hover:animate-pulse" />
           </div>
         </div>
       )}

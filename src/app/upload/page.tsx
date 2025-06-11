@@ -1,5 +1,6 @@
 "use client";
 
+import NotificationButtons from "@/components/dashboard/notification";
 import Sidenav from "@/components/dashboard/sidenav";
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
@@ -145,6 +146,7 @@ export default function UploadPage() {
     
     return (
         <div className="h-screen bg-gray-50">
+            <NotificationButtons />
             <Policy />
             { (id && !close) && (uploadComponent)}
             <div>

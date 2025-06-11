@@ -6,7 +6,6 @@ import {
   ChartBarSquareIcon as DashboardIcon,
   CloudArrowUpIcon,
   StarIcon,
-  BellIcon,
   TrashIcon,
   Bars3Icon,
   XMarkIcon,
@@ -22,6 +21,7 @@ import {
 import { enSideNav, esSideNav, hiSideNav, ruSideNav } from "@/config/text/sidenav.text";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { RiChatSmileAiLine } from "react-icons/ri";
+import { FaUserGroup } from "react-icons/fa6";
 
 
 
@@ -150,9 +150,9 @@ export default function Sidenav() {
               </a>
             </li>
             <li>
-              <a draggable={false} href="/dashboard/notification" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <BellIcon className="h-5 w-5 mr-2" />
-                {data.notification}
+              <a draggable={false} href="/dashboard/group-room" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
+                <FaUserGroup  className="h-5 w-5 mr-2" />
+                {data.groupRoom}
               </a>
             </li>
             <li>
