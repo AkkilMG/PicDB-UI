@@ -99,7 +99,6 @@ export default function UploadPage() {
                 .post('https://picdb.avianintek.workers.dev/upload', formData, config)
                 .then(async (response: any) => {
                 if (response.data['success'] === true) {
-                    toast({ title: 'Image uploaded successfully', description: `Image file: ${file.name}` });
                     setResult(prevResult => [
                         ...prevResult,
                         {

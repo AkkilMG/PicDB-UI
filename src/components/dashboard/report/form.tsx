@@ -50,7 +50,8 @@ const reportOptions = [
   }
 
   const validateLink = (link: string): boolean => {
-    const urlRegex = /^https:\/\/picdb\.avianintek\.workers\.dev\/(d|download|v|view)\/[A-Za-z0-9]+$/
+
+    const urlRegex = /^https:\/\/(picdb\.avianintek\.workers\.dev\/(d|download|v|view)\/[A-Za-z0-9]+|picdb-api\.avianintek\.com\/(d|download|v|view)\/[A-Za-z0-9]+)$/
     return urlRegex.test(link)
   }
 

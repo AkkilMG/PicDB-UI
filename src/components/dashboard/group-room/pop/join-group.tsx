@@ -35,7 +35,7 @@ export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: Join
     if (!groupCode.trim() || !password.trim()) return
 
     setIsLoading(true)
-
+    var uid = localStorage.getItem("uid")
     try {
       const response = await fetch("/api/groups/join", {
         method: "POST",
@@ -44,6 +44,7 @@ export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: Join
         },
         body: JSON.stringify({
           code: groupCode,
+          uid: uid,
           password,
           username,
         }),

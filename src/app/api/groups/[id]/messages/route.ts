@@ -1,5 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server"
 import axios from "axios"
+import { getMongoClient } from "@/lib/mongoConnect"
+import { GroupDocument, MessageDocument } from "@/lib/models"
+
 
 // Import groups data (in production, use database)
 const groups: Record<string, any> = {}
@@ -17,9 +20,14 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
       return NextResponse.json({ success: false, error: "File, code, and username are required" }, { status: 400 })
     }
 
-    const group = groups[groupId]
 
-    if (!group || group.code !== code) {
+    const db = await getMongoClient();
+    const groupsCollection = db.collection<GroupDocument>("groups")
+
+    // Find and verify group
+    const group = await groupsCollection.findOne({ id: groupId, code })
+
+    if (!group) {
       return NextResponse.json({ success: false, error: "Group not found or invalid code" }, { status: 404 })
     }
 
@@ -34,18 +42,26 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
     })
 
     if (response.data.success === true) {
-      const newMessage = {
+      const newMessage: MessageDocument = {
         id: response.data.id,
         imageUrl: response.data.vurl,
         downloadUrl: response.data.durl,
         viewUrl: response.data.vurl,
         username,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date(),
         title: file.name,
         size: file.size,
       }
 
-      group.messages.push(newMessage)
+      // Add message to group
+      await groupsCollection.updateOne(
+        { id: groupId, code },
+        {
+          $push: {
+            messages: newMessage,
+          },
+        },
+      )
 
       return NextResponse.json({ success: true })
     } else {

@@ -161,7 +161,7 @@ export default function Dashboard() {
     }
   }, [drawerOpen]);
 
-  return (
+  return ( 
     <>
       {isClient && (
         <Joyride steps={dashboardSteps} continuous showSkipButton scrollToFirstStep showProgress run={runTutorial} 

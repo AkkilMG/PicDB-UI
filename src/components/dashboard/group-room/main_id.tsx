@@ -18,7 +18,7 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
 
   // Get username from localStorage
   useEffect(() => {
-    const storedUsername = localStorage.getItem("grouproom_username")
+    const storedUsername = localStorage.getItem("username")
     if (storedUsername) {
       setUsername(storedUsername)
     } else {

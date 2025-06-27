@@ -9,9 +9,10 @@ import { GroupsList } from "./groups-list"
 import { UsernameModal } from "./username-modal"
 import { CreateGroupModal } from "./pop/create-group"
 import { JoinGroupModal } from "./pop/join-group"
+import { createGroup, joinGroup } from "@/lib/group"
 
 interface SavedGroup {
-  id: string
+  _id?: string
   name: string
   code: string
   password: string
@@ -24,19 +25,17 @@ export default function GroupRoomPage() {
   const [showJoinModal, setShowJoinModal] = useState(false)
   const [showUsernameModal, setShowUsernameModal] = useState(false)
   const [username, setUsername] = useState("")
+  const [uid, setUid] = useState<string | null>(null)
   const [savedGroups, setSavedGroups] = useState<SavedGroup[]>([])
   const router = useRouter()
 
   useEffect(() => {
-    // Check if username exists in localStorage
-    const storedUsername = localStorage.getItem("grouproom_username")
+    const storedUsername = localStorage.getItem("username")
     if (storedUsername) {
       setUsername(storedUsername)
     } else {
       setShowUsernameModal(true)
     }
-
-    // Load saved groups from localStorage
     const storedGroups = localStorage.getItem("grouproom_saved_groups")
     if (storedGroups) {
       try {
@@ -50,7 +49,10 @@ export default function GroupRoomPage() {
 
   const handleUsernameSet = (newUsername: string) => {
     setUsername(newUsername)
-    localStorage.setItem("grouproom_username", newUsername)
+    const id = crypto.randomUUID()
+    setUid(id)
+    localStorage.setItem("uid", id)
+    localStorage.setItem("username", newUsername)
     setShowUsernameModal(false)
   }
 
@@ -68,28 +70,31 @@ export default function GroupRoomPage() {
     localStorage.setItem("grouproom_saved_groups", JSON.stringify(existingGroups))
   }
 
-  const handleGroupCreated = (groupId: string, groupCode: string, password: string, groupName?: string) => {
+  const handleGroupCreated = async (groupCode: string, password: string, groupName?: string) => {
     setShowCreateModal(false)
 
     // Save group to localStorage
     const groupData: SavedGroup = {
-      id: groupId,
       name: groupName || "My Group",
       code: groupCode,
       password: password,
       joinedAt: new Date().toISOString(),
       lastActivity: new Date().toISOString(),
     }
+    var data = await createGroup(groupData)
+    if (!data.success) {
+      console.error("Failed to create group:", data.error)
+      return
+    }
     saveGroupToLocalStorage(groupData)
-
-    router.push(`/dashboard/group-room/${groupId}?code=${groupCode}`)
+    router.push(`/dashboard/group-room/${data.groupId}?code=${groupCode}`)
   }
 
-  const handleGroupJoined = (groupId: string, groupCode: string, password: string, groupName?: string) => {
+  const handleGroupJoined = async (groupId: string, groupCode: string, password: string, groupName?: string) => {
     setShowJoinModal(false)
 
     // Save group to localStorage
-    const groupData: SavedGroup = {
+    const groupData = {
       id: groupId,
       name: groupName || "Joined Group",
       code: groupCode,
@@ -97,9 +102,10 @@ export default function GroupRoomPage() {
       joinedAt: new Date().toISOString(),
       lastActivity: new Date().toISOString(),
     }
+    var data = await joinGroup(groupData)
     saveGroupToLocalStorage(groupData)
 
-    router.push(`/dashboard/group-room/${groupId}?code=${groupCode}`)
+    router.push(`/dashboard/group-room/${data.groupId}?code=${groupCode}`)
   }
 
   const handleJoinSavedGroup = (group: SavedGroup) => {
