@@ -1,10 +1,10 @@
 'use client'
 
-import GroupRoomPage from '@/components/dashboard/group-room/main'
-import NotificationButtons from '@/components/dashboard/notification'
-import Sidenav from '@/components/dashboard/sidenav'
+// import GroupRoomPage from '@/components/dashboard/group-room/main'
+// import NotificationButtons from '@/components/dashboard/notification'
+// import Sidenav from '@/components/dashboard/sidenav'
 import ComingSoonPage from '@/components/main/coming'
-import Policy from '@/components/pop/policy'
+// import Policy from '@/components/pop/policy'
 
 export default function GroupRoom() {
   return (

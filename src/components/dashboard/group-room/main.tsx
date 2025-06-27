@@ -113,7 +113,7 @@ export default function GroupRoomPage() {
     const updatedGroup = { ...group, lastActivity: new Date().toISOString() }
     saveGroupToLocalStorage(updatedGroup)
 
-    router.push(`/dashboard/group-room/${group.id}?code=${group.code}`)
+    router.push(`/dashboard/group-room/${group._id}?code=${group.code}`)
   }
 
   const handleRemoveGroup = (groupCode: string) => {

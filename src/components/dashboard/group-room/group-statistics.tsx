@@ -17,7 +17,7 @@ interface Member {
 }
 
 interface GroupInfoProps {
-  groupDetails: GroupDetails | null
+  groupDetails: GroupDetails | any
   members?: Member[]
   onUpdateGroupName?: (newName: string) => void
 }

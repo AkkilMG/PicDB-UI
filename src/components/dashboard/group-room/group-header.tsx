@@ -9,7 +9,7 @@ import { ArrowLeft, Search, Upload, Hash, Users, Pencil, Check, X } from "lucide
 import type { GroupDetails } from "@/lib/types"
 
 interface GroupHeaderProps {
-  groupDetails: GroupDetails | null
+  groupDetails: GroupDetails | any
   groupCode: string
   onBack: () => void
   onSearch: (searchTerm: string) => void

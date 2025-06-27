@@ -176,7 +176,7 @@ export default function TestimonialForm() {
                   </div>
                   <span>Share Your Story</span>
                 </Label>
-                {/* <Textarea
+                <Textarea
                   id="quote"
                   placeholder="Tell us about your experience... (max 150 chars)"
                   maxLength={150}
@@ -191,8 +191,8 @@ export default function TestimonialForm() {
                     setFocusedField(null)
                     quoteProps.onBlur(e)
                   }}
-                /> */}
-                <Controller
+                />
+                {/* <Controller
                   name="quote"
                   control={control}
                   rules={{ required: "Your feedback is required" }}
@@ -210,7 +210,7 @@ export default function TestimonialForm() {
                       }}
                     />
                   )}
-                />
+                /> */}
                 {errors.quote && <p className="text-sm text-red-500 mt-2">{errors.quote.message}</p>}
               </div>
 

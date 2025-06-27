@@ -7,9 +7,9 @@ import { GroupDocument, MessageDocument } from "@/lib/models"
 // Import groups data (in production, use database)
 const groups: Record<string, any> = {}
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const groupId = params.id
+    const groupId = (await params).id
     const formData = await request.formData()
 
     const file = formData.get("file") as File

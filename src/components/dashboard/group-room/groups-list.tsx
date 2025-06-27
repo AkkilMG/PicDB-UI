@@ -20,7 +20,7 @@ interface SavedGroup {
 }
 
 interface GroupsListProps {
-  groups: SavedGroup[]
+  groups: SavedGroup[] | any[]
   onJoinGroup: (group: SavedGroup) => void
   onRemoveGroup: (groupCode: string) => void
 }

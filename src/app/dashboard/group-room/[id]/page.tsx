@@ -1,12 +1,12 @@
 'use client'
 
-import GroupRoomIdPage from '@/components/dashboard/group-room/main_id'
-import NotificationButtons from '@/components/dashboard/notification'
-import Sidenav from '@/components/dashboard/sidenav'
+// import GroupRoomIdPage from '@/components/dashboard/group-room/main_id'
+// import NotificationButtons from '@/components/dashboard/notification'
+// import Sidenav from '@/components/dashboard/sidenav'
 import ComingSoonPage from '@/components/main/coming'
-import Policy from '@/components/pop/policy'
+// import Policy from '@/components/pop/policy'
 
-export default function GroupRoomId({ params }: { params: { id: string } }) {
+export default async function GroupRoomId({ params }: { params: Promise<{ id: string }> }) {
   return (
     <ComingSoonPage />
   )

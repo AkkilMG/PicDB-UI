@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      groupId: group.id,
+      groupId: group._id,
     })
   } catch (error) {
     console.error("Error joining group:", error)
