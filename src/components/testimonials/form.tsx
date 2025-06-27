@@ -176,7 +176,7 @@ export default function TestimonialForm() {
                   </div>
                   <span>Share Your Story</span>
                 </Label>
-                <Textarea
+                {/* <Textarea
                   id="quote"
                   placeholder="Tell us about your experience... (max 150 chars)"
                   maxLength={150}
@@ -191,6 +191,25 @@ export default function TestimonialForm() {
                     setFocusedField(null)
                     quoteProps.onBlur(e)
                   }}
+                /> */}
+                <Controller
+                  name="quote"
+                  control={control}
+                  rules={{ required: "Your feedback is required" }}
+                  render={({ field }) => (
+                    <Textarea
+                      {...field}
+                      id="quote"
+                      placeholder="Tell us about your experience... (max 150 chars)"
+                      maxLength={150}
+                      className={`...your styling...`}
+                      onFocus={() => setFocusedField("quote")}
+                      onBlur={(e) => {
+                        setFocusedField(null)
+                        field.onBlur()
+                      }}
+                    />
+                  )}
                 />
                 {errors.quote && <p className="text-sm text-red-500 mt-2">{errors.quote.message}</p>}
               </div>
