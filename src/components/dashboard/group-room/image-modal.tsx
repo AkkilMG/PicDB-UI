@@ -1,7 +1,6 @@
-"use client"
 
 import type { ImageMessage } from "@/lib/types"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -21,6 +20,9 @@ export function ImageModal({ image, onClose }: ImageModalProps) {
   return (
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="max-w-4xl max-h-[90vh] p-0 overflow-hidden">
+        <DialogHeader>
+          <DialogTitle></DialogTitle>
+        </DialogHeader>
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b bg-white">
@@ -35,14 +37,14 @@ export function ImageModal({ image, onClose }: ImageModalProps) {
                 <p className="text-sm text-gray-500">Shared by {image.username}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 pr-10">
               <Button variant="outline" size="sm" onClick={handleDownload}>
                 <Download className="h-4 w-4 mr-2" />
                 Download
               </Button>
-              <Button variant="ghost" size="icon" onClick={onClose}>
+              {/* <Button variant="ghost" size="icon" onClick={onClose}>
                 <X className="h-4 w-4" />
-              </Button>
+              </Button> */}
             </div>
           </div>
 

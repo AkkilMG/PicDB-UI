@@ -14,7 +14,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import { User } from "lucide-react"
+import { Loader2, User } from "lucide-react"
 
 interface UsernameModalProps {
   open: boolean
@@ -23,11 +23,14 @@ interface UsernameModalProps {
 
 export function UsernameModal({ open, onUsernameSet }: UsernameModalProps) {
   const [username, setUsername] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
+    setIsLoading(false);
     e.preventDefault()
     if (username.trim()) {
       onUsernameSet(username.trim())
+      setIsLoading(true)
     }
   }
 
@@ -47,19 +50,20 @@ export function UsernameModal({ open, onUsernameSet }: UsernameModalProps) {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="username">Your Name</Label>
-            <Input
-              id="username"
-              placeholder="Enter your display name"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              autoFocus
-            />
+            <Input id="username" placeholder="Enter your display name" value={username}
+              onChange={(e) => setUsername(e.target.value)} required autoFocus />
           </div>
 
           <DialogFooter>
-            <Button type="submit" className="w-full" disabled={!username.trim()}>
-              Continue
+            <Button type="submit" className="w-full" disabled={isLoading}>
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  wait...
+                </>
+              ) : (
+                "Continue"
+              )}
             </Button>
           </DialogFooter>
         </form>

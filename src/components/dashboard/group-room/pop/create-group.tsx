@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,39 +16,71 @@ import {
 } from "@/components/ui/dialog"
 import { Loader2, Eye, EyeOff, Copy, Check } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
+import { useRouter } from "next/navigation"
 
 interface CreateGroupModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  onSuccess: (groupId: string, groupCode: string, password: string, groupName?: string) => void
   username: string
 }
 
-export function CreateGroupModal({ open, onOpenChange, onSuccess, username }: CreateGroupModalProps) {
+export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupModalProps) {
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [groupDetails, setGroupDetails] = useState<{ id: string; code: string; password: string } | null>(null)
+  const [groupDetails, setGroupDetails] = useState<any>(null)
   const [copiedCode, setCopiedCode] = useState(false)
   const [copiedPassword, setCopiedPassword] = useState(false)
+  const [savedGroups, setSavedGroups] = useState<any[]>([])
   const [groupName, setGroupName] = useState("")
+
+  const router = useRouter()
+  useEffect(() => {
+    const storedGroups = localStorage.getItem("grouproom_saved_groups")
+    if (storedGroups) {
+      try {
+        setSavedGroups(JSON.parse(storedGroups))
+      } catch (error) {
+        console.error("Error parsing saved groups:", error)
+        localStorage.removeItem("grouproom_saved_groups")
+      }
+    }
+  }, [])
+
+  
+  const saveGroupToLocalStorage = (groupData: any) => {
+    const existingGroups = [...savedGroups]
+    const existingIndex = existingGroups.findIndex((g) => g.code === groupData.code)
+
+    if (existingIndex >= 0) {
+      existingGroups[existingIndex] = { ...existingGroups[existingIndex], ...groupData }
+    } else {
+      existingGroups.push(groupData)
+    }
+
+    setSavedGroups(existingGroups)
+    localStorage.setItem("grouproom_saved_groups", JSON.stringify(existingGroups))
+  }
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!password.trim()) return
 
     setIsLoading(true)
+    var groupData = {
+      username,
+      uid: localStorage.getItem("uid"),
+      password,
+      groupName: groupName.trim() || undefined,
+    }
     try {
       const response = await fetch("/api/groups", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          username,
-          password,
-          groupName: groupName.trim() || undefined,
-        }),
+        body: JSON.stringify(groupData),
       })
 
       const result = await response.json()
@@ -57,7 +89,12 @@ export function CreateGroupModal({ open, onOpenChange, onSuccess, username }: Cr
         setGroupDetails({
           id: result.groupId,
           code: result.groupCode,
-          password,
+          name: groupName.trim(),
+        })
+        saveGroupToLocalStorage({
+          id: result.groupId,
+          code: result.groupCode,
+          name: groupName.trim(),
         })
         toast({
           title: "Group created successfully!",
@@ -83,9 +120,14 @@ export function CreateGroupModal({ open, onOpenChange, onSuccess, username }: Cr
   }
 
   const handleJoinGroup = () => {
-    if (groupDetails) {
-      onSuccess(groupDetails.id, groupDetails.code, groupDetails.password, groupName.trim() || "My Group")
-    }
+    // if (group) router.push(`/dashboard/group-room/${group.id}?code=${group.code}`)
+    
+    setPassword("")
+    setGroupName("")
+    setGroupDetails(null)
+    setCopiedCode(false)
+    setCopiedPassword(false)
+    onOpenChange(false)
   }
 
   const copyToClipboard = async (text: string, type: "code" | "password") => {
@@ -142,21 +184,10 @@ export function CreateGroupModal({ open, onOpenChange, onSuccess, username }: Cr
             <div className="space-y-2">
               <Label htmlFor="password">Group Password</Label>
               <div className="relative">
-                <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Create a secure password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="icon"
-                  className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
+                <Input id="password" type={showPassword ? "text" : "password"} placeholder="Create a secure password" 
+                 value={password} onChange={(e) => setPassword(e.target.value)} required />
+                <Button  type="button"  variant="ghost"  size="icon" onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent">
                   {showPassword ? (
                     <EyeOff className="h-4 w-4 text-gray-400" />
                   ) : (
@@ -195,7 +226,7 @@ export function CreateGroupModal({ open, onOpenChange, onSuccess, username }: Cr
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+              {/* <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                 <div>
                   <Label className="text-sm font-medium">Password</Label>
                   <p className="font-mono text-lg">{groupDetails.password}</p>
@@ -203,7 +234,7 @@ export function CreateGroupModal({ open, onOpenChange, onSuccess, username }: Cr
                 <Button variant="ghost" size="icon" onClick={() => copyToClipboard(groupDetails.password, "password")}>
                   {copiedPassword ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
                 </Button>
-              </div>
+              </div> */}
             </div>
 
             <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-md">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -10,9 +10,13 @@ import { UsernameModal } from "./username-modal"
 import { CreateGroupModal } from "./pop/create-group"
 import { JoinGroupModal } from "./pop/join-group"
 import { createGroup, joinGroup } from "@/lib/group"
+import lottie from 'lottie-web';
+import createGroupData from '@/assets/create.json';
+import joinGroupData from '@/assets/join.json';
 
 interface SavedGroup {
   _id?: string
+  uid?: string
   name: string
   code: string
   password: string
@@ -28,6 +32,33 @@ export default function GroupRoomPage() {
   const [uid, setUid] = useState<string | null>(null)
   const [savedGroups, setSavedGroups] = useState<SavedGroup[]>([])
   const router = useRouter()
+
+  const createGroupRef = useRef(null);
+  const joinGroupRef = useRef(null);
+  useEffect(() => {
+    if (createGroupRef.current) {
+      const animation = lottie.loadAnimation({
+        container: createGroupRef.current,
+        renderer: 'svg', //  'canvas'
+        loop: true,
+        autoplay: true,
+        animationData: createGroupData, 
+      });
+      return () => animation.destroy(); 
+    }
+  }, [createGroupRef]);
+  useEffect(() => {
+    if (joinGroupRef.current) {
+      const animation = lottie.loadAnimation({
+        container: joinGroupRef.current,
+        renderer: 'svg', //  'canvas'
+        loop: true,
+        autoplay: true,
+        animationData: joinGroupData, 
+      });
+      return () => animation.destroy(); 
+    }
+  }, [joinGroupRef]);
 
   useEffect(() => {
     const storedUsername = localStorage.getItem("username")
@@ -47,16 +78,38 @@ export default function GroupRoomPage() {
     }
   }, [])
 
-  const handleUsernameSet = (newUsername: string) => {
+  async function setUsernameAPI(username: string) {
+    const response = await fetch("/api/auth/user", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({name: username}),
+    })
+    if (!response.ok) {
+      const error = await response.json()
+      console.log(error.error)
+      return null
+    }
+    var data = await response.json()
+    if (data && data.success) {
+      return data.id
+    }
+    return null
+  }
+
+  const handleUsernameSet = async (newUsername: string) => {
     setUsername(newUsername)
-    const id = crypto.randomUUID()
+    const id = await setUsernameAPI(newUsername)
+    if (!id) {
+      console.error("Failed to set username")
+      return
+    }
     setUid(id)
     localStorage.setItem("uid", id)
     localStorage.setItem("username", newUsername)
     setShowUsernameModal(false)
   }
 
-  const saveGroupToLocalStorage = (groupData: SavedGroup) => {
+  const saveGroupToLocalStorage = (groupData: any) => {
     const existingGroups = [...savedGroups]
     const existingIndex = existingGroups.findIndex((g) => g.code === groupData.code)
 
@@ -68,26 +121,6 @@ export default function GroupRoomPage() {
 
     setSavedGroups(existingGroups)
     localStorage.setItem("grouproom_saved_groups", JSON.stringify(existingGroups))
-  }
-
-  const handleGroupCreated = async (groupCode: string, password: string, groupName?: string) => {
-    setShowCreateModal(false)
-
-    // Save group to localStorage
-    const groupData: SavedGroup = {
-      name: groupName || "My Group",
-      code: groupCode,
-      password: password,
-      joinedAt: new Date().toISOString(),
-      lastActivity: new Date().toISOString(),
-    }
-    var data = await createGroup(groupData)
-    if (!data.success) {
-      console.error("Failed to create group:", data.error)
-      return
-    }
-    saveGroupToLocalStorage(groupData)
-    router.push(`/dashboard/group-room/${data.groupId}?code=${groupCode}`)
   }
 
   const handleGroupJoined = async (groupId: string, groupCode: string, password: string, groupName?: string) => {
@@ -108,13 +141,13 @@ export default function GroupRoomPage() {
     router.push(`/dashboard/group-room/${data.groupId}?code=${groupCode}`)
   }
 
-  const handleJoinSavedGroup = (group: SavedGroup) => {
-    // Update last activity
-    const updatedGroup = { ...group, lastActivity: new Date().toISOString() }
-    saveGroupToLocalStorage(updatedGroup)
+  // const handleJoinSavedGroup = (group: SavedGroup) => {
+  //   // Update last activity
+  //   const updatedGroup = { ...group, lastActivity: new Date().toISOString() }
+  //   saveGroupToLocalStorage(updatedGroup)
 
-    router.push(`/dashboard/group-room/${group._id}?code=${group.code}`)
-  }
+  //   router.push(`/dashboard/group-room/${group._id}?code=${group.code}`)
+  // }
 
   const handleRemoveGroup = (groupCode: string) => {
     const updatedGroups = savedGroups.filter((g) => g.code !== groupCode)
@@ -168,7 +201,7 @@ export default function GroupRoomPage() {
         </div>
       </header>
 
-      <main className="flex-1 container py-12">
+      <main className="flex-1 container py-12 mx-12">
         {savedGroups.length > 0 ? (
           // Show groups list if user has saved groups
           <div className="max-w-7xl mx-auto">
@@ -182,7 +215,7 @@ export default function GroupRoomPage() {
               </Button>
             </div>
 
-            <GroupsList groups={savedGroups} onJoinGroup={handleJoinSavedGroup} onRemoveGroup={handleRemoveGroup} />
+            <GroupsList groups={savedGroups} onRemoveGroup={handleRemoveGroup} />
           </div>
         ) : (
           // Show welcome UI if no saved groups
@@ -199,11 +232,12 @@ export default function GroupRoomPage() {
                   <CardDescription>Start a new secure image sharing group</CardDescription>
                 </CardHeader>
                 <CardContent className="flex justify-center">
-                  <img
+                  {/* <img
                     src="/placeholder.svg?height=120&width=120"
                     alt="Create group illustration"
                     className="h-32 w-32"
-                  />
+                  /> */}
+                  <div ref={createGroupRef} className="h-32 w-32" /> 
                 </CardContent>
                 <CardFooter className="flex justify-center">
                   <Button size="lg" onClick={() => setShowCreateModal(true)} disabled={!username}>
@@ -218,11 +252,12 @@ export default function GroupRoomPage() {
                   <CardDescription>Enter code and password to join an existing group</CardDescription>
                 </CardHeader>
                 <CardContent className="flex justify-center">
-                  <img
+                  {/* <img
                     src="/placeholder.svg?height=120&width=120"
                     alt="Join group illustration"
                     className="h-32 w-32"
-                  />
+                  /> */}
+                  <div ref={joinGroupRef} className="h-32 w-32" /> 
                 </CardContent>
                 <CardFooter className="flex justify-center">
                   <Button size="lg" variant="outline" onClick={() => setShowJoinModal(true)} disabled={!username}>
@@ -240,7 +275,6 @@ export default function GroupRoomPage() {
       <CreateGroupModal
         open={showCreateModal}
         onOpenChange={setShowCreateModal}
-        onSuccess={handleGroupCreated}
         username={username}
       />
 

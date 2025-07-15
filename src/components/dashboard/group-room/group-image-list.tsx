@@ -27,7 +27,7 @@ export function GroupImageList({ messages, username, onImageClick, onImageDelete
 
   const GridView = () => (
     <div
-      className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 overflow-y-auto"
+      className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 overflow-y-auto"
       style={{ maxHeight: "calc(100vh - 300px)" }}
     >
       {messages.length > 0 ? (
@@ -136,11 +136,6 @@ export function GroupImageList({ messages, username, onImageClick, onImageDelete
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <Avatar className="w-8 h-8 mr-3">
-                      <AvatarFallback className="text-xs bg-gradient-to-br from-blue-500 to-purple-600 text-white">
-                        {message.username.charAt(0).toUpperCase()}
-                      </AvatarFallback>
-                    </Avatar>
                     <span className="text-sm text-gray-900">{message.username}</span>
                   </div>
                 </td>

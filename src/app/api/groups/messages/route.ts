@@ -2,30 +2,31 @@ import { type NextRequest, NextResponse } from "next/server"
 import axios from "axios"
 import { getMongoClient } from "@/lib/mongoConnect"
 import { GroupDocument, MessageDocument } from "@/lib/models"
+import { ObjectId } from "mongodb"
 
 
 // Import groups data (in production, use database)
 const groups: Record<string, any> = {}
 
-export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+export async function POST(request: NextRequest) {
   try {
-    const groupId = (await params).id
     const formData = await request.formData()
 
     const file = formData.get("file") as File
     const code = formData.get("code") as string
+    const uid = formData.get("uid") as string
     const username = formData.get("username") as string
+    const groupId = formData.get("groupId") as string
 
-    if (!file || !code || !username) {
-      return NextResponse.json({ success: false, error: "File, code, and username are required" }, { status: 400 })
+    // console.log("Received data:", { file: file ? file.name : "No file", code, uid, username, groupId, })
+
+    if (!file || !code || !uid || !groupId || !username) {
+      return NextResponse.json({ success: false, error: "File, code, uid, username and groupId are required" }, { status: 400 })
     }
 
-
     const db = await getMongoClient();
-    const groupsCollection = db.collection<GroupDocument>("groups")
-
-    // Find and verify group
-    const group = await groupsCollection.findOne({ id: groupId, code })
+    const groupsCollection = db.collection<any>("groups")
+    const group = await groupsCollection.findOne({ _id: new ObjectId(groupId), code })
 
     if (!group) {
       return NextResponse.json({ success: false, error: "Group not found or invalid code" }, { status: 404 })
@@ -42,26 +43,20 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
     })
 
     if (response.data.success === true) {
-      const newMessage: MessageDocument = {
-        id: response.data.id,
-        imageUrl: response.data.vurl,
-        downloadUrl: response.data.durl,
-        viewUrl: response.data.vurl,
-        username,
-        timestamp: new Date(),
-        title: file.name,
-        size: file.size,
+      const newMessage = {
+        id: response.data.id, imageUrl: response.data.vurl, downloadUrl: response.data.durl,
+        viewUrl: response.data.vurl, uid, username, timestamp: new Date(), title: file.name, size: file.size,
       }
+      // await groupsCollection.updateOne(
+      //   { _id: new ObjectId(groupId), code },
+      //   { messages: { $push: { newMessage } } },
+      // )
 
-      // Add message to group
       await groupsCollection.updateOne(
-        { id: groupId, code },
-        {
-          $push: {
-            messages: newMessage,
-          },
-        },
-      )
+        { _id: new ObjectId(groupId), code },
+        { $push: { messages: newMessage } }
+      );
+
 
       return NextResponse.json({ success: true })
     } else {

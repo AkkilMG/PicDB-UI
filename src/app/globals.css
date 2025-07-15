@@ -165,9 +165,77 @@
     animation: spinSlow 8s linear infinite;
   }
 
+  .text-balance {
+    text-wrap: balance;
+  }
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  .animate-road-travel {
+    animation: roadTravel 2s ease-in-out infinite;
+  }
+  .animate-step-glow {
+    animation: stepGlow 2s ease-in-out infinite;
+  }
+  .animate-progress-fill {
+    animation: progressFill 1s ease-out forwards;
+  }
+
+
   /* Background gradients */
   .bg-gradient-radial {
     background: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}
+
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.8);
+  }
+}
+
+@keyframes roadTravel {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes stepGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
   }
 }
 
@@ -276,4 +344,8 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+html {
+  scroll-behavior: smooth;
 }

@@ -24,7 +24,9 @@ export function GroupUploader({ onUpload, username, onClose }: GroupUploaderProp
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
+    const files = e.target.files
+    if (!files || files.length === 0) return
+    const file = files[0]
     if (!file) return
 
     // Check file size (60MB limit)
@@ -81,6 +83,7 @@ export function GroupUploader({ onUpload, username, onClose }: GroupUploaderProp
           onClose()
         }, 1000)
       } else {
+        console.log("Upload failed: ", result)
         throw new Error("Upload failed")
       }
     } catch (error) {
@@ -148,7 +151,7 @@ export function GroupUploader({ onUpload, username, onClose }: GroupUploaderProp
                 alt="Preview"
                 className="w-full h-64 object-cover rounded-lg border"
               />
-              <Button
+              {/* <Button
                 variant="destructive"
                 size="icon"
                 className="absolute top-2 right-2"
@@ -156,7 +159,7 @@ export function GroupUploader({ onUpload, username, onClose }: GroupUploaderProp
                 disabled={isUploading}
               >
                 <X className="h-4 w-4" />
-              </Button>
+              </Button> */}
             </div>
 
             {/* File Info */}

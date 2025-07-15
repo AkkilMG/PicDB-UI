@@ -17,7 +17,7 @@ export const enFooter = {
     resources: {
         title: "Resources",
         available: [
-            { title: "Documentation", link: "#" },
+            { title: "Documentation", link: "/docs" },
             { title: "API Service", link: "#" }
         ]
     },
@@ -50,7 +50,7 @@ export const esFooter = {
     resources: {
         title: "Recursos",
         available: [
-            { title: "Documentación", link: "" },
+            { title: "Documentación", link: "/docs" },
             { title: "Servicio API", link: "" }
         ]
     },
@@ -82,7 +82,7 @@ export const ruFooter = {
     resources: {
         title: "Ресурсы",
         available: [
-            { title: "Документация", link: "" },
+            { title: "Документация", link: "/docs" },
             { title: "API-сервис", link: "" }
         ]
     },
@@ -114,7 +114,7 @@ export const hiFooter = {
     resources: {
         title: "संसाधन",
         available: [
-            { title: "प्रलेखन", link: "" },
+            { title: "प्रलेखन", link: "/docs" },
             { title: "API सेवा", link: "" }
         ]
     },

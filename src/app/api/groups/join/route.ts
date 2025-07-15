@@ -5,9 +5,9 @@ import { v4 as uuidv4 } from "uuid"
 
 export async function POST(request: NextRequest) {
   try {
-    const { code, password, username } = await request.json()
+    const { code, password, username, uid } = await request.json()
 
-    if (!code || !password || !username) {
+    if (!code || !password || !username || !uid) {
       return NextResponse.json({ success: false, error: "Code, password, and username are required" }, { status: 400 })
     }
     
@@ -25,22 +25,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, error: "Invalid password" }, { status: 401 })
     }
 
-    // Check if user is already a member
-    const existingMember = group.members.find((m) => m.username === username)
+    const existingMember = group.members.find((m) => m.id === uid)
 
     if (!existingMember) {
-      // Add member to the group
       await groups.updateOne(
         { code },
-        {
-          $push: {
-            members: {
-              id: uuidv4(),
-              username,
-              joinedAt: new Date(),
-            },
-          },
-        },
+        { $push: { members: { id: uid, username, joinedAt: new Date(), } } },
       )
     }
 

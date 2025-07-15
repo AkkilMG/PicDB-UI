@@ -66,12 +66,8 @@ export function GroupHeader({
               <div>
                 {isEditing ? (
                   <div className="flex items-center gap-2">
-                    <Input
-                      value={groupName}
-                      onChange={(e) => setGroupName(e.target.value)}
-                      placeholder="Enter group name"
-                      className="h-8 text-base"
-                    />
+                    <Input value={groupName} onChange={(e) => setGroupName(e.target.value)}
+                      placeholder="Enter group name" className="h-8 text-base" />
                     <Button size="icon" variant="ghost" onClick={handleSaveName} className="h-8 w-8">
                       <Check className="h-4 w-4" />
                     </Button>
@@ -82,12 +78,8 @@ export function GroupHeader({
                 ) : (
                   <div className="flex items-center gap-2">
                     <h1 className="text-xl font-bold text-gray-900">{groupDetails?.name || "Group Dashboard"}</h1>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => setIsEditing(true)}
-                      className="h-6 w-6 lg:hidden"
-                    >
+                    <Button variant="ghost" size="icon" onClick={() => setIsEditing(true)} 
+                      className="h-6 w-6 lg:hidden">
                       <Pencil className="h-3 w-3" />
                     </Button>
                   </div>
@@ -119,12 +111,8 @@ export function GroupHeader({
           <div className="flex-1 max-w-md">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-              <Input
-                placeholder="Search images or users..."
-                value={searchTerm}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                className="pl-10"
-              />
+              <Input placeholder="Search images or users..." value={searchTerm}
+                onChange={(e) => handleSearchChange(e.target.value)} className="pl-10" />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 export interface GroupDetails {
-  id: string
+  _id: string
   name: string
   code: string
   createdAt: string

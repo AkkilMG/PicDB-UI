@@ -5,16 +5,24 @@ import { useRouter, useSearchParams } from "next/navigation"
 import type { ImageMessage, GroupDetails, Member } from "@/lib/types"
 import { GroupDashboard } from "./group-dashboard"
 
-export default function GroupRoomIdPage({ params }: { params: { id: string } }) {
+export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
   const [groupDetails, setGroupDetails] = useState<GroupDetails | null>(null)
   const [messages, setMessages] = useState<ImageMessage[]>([])
   const [members, setMembers] = useState<Member[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState("")
   const [username, setUsername] = useState("")
+  const [uid, setUid] = useState("") 
   const router = useRouter()
   const searchParams = useSearchParams()
   const groupCode = searchParams.get("code")
+  const [id, setId] = useState("")
+  useEffect(() => {
+    const fetchId = async () => {
+      setId((await params)?.id)
+    }
+    fetchId()
+  }, [params])
 
   // Get username from localStorage
   useEffect(() => {
@@ -22,14 +30,20 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
     if (storedUsername) {
       setUsername(storedUsername)
     } else {
-      router.push("/")
+      router.push("/dashboard/group-room")
+    }
+    const storedUid = localStorage.getItem("uid")
+    if (storedUid) {
+      setUid(storedUid)
+    } else {
+      router.push("/dashboard/group-room")
     }
   }, [router])
 
   // Redirect if no group code is provided
   useEffect(() => {
     if (!groupCode) {
-      router.push("/")
+      router.push("/dashboard/group-room")
     }
   }, [groupCode, router])
 
@@ -39,13 +53,14 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
       if (!groupCode || !username) return
 
       try {
-        const response = await fetch(`/api/groups?groupId=${params.id}&code=${groupCode}`)
+        const response = await fetch(`/api/groups?groupId=${id}&code=${groupCode}`)
         const data = await response.json()
+        console.log("Group data:", data)
 
         if (data.success) {
           // Check if we have a custom name in localStorage
           const savedGroups = JSON.parse(localStorage.getItem("grouproom_saved_groups") || "[]")
-          const savedGroup = savedGroups.find((g: any) => g.id === params.id)
+          const savedGroup = savedGroups.find((g: any) => g.id === id)
 
           setGroupDetails({
             ...data.group,
@@ -57,12 +72,12 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
           setMembers(data.members || [])
         } else {
           setError("Invalid group or access denied")
-          setTimeout(() => router.push("/"), 3000)
+          setTimeout(() => router.push("/dashboard/group-room"), 3000)
         }
       } catch (error) {
         console.error("Failed to fetch group details:", error)
         setError("Failed to load group. Redirecting to home...")
-        setTimeout(() => router.push("/"), 3000)
+        setTimeout(() => router.push("/dashboard/group-room"), 3000)
       } finally {
         setIsLoading(false)
       }
@@ -76,18 +91,19 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
     }, 5000)
 
     return () => clearInterval(intervalId)
-  }, [params.id, groupCode, router, username])
+  }, [id, groupCode, router, username])
 
   const handleImageUpload = async (file: File) => {
-    if (!groupDetails || !username) return { success: false }
+    if (!groupDetails || !username || !uid ) return { success: false }
 
     try {
       const formData = new FormData()
       formData.append("file", file)
       formData.append("code", groupCode!)
       formData.append("username", username)
-
-      const response = await fetch(`/api/groups/${params.id}/messages`, {
+      formData.append("uid", uid)
+      formData.append("groupId", id)
+      const response = await fetch(`/api/groups/messages`, {
         method: "POST",
         body: formData,
       })
@@ -95,7 +111,7 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
       const result = await response.json()
       if (result.success) {
         // Refresh messages
-        const refreshResponse = await fetch(`/api/groups?groupId=${params.id}&code=${groupCode}`)
+        const refreshResponse = await fetch(`/api/groups?groupId=${id}&code=${groupCode}`)
         const refreshData = await refreshResponse.json()
         if (refreshData.success) {
           setMessages(refreshData.messages)
@@ -122,7 +138,7 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
     // Save to localStorage
     const savedGroups = JSON.parse(localStorage.getItem("grouproom_saved_groups") || "[]")
     const updatedGroups = savedGroups.map((group: any) => {
-      if (group.id === params.id) {
+      if (group.id === id) {
         return {
           ...group,
           customName: newName,
@@ -156,14 +172,7 @@ export default function GroupRoomIdPage({ params }: { params: { id: string } }) 
   }
 
   return (
-    <GroupDashboard
-      groupDetails={groupDetails}
-      messages={messages}
-      members={members}
-      username={username}
-      groupCode={groupCode || ""}
-      onImageUpload={handleImageUpload}
-      onBack={() => router.push("/")}
-    />
+    <GroupDashboard groupDetails={groupDetails} messages={messages} members={members} username={username}
+      groupCode={groupCode || ""} onImageUpload={handleImageUpload} onBack={() => router.push("/dashboard/group-room")} />
   )
 }

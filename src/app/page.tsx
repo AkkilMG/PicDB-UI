@@ -6,6 +6,7 @@ import { SavingsCalculator } from "@/components/home/saving";
 import { TestimonialsSection } from "@/components/home/testimonials";
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
+import ChatBot from "@/components/pop/chatbot";
 import { Toaster } from "@/components/ui/toaster";
 import { enHome, esHome, hiHome, ruHome } from "@/config/text/home.text";
 import { useEffect, useState } from "react";
@@ -93,15 +94,16 @@ export default function Home() {
   
 
   return (
-    <>      
-    <Header />
-    <div>
-      <HeroSection testimonialsData={testimonialsData} />
-    </div>
-    <AboutSection />
-    <SavingsCalculator text={data} />
-    <TestimonialsSection text={data} testimonialsData={testimonialsData} />
-    <Footer />
+    <>  
+      <ChatBot />   
+      <Header />
+      <div>
+        <HeroSection testimonialsData={testimonialsData} />
+      </div>
+      <AboutSection />
+      <SavingsCalculator text={data} />
+      <TestimonialsSection text={data} testimonialsData={testimonialsData} />
+      <Footer />
     </>
   );
 }

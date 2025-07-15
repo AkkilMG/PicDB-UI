@@ -7,6 +7,7 @@ import { GroupImageList } from "./group-image-list"
 import { GroupUploader } from "./group-uploader"
 import { GroupInfo } from "./group-statistics"
 import { ImageModal } from "./image-modal"
+import { updateGroupName } from "@/lib/group"
 
 interface GroupDashboardProps {
   groupDetails: GroupDetails | null
@@ -53,10 +54,14 @@ export function GroupDashboard({
     return result
   }
 
-  const handleUpdateGroupName = (newName: string) => {
+  const handleUpdateGroupName = async(newName: string) => {
     setGroupName(newName)
-    // In a real app, you would save this to the server
-    // For now we just update the local state
+    var data = await updateGroupName(groupDetails?._id, newName)
+    if (!data.success) {
+      console.error("Failed to update group name:", data.error)
+      // Optionally revert the name change in UI
+      setGroupName(groupDetails?.name || "Group Room")
+    }
   }
 
   // Update filtered messages when messages change
@@ -70,42 +75,29 @@ export function GroupDashboard({
         {/* Main Content */}
         <main className="flex-1 flex flex-col">
           {/* Header */}
-          <GroupHeader
-            groupDetails={{ ...(groupDetails || {}), name: groupName }}
-            groupCode={groupCode}
-            onBack={onBack}
-            onSearch={handleSearch}
-            onUploadClick={() => setShowUploader(true)}
-            messageCount={messages.length}
-          />
+          <GroupHeader groupDetails={{ ...(groupDetails || {}), name: groupName }} messageCount={messages.length}
+            groupCode={groupCode} onBack={onBack} onSearch={handleSearch} onUploadClick={() => setShowUploader(true)}/>
 
           {/* Upload Section */}
           {showUploader && (
-            <div className="bg-white border-b p-6">
-              <GroupUploader onUpload={handleImageUpload} username={username} onClose={() => setShowUploader(false)} />
+            <div className="fixed inset-0 z-40 flex items-center justify-center bg-black bg-opacity-40">
+              <div className="bg-white rounded-lg shadow-lg w-1/3 p-6">
+                <GroupUploader onUpload={handleImageUpload} username={username} onClose={() => setShowUploader(false)} />
+              </div>
             </div>
           )}
 
           {/* Images List */}
           <div className="flex-1 p-4 lg:p-8">
-            <GroupImageList
-              messages={filteredMessages}
-              username={username}
-              onImageClick={setSelectedImage}
-              onImageDelete={() => {
-                // Refresh would happen through polling
-              }}
-            />
+            <GroupImageList messages={filteredMessages} username={username} onImageClick={setSelectedImage}
+              onImageDelete={() => { {/*Refresh would happen through polling*/} }} />
           </div>
         </main>
 
         {/* Group Info Sidebar - Hidden on mobile */}
         <aside className="hidden lg:block lg:w-80 bg-white border-l">
-          <GroupInfo
-            groupDetails={{ ...(groupDetails || {}), name: groupName }}
-            members={members}
-            onUpdateGroupName={handleUpdateGroupName}
-          />
+          <GroupInfo groupDetails={{ ...(groupDetails || {}), name: groupName }} members={members} 
+            onUpdateGroupName={handleUpdateGroupName} />
         </aside>
       </div>
 

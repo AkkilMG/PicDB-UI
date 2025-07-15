@@ -1,5 +1,6 @@
 import { GroupDocument, GroupResponse, MemberResponse, MessageResponse } from "@/lib/models"
 import { getMongoClient } from "@/lib/mongoConnect"
+import { ObjectId } from "mongodb"
 import { type NextRequest, NextResponse } from "next/server"
 import { v4 as uuidv4 } from "uuid"
 
@@ -52,7 +53,6 @@ export async function POST(request: NextRequest) {
     }
 
     const saved = await groups.insertOne(newGroup)
-
     return NextResponse.json({
       success: true,
       groupId: saved.insertedId.toString(),
@@ -112,29 +112,28 @@ export async function GET(request: NextRequest) {
     }
 
     const db = await getMongoClient();
-    const groups = db.collection<GroupDocument>("groups")
-
-    const group = await groups.findOne({ id: groupId, code })
-
+    const groups = db.collection<any>("groups")
+    const group = await groups.findOne({ _id: new ObjectId(groupId), code })
     if (!group) {
       return NextResponse.json({ success: false, error: "Group not found or invalid code" }, { status: 404 })
     }
 
-    const groupResponse: GroupResponse = {
+    const groupResponse = {
       id: group._id.toString(),
       name: group.name,
       code: group.code,
       createdAt: group.createdAt.toISOString(),
       memberCount: group.members.length,
+      messages: group.messages
     }
 
-    const membersResponse: MemberResponse[] = group.members.map((member) => ({
+    const membersResponse: MemberResponse[] = group.members.map((member: any) => ({
       id: member.id,
       username: member.username,
       joinedAt: member.joinedAt.toISOString(),
     }))
 
-    const messagesResponse: MessageResponse[] = group.messages.map((message) => ({
+    const messagesResponse: MessageResponse[] = group.messages.map((message: any) => ({
       id: message.id,
       imageUrl: message.imageUrl,
       downloadUrl: message.downloadUrl,
