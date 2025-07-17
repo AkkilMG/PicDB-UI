@@ -40,7 +40,7 @@ export const enHome = {
         }
     },
     testimonials: {
-        title: ["Let's make something amazing together", "Start by", "Saving Hi"]
+        title: ["Let's make something amazing together", "Start by", "Saying Hi"]
     }
 }
 
@@ -83,7 +83,7 @@ export const esHome = {
         }
     },
     testimonials: {
-        title: ["Hagamos algo increíble juntos", "Comienza por", "Ahorra Hola"]
+        title: ["Hagamos algo increíble juntos", "Comienza por", "Diciendo Hola"]
     }
 }
 
@@ -126,7 +126,7 @@ export const ruHome = {
         }
     },
     testimonials: {
-        title: ["Давайте сделаем что-то удивительное вместе", "Начните с", "Сбережения Привет"]
+        title: ["Давайте сделаем что-то удивительное вместе", "Начните с", "Приветствия"]
     }
 }
 
@@ -169,7 +169,7 @@ export const hiHome = {
         }
     },
     testimonials: {
-        title: ["आइए कुछ अद्भुत बनाते हैं", "शुरू करें", "बचत से"]
+        title: ["आइए कुछ अद्भुत बनाते हैं", "शुरू करें", "नमस्ते कहकर"]
     }
 }
 
