@@ -63,7 +63,7 @@ export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: Gro
             </div>
           ) : (
             <div>
-              <p className="text-sm font-medium text-gray-900">{groupDetails?.name || groupName}</p>
+              <p className="text-xl font-semibold text-gray-900">{groupDetails?.name || groupName}</p>
               <p className="text-xs text-gray-500">
                 Created{" "}
                 {groupDetails?.createdAt

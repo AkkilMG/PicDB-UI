@@ -11,6 +11,8 @@ import Statistics from './statistics';
 import Joyride, { CallBackProps, STATUS } from "react-joyride";
 import { FaLightbulb } from "react-icons/fa6";
 import { dashboardSteps } from '@/config/steps.tutorial';
+import MainDashboardOverview from './overview';
+import MainDashboardFolders from './folders';
 
 export default function Dashboard() {
   const [link, setLink] = useState('');

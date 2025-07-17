@@ -130,7 +130,8 @@ export default function Statistics({text}: {text: any}) {
   };
 
   return (
-    <aside className="hidden statistics xl:block w-80 p-6 m-4 shadow-lg " style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
+    <>
+    { data.length > 0 && (<aside className="hidden statistics xl:block w-80 p-6 m-4 shadow-lg " style={{boxShadow: "-4px 0 6px -1px rgba(0, 0, 0, 0.1)"}}>
       <h2 className="text-lg font-medium text-gray-800 mb-4">{text.statistics.title}</h2>
 
       {/* Chart */}
@@ -173,6 +174,7 @@ export default function Statistics({text}: {text: any}) {
         <p className="text-sm text-gray-600">1654 files</p>
       </div>
       </div> */}
-    </aside>
+    </aside>)}
+    </>
   );
 }

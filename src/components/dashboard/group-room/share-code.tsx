@@ -21,21 +21,12 @@ interface ShareCodeProps {
 
 export function ShareCode({ groupCode, groupPassword }: ShareCodeProps) {
   const [copiedCode, setCopiedCode] = useState(false)
-  const [copiedPassword, setCopiedPassword] = useState(false)
   const [open, setOpen] = useState(false)
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(groupCode)
     setCopiedCode(true)
     setTimeout(() => setCopiedCode(false), 2000)
-  }
-
-  const handleCopyPassword = () => {
-    if (groupPassword) {
-      navigator.clipboard.writeText(groupPassword)
-      setCopiedPassword(true)
-      setTimeout(() => setCopiedPassword(false), 2000)
-    }
   }
 
   return (

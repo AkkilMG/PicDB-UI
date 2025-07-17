@@ -9,7 +9,7 @@ import { useState } from "react"
 import { ImageModal } from "./image-modal"
 
 interface ChatViewProps {
-  messages: ImageMessage[]
+  messages: any[]
   username: string
 }
 

@@ -82,7 +82,7 @@ export function GroupsList({ groups, onRemoveGroup }: GroupsListProps) {
                   <h3 className="font-semibold text-lg">{group.name}</h3>
                   <div className="flex items-center gap-1 text-sm text-gray-500">
                     <Users className="h-3 w-3" />
-                    <span>Group Chat</span>
+                    <span>Group Room</span>
                   </div>
                 </div>
               </div>

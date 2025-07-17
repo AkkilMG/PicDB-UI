@@ -55,7 +55,7 @@ export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: Join
       if (result.success) {
         toast({
           title: "Successfully joined group!",
-          description: "Welcome to the group chat.",
+          description: "Welcome to the group room.",
         })
         onSuccess(result.groupId, groupCode, password, undefined)
       } else {

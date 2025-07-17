@@ -54,9 +54,11 @@ export function GroupDashboard({
     return result
   }
 
+  console.log(groupDetails)
+
   const handleUpdateGroupName = async(newName: string) => {
     setGroupName(newName)
-    var data = await updateGroupName(groupDetails?._id, newName)
+    var data = await updateGroupName(groupDetails?.id, newName)
     if (!data.success) {
       console.error("Failed to update group name:", data.error)
       // Optionally revert the name change in UI
