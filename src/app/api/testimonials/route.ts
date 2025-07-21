@@ -29,12 +29,6 @@ export async function POST(request: NextRequest) {
     if (ratingRemainder !== 0) {
       return NextResponse.json({ error: "Rating must be in 0.25 increments" }, { status: 400 })
     }
-
-    console.log("Received testimonial:", {
-      ...testimonialData,
-      submittedAt: new Date().toISOString(),
-    })
-
     const db = await getMongoClient();
     await db.collection('testimonials').insertOne({
       ...testimonialData,

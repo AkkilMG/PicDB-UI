@@ -32,7 +32,7 @@ export default function TermsOfServicePage() {
 
                     {/* Updated Date */}
                     <p className="text-xs font-semibold uppercase text-gray-500 mb-8">
-                        Updated March 09, 2025
+                        Updated July 21, 2025
                     </p>
 
                     {/* Section */}
@@ -61,11 +61,14 @@ export default function TermsOfServicePage() {
 
                     {/* Section */}
                     <PolicyBody no={4} title="Uploaded Content & Rights" body={[
-                        "By uploading content to PicDB, you retain all ownership rights to your images. However, you grant us a limited license to store and process your images as necessary to provide our Services."
+                        "By uploading content to PicDB, you retain all ownership rights to your images. PicDB only owns the software platform itself and does not claim any ownership over user-uploaded content."
                     ]} points={[
-                        "PicDB does not claim ownership over your uploaded content.",
-                        "You are responsible for ensuring you have the rights to any uploaded content.",
-                        "You must not upload copyrighted or illegal content without permission."
+                        "PicDB does not own, claim ownership, or have any proprietary rights to your uploaded content.",
+                        "We only provide the software platform for storage and sharing services.",
+                        "You are solely responsible for ensuring you have the rights to any uploaded content.",
+                        "You must not upload copyrighted, illegal, or unauthorized content.",
+                        "If any content violates rights or laws, please contact us immediately at support@avianintek.com and we will swiftly remove it.",
+                        "Due to the anonymous nature of our platform, user tracing can be challenging, but we are committed to content removal upon legitimate requests."
                     ]} />
 
                     {/* Section */}
@@ -83,7 +86,7 @@ export default function TermsOfServicePage() {
                         "PicDB provides storage for images with encryption and security measures. However:"
                     ]} points={[
                         "We are not responsible for data loss due to unforeseen circumstances.",
-                        "Deleted images are permanently removed within 30 days.",
+                        "Deleted images are usually permanently removed within 30 days.",
                         "Users can request account deletion, which removes all associated data unless required by law."
                     ]} />
 
@@ -93,27 +96,45 @@ export default function TermsOfServicePage() {
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={8} title="Limitation of Liability" body={[
+                    <PolicyBody no={8} title="Content Responsibility & Platform Disclaimer" body={[
+                        "PicDB is a software platform only. We do not own, review, or control user-uploaded content:"
+                    ]} points={[
+                        "All uploaded content remains the sole property and responsibility of the uploader.",
+                        "PicDB acts only as a neutral technology platform providing storage and sharing services.",
+                        "We do not monitor, review, or approve content before or after upload.",
+                        "Users are fully responsible for compliance with all applicable laws regarding their content.",
+                        "If you believe content violates your rights, contact us at support@avianintek.com for swift removal.",
+                        "Due to our platform's anonymous features, user identification may be limited.",
+                        "Legal disputes regarding content should be addressed with the content owner, not PicDB.",
+                        "We will assist in legitimate content removal requests but are not liable for user-generated content."
+                    ]} />
+
+                    {/* Section */}
+                    <PolicyBody no={9} title="Limitation of Liability & Content Disclaimer" body={[
                         "PicDB and its owners, employees, and partners shall not be held liable for:"
                     ]} points={[
                         "Loss of data or service disruptions.",
                         "Unauthorized access or security breaches beyond our control.",
-                        "Any damages resulting from the use or inability to use our Services."
+                        "Any damages resulting from the use or inability to use our Services.",
+                        "Any content uploaded by users - we are not responsible for user-generated content.",
+                        "Legal issues arising from user-uploaded content as we do not own or control such content.",
+                        "Any legal actions should be directed towards the content owner, not PicDB platform.",
+                        "We will cooperate in content removal requests but cannot be held liable for user content."
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={9} title="Termination of Use" body={[
+                    <PolicyBody no={10} title="Termination of Use" body={[
                         "We reserve the right to suspend or terminate your access to PicDB if you violate these terms."
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={10} title="Changes to Terms" body={[
+                    <PolicyBody no={11} title="Changes to Terms" body={[
                         "We may update these Terms of Service from time to time. Continued use of PicDB after updates constitutes acceptance of the revised terms."
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={11} title="Contact Us" body={[
-                        "If you have questions about these Terms of Service, please contact us at support@avianintek.com."
+                    <PolicyBody no={12} title="Contact Us" body={[
+                        "If you have questions about these Terms of Service or need to report content issues, please contact us at support@avianintek.com."
                     ]} />
                 </div>
             </div>

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import type { GroupDetails } from "@/lib/types"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Users, Pencil, Check, User } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
+
 
 interface Member {
   id: string
@@ -20,11 +21,12 @@ interface GroupInfoProps {
   groupDetails: GroupDetails | any
   members?: Member[]
   onUpdateGroupName?: (newName: string) => void
+  data: any
 }
 
-export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: GroupInfoProps) {
+export function GroupInfo({ data, groupDetails, members = [], onUpdateGroupName }: GroupInfoProps) {
   const [isEditing, setIsEditing] = useState(false)
-  const [groupName, setGroupName] = useState(groupDetails?.name || "Group Room")
+  const [groupName, setGroupName] = useState(groupDetails?.name || "")
 
   const handleSaveName = () => {
     if (onUpdateGroupName && groupName.trim()) {
@@ -40,7 +42,7 @@ export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: Gro
         <CardHeader className="flex flex-row items-center justify-between">
           <CardTitle className="flex items-center gap-2">
             <Users className="h-5 w-5" />
-            Group Info
+            {data.info.title}
           </CardTitle>
           {onUpdateGroupName && !isEditing && (
             <Button variant="ghost" size="icon" onClick={() => setIsEditing(true)}>
@@ -73,11 +75,11 @@ export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: Gro
             </div>
           )}
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">Members</span>
+            <span className="text-sm text-gray-600">{data.info.members}</span>
             <Badge variant="secondary">{members.length || groupDetails?.memberCount || 1}</Badge>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">Group Code</span>
+            <span className="text-sm text-gray-600">{data.info.groupCode}</span>
             <Badge variant="outline" className="font-mono">
               {groupDetails?.code}
             </Badge>
@@ -90,7 +92,7 @@ export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: Gro
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <User className="h-5 w-5" />
-            Members ({members.length})
+            {data.info.members} ({members.length})
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -106,7 +108,7 @@ export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: Gro
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900">{member.username}</p>
                     <p className="text-xs text-gray-500">
-                      Joined {formatDistanceToNow(new Date(member.joinedAt), { addSuffix: true })}
+                      {data.info.joined} {formatDistanceToNow(new Date(member.joinedAt), { addSuffix: true })}
                     </p>
                   </div>
                 </div>
@@ -115,7 +117,7 @@ export function GroupInfo({ groupDetails, members = [], onUpdateGroupName }: Gro
           ) : (
             <div className="text-center py-4">
               <User className="h-8 w-8 mx-auto text-gray-300 mb-2" />
-              <p className="text-sm text-gray-500">No members found</p>
+              <p className="text-sm text-gray-500">{data.info.noMembers}</p>
             </div>
           )}
         </CardContent>

@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     if (!existingMember) {
       await groups.updateOne(
         { code },
-        { $push: { members: { id: uid, username, joinedAt: new Date(), } } },
+        { $push: { members: { id: uid, username, joinedAt: new Date(), } } as any },
       )
     }
 

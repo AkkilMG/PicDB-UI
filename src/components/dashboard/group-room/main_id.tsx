@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation"
 import type { ImageMessage, GroupDetails, Member } from "@/lib/types"
 import { GroupDashboard } from "./group-dashboard"
 import { fetchGroups, fetchUsername, updateGroupName } from "@/lib/group"
+import { enGroup, esGroup, ruGroup, hiGroup } from "@/config/text/group.text"
 
 export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
   const [groupDetails, setGroupDetails] = useState<GroupDetails | null>(null)
@@ -14,10 +15,34 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
   const [error, setError] = useState("")
   const [username, setUsername] = useState("")
   const [uid, setUid] = useState("") 
+  const [data, setData] = useState(enGroup)
   const router = useRouter()
   const searchParams = useSearchParams()
   const groupCode = searchParams.get("code")
   const [id, setId] = useState("")
+
+  // Language configuration
+  useEffect(() => {
+    const checkLanguage = () => {
+      const lang = localStorage.getItem("lang")
+      if (lang === "es") {
+        setData(esGroup)
+      } else if (lang === "ru") {
+        setData(ruGroup)
+      } else if (lang === "hi") {
+        setData(hiGroup)
+      } else {
+        setData(enGroup)
+      }
+    }
+
+    checkLanguage()
+    const intervalId = setInterval(checkLanguage, 2000)
+
+    return () => clearInterval(intervalId)
+  }, [])
+
+  
   useEffect(() => {
     const fetchId = async () => {
       setId((await params)?.id)
@@ -80,12 +105,12 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
           setMessages(data.messages)
           setMembers(data.members || [])
         } else {
-          setError("Invalid group or access denied")
+          setError(data.dashboard.invalidGroup)
           setTimeout(() => router.push("/dashboard/group-room"), 3000)
         }
       } catch (error) {
         console.error("Failed to fetch group details:", error)
-        setError("Failed to load group. Redirecting to home...")
+        setError(data.dashboard.failedToLoad)
         setTimeout(() => router.push("/dashboard/group-room"), 3000)
       } finally {
         setIsLoading(false)
@@ -136,10 +161,10 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="text-center max-w-sm w-full">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-          <p className="mt-4 text-lg text-gray-600">Loading group...</p>
+          <p className="mt-4 text-base sm:text-lg text-gray-600">{data.dashboard.loadingGroup}</p>
         </div>
       </div>
     )
@@ -147,16 +172,16 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <p className="text-red-500 text-lg">{error}</p>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+        <div className="text-center max-w-md w-full">
+          <p className="text-red-500 text-base sm:text-lg break-words">{error}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <GroupDashboard groupDetails={groupDetails} messages={messages} members={members} username={username}
+    <GroupDashboard data={data} groupDetails={groupDetails} messages={messages} members={members} username={username}
       groupCode={groupCode || ""} onImageUpload={handleImageUpload} onBack={() => router.push("/dashboard/group-room")} />
   )
 }

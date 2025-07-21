@@ -57,7 +57,7 @@ export async function DELETE(request: NextRequest) {
     const result = await folders.updateOne(
       { _id: new ObjectId(folderId), userId, isDeleted: false },
       {
-        $pull: { files: fileId },
+        $pull: { files: fileId } as any,
         $set: { updatedAt: new Date() },
       },
     )

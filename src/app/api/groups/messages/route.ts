@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
 
       await groupsCollection.updateOne(
         { _id: new ObjectId(groupId), code },
-        { $push: { messages: newMessage } }
+        { $push: { messages: newMessage } as any }
       );
 
 

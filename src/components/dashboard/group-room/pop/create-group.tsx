@@ -22,9 +22,10 @@ interface CreateGroupModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
   username: string
+  data: any
 }
 
-export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupModalProps) {
+export function CreateGroupModal({ data, open, onOpenChange, username }: CreateGroupModalProps) {
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -33,18 +34,20 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
   const [copiedPassword, setCopiedPassword] = useState(false)
   const [savedGroups, setSavedGroups] = useState<any[]>([])
   const [groupName, setGroupName] = useState("")
+  const [language, setLanguage] = useState("en")
 
   const router = useRouter()
+
+  // Language detection
   useEffect(() => {
-    const storedGroups = localStorage.getItem("grouproom_saved_groups")
-    if (storedGroups) {
-      try {
-        setSavedGroups(JSON.parse(storedGroups))
-      } catch (error) {
-        console.error("Error parsing saved groups:", error)
-        localStorage.removeItem("grouproom_saved_groups")
-      }
+    const checkLanguage = () => {
+      const selectedLang = localStorage.getItem("selectedLanguage") || "en"
+      setLanguage(selectedLang)
     }
+    
+    checkLanguage()
+    const interval = setInterval(checkLanguage, 2000)
+    return () => clearInterval(interval)
   }, [])
 
   
@@ -97,12 +100,12 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
           name: groupName.trim(),
         })
         toast({
-          title: "Group created successfully!",
-          description: "Share the code and password with others to let them join.",
+          title: data.modals.createGroup.successTitle,
+          description: data.modals.createGroup.successDescription,
         })
       } else {
         toast({
-          title: "Failed to create group",
+          title: data.status.error,
           description: result.error || "Please try again.",
           variant: "destructive",
         })
@@ -110,7 +113,7 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
     } catch (error) {
       console.error("Failed to create group:", error)
       toast({
-        title: "Error",
+        title: data.status.error,
         description: "Failed to create group. Please try again.",
         variant: "destructive",
       })
@@ -141,7 +144,7 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
         setTimeout(() => setCopiedPassword(false), 2000)
       }
       toast({
-        title: `${type === "code" ? "Code" : "Password"} copied!`,
+        title: `${type === "code" ? data.modals.createGroup.groupCode : data.modals.createGroup.password} ${data.modals.createGroup.copied}`,
         description: `Group ${type} has been copied to clipboard.`,
       })
     } catch (error) {
@@ -162,29 +165,29 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>{groupDetails ? "Group Created Successfully!" : "Create a New Group"}</DialogTitle>
+          <DialogTitle>{groupDetails ? data.modals.createGroup.titleSuccess : data.modals.createGroup.title}</DialogTitle>
           <DialogDescription>
             {groupDetails
-              ? "Share these credentials with others so they can join your group."
-              : `Creating group as ${username}. Set a secure password for your group.`}
+              ? data.modals.createGroup.descriptionSuccess
+              : `${data.modals.createGroup.description} ${username}.`}
           </DialogDescription>
         </DialogHeader>
 
         {!groupDetails ? (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="groupName">Group Name</Label>
+              <Label htmlFor="groupName">{data.modals.createGroup.nameLabel}</Label>
               <Input
                 id="groupName"
-                placeholder="Enter a name for your group"
+                placeholder={data.modals.createGroup.namePlaceholder}
                 value={groupName}
                 onChange={(e) => setGroupName(e.target.value)}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Group Password</Label>
+              <Label htmlFor="password">{data.modals.createGroup.passwordLabel}</Label>
               <div className="relative">
-                <Input id="password" type={showPassword ? "text" : "password"} placeholder="Create a secure password" 
+                <Input id="password" type={showPassword ? "text" : "password"} placeholder={data.modals.createGroup.passwordPlaceholder} 
                  value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <Button  type="button"  variant="ghost"  size="icon" onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent">
@@ -199,16 +202,16 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
 
             <DialogFooter>
               <Button type="button" variant="outline" onClick={handleClose}>
-                Cancel
+                {data.actions.cancel}
               </Button>
               <Button type="submit" disabled={isLoading}>
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating...
+                    {data.modals.createGroup.creating}
                   </>
                 ) : (
-                  "Create Group"
+                  data.modals.createGroup.create
                 )}
               </Button>
             </DialogFooter>
@@ -218,37 +221,27 @@ export function CreateGroupModal({ open, onOpenChange, username }: CreateGroupMo
             <div className="space-y-3">
               <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                 <div>
-                  <Label className="text-sm font-medium">Group Code</Label>
+                  <Label className="text-sm font-medium">{data.modals.createGroup.groupCode}</Label>
                   <p className="font-mono text-lg">{groupDetails.code}</p>
                 </div>
                 <Button variant="ghost" size="icon" onClick={() => copyToClipboard(groupDetails.code, "code")}>
                   {copiedCode ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
-
-              {/* <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
-                <div>
-                  <Label className="text-sm font-medium">Password</Label>
-                  <p className="font-mono text-lg">{groupDetails.password}</p>
-                </div>
-                <Button variant="ghost" size="icon" onClick={() => copyToClipboard(groupDetails.password, "password")}>
-                  {copiedPassword ? <Check className="h-4 w-4 text-green-600" /> : <Copy className="h-4 w-4" />}
-                </Button>
-              </div> */}
             </div>
 
             <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-md">
-              <p className="font-medium">Important:</p>
+              <p className="font-medium">{data.modals.createGroup.important}</p>
               <p>
-                Both the code and password are required to join the group. Make sure to share both with your friends.
+                {data.modals.createGroup.shareNote}
               </p>
             </div>
 
             <DialogFooter>
               <Button variant="outline" onClick={handleClose}>
-                Close
+                {data.actions.close}
               </Button>
-              <Button onClick={handleJoinGroup}>Enter Group</Button>
+              <Button onClick={handleJoinGroup}>{data.modals.createGroup.enterGroup}</Button>
             </DialogFooter>
           </div>
         )}

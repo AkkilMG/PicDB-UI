@@ -18,7 +18,6 @@ export function Toaster() {
   return (
     <ToastProvider>
       {toasts.map(function ({ id, title, description, action, ...props }) {
-        console.log("Rendering toast with id:", id, "title:", title, "description:", description, "action:", action)
         return (
           <Toast key={id} {...props}>
             <div className={`grid gap-1 p-4 rounded-xl`}>

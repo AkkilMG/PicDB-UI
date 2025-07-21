@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -16,15 +16,17 @@ import {
 } from "@/components/ui/dialog"
 import { Loader2, User } from "lucide-react"
 
+
 interface UsernameModalProps {
   open: boolean
   onUsernameSet: (username: string) => void
+  data: any
 }
 
-export function UsernameModal({ open, onUsernameSet }: UsernameModalProps) {
+export function UsernameModal({ data, open, onUsernameSet }: UsernameModalProps) {
   const [username, setUsername] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-
+ 
   const handleSubmit = (e: React.FormEvent) => {
     setIsLoading(false);
     e.preventDefault()
@@ -40,17 +42,17 @@ export function UsernameModal({ open, onUsernameSet }: UsernameModalProps) {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <User className="h-5 w-5" />
-            Welcome to Group Room
+            {data.modals.username.title}
           </DialogTitle>
           <DialogDescription>
-            Please enter your name to get started. This will be displayed when you share images in groups.
+            {data.modals.username.description}
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="username">Your Name</Label>
-            <Input id="username" placeholder="Enter your display name" value={username}
+            <Label htmlFor="username">{data.modals.username.nameLabel}</Label>
+            <Input id="username" placeholder={data.modals.username.namePlaceholder} value={username}
               onChange={(e) => setUsername(e.target.value)} required autoFocus />
           </div>
 
@@ -59,10 +61,10 @@ export function UsernameModal({ open, onUsernameSet }: UsernameModalProps) {
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  wait...
+                  {data.modals.username.wait}
                 </>
               ) : (
-                "Continue"
+                data.modals.username.continue
               )}
             </Button>
           </DialogFooter>

@@ -1,13 +1,14 @@
 "use client"
 
 import type { ImageMessage } from "@/lib/types"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { ImageModal } from "./image-modal"
 import { Search, Download, User, Calendar, Grid, List } from "lucide-react"
 import { format } from "date-fns"
+import { enGroup, esGroup, ruGroup, hiGroup } from "@/config/text/group.text"
 
 interface GalleryViewProps {
   messages: ImageMessage[]
@@ -17,6 +18,28 @@ export function GalleryView({ messages }: GalleryViewProps) {
   const [selectedImage, setSelectedImage] = useState<ImageMessage | null>(null)
   const [searchTerm, setSearchTerm] = useState("")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [data, setData] = useState(enGroup)
+
+  // Language configuration
+  useEffect(() => {
+    const checkLanguage = () => {
+      const lang = localStorage.getItem("lang")
+      if (lang === "es") {
+        setData(esGroup)
+      } else if (lang === "ru") {
+        setData(ruGroup)
+      } else if (lang === "hi") {
+        setData(hiGroup)
+      } else {
+        setData(enGroup)
+      }
+    }
+
+    checkLanguage()
+    const intervalId = setInterval(checkLanguage, 2000)
+
+    return () => clearInterval(intervalId)
+  }, [])
 
   const filteredMessages = messages.filter(
     (message) =>
@@ -32,7 +55,7 @@ export function GalleryView({ messages }: GalleryViewProps) {
             <Grid className="h-8 w-8 text-gray-400" />
           </div>
           <h3 className="text-lg font-medium text-gray-900 mb-2">No images in gallery</h3>
-          <p className="text-gray-500">Images shared in the chat will appear here</p>
+          <p className="text-gray-500">{data.dashboard.noImages}</p>
         </div>
       </div>
     )
@@ -47,7 +70,7 @@ export function GalleryView({ messages }: GalleryViewProps) {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <Input
-                placeholder="Search images or users..."
+                placeholder={data.gallery.searchPlaceholder}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"
@@ -56,7 +79,7 @@ export function GalleryView({ messages }: GalleryViewProps) {
           </div>
 
           <div className="flex items-center gap-2">
-            <Badge variant="secondary">{filteredMessages.length} images</Badge>
+            <Badge variant="secondary">{filteredMessages.length} {data.header.images}</Badge>
             <div className="flex border rounded-md">
               <Button
                 variant={viewMode === "grid" ? "default" : "ghost"}
@@ -83,7 +106,7 @@ export function GalleryView({ messages }: GalleryViewProps) {
       <div className="flex-1 overflow-y-auto p-4">
         {filteredMessages.length === 0 ? (
           <div className="text-center py-8">
-            <p className="text-gray-500">No images match your search</p>
+            <p className="text-gray-500">{data.gallery.noImagesMatch}</p>
           </div>
         ) : viewMode === "grid" ? (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">

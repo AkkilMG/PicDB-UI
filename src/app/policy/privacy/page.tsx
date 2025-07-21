@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Updated Date */}
                     <p className="text-xs font-semibold uppercase text-gray-500 mb-8">
-                        Updated March 09, 2025
+                        Updated July 21, 2025
                     </p>
 
                     {/* Body */}
@@ -41,8 +41,8 @@ export default function PrivacyPolicyPage() {
                     <PolicyBody no={1} title="Information We Collect and Why" body={[
                         "We collect the following information to provide, improve, secure, and enhance our Services."
                     ]} details={[
-                        { title: "Account Information", body: "When you create an account, we collect details such as:", points: ["Name", "Email address","Password (encrypted)"] },
-                        { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links"] },
+                        { title: "Account Information", body: "When you create an account, we may collect details such as:", points: ["Name", "Email address","Password (encrypted)"] },
+                        { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links", "IMPORTANT: PicDB does not own any uploaded content - we only provide the software platform", "All content ownership remains with the uploader", "We are not responsible for the content uploaded by users"] },
                         { title: "Usage Information", body: "We collect information on how you use our Services, including:", points: ["Image upload/download activity","File size and storage usage","Sharing and encryption preferences"]},
                         { title: "Device & Technical Data", body: "When you access PicDB, we may collect:", points: ["IP address", "Browser type and Device type", "Referring web pages", "Cookies and tracking technologies"] },
                         { title: "Communications & Support", body: "If you contact support, we collect the details of your request and any related correspondence to assist you better."},
@@ -103,7 +103,8 @@ export default function PrivacyPolicyPage() {
                         "<strong>Correction & Deletion:</strong> Update or correct your data or request deletion of your account.",
                         "<strong>Opt-Out:</strong> Unsubscribe from marketing communications.",
                         "<strong>Restriction:</strong> Request restrictions on how your data is processed or used.",
-                        "<strong>Request Image Removal:</strong> Users can request account deletion, which removes all associated data unless required by law."
+                        "<strong>Request Image Removal:</strong> Users can request account deletion, which removes all associated data unless required by law.",
+                        "<strong>Content Issues:</strong> If any uploaded content violates rights or laws, contact us immediately at support@avianintek.com for swift removal. Due to anonymous nature of our platform, user tracing may be challenging."
                     ]} />
 
                     {/* Section */}
@@ -115,18 +116,30 @@ export default function PrivacyPolicyPage() {
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={8} title="International Data Transfers" body={[
-                        "PicDB operates globally, but based out of India. By using our Services, you agree that your data may be stored and processed in countries where our servers or partners or service providers are located. We ensure compliance with applicable <strong>data protection laws (e.g., GDPR, CCPA).</strong> If you have questions or concerns about data transfers, please contact us."
+                    <PolicyBody no={8} title="Content Ownership & Platform Disclaimer" body={[
+                        "Important: PicDB is a software platform that provides storage and sharing services. We do not own any user-uploaded content:"
+                    ]} points={[
+                        "All uploaded content remains the sole property of the uploader.",
+                        "PicDB only owns the software platform itself, not the content stored on it.",
+                        "We are not responsible for user-generated content or its compliance with laws.",
+                        "If content violates rights or laws, contact support@avianintek.com for swift removal.",
+                        "User identification may be limited due to our platform's anonymous features.",
+                        "Legal disputes regarding content should be addressed with content owners, not PicDB."
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={9} title="Changes to This Privacy Policy" body={[
+                    <PolicyBody no={9} title="International Data Transfers" body={[
+                        "PicDB operates globally, but based out of India. By using our Services, you agree that your data may be stored and processed in countries where our servers or partners or service providers are located. We ensure compliance with applicable \"data protection laws (e.g., GDPR, CCPA).\" If you have questions or concerns about data, please contact us."
+                    ]} />
+
+                    {/* Section */}
+                    <PolicyBody no={10} title="Changes to This Privacy Policy" body={[
                         "We may update this Privacy Policy periodically. If any major changes impact your rights, we will notify you via email or through our website. Continued use of our Services means you accept the updated policy."
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={10} title="Contact Us" body={[
-                        "If you have questions or concerns about our Privacy Policy, please contact us at support@avianintek.com."
+                    <PolicyBody no={11} title="Contact Us" body={[
+                        "If you have questions or concerns about our Privacy Policy or need to report content issues, please contact us at support@avianintek.com."
                     ]} />
                 </div>
             </div>

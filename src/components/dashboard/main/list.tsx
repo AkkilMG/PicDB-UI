@@ -42,7 +42,6 @@ export default function MainDashboardList({ text, data, setId, deleteList, favor
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 overflow-x-auto w-full max-h-60 sm:max-h-58 pr-2 overflow-y-auto mr-6 scrollbar" style={{ maxHeight: "calc(100vh - 250px)", overflowY: "auto" }}>
       {data.length > 0 ? (
         data.map((file: any, index: number) => (
-          console.log(file),
           <div key={index} className="group collection-item relative bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden" onClick={() => setId(file["id"])}>
             {/* Image Thumbnail */}
             <div className="aspect-square bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center relative overflow-hidden">

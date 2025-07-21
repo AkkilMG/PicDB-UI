@@ -83,15 +83,15 @@ export default function Sidenav() {
   return (
     <>
       {/* Hamburger for mobile */}
-      <div className="md:hidden p-4 sticky flex justify-between items-center bg-white border-b shadow-sm">
+      <div className="md:hidden p-3 sm:p-4 sticky flex justify-between items-center bg-white border-b shadow-sm">
         <a draggable={false} href="/">
-          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={80} height={32} className="sm:w-[100px] sm:h-[40px]" />
         </a>
-        <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none">
+        <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none p-1">
           {isOpen ? (
-            <XMarkIcon className="h-6 w-6" />
+            <XMarkIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           ) : (
-            <Bars3Icon className="h-6 w-6" />
+            <Bars3Icon className="h-5 w-5 sm:h-6 sm:w-6" />
           )}
         </button>
       </div>
@@ -102,51 +102,53 @@ export default function Sidenav() {
       )}
 
       {/* Sidenav */}
-      <aside className={`fixed top-0 left-0 z-40 h-full w-64 bg-gray-50 p-4 border-r-2 border-gray-200 shadow-md transform transition-transform duration-300 ease-in-out
+      <aside className={`fixed top-0 left-0 z-40 h-full w-56 sm:w-64 bg-gray-50 p-3 sm:p-4 border-r-2 border-gray-200 shadow-md transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block`}>
         {/* Logo */}
-        <a draggable={false} href="/" className="ml-3 flex items-center">
-          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+        <a draggable={false} href="/" className="ml-2 sm:ml-3 flex items-center">
+          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={80} height={32} className="sm:w-[100px] sm:h-[40px]" />
         </a>
 
         {/* Navigation */}
-        <nav className="mt-4">
-          <ul className="space-y-2">
+        <nav className="mt-3 sm:mt-4">
+          <ul className="space-y-1 sm:space-y-2">
             <li>
-              <div className="flex justify-center -ml-7">
-                <div className="flex items-center rounded-lg px-3 py-2">
+              <div className="flex justify-center -ml-4 sm:-ml-7">
+                <div className="flex items-center rounded-lg px-2 sm:px-3 py-1 sm:py-2">
                   <button onClick={() => changeLanguage(1)} aria-label="Previous language"
-                    className="p-1 black hover:text-gray-800 hover:bg-gray-200 rounded transition">
-                    <ChevronLeft className="h-5 w-5" />
+                    className="p-0.5 sm:p-1 black hover:text-gray-800 hover:bg-gray-200 rounded transition">
+                    <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
-                  <span className="flex items-center justify-center mr-3 font-medium text-gray-700">
-                    <img src="/assets/icons/translation.svg" alt="Language" className="h-4 w-4 mr-2" />
-                    {Language[lang].name}
-                    <img src={Language[lang].icon} alt={Language[lang].name} className="h-6 w-6 ml-2" />
+                  <span className="flex items-center justify-center mr-2 sm:mr-3 font-medium text-gray-700 text-xs sm:text-sm">
+                    <img src="/assets/icons/translation.svg" alt="Language" className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
+                    {/* <span className="hidden xs:inline">{Language[lang].name}</span> */}
+                    {/* <span className="xs:hidden">{Language[lang].id.toUpperCase()}</span> */}
+                    <span>{Language[lang].name}</span> 
+                    <img src={Language[lang].icon} alt={Language[lang].name} className="h-4 w-4 sm:h-6 sm:w-6 ml-1 sm:ml-2" />
                   </span>
                   <button onClick={() => changeLanguage(0)} aria-label="Next language"
-                    className="p-1 text-black hover:text-gray-800 hover:bg-gray-200 rounded transition">
-                    <ChevronRight className="h-5 w-5" />
+                    className="p-0.5 sm:p-1 text-black hover:text-gray-800 hover:bg-gray-200 rounded transition">
+                    <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
                 </div>
               </div>
             </li>
             <li>
-              <a draggable={false} href="/upload" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <CloudArrowUpIcon className="h-5 w-5 mr-2" />
-                {data.upload}
+              <a draggable={false} href="/upload" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <CloudArrowUpIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.upload}</span>
               </a>
             </li>
             <li>
-              <a draggable={false} href="/dashboard" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <DashboardIcon className="h-5 w-5 mr-2" />
-                {data.dashboard}
+              <a draggable={false} href="/dashboard" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <DashboardIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.dashboard}</span>
               </a>
             </li>
             <li>
-              <a draggable={false} href="/dashboard/favorite" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <StarIcon className="h-5 w-5 mr-2" />
-                {data.favorite}
+              <a draggable={false} href="/dashboard/favorite" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <StarIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.favorite}</span>
               </a>
             </li>
             {/* <li>
@@ -156,61 +158,61 @@ export default function Sidenav() {
               </a>
             </li> */}
             <li>
-              <a draggable={false} href="/dashboard/group-room" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <FaUserGroup  className="h-5 w-5 mr-2" />
-                {data.groupRoom}
+              <a draggable={false} href="/dashboard/group-room" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <FaUserGroup  className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.groupRoom}</span>
               </a>
             </li>
             <li>
-              <a draggable={false} href="/dashboard/report" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <MdReportProblem className="h-5 w-5 mr-2" />
-                {data.report}
+              <a draggable={false} href="/dashboard/report" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <MdReportProblem className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.report}</span>
               </a>
             </li>
             <li>
-              <a draggable={false} href="/dashboard/trash" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <TrashIcon className="h-5 w-5 mr-2" />
-                {data.trash}
+              <a draggable={false} href="/dashboard/trash" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <TrashIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.trash}</span>
               </a>
             </li>
           </ul>
         </nav>
 
-        <hr className="my-2 border-gray-300" />
+        <hr className="my-2 sm:my-3 border-gray-300" />
         
-        <h1 className="ml-4 text-lg font-semibold text-gray-800 mb-4">Policies</h1>
+        <h1 className="ml-3 sm:ml-4 text-base sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-4">Policies</h1>
         <nav>
-          <ul className="space-y-2">
+          <ul className="space-y-1 sm:space-y-2">
             <li>
-              <a draggable={false} href="/policy/terms-of-service" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <MdOutlinePolicy className="h-5 w-5 mr-2" />
-                {data.termsOfService}
+              <a draggable={false} href="/policy/terms-of-service" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <MdOutlinePolicy className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.termsOfService}</span>
               </a>
             </li>
             <li>
-              <a draggable={false} href="/policy/privacy" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <MdOutlinePrivacyTip className="h-5 w-5 mr-2" />
-                {data.privacyPolicy}
+              <a draggable={false} href="/policy/privacy" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <MdOutlinePrivacyTip className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.privacyPolicy}</span>
               </a>
             </li>
             <li>
-              <a draggable={false} href="/policy/cookies" className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <LiaCookieSolid className="h-5 w-5 mr-2" />
-                {data.cookiesPolicy}
+              <a draggable={false} href="/policy/cookies" className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <LiaCookieSolid className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">{data.cookiesPolicy}</span>
               </a>
             </li>
           </ul>
         </nav>
         
-        <hr className="my-2 border-gray-300" />
+        <hr className="my-2 sm:my-3 border-gray-300" />
         
         <nav>
-          <ul className="space-y-2">
+          <ul className="space-y-1 sm:space-y-2">
             <li>
               <a draggable={false} href="/testimonials"
-                className="flex items-center rounded-lg px-4 py-2 text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white">
-                <RiChatSmileAiLine className="h-5 w-5 mr-2" />
-                Give Testimonial
+                className="flex items-center rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base font-medium hover:bg-[#7DAE78] text-gray-700 hover:text-white transition-colors duration-200">
+                <RiChatSmileAiLine className="h-4 w-4 sm:h-5 sm:w-5 mr-1.5 sm:mr-2 flex-shrink-0" />
+                <span className="truncate">Give Testimonial</span>
               </a>
             </li>
           </ul>

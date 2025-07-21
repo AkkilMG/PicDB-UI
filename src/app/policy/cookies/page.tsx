@@ -29,7 +29,7 @@ export default function CookiesPolicyPage() {
 
                     {/* Updated Date */}
                     <p className="text-xs font-semibold uppercase text-gray-500 mb-8">
-                        Updated March 09, 2025
+                        Updated July 21, 2025
                     </p>
 
                     {/* Body */}
@@ -53,16 +53,7 @@ export default function CookiesPolicyPage() {
                     ]} />
 
                     {/* Section */}
-                    <PolicyBody no={3} title="Cookies Used in PicDB" body={[
-                        "PicDB uses the following specific cookies:"
-                    ]} details={[
-                        { title: `"cookiesAccepted"`, body: "Stores your consent regarding our use of cookies." },
-                        { title: `"links"`, body: "Tracks the links you visit for analytics and personalized recommendations." },
-                        { title: `"policyAccepted"`, body: "Remembers whether you have accepted our policies." }
-                    ]} />
-
-                    {/* Section */}
-                    <PolicyBody no={4} title="How to Manage Cookies" body={[
+                    <PolicyBody no={3} title="How to Manage Cookies" body={[
                         "You can control and manage cookies through your browser settings. Most browsers allow you to:"
                     ]} points={[
                         "View and delete stored cookies.",
@@ -75,8 +66,18 @@ export default function CookiesPolicyPage() {
                     </p>
 
                     {/* Section */}
-                    <PolicyBody no={5} title="Third-Party Cookies" body={[
+                    <PolicyBody no={4} title="Third-Party Cookies" body={[
                         "We may use third-party services that set their own cookies, such as analytics and advertising providers."
+                    ]} />
+
+                    {/* Section */}
+                    <PolicyBody no={5} title="Content Disclaimer" body={[
+                        "Important: PicDB is a software platform only. We do not own or control user-uploaded content:"
+                    ]} points={[
+                        "All uploaded content remains the property of the uploader.",
+                        "PicDB is not responsible for user-generated content.",
+                        "For content issues, contact support@avianintek.com for swift removal.",
+                        "Legal disputes regarding content should be addressed with content owners, not PicDB platform."
                     ]} />
 
                     {/* Section */}
@@ -86,7 +87,7 @@ export default function CookiesPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={7} title="Contact Us" body={[
-                        "If you have any questions about our Cookies Policy, contact us at support@avianintek.com."
+                        "If you have any questions about our Cookies Policy or need to report content issues, contact us at support@avianintek.com."
                     ]} />
                 </div>
             </div>

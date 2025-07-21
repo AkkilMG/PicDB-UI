@@ -16,7 +16,7 @@ export async function POST(request: NextRequest) {
       messages: { $size: 0 },
     })
 
-    console.log(`Cleaned up ${result.deletedCount} inactive groups`)
+    // console.log(`Cleaned up ${result.deletedCount} inactive groups`)
 
     return NextResponse.json({
       success: true,

@@ -22,13 +22,15 @@ interface JoinGroupModalProps {
   onOpenChange: (open: boolean) => void
   onSuccess: (groupId: string, groupCode: string, password: string, groupName?: string) => void
   username: string
+  data: any
 }
 
-export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: JoinGroupModalProps) {
+export function JoinGroupModal({ data, open, onOpenChange, onSuccess, username }: JoinGroupModalProps) {
   const [groupCode, setGroupCode] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -88,16 +90,16 @@ export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: Join
     <Dialog open={open} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle>Join an Existing Group</DialogTitle>
-          <DialogDescription>Joining as {username}. Enter the group code and password to join.</DialogDescription>
+          <DialogTitle>{data.modals.joinGroup.title}</DialogTitle>
+          <DialogDescription>{data.modals.joinGroup.description.replace("{username}", username)}</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="groupCode">Group Code</Label>
+            <Label htmlFor="groupCode">{data.modals.joinGroup.codeLabel}</Label>
             <Input
               id="groupCode"
-              placeholder="Enter 6-character group code"
+              placeholder={data.modals.joinGroup.codePlaceholder}
               value={groupCode}
               onChange={(e) => setGroupCode(e.target.value.toUpperCase())}
               maxLength={6}
@@ -107,12 +109,12 @@ export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: Join
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password">Group Password</Label>
+            <Label htmlFor="password">{data.modals.joinGroup.passwordLabel}</Label>
             <div className="relative">
               <Input
                 id="password"
                 type={showPassword ? "text" : "password"}
-                placeholder="Enter group password"
+                placeholder={data.modals.joinGroup.passwordPlaceholder}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -135,16 +137,16 @@ export function JoinGroupModal({ open, onOpenChange, onSuccess, username }: Join
 
           <DialogFooter>
             <Button type="button" variant="outline" onClick={handleClose}>
-              Cancel
+              {data.modals.joinGroup.cancel}
             </Button>
             <Button type="submit" disabled={isLoading}>
               {isLoading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Joining...
+                 {data.modals.joinGroup.joining}
                 </>
               ) : (
-                "Join Group"
+                <>{data.modals.joinGroup.join}</>
               )}
             </Button>
           </DialogFooter>
