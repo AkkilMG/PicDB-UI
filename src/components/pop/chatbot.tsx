@@ -19,11 +19,10 @@ interface Message {
 const predefinedQuestions = [
   "What is picdb?",
   "Why is it free?",
-  "How to get started with picdb?",
-  "How to upload?",
-  "How to navigate to the upload?",
-  "How to download?",
-  "How to use group room feature?",
+  // "How to upload?",
+  // "How to navigate to the upload?",
+  // "How to download?",
+  // "How to use group room feature?",
 ]
 
 export default function ChatBot() {
@@ -107,8 +106,7 @@ export default function ChatBot() {
     } else {
       // For other questions, redirect to docs
       var action = "docs";
-      if (question === "How to get started with picdb?") action = "docs_getting_started"
-      else if (question === "How to upload?") action = "docs_how_to_upload"
+      if (question === "How to upload?") action = "docs_how_to_upload"
       else if (question === "How to navigate to the upload?") action = "docs_navigation_guide"
       else if (question === "How to download?") action = "docs_how_to_download"
       else if (question === "How to use group room feature?") action = "docs_group_rooms"
@@ -128,8 +126,6 @@ export default function ChatBot() {
   const handleButtonClick = (action: string) => {
     if (action === "docs") {
       window.location.href = "/docs"
-    } else if (action === "docs_getting_started") {
-      window.location.href = "/docs/getting-started"
     } else if (action === "docs_how_to_upload") {
       window.location.href = "/docs/how-to-upload"
     } else if (action === "docs_how_to_download") {

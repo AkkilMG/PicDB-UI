@@ -5,22 +5,6 @@ import { ArrowRight, Book, Upload, Download, Users, Navigation, HelpCircle, Spar
 
 const docsSections = [
   {
-    id: "what-is-picdb",
-    title: "What is PicDB?",
-    description: "Learn about PicDB and its core features",
-    icon: <Book className="w-6 h-6" />,
-    href: "/docs/what-is-picdb",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    id: "getting-started",
-    title: "Getting Started",
-    description: "Quick start guide to using PicDB",
-    icon: <HelpCircle className="w-6 h-6" />,
-    href: "/docs/getting-started",
-    color: "from-green-500 to-emerald-500",
-  },
-  {
     id: "how-to-upload",
     title: "How to Upload",
     description: "Step-by-step guide to uploading images",
@@ -104,7 +88,7 @@ export default function DocsPage() {
                   asChild
                   className="bg-white text-blue-600 hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg"
                 >
-                  <Link href="/docs/getting-started">
+                  <Link href="/docs/how-to-upload">
                     Get Started <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>

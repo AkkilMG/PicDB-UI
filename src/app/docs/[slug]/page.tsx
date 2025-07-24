@@ -27,14 +27,14 @@ const docsData: Record<string, DocData> = {
         type: "step",
         content: {
           stepNumber: 1,
-          title: "Access the Upload Area",
-          description:
-            "Navigate to your dashboard and locate the upload section. You'll see a prominent upload button in the navigation bar.",
-          image: "/placeholder.svg?height=400&width=600",
+          title: "Navigate to Upload",
+          description: "First, you need to get to the upload page. If you're on the home page, click on \"Upload\" button. If you're in dashboard, navigate to side nav and click on Upload to go to upload page.",
+          image: "/placeholder.svg?height=400&width=600&text=Home+Page+Upload+Button",
           tips: [
-            "Look for the cloud upload icon",
-            "The upload area is highlighted in blue",
-            "You can also use the keyboard shortcut Ctrl+U",
+            "From home page: Look for the Upload button",
+            "From dashboard: Check the side navigation",
+            "Upload button is usually highlighted in blue",
+            "Look for cloud or upload icons",
           ],
         },
       },
@@ -42,14 +42,14 @@ const docsData: Record<string, DocData> = {
         type: "step",
         content: {
           stepNumber: 2,
-          title: "Choose Your Upload Method",
-          description:
-            "PicDB offers two convenient ways to upload your images. Choose the method that works best for you.",
-          image: "/placeholder.svg?height=400&width=600",
+          title: "Access Upload Zone",
+          description: "Once you're on the upload page, you'll see the upload zone. You can click on the upload zone to browse and select images from your device.",
+          image: "/placeholder.svg?height=400&width=600&text=Upload+Zone+Click+Area",
           tips: [
-            "Drag & drop is faster for multiple files",
-            "File browser gives you more control",
-            "Both methods support batch uploads",
+            "Click anywhere in the upload zone area",
+            "Look for 'Choose Files' or 'Browse' text",
+            "The zone is usually highlighted with a dashed border",
+            "File browser will open when you click",
           ],
         },
       },
@@ -57,14 +57,14 @@ const docsData: Record<string, DocData> = {
         type: "step",
         content: {
           stepNumber: 3,
-          title: "Drag and Drop Method",
-          description:
-            "Simply drag your image files from your computer and drop them into the designated upload area. Watch as they're automatically processed.",
-          image: "/placeholder.svg?height=400&width=600",
+          title: "Drag and Drop Alternative",
+          description: "Alternatively, you can drag and drop images directly into the upload zone. This is often faster for multiple files.",
+          image: "/placeholder.svg?height=400&width=600&text=Drag+and+Drop+Demo",
           tips: [
-            "Supported formats: JPEG, PNG, GIF, WebP, TIFF, BMP",
-            "Maximum file size: 50MB per image",
-            "You can drop multiple files at once",
+            "Drag files from your computer",
+            "Drop them anywhere in the upload zone",
+            "Works with multiple files at once",
+            "Supported formats: JPEG, PNG, GIF, WebP",
           ],
         },
       },
@@ -72,44 +72,14 @@ const docsData: Record<string, DocData> = {
         type: "step",
         content: {
           stepNumber: 4,
-          title: "File Browser Method",
-          description:
-            "Click the 'Choose Files' button to open your system's file browser. Select one or multiple images and click 'Open'.",
-          image: "/placeholder.svg?height=400&width=600",
+          title: "Upload Complete",
+          description: "That's it! You have uploaded your images and can now access them with a link or through the dashboard to view all uploaded images.",
+          image: "/placeholder.svg?height=400&width=600&text=Uploaded+Images+in+Dashboard",
           tips: [
-            "Hold Ctrl/Cmd to select multiple files",
-            "Use Shift to select a range of files",
-            "Preview thumbnails before uploading",
-          ],
-        },
-      },
-      {
-        type: "step",
-        content: {
-          stepNumber: 5,
-          title: "Monitor Upload Progress",
-          description:
-            "Watch the real-time progress bar as your images are uploaded. You can continue using PicDB while uploads happen in the background.",
-          image: "/placeholder.svg?height=400&width=600",
-          tips: [
-            "Green checkmarks indicate successful uploads",
-            "Red indicators show failed uploads",
-            "You can retry failed uploads instantly",
-          ],
-        },
-      },
-      {
-        type: "step",
-        content: {
-          stepNumber: 6,
-          title: "Organize Your Images",
-          description:
-            "Once uploaded, add tags, descriptions, and organize your images into collections for easy retrieval later.",
-          image: "/placeholder.svg?height=400&width=600",
-          tips: [
-            "Use descriptive tags for better searchability",
-            "Create collections for different projects",
-            "Add alt text for accessibility",
+            "Images are now stored in your account",
+            "Access them through your dashboard",
+            "Share them using generated links",
+            "Organize them into folders if needed",
           ],
         },
       },
@@ -254,92 +224,177 @@ const docsData: Record<string, DocData> = {
   },
   "navigation-guide": {
     title: "Navigation Guide",
-    description: "Navigate through PicDB like a pro",
+    description: "Interactive guide to navigating PicDB",
+    isInteractive: true,
     content: [
       {
-        type: "text",
-        content: "Master PicDB's interface with this comprehensive navigation guide.",
+        type: "step",
+        content: {
+          stepNumber: 1,
+          title: "Access from Home Page",
+          description: "If you're on the home page, look for the prominent Upload button. It's usually positioned in the main navigation or as a call-to-action button.",
+          image: "/placeholder.svg?height=400&width=600&text=Home+Page+Upload+Button+Location",
+          tips: [
+            "The Upload button is typically highlighted in blue",
+            "Look for upload or cloud icons",
+            "It may be in the top navigation bar",
+          ],
+        },
       },
       {
-        type: "heading",
-        content: "Main Navigation",
+        type: "step",
+        content: {
+          stepNumber: 2,
+          title: "Navigate from Dashboard",
+          description: "When you're in the dashboard, locate the side navigation panel and click on the Upload option to access the upload page.",
+          image: "/placeholder.svg?height=400&width=600&text=Dashboard+Side+Navigation+Upload",
+          tips: [
+            "Side navigation is usually on the left side",
+            "Look for an upload or plus icon",
+            "The upload option may be labeled as 'Add Images' or 'Upload'",
+          ],
+        },
       },
       {
-        type: "list",
-        content: [
-          "Dashboard: Your main hub for recent activity",
-          "Gallery: Browse all your images",
-          "Upload: Add new images to your collection",
-          "Groups: Access shared group rooms",
-          "Settings: Manage your account preferences",
-        ],
+        type: "step",
+        content: {
+          stepNumber: 3,
+          title: "Main Dashboard Navigation",
+          description: "Explore the main navigation options in your dashboard including Gallery, Groups, and Settings.",
+          image: "/placeholder.svg?height=400&width=600&text=Main+Dashboard+Navigation",
+          tips: [
+            "Dashboard: Your main hub for recent activity",
+            "Gallery: Browse all your images",
+            "Groups: Access shared group rooms",
+            "Settings: Manage your account preferences",
+          ],
+        },
       },
       {
-        type: "heading",
-        content: "Search and Filters",
+        type: "step",
+        content: {
+          stepNumber: 4,
+          title: "Search and Filters",
+          description: "Learn how to use the search bar and filters to find images by name, tags, or metadata. Apply filters for date, size, format, and more.",
+          image: "/placeholder.svg?height=400&width=600&text=Search+and+Filter+Interface",
+          tips: [
+            "Use the search bar at the top of the page",
+            "Apply multiple filters for better results",
+            "Save your frequent searches for quick access",
+          ],
+        },
       },
       {
-        type: "text",
-        content:
-          "Use the search bar to find images by name, tags, or metadata. Apply filters for date, size, format, and more.",
-      },
-      {
-        type: "heading",
-        content: "Keyboard Shortcuts",
-      },
-      {
-        type: "list",
-        content: [
-          "Ctrl/Cmd + U: Quick upload",
-          "Ctrl/Cmd + F: Focus search",
-          "Space: Preview selected image",
-          "Arrow keys: Navigate between images",
-        ],
+        type: "step",
+        content: {
+          stepNumber: 5,
+          title: "Keyboard Shortcuts",
+          description: "Master these keyboard shortcuts to navigate PicDB more efficiently and save time.",
+          image: "/placeholder.svg?height=400&width=600&text=Keyboard+Shortcuts+Guide",
+          tips: [
+            "Ctrl/Cmd + U: Quick upload",
+            "Ctrl/Cmd + F: Focus search",
+            "Space: Preview selected image",
+            "Arrow keys: Navigate between images",
+          ],
+        },
       },
     ],
   },
   "group-rooms": {
     title: "Group Room Features",
-    description: "Collaborate with others using group rooms",
+    description: "Interactive guide to using group rooms",
+    isInteractive: true,
     content: [
       {
-        type: "text",
-        content: "Group rooms allow you to collaborate with team members, share images, and work together on projects.",
+        type: "step",
+        content: {
+          stepNumber: 1,
+          title: "Understanding Group Rooms",
+          description: "Group rooms allow you to collaborate with team members, share images, and work together on projects. They're perfect for creative teams, event planning, and collaborative projects.",
+          image: "/placeholder.svg?height=400&width=600&text=Group+Rooms+Overview",
+          tips: [
+            "Group rooms are shared spaces for teams",
+            "Each room can have multiple members",
+            "Images are shared across all group members",
+            "Perfect for project collaboration",
+          ],
+        },
       },
       {
-        type: "heading",
-        content: "Creating a Group Room",
+        type: "step",
+        content: {
+          stepNumber: 2,
+          title: "Navigate to Groups Section",
+          description: "First, you need to navigate to the Groups section in your dashboard. Look for the Groups menu item in your main navigation.",
+          image: "/placeholder.svg?height=400&width=600&text=Groups+Section+Navigation",
+          tips: [
+            "Groups section is in the main navigation",
+            "Look for a group or people icon",
+            "May be labeled as 'Teams' or 'Collaboration'",
+            "Usually located in the sidebar",
+          ],
+        },
       },
       {
-        type: "list",
-        content: [
-          "Navigate to the Groups section",
-          "Click 'Create New Group'",
-          "Enter group name and description",
-          "Set privacy settings (public/private)",
-          "Invite members via email",
-        ],
+        type: "step",
+        content: {
+          stepNumber: 3,
+          title: "Create New Group",
+          description: "Click the 'Create New Group' button to start setting up your collaborative space. This will open the group creation form.",
+          image: "/placeholder.svg?height=400&width=600&text=Create+New+Group+Button",
+          tips: [
+            "Look for a prominent 'Create' or '+' button",
+            "May be labeled as 'New Group' or 'Add Group'",
+            "Usually positioned at the top of the groups page",
+            "Some platforms use a floating action button",
+          ],
+        },
       },
       {
-        type: "heading",
-        content: "Group Permissions",
+        type: "step",
+        content: {
+          stepNumber: 4,
+          title: "Configure Group Settings",
+          description: "Fill in the group name, description, and configure privacy settings. You can set the group as public or private, and decide who can join.",
+          image: "/placeholder.svg?height=400&width=600&text=Group+Creation+Form",
+          tips: [
+            "Choose a descriptive group name",
+            "Add a clear description of the group's purpose",
+            "Set privacy settings carefully",
+            "Consider who should have access",
+          ],
+        },
       },
       {
-        type: "list",
-        content: [
-          "Admin: Full control over group settings",
-          "Editor: Can upload, edit, and delete images",
-          "Viewer: Can only view and download images",
-          "Guest: Limited viewing access",
-        ],
+        type: "step",
+        content: {
+          stepNumber: 5,
+          title: "Invite Members",
+          description: "Add team members to your group by inviting them via email. You can set different permission levels for each member.",
+          image: "/placeholder.svg?height=400&width=600&text=Invite+Members+Interface",
+          tips: [
+            "Send invites via email addresses",
+            "Set appropriate permission levels",
+            "You can add members later too",
+            "Members will receive email notifications",
+          ],
+        },
       },
       {
-        type: "text",
-        content: "Group rooms are perfect for creative teams, event planning, and collaborative projects.",
-      },
-      {
-        type: "button",
-        content: { text: "Back to Documentation", href: "/docs" },
+        type: "step",
+        content: {
+          stepNumber: 6,
+          title: "Manage Group Permissions",
+          description: "Understand and configure the different permission levels: Admin (full control), Editor (upload/edit/delete), Viewer (view/download only), and Guest (limited access).",
+          image: "/placeholder.svg?height=400&width=600&text=Group+Permissions+Settings",
+          tips: [
+            "Admin: Full control over group settings",
+            "Editor: Can upload, edit, and delete images",
+            "Viewer: Can only view and download images",
+            "Guest: Limited viewing access",
+          ],
+        },
       },
     ],
   },
@@ -469,9 +524,7 @@ export default async function DocPage({ params }: PageProps) {
 
       case "step":
         return (
-          <div
-            key={index}
-            className="mb-8 p-6 rounded-lg shadow-md bg-white animate-in fade-in slide-in-from-bottom-4 duration-700"
+          <div key={index} className="mb-8 p-6 rounded-lg shadow-md bg-white animate-in fade-in slide-in-from-bottom-4 duration-700"
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <h3 className="text-xl font-semibold text-blue-700 mb-2">
