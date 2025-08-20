@@ -62,7 +62,7 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
             <div className="bg-white p-2 rounded-lg w-full px-5">
               <div className="flex items-center justify-between p-4">
                 <h2 className="text-xl font-semibold">
-                  {title}
+                  {title.length > 20 ? title.substring(0, 20) + '...' : title}
                   <button className="ml-2 bg-green-300 text-white uppercase px-2 rounded text-base">
                     {title.split('.').pop()}
                   </button>

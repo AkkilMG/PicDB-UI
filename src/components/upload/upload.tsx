@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import Message from "../pop/message"
 import DropUpload from "./drop_upload"
 import Joyride, { type CallBackProps, STATUS } from "react-joyride"
@@ -30,6 +30,17 @@ export default function Upload({
   const [isClient, setIsClient] = useState(false)
   const [stepIndex, setStepIndex] = useState(0)
   const [drawerOpen, setDrawerOpen] = useState(true)
+  const [isMobile, setIsMobile] = useState(true)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
 
   useEffect(() => {
     setIsClient(true)
@@ -331,7 +342,7 @@ export default function Upload({
                         </div>
                         <div className="flex flex-col w-full">
                           <span id="filename" className="text-gray-700 font-medium text-sm sm:text-base">
-                            {file.name}
+                            {file.name.length > (isMobile ? 10 : 40) ? file.name.substring(0, (isMobile ? 10 : 40)) + '...' : file.name}
                             <button className="mt-1 ml-2 bg-blue-500 text-white uppercase px-2 rounded text-sm">
                               {file.progress === 100 ? "Done" : "Wait.."}
                             </button>
@@ -369,7 +380,7 @@ export default function Upload({
                           </div>
                           <div className="flex flex-col">
                             <span className="text-gray-700 font-medium text-sm sm:text-base">
-                              {file.title}
+                              {file.title.length > (isMobile ? 10 : 40) ? file.title.substring(0, (isMobile ? 10 : 40)) + '...' : file.title}
                               <button className="mt-1 py-0 ml-2 bg-green-500 text-white uppercase px-2 rounded text-sm"
                                 onClick={(e) => {
                                   e.stopPropagation()

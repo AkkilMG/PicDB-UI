@@ -34,7 +34,6 @@ export default function HeroSection({testimonialsData}: {testimonialsData: any})
   }, []);
 
   useEffect(() => {
-    device == "" && window.innerWidth < 600 ? setDevice("assets/images/computer.png") : setDevice("assets/images/mobile.png");
     const handleResize = () => {
       if (window.innerWidth < 600) {
         setDevice("assets/images/computer.png");
@@ -55,7 +54,7 @@ export default function HeroSection({testimonialsData}: {testimonialsData: any})
       window.removeEventListener("resize", size);
     };
 
-  });
+  }, []);
 
   return (
     <section className="relative bg-black text-white min-h-screen overflow-hidden">
@@ -120,7 +119,7 @@ export default function HeroSection({testimonialsData}: {testimonialsData: any})
         </div>
 
 
-        <div className="absolute bottom-[12%] hidden lg:block xl:block bottom-1/2 lg:left-14 xl:left-28 z-10">
+        <div className="absolute bottom-[12%] hidden lg:block xl:block lg:left-14 xl:left-28 z-10">
           <div className="relative bg-blue-500 rounded-md py-2 px-4 flex items-center">
             <div className="h-16 w-16 rounded-full overflow-hidden flex items-center justify-center">
               <img draggable={false} src="/assets/icons/Etherea.webp" width={32} height={32} alt="Etherea" />
@@ -156,7 +155,7 @@ export default function HeroSection({testimonialsData}: {testimonialsData: any})
           </div>
         </div> */}
 
-        <div className="absolute bottom-1/4 hidden lg:block xl:block bottom-1/2 lg:right-6 xl:right-20 z-10">
+        <div className="absolute bottom-1/4 hidden lg:block xl:block lg:right-6 xl:right-20 z-10">
           <div className='min-w-[300px] max-w-xs flex-shrink-0 -p-2'>
             <HeroTestimonialCard testimonial={testimonialsData[1]} />
           </div>
@@ -164,8 +163,8 @@ export default function HeroSection({testimonialsData}: {testimonialsData: any})
 
 
         {/* Device Image */}
-        <div className={`absolute -mt-19 bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${windowWidth < 600 ? "w-[400px] lg:w-[420px] xl:w-[440px]" : "w-[338px] lg:w-[350px] xl:w-[380px]"}`}>
-          <img draggable={false} alt="Device" width={6000} height={10000} src={device} />
+        <div className={`absolute -mt-[62vh] bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${windowWidth < 600 ? "w-[400px] lg:w-[420px] xl:w-[440px]" : "w-[338px] lg:w-[350px] xl:w-[380px]"}`}>
+          <img draggable={false} alt="Device" width={500} height={278} src={device} />
         </div>
       </div>
     </section>

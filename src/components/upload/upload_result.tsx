@@ -80,7 +80,7 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
                 <div className="flex items-center justify-center transition-all duration-300 ease-in-out">
                     <div className="bg-white p-2 rounded-lg relative transform w-full">
                         <div className="flex items-center justify-between p-4">
-                            <h2 className="text-xl font-semibold">{title} <button className='ml-2 bg-green-300 text-white uppercase px-2 rounded text-base'>{title.split('.').pop()}</button></h2>
+                            <h2 className="text-xl font-semibold">{title.length > 50 ? title.substring(0, 50) + '...' : title} <button className='ml-2 bg-green-300 text-white uppercase px-2 rounded text-base'>{title.split('.').pop()}</button></h2>
                             <button onClick={() => close.setClose(true)} className="text-red-500 hover:text-red-700">{data.close}</button>
                         </div>
                         <div className="bg-white w-full max-w-7xl relative transform transition-all duration-300 ease-in-out">
@@ -155,7 +155,7 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
                                             <div className="flex-grow h-0.5 bg-gray-300"></div>
                                         </div>
                                         <div className="flex items-center justify-center border border-grey-400 rounded-md relative w-fit overflow-hidden m-5 p-1">
-                                            { link && (<img draggable={false} src={link || "assets/icons/error.png"} alt="Image" className="w-64 h-auto object-cover"/>) }
+                                            { link && (<img draggable={false} src={link || "assets/icons/error.png"} alt="Image" className="w-64 max-h-[50vh] object-cover"/>) }
                                         </div>
                                     </div>
                                     <div className="mb-4">
