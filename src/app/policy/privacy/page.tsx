@@ -34,7 +34,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Body */}
                     <p className="mb-8">
-                    Thank you for using <strong>PicDB! At AvianInTek</strong>, we are committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your personal data when you use our website, software, and services ("Services").
+                    Thank you for using <strong>PicDB! At Arkynox</strong>, we are committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your personal data when you use our website, software, and services ("Services").
                     </p>
 
                     {/* Section */}
@@ -104,7 +104,7 @@ export default function PrivacyPolicyPage() {
                         "<strong>Opt-Out:</strong> Unsubscribe from marketing communications.",
                         "<strong>Restriction:</strong> Request restrictions on how your data is processed or used.",
                         "<strong>Request Image Removal:</strong> Users can request account deletion, which removes all associated data unless required by law.",
-                        "<strong>Content Issues:</strong> If any uploaded content violates rights or laws, contact us immediately at support@avianintek.com for swift removal. Due to anonymous nature of our platform, user tracing may be challenging."
+                        "<strong>Content Issues:</strong> If any uploaded content violates rights or laws, contact us immediately at support@arkynox.com for swift removal. Due to anonymous nature of our platform, user tracing may be challenging."
                     ]} />
 
                     {/* Section */}
@@ -122,7 +122,7 @@ export default function PrivacyPolicyPage() {
                         "All uploaded content remains the sole property of the uploader.",
                         "PicDB only owns the software platform itself, not the content stored on it.",
                         "We are not responsible for user-generated content or its compliance with laws.",
-                        "If content violates rights or laws, contact support@avianintek.com for swift removal.",
+                        "If content violates rights or laws, contact support@arkynox.com for swift removal.",
                         "User identification may be limited due to our platform's anonymous features.",
                         "Legal disputes regarding content should be addressed with content owners, not PicDB."
                     ]} />
@@ -139,7 +139,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={11} title="Contact Us" body={[
-                        "If you have questions or concerns about our Privacy Policy or need to report content issues, please contact us at support@avianintek.com."
+                        "If you have questions or concerns about our Privacy Policy or need to report content issues, please contact us at support@arkynox.com."
                     ]} />
                 </div>
             </div>

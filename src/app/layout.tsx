@@ -60,12 +60,12 @@ export default function RootLayout({
         <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" />
 
         <meta name="title" content="PicDB - Free Picture Storage" />
-        <meta name="description" content="PicDB is a free, anonymously and fast picture storage web application built by AvianInTek. Store, organize, and access your images easily from any device." />
-        <meta name="keywords" content="AvianInTek, AvianInTek website, Akkil M G, Srujan Rai, Saiesh Savant, Aman Shetty, Mangalore, Mangaluru, Karnataka, India, Indian tech, PicDB, PicDB by AvianInTek, PicDB website, PicDB app, PicDB image storage, PicDB picture storage, PicDB photo storage, PicDB secure photo storage, PicDB free picture storage, PicDB free image storage, PicDB free photo storage, akkil, akkilmg, free, image, storage, freemium, anonymous, picture storage, image storage, photo storage, secure photo storage, Next.js, PicDB, AvianInTek" />
-        <meta name="author" content="AvianInTek" />
+        <meta name="description" content="PicDB is a free, anonymously and fast picture storage web application built by Arkynox. Store, organize, and access your images easily from any device." />
+        <meta name="keywords" content="Arkynox, Arkynox website, Akkil M G, Srujan Rai, Saiesh Savant, Aman Shetty, Mangalore, Mangaluru, Karnataka, India, Indian tech, PicDB, PicDB by Arkynox, PicDB website, PicDB app, PicDB image storage, PicDB picture storage, PicDB photo storage, PicDB secure photo storage, PicDB free picture storage, PicDB free image storage, PicDB free photo storage, akkil, akkilmg, free, image, storage, freemium, anonymous, picture storage, image storage, photo storage, secure photo storage, Next.js, PicDB, Arkynox" />
+        <meta name="author" content="Arkynox" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://picdb.avianintek.com/" />
+        <meta property="og:url" content="https://picdb.arkynox.com/" />
         <meta property="og:title" content="PicDB - Free Picture Storage" />
         <meta property="og:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
         <meta property="og:image" content="/assets/seo/website.png" />

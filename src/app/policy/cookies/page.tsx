@@ -76,7 +76,7 @@ export default function CookiesPolicyPage() {
                     ]} points={[
                         "All uploaded content remains the property of the uploader.",
                         "PicDB is not responsible for user-generated content.",
-                        "For content issues, contact support@avianintek.com for swift removal.",
+                        "For content issues, contact support@arkynox.com for swift removal.",
                         "Legal disputes regarding content should be addressed with content owners, not PicDB platform."
                     ]} />
 
@@ -87,7 +87,7 @@ export default function CookiesPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={7} title="Contact Us" body={[
-                        "If you have any questions about our Cookies Policy or need to report content issues, contact us at support@avianintek.com."
+                        "If you have any questions about our Cookies Policy or need to report content issues, contact us at support@arkynox.com."
                     ]} />
                 </div>
             </div>

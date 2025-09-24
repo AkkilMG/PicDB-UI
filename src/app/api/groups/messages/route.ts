@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     const uploadFormData = new FormData()
     uploadFormData.append("file", file)
 
-    const response = await axios.post("https://picdb.avianintek.workers.dev/upload", uploadFormData, {
+    const response = await axios.post("https://picdb-api.arkynox.com/upload", uploadFormData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

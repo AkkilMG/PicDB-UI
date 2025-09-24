@@ -67,7 +67,7 @@ export default function TermsOfServicePage() {
                         "We only provide the software platform for storage and sharing services.",
                         "You are solely responsible for ensuring you have the rights to any uploaded content.",
                         "You must not upload copyrighted, illegal, or unauthorized content.",
-                        "If any content violates rights or laws, please contact us immediately at support@avianintek.com and we will swiftly remove it.",
+                        "If any content violates rights or laws, please contact us immediately at support@arkynox.com and we will swiftly remove it.",
                         "Due to the anonymous nature of our platform, user tracing can be challenging, but we are committed to content removal upon legitimate requests."
                     ]} />
 
@@ -103,7 +103,7 @@ export default function TermsOfServicePage() {
                         "PicDB acts only as a neutral technology platform providing storage and sharing services.",
                         "We do not monitor, review, or approve content before or after upload.",
                         "Users are fully responsible for compliance with all applicable laws regarding their content.",
-                        "If you believe content violates your rights, contact us at support@avianintek.com for swift removal.",
+                        "If you believe content violates your rights, contact us at support@arkynox.com for swift removal.",
                         "Due to our platform's anonymous features, user identification may be limited.",
                         "Legal disputes regarding content should be addressed with the content owner, not PicDB.",
                         "We will assist in legitimate content removal requests but are not liable for user-generated content."
@@ -134,7 +134,7 @@ export default function TermsOfServicePage() {
 
                     {/* Section */}
                     <PolicyBody no={12} title="Contact Us" body={[
-                        "If you have questions about these Terms of Service or need to report content issues, please contact us at support@avianintek.com."
+                        "If you have questions about these Terms of Service or need to report content issues, please contact us at support@arkynox.com."
                     ]} />
                 </div>
             </div>

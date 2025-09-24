@@ -68,7 +68,7 @@ Want to contribute or run PicDB locally? Follow these steps:
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/AvianInTek/picdb.git
+git clone https://github.com/Arkynox/picdb.git
 
 # Navigate to the project directory
 cd picdb
@@ -100,8 +100,8 @@ We ❤️ contributions! If you’ve got a feature request, bug report, or impro
 
 ## 💬 Community & Support
 
-- **Issues**: Found a bug? Raise an [Issue](https://github.com/AvianInTek/picdb/issues).
-- **Feature Requests**: We’re always open to new ideas. [Ping us here](https://github.com/AvianInTek/PicDB-UI/issues/1)
+- **Issues**: Found a bug? Raise an [Issue](https://github.com/Arkynox/picdb/issues).
+- **Feature Requests**: We’re always open to new ideas. [Ping us here](https://github.com/Arkynox/PicDB-UI/issues/1)
 - **General Queries**: Contact us through the [support page](https://t.me/HeimanCreatiin).
 
 ---

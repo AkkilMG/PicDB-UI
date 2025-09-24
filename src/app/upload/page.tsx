@@ -96,7 +96,7 @@ export default function UploadPage() {
             };
 
             await axios
-                .post('https://picdb.avianintek.workers.dev/upload', formData, config)
+                .post('https://picdb-api.arkynox.com/upload', formData, config)
                 .then(async (response: any) => {
                 if (response.data['success'] === true) {
                     setResult(prevResult => [
