@@ -11,7 +11,7 @@
 //         title: "Insights",
 //         available: [
 //             {title: "Product Insights", link: "/insights" },
-//             {title: "About Team", link: "https://avianintek.com/" }
+//             {title: "About Team", link: "https://arkynox.com/" }
 //         ]
 //     },
 //     resources: {
@@ -140,7 +140,7 @@ export const enFooter = {
         title: "Insights",
         available: [
             {title: "Product Insights", link: "/insights" },
-            {title: "About Team", link: "https://avianintek.com/" }
+            {title: "About Team", link: "https://arkynox.com/" }
         ]
     },
     resources: {
