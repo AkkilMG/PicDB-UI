@@ -14,6 +14,8 @@ export const uploadSteps: Step[] = [
     }, {
         target: ".uploading-file",
         content: "This section shows the file being uploaded.",
+        disableOverlay: true, // Prevents blackout if not found
+        spotlightClicks: true // Allows clicking even if overlay is present
     }, {
         target: ".uploaded-file",
         content: "Click on this to get window to copy or view the image link.",
@@ -43,6 +45,8 @@ export const dashboardSteps: Step[] = [
     }, {
         target: ".collection-item",
         content: "Click on any such item to view its details, copy the links.",
+        disableOverlay: true, // Prevents blackout if not found
+        spotlightClicks: true // Allows clicking even if overlay is present
     }, {
         target: ".favorite",
         content: "Click on this to mark the image as favorite, so you can easily find it later.",
