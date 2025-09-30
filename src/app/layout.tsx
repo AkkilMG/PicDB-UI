@@ -70,6 +70,27 @@ export default function RootLayout({
         <meta property="og:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
         <meta property="og:image" content="/assets/seo/website.png" />
 
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ArkynoxTech" />
+        <meta name="twitter:title" content="PicDB - Free Picture Storage" />
+        <meta name="twitter:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
+        <meta name="twitter:image" content="https://picdb.arkynox.com/assets/seo/website.png" />
+
+        {/* JSON-LD Structured Data for Organization */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: `{
+              \"@context\": \"https://schema.org\",
+              \"@type\": \"Organization\",
+              \"name\": \"Arkynox\",
+              \"url\": \"https://picdb.arkynox.com\",
+              \"logo\": \"https://picdb.arkynox.com/assets/logo/PicDB.png\"
+            }`
+          }}
+        />
+
         <link rel="icon" href="/assets/logo/PicDB.png" />
         <link rel="apple-touch-icon" href="/assets/logo/PicDB.png" />
 
