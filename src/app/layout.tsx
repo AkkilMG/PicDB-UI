@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   useEffect(() => {
     const gtagScript = document.createElement("script");
-    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-1CEQM9SZSN";
+    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-3V7FC6JL7R";
     gtagScript.async = true;
     document.head.appendChild(gtagScript);
 
@@ -35,7 +35,7 @@ export default function RootLayout({
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-1CEQM9SZSN');
+      gtag('config', 'G-3V7FC6JL7R');
     `;
     document.head.appendChild(inlineScript);
   }, []);
