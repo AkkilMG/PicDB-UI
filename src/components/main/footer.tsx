@@ -82,7 +82,7 @@ const Footer = () => {
                 <img
                   src="/assets/logo/company.png"
                   alt="Arkynox profile"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full p-2 object-cover"
                 />
               </div>
               <div>
