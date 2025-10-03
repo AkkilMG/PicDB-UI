@@ -11,7 +11,7 @@ export const enHome = {
     sections: [
         {
             title: ["The best solution for", "image storage", "around"],
-            description: "PicDB by AvianInTek offers secure, anonymous image storage with an intuitive dashboard. Manage favorites and trash easily, report unwanted links, and enjoy our freemium service designed for seamless image management.",
+            description: "PicDB by Arkynox offers secure, anonymous image storage with an intuitive dashboard. Manage favorites and trash easily, report unwanted links, and enjoy our freemium service designed for seamless image management.",
             image: "assets/icons/image.png"
         }, {
             title: ["Your private", "secure image storage", "made simple"],
@@ -140,7 +140,7 @@ export const hiHome = {
     sections: [
         {
             title: ["छवि संग्रहण के लिए", "सर्वश्रेष्ठ समाधान", "यहां है"],
-            description: "PicDB द्वारा AvianInTek सुरक्षित, गुमनाम छवि संग्रहण और सहज डैशबोर्ड प्रदान करता है। पसंदीदा और कचरा प्रबंधन करें, अवांछित लिंक की रिपोर्ट करें, और हमारे फ्रीमियम सेवा का आनंद लें।",
+            description: "PicDB द्वारा Arkynox सुरक्षित, गुमनाम छवि संग्रहण और सहज डैशबोर्ड प्रदान करता है। पसंदीदा और कचरा प्रबंधन करें, अवांछित लिंक की रिपोर्ट करें, और हमारे फ्रीमियम सेवा का आनंद लें।",
             image: "assets/icons/image.png"
         }, {
             title: ["आपका निजी", "सुरक्षित छवि संग्रहण", "सरल बनाया गया"],

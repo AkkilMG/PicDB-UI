@@ -81,13 +81,13 @@ const Footer = () => {
               <div className="h-8 w-8 rounded-full overflow-hidden bg-white my-2">
                 <img
                   src="/assets/logo/company.png"
-                  alt="AvianInTek profile"
+                  alt="Arkynox profile"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div>
-                <p className="font-medium">AvianInTek</p>
-                <p className="text-gray-300 text-xs">@avianintek</p>
+                <p className="font-medium">Arkynox</p>
+                <p className="text-gray-300 text-xs">@Arkynox</p>
               </div>
             </div>
             <p className="text-gray-300 text-sm">
@@ -106,14 +106,14 @@ const Footer = () => {
               alt="logo"
               className="rounded-full overflow-hidden bg-white"
             />
-            <span className="ml-2 text-sm">PicDB, A product of AvianInTek - 2024-25.</span>
+            <span className="ml-2 text-sm">PicDB, A product of Arkynox - 2024-25.</span>
           </div>
 
           <div className="flex space-x-4">
-            <a draggable={false} href='https://www.linkedin.com/company/avianintek/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
+            <a draggable={false} href='https://www.linkedin.com/company/Arkynox/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
               <img draggable={false} src="/assets/icons/linkedin.png" width={24} height={24} alt="instagram" />
             </a>
-            <a draggable={false} href='https://github.com/AvianInTek' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
+            <a draggable={false} href='https://github.com/Arkynox' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
               <img draggable={false} src="/assets/icons/github.png" width={24} height={24} alt="facebook" />
             </a>
             <a draggable={false} href='https://www.instagram.com/heimancreation/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center">

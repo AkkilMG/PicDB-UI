@@ -3,7 +3,7 @@
 
 export const SEO = {
   title: "PicDB - Free Picture Storage",
-  description: "PicDB is a free, anonymously and fast picture storage web application built by AvianInTek.",
+  description: "PicDB is a free, anonymously and fast picture storage web application built by Arkynox.",
   canonical: "https://picdb.arkynox.com/",
   openGraph: {
     type: "website",
@@ -20,8 +20,8 @@ export const SEO = {
     ],
   },
   twitter: {
-    handle: "@AvianInTek",
-    site: "@AvianInTek",
+    handle: "@Arkynox",
+    site: "@Arkynox",
     cardType: "summary_large_image",
   },
 };
