@@ -89,78 +89,7 @@ export default function Upload({
     else if (size >= 1024) return (size / 1024).toFixed(2) + " KB"
     else return size + " bytes"
   }
-
-
-  // const handleFileChange = async (data: any) => {
-  //   if (data.files && data.files.length > 0) {
-  //     const isMultiple = data.files.length > 1
-  //     const newQueuedFiles = Array.from(data.files).map((file: any) => ({
-  //       name: file.name,
-  //       size: formatFileSize(file.size),
-  //       progress: 0,
-  //       abortController: new AbortController(),
-  //       id: `${Date.now()}-${Math.random()}`,
-  //     }))
-
-  //     setQueuedFiles((prev) => [...prev, ...newQueuedFiles])
-
-  //     let completed = 0
-  //     let total = data.files.length
-  //     let successCount = 0
-
-  //     for (let i = 0; i < data.files.length; i++) {
-  //       const file = data.files[i]
-  //       const queuedFile = newQueuedFiles[i]
-
-  //       if (queuedFile.abortController.signal.aborted) continue
-
-  //       const updateProgress = (progress: number) => {
-  //         setQueuedFiles((prev) =>
-  //           prev.map((qFile) => (qFile.id === queuedFile.id ? { ...qFile, progress } : qFile))
-  //         )
-  //       }
-
-  //       updateProgress(0)
-
-  //       try {
-  //         const dataRes = await uploadFile(file, queuedFile.abortController.signal)
-
-  //         if (queuedFile.abortController.signal.aborted) continue
-  //         updateProgress(100)
-
-  //         if (dataRes.success) {
-  //           successCount++
-  //           setTimeout(() => {
-  //             setQueuedFiles((prev) => prev.filter((qFile) => qFile.id !== queuedFile.id))
-  //           }, 1000)
-  //           setStepIndex(4)
-  //         } else {
-  //           setTimeout(() => {
-  //             setQueuedFiles((prev) => prev.filter((qFile) => qFile.id !== queuedFile.id))
-  //           }, 3000)
-  //         }
-  //       } catch (error: any) {
-  //         setTimeout(() => {
-  //           setQueuedFiles((prev) => prev.filter((qFile) => qFile.id !== queuedFile.id))
-  //         }, 3000)
-  //       } finally {
-  //         completed++
-  //         if (!isMultiple && successCount === 1) {
-  //           setSuccess(true)
-  //           setTimeout(() => setSuccess(false), 2000)
-  //         }
-
-  //         if (isMultiple && completed === total && successCount === total) {
-  //           // All done and all successful
-  //           setSuccess(true)
-  //           setTimeout(() => setSuccess(false), 2000)
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
-
+  
   const handleFileChange = async (data: any) => {
     if (data.files && data.files.length > 0) {
       const isMultiple = data.files.length > 1
@@ -236,9 +165,6 @@ export default function Upload({
       }
     }
   }
-
-
-
 
   const handleJoyrideCallback = (data: CallBackProps) => {
     const { status, index, type }: any = data
