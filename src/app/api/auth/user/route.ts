@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getMongoClient } from "@/lib/mongoConnect";
 
 export async function POST(req: NextRequest) {
-  const { name } = await req.json();
+  const { name, phone } = await req.json();
 
   if (!name) {
     return NextResponse.json(
@@ -12,10 +12,13 @@ export async function POST(req: NextRequest) {
   }
 
   const db = await getMongoClient();
-  const info = await db.collection('info').insertOne({
+
+  let data: any = {
     name,
     createdAt: new Date(),
-  });
+  };
+  if (phone) data = { ...data, phone };
+  const info = await db.collection('info').insertOne(data);
 
   return NextResponse.json({ success: true, id: info.insertedId });
 }

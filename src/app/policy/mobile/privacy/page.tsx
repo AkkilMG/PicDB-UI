@@ -41,7 +41,7 @@ export default function MobilePrivacyPolicyPage() {
                     <PolicyBody no={1} title="Information We Collect and Why" body={[
                         "We collect the following information to provide, improve, secure, and enhance our Services."
                     ]} details={[
-                        { title: "Account Information", body: "When you create an account, we may collect details such as:", points: ["Name"] },
+                        { title: "Account Information", body: "When you create an account, we may collect details such as:", points: ["Name", "Phone identifiers"] },
                         { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links", "IMPORTANT: PicDB does not own any uploaded content - we only provide the software platform", "All content ownership remains with the uploader", "We are not responsible for the content uploaded by users"] },
                         { title: "Usage Information", body: "We collect information on how you use our Services, including:", points: ["Image upload/download activity","File size and storage usage","Sharing preferences"]},
                         { title: "Device & Technical Data", body: "When you access PicDB through our mobile app, we may collect:", points: ["Mobile network information", "IP address", "Crash data and performance reports"] },

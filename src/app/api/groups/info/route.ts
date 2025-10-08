@@ -24,6 +24,7 @@ export async function GET(request: NextRequest) {
     // if (!groupInfo || groupInfo.length === 0) {
     //   return NextResponse.json({ success: false, error: "No groups found for this user!" }, { status: 404 })
     // }
+    
     const groups = groupInfo.map((g: any) => ({
       id: g._id.toString(),
       name: g.name,
