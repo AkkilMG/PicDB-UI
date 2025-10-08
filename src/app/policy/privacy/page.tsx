@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Title */}
                     <h1 className="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-6">
-                        Our commitment to protecting your privacy
+                        Privacy policy
                     </h1>
 
                     {/* Subtitle */}

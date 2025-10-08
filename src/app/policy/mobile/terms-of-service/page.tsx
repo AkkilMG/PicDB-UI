@@ -14,13 +14,13 @@ export default function MobileTermsOfServicePage() {
                     {/* Terms & Conditions Badge */}
                     <div className="text-center mb-6 sm:mb-12">
                         <span className="inline-block bg-blue-100 text-blue-800 text-sm py-2 px-4 rounded-full font-medium">
-                        Terms & Conditions
+                        Terms of Service (Mobile)
                         </span>
                     </div>
 
                     {/* Title */}
                     <h1 className="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-6">
-                        Terms of Service for PicDB Mobile App
+                        Terms of Service
                     </h1>
 
                     {/* Subtitle */}

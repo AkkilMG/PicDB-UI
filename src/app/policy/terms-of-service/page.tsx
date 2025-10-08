@@ -16,7 +16,7 @@ export default function TermsOfServicePage() {
                     {/* Terms & Conditions Badge */}
                     <div className="text-center mb-6 sm:mb-12">
                         <span className="inline-block bg-blue-100 text-blue-800 text-sm py-2 px-4 rounded-full font-medium">
-                            Terms & Conditions
+                            Terms of Service
                         </span>
                     </div>
 

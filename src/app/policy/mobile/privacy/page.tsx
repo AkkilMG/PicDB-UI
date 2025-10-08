@@ -13,13 +13,13 @@ export default function MobilePrivacyPolicyPage() {
                     {/* Privacy Policy Badge */}
                     <div className="text-center mb-6 sm:mb-12">
                         <span className="inline-block bg-purple-100 text-purple-800 text-sm py-2 px-4 rounded-full font-medium">
-                           Privacy Policy
+                           Privacy Policy (Mobile)
                         </span>
                     </div>
 
                     {/* Title */}
                     <h1 className="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-6">
-                        Our Commitment to Protecting Your Privacy
+                        Privacy Policy
                     </h1>
 
                     {/* Subtitle */}
