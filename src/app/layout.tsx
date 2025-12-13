@@ -1,12 +1,7 @@
-"use client";
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Analytics } from '@vercel/analytics/next';
-import Cookies from "@/components/pop/cookies";
-import React, { useEffect } from "react";
-import { Toaster } from "@/components/ui/toaster";
+import RootClient from '@/components/root-client';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,41 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    const gtagScript = document.createElement("script");
-    gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-3V7FC6JL7R";
-    gtagScript.async = true;
-    document.head.appendChild(gtagScript);
-
-    const inlineScript = document.createElement("script");
-    inlineScript.innerHTML = `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3V7FC6JL7R');
-    `;
-    document.head.appendChild(inlineScript);
-  }, []);
-
-  useEffect(() => {
-    const disableContextMenu = (e: MouseEvent) => e.preventDefault();
-    const disableSelect = (e: Event) => e.preventDefault();
-
-    document.addEventListener("contextmenu", disableContextMenu);
-    document.addEventListener("selectstart", disableSelect);
-
-    return () => {
-      document.removeEventListener("contextmenu", disableContextMenu);
-      document.removeEventListener("selectstart", disableSelect);
-    };
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -77,36 +42,27 @@ export default function RootLayout({
         <meta name="twitter:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
         <meta name="twitter:image" content="https://picdb.arkynox.com/assets/seo/website.png" />
 
-        {/* JSON-LD Structured Data for Organization */}
+        {/* JSON-LD Structured Data for Organization (server-rendered) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `{
-              \"@context\": \"https://schema.org\",
-              \"@type\": \"Organization\",
-              \"name\": \"Arkynox\",
-              \"url\": \"https://picdb.arkynox.com\",
-              \"logo\": \"https://picdb.arkynox.com/assets/logo/PicDB.png\"
-            }`
+            __html: `{"@context":"https://schema.org","@type":"Organization","name":"Arkynox","url":"https://picdb.arkynox.com","logo":"https://picdb.arkynox.com/assets/logo/PicDB.png"}`
           }}
         />
 
         <link rel="icon" href="/assets/logo/PicDB.png" />
         <link rel="apple-touch-icon" href="/assets/logo/PicDB.png" />
 
-        {/* Google AdSense */}
+        {/* Google AdSense: loaded on client to avoid head mutations during hydration */}
         <meta name="google-adsense-account" content="ca-pub-3201703650411352" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3201703650411352" crossOrigin="anonymous"></script>
       </head>
       
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased scrollbar`}>
-        <Cookies />
+        <RootClient />
         {children}
         <SpeedInsights />
-        <Analytics mode="production" />
-    
-        <Toaster />
       </body>
     </html>
   );
 }
+
