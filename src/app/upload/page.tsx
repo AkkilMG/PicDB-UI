@@ -1,5 +1,6 @@
 "use client";
 
+import type { Metadata } from "next";
 import NotificationButtons from "@/components/dashboard/notification";
 import Sidenav from "@/components/dashboard/sidenav";
 import Footer from "@/components/main/footer";

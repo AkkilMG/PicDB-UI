@@ -1,5 +1,6 @@
 "use client";
 
+import type { Metadata } from "next";
 import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
 import { PolicyBody } from "@/components/policy/body";

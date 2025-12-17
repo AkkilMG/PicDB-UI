@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -12,6 +13,46 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const metadata: Metadata = {
+  title: {
+    default: "PicDB - Free Picture Storage",
+    template: "%s | PicDB by Arkynox",
+  },
+  description: "PicDB is a free, anonymously and fast picture storage web application built by Arkynox. Store, organize, and access your images easily from any device.",
+  keywords: ["image storage", "photo storage", "picture storage", "free storage", "anonymous storage", "secure storage", "PicDB", "Arkynox"],
+  authors: [{ name: "Arkynox" }],
+  creator: "Arkynox",
+  metadataBase: new URL("https://picdb.arkynox.com"),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://picdb.arkynox.com",
+    title: "PicDB - Free Picture Storage",
+    description: "Store your images anonymously with PicDB",
+    siteName: "PicDB",
+    images: [{
+      url: "https://picdb.arkynox.com/assets/seo/website.png",
+      width: 1200,
+      height: 630,
+    }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@ArkynoxTech",
+    title: "PicDB - Free Picture Storage",
+    description: "Store your images anonymously with PicDB",
+    images: ["https://picdb.arkynox.com/assets/seo/website.png"],
+  },
+  alternates: {
+    canonical: "https://picdb.arkynox.com",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -41,6 +82,9 @@ export default function RootLayout({
         <meta name="twitter:title" content="PicDB - Free Picture Storage" />
         <meta name="twitter:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
         <meta name="twitter:image" content="https://picdb.arkynox.com/assets/seo/website.png" />
+
+        <link rel="canonical" href="https://picdb.arkynox.com" />
+
 
         {/* JSON-LD Structured Data for Organization (server-rendered) */}
         <script

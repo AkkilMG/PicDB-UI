@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowRight, Book, Upload, Download, Users, Navigation, HelpCircle, Sparkles, Zap } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Documentation - PicDB",
+  description: "Learn how to use PicDB with step-by-step guides covering uploads, downloads, navigation, and more.",
+  robots: { index: true, follow: true },
+  alternates: { canonical: "https://picdb.arkynox.com/docs" },
+};
 
 const docsSections = [
   {

@@ -1,5 +1,6 @@
 "use client";
 
+import type { Metadata } from "next";
 import AboutSection from "@/components/home/about";
 import HeroSection from "@/components/home/hero";
 import { SavingsCalculator } from "@/components/home/saving";
