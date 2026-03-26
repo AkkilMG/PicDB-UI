@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { ShareCode } from "./share-code"
-import { ArrowLeft, Search, Upload, Hash, Users, Pencil, Check, X } from "lucide-react"
+import { ArrowLeft, Search, Upload, Hash, Users, Pencil, Check, X, LogOut } from "lucide-react"
 
 interface GroupHeaderProps {
   groupDetails: any | null
@@ -15,6 +15,7 @@ interface GroupHeaderProps {
   onUploadClick: () => void
   messageCount: number
   onUpdateGroupName?: (newName: string) => void
+  onLeaveGroup: () => void
   data: any
 }
 
@@ -26,6 +27,7 @@ export function GroupHeader({
   onUploadClick,
   messageCount,
   onUpdateGroupName,
+  onLeaveGroup,
   data
 }: GroupHeaderProps) {
   const [searchTerm, setSearchTerm] = useState("")
@@ -107,6 +109,12 @@ export function GroupHeader({
             </Button>
             {/* Mobile: Compact Share */}
             <ShareCode groupCode={groupCode} />
+            {/* Leave Group Button */}
+            <Button onClick={onLeaveGroup} size="sm" variant="outline"
+              className="flex items-center gap-1 text-red-600 hover:text-red-700 hover:bg-red-50 border-red-200 h-8 sm:h-9 px-2 sm:px-3">
+              <LogOut className="h-3 w-3 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline text-sm">Leave</span>
+            </Button>
           </div>
         </div>
 

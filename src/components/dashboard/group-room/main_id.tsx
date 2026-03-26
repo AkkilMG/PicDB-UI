@@ -127,6 +127,25 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
     return () => clearInterval(intervalId)
   }, [id, groupCode, router, username])
 
+  const handleLeaveGroup = async () => {
+    if (!id || !uid) return
+    try {
+      const response = await fetch('/api/groups/leave', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ groupId: id, uid: uid }),
+      })
+      const result = await response.json()
+      if (result.success) {
+        router.push('/dashboard/group-room')
+      } else {
+        console.error('Failed to leave group:', result.error)
+      }
+    } catch (error) {
+      console.error('Error leaving group:', error)
+    }
+  }
+
   const handleImageUpload = async (file: File) => {
     if (!groupDetails || !username || !uid ) return { success: false }
 
@@ -182,7 +201,7 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
 
   return (
     <GroupDashboard data={data} groupDetails={groupDetails} messages={messages} members={members} username={username}
-      groupCode={groupCode || ""} onImageUpload={handleImageUpload} onBack={() => router.push("/dashboard/group-room")} />
+      groupCode={groupCode || ""} onImageUpload={handleImageUpload} onBack={() => router.push("/dashboard/group-room")} onLeaveGroup={handleLeaveGroup} />
   )
 }
 

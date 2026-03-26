@@ -18,6 +18,7 @@ interface GroupDashboardProps {
   groupCode: string
   onImageUpload: (file: File) => Promise<any>
   onBack: () => void
+  onLeaveGroup: () => void
   data: any
 }
 
@@ -29,6 +30,7 @@ export function GroupDashboard({
   groupCode,
   onImageUpload,
   onBack,
+  onLeaveGroup,
   data
 }: GroupDashboardProps) {
   const [selectedImage, setSelectedImage] = useState<ImageMessage | null>(null)
@@ -81,7 +83,7 @@ export function GroupDashboard({
         <main className="flex-1 flex flex-col">
           {/* Header */}
           <GroupHeader data={data} groupDetails={{ ...(groupDetails || {}), name: groupName }} messageCount={messages.length}
-            groupCode={groupCode} onBack={onBack} onSearch={handleSearch} onUploadClick={() => setShowUploader(true)}/>
+            groupCode={groupCode} onBack={onBack} onSearch={handleSearch} onUploadClick={() => setShowUploader(true)} onLeaveGroup={onLeaveGroup}/>
 
           {/* Upload Section */}
           {showUploader && (
