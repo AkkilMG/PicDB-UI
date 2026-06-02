@@ -20,7 +20,7 @@ interface DocData {
 const docsData: Record<string, DocData> = {
   "how-to-upload": {
     title: "How to Upload Images",
-    description: "Step-by-step interactive guide to uploading images to PicDB",
+    description: "Step-by-step interactive guide to uploading images to PikDB",
     isInteractive: true,
     content: [
       {
@@ -87,7 +87,7 @@ const docsData: Record<string, DocData> = {
   },
   "how-to-download": {
     title: "How to Download Images",
-    description: "Interactive guide to downloading images from PicDB",
+    description: "Interactive guide to downloading images from PikDB",
     isInteractive: true,
     content: [
       {
@@ -147,14 +147,14 @@ const docsData: Record<string, DocData> = {
       },
     ],
   },
-  "what-is-picdb": {
-    title: "What is PicDB?",
-    description: "Learn about PicDB and its core features",
+  "what-is-PikDB": {
+    title: "What is PikDB?",
+    description: "Learn about PikDB and its core features",
     content: [
       {
         type: "text",
         content:
-          "PicDB is a comprehensive image database and management platform designed to help users organize, store, and share their images efficiently. Built with modern web technologies, PicDB offers a seamless experience for both individual users and teams.",
+          "PikDB is a comprehensive image database and management platform designed to help users organize, store, and share their images efficiently. Built with modern web technologies, PikDB offers a seamless experience for both individual users and teams.",
       },
       {
         type: "heading",
@@ -174,7 +174,7 @@ const docsData: Record<string, DocData> = {
       {
         type: "text",
         content:
-          "Whether you're a photographer, designer, or just someone who wants to organize their image collection, PicDB provides the tools you need to manage your visual assets effectively.",
+          "Whether you're a photographer, designer, or just someone who wants to organize their image collection, PikDB provides the tools you need to manage your visual assets effectively.",
       },
       {
         type: "button",
@@ -183,13 +183,13 @@ const docsData: Record<string, DocData> = {
     ],
   },
   "getting-started": {
-    title: "Getting Started with PicDB",
-    description: "Quick start guide to using PicDB",
+    title: "Getting Started with PikDB",
+    description: "Quick start guide to using PikDB",
     content: [
       {
         type: "text",
         content:
-          "Welcome to PicDB! This guide will help you get started with the platform and make the most of its features.",
+          "Welcome to PikDB! This guide will help you get started with the platform and make the most of its features.",
       },
       {
         type: "heading",
@@ -197,7 +197,7 @@ const docsData: Record<string, DocData> = {
       },
       {
         type: "text",
-        content: "Sign up for a free PicDB account to access all features. No credit card required!",
+        content: "Sign up for a free PikDB account to access all features. No credit card required!",
       },
       {
         type: "heading",
@@ -206,7 +206,7 @@ const docsData: Record<string, DocData> = {
       {
         type: "text",
         content:
-          "Click the upload button and select images from your device. PicDB supports all major image formats including JPEG, PNG, GIF, and WebP.",
+          "Click the upload button and select images from your device. PikDB supports all major image formats including JPEG, PNG, GIF, and WebP.",
       },
       {
         type: "heading",
@@ -224,7 +224,7 @@ const docsData: Record<string, DocData> = {
   },
   "navigation-guide": {
     title: "Navigation Guide",
-    description: "Interactive guide to navigating PicDB",
+    description: "Interactive guide to navigating PikDB",
     isInteractive: true,
     content: [
       {
@@ -289,7 +289,7 @@ const docsData: Record<string, DocData> = {
         content: {
           stepNumber: 5,
           title: "Keyboard Shortcuts",
-          description: "Master these keyboard shortcuts to navigate PicDB more efficiently and save time.",
+          description: "Master these keyboard shortcuts to navigate PikDB more efficiently and save time.",
           image: "/placeholder.svg?height=400&width=600&text=Keyboard+Shortcuts+Guide",
           tips: [
             "Ctrl/Cmd + U: Quick upload",

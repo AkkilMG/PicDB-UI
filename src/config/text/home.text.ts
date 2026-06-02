@@ -2,26 +2,26 @@
 
 
 export const enHome = {
-    main: ["Save your image for", "free with PicDB"],
+    main: ["Save your image for", "free with PikDB"],
     sub: "The best app for storing images without any limit.",
     etherea: "Why do even worry?",
-    lucy: "Welcome to PicDB!",
+    lucy: "Welcome to PikDB!",
     upload: "Upload",
     dashboard: "Dashboard",
     sections: [
         {
             title: ["The best solution for", "image storage", "around"],
-            description: "PicDB by Arkynox offers secure, anonymous image storage with an intuitive dashboard. Manage favorites and trash easily, report unwanted links, and enjoy our freemium service designed for seamless image management.",
+            description: "PikDB by Arkynox offers secure, anonymous image storage with an intuitive dashboard. Manage favorites and trash easily, report unwanted links, and enjoy our freemium service designed for seamless image management.",
             image: "assets/icons/image.png"
         }, {
             title: ["Your private", "secure image storage", "made simple"],
-            description: "Experience privacy-first image storage with PicDB. Our freemium platform ensures anonymity, easy dashboard controls for favorites and trash, plus reporting tools to keep shared content safe and appropriate.",
+            description: "Experience privacy-first image storage with PikDB. Our freemium platform ensures anonymity, easy dashboard controls for favorites and trash, plus reporting tools to keep shared content safe and appropriate.",
             image: "assets/icons/image.png"
         }
     ],
     saving: {
         title: ["Calculate Your", "Savings"],
-        description: "See how much you could save by switching to PicDB's free image storage",
+        description: "See how much you could save by switching to PikDB's free image storage",
         custom: "Custom Provider",
         calculator: {
             title: "Storage Size Calculator",
@@ -30,10 +30,10 @@ export const enHome = {
             cost: "Cost per GB/month",
             perMonth: "per month",
             free: "Completely FREE!",
-            actualSaving: "Your Actual Savings with PicDB",
+            actualSaving: "Your Actual Savings with PikDB",
             saving: [
                 "Currently Using", "Images Stored",
-                "Months Using PicDB", "Total Paid"
+                "Months Using PikDB", "Total Paid"
             ],
             saved: "Total Saved",
             month: "month",
@@ -45,26 +45,26 @@ export const enHome = {
 }
 
 export const esHome = {
-    main: ["Guarda tu imagen", "gratis con PicDB"],
+    main: ["Guarda tu imagen", "gratis con PikDB"],
     sub: "La mejor aplicación para almacenar imágenes sin ningún límite.",
     etherea: "¿Por qué siquiera preocuparse?",
-    lucy: "¡Bienvenido a PicDB!",
+    lucy: "¡Bienvenido a PikDB!",
     upload: "Subir",
     dashboard: "Tablero",
     sections: [
         {
             title: ["Solución para", "almacenamiento de imágenes", "disponible"],
-            description: "PicDB ofrece almacenamiento seguro y anónimo con un panel intuitivo. Administra favoritos y papelera fácilmente y disfruta de nuestro servicio freemium.",
+            description: "PikDB ofrece almacenamiento seguro y anónimo con un panel intuitivo. Administra favoritos y papelera fácilmente y disfruta de nuestro servicio freemium.",
             image: "assets/icons/image.png"
         }, {
             title: ["Almacenamiento privado", "y seguro", "hecho simple"],
-            description: "Experimenta almacenamiento enfocado en la privacidad con PicDB. Garantiza anonimato y controles sencillos para favoritos y papelera.",
+            description: "Experimenta almacenamiento enfocado en la privacidad con PikDB. Garantiza anonimato y controles sencillos para favoritos y papelera.",
             image: "assets/icons/image.png"
         }
     ],
     saving: {
         title: ["Calcula tus", "Ahorros"],
-        description: "Descubre cuánto podrías ahorrar al cambiar a PicDB para el almacenamiento de imágenes gratuito",
+        description: "Descubre cuánto podrías ahorrar al cambiar a PikDB para el almacenamiento de imágenes gratuito",
         custom: "Proveedor Personalizado",
         calculator: {
             title: "Calculadora de Tamaño de Almacenamiento",
@@ -73,10 +73,10 @@ export const esHome = {
             cost: "Costo por GB/mes",
             perMonth: "por mes",
             free: "¡Completamente GRATIS!",
-            actualSaving: "Tus Ahorros Reales con PicDB",
+            actualSaving: "Tus Ahorros Reales con PikDB",
             saving: [
                 "Actualmente Usando", "Imágenes Almacenadas",
-                "Meses Usando PicDB", "Total Pagado"
+                "Meses Usando PikDB", "Total Pagado"
             ],
             saved: "Total Ahorrado",
             month: "mes",
@@ -88,26 +88,26 @@ export const esHome = {
 }
 
 export const ruHome = {
-    main: ["Сохраняйте изображения", "бесплатно с PicDB"],
+    main: ["Сохраняйте изображения", "бесплатно с PikDB"],
     sub: "Лучшее приложение для хранения изображений без ограничений.",
     etherea: "Зачем вообще беспокоиться?",
-    lucy: "Добро пожаловать в PicDB!",
+    lucy: "Добро пожаловать в PikDB!",
     upload: "Загрузить",
     dashboard: "Панель управления",
     sections: [
         {
             title: ["Лучшее решение", "для хранения", "изображений"],
-            description: "PicDB — это безопасное и анонимное хранение изображений с удобной панелью. Управляйте избранным и корзиной, сообщайте о ссылках и пользуйтесь нашим freemium-сервисом.",
+            description: "PikDB — это безопасное и анонимное хранение изображений с удобной панелью. Управляйте избранным и корзиной, сообщайте о ссылках и пользуйтесь нашим freemium-сервисом.",
             image: "assets/icons/image.png"
         }, {
             title: ["Частное", "безопасное хранение", "изображений"],
-            description: "PicDB обеспечивает анонимность, простое управление избранным и корзиной, а также инструменты для отчетности.",
+            description: "PikDB обеспечивает анонимность, простое управление избранным и корзиной, а также инструменты для отчетности.",
             image: "assets/icons/image.png"
         }
     ],
     saving: {
         title: ["Рассчитайте свои", "Сбережения"],
-        description: "Узнайте, сколько вы можете сэкономить, перейдя на бесплатное хранение изображений PicDB",
+        description: "Узнайте, сколько вы можете сэкономить, перейдя на бесплатное хранение изображений PikDB",
         custom: "Пользовательский Провайдер",
         calculator: {
             title: "Калькулятор размера хранилища",
@@ -116,10 +116,10 @@ export const ruHome = {
             cost: "Стоимость за ГБ/месяц",
             perMonth: "в месяц",
             free: "Совершенно БЕСПЛАТНО!",
-            actualSaving: "Ваши реальные сбережения с PicDB",
+            actualSaving: "Ваши реальные сбережения с PikDB",
             saving: [
                 "Текущий Используемый", "Хранимые Изображения",
-                "Месяцы Использования PicDB", "Всего Оплачено"
+                "Месяцы Использования PikDB", "Всего Оплачено"
             ],
             saved: "Всего Сэкономлено",
             month: "месяц",
@@ -131,26 +131,26 @@ export const ruHome = {
 }
 
 export const hiHome = {
-    main: ["अपनी छवि सहेजें", "PicDB के साथ मुफ्त में"],
+    main: ["अपनी छवि सहेजें", "PikDB के साथ मुफ्त में"],
     sub: "छवियों को बिना किसी सीमा के संग्रहीत करने के लिए सर्वश्रेष्ठ ऐप।",
     etherea: "चिंता करने की भी ज़रूरत क्यों?",
-    lucy: "PicDB में आपका स्वागत है!",
+    lucy: "PikDB में आपका स्वागत है!",
     upload: "अपलोड करें",
     dashboard: "डैशबोर्ड",
     sections: [
         {
             title: ["छवि संग्रहण के लिए", "सर्वश्रेष्ठ समाधान", "यहां है"],
-            description: "PicDB द्वारा Arkynox सुरक्षित, गुमनाम छवि संग्रहण और सहज डैशबोर्ड प्रदान करता है। पसंदीदा और कचरा प्रबंधन करें, अवांछित लिंक की रिपोर्ट करें, और हमारे फ्रीमियम सेवा का आनंद लें।",
+            description: "PikDB द्वारा Arkynox सुरक्षित, गुमनाम छवि संग्रहण और सहज डैशबोर्ड प्रदान करता है। पसंदीदा और कचरा प्रबंधन करें, अवांछित लिंक की रिपोर्ट करें, और हमारे फ्रीमियम सेवा का आनंद लें।",
             image: "assets/icons/image.png"
         }, {
             title: ["आपका निजी", "सुरक्षित छवि संग्रहण", "सरल बनाया गया"],
-            description: "PicDB के साथ गोपनीयता-प्रथम छवि संग्रहण का अनुभव करें। हमारा फ्रीमियम प्लेटफ़ॉर्म गुमनामी, पसंदीदा और कचरा के लिए आसान डैशबोर्ड नियंत्रण, और साझा सामग्री को सुरक्षित और उपयुक्त रखने के लिए रिपोर्टिंग उपकरण सुनिश्चित करता है।",
+            description: "PikDB के साथ गोपनीयता-प्रथम छवि संग्रहण का अनुभव करें। हमारा फ्रीमियम प्लेटफ़ॉर्म गुमनामी, पसंदीदा और कचरा के लिए आसान डैशबोर्ड नियंत्रण, और साझा सामग्री को सुरक्षित और उपयुक्त रखने के लिए रिपोर्टिंग उपकरण सुनिश्चित करता है।",
             image: "assets/icons/image.png"
         }
     ],
     saving: {
         title: ["अपने", "बचत की गणना करें"],
-        description: "देखें कि PicDB के मुफ्त छवि संग्रहण पर स्विच करके आप कितना बचा सकते हैं",
+        description: "देखें कि PikDB के मुफ्त छवि संग्रहण पर स्विच करके आप कितना बचा सकते हैं",
         custom: "कस्टम प्रदाता",
         calculator: {
             title: "स्टोरेज साइज कैलकुलेटर",
@@ -159,10 +159,10 @@ export const hiHome = {
             cost: "प्रति जीबी/महीने की लागत",
             perMonth: "प्रति माह",
             free: "पूरी तरह से मुफ्त!",
-            actualSaving: "PicDB के साथ आपका वास्तविक बचत",
+            actualSaving: "PikDB के साथ आपका वास्तविक बचत",
             saving: [
                 "वर्तमान में उपयोग कर रहे हैं", "संग्रहीत छवियाँ",
-                "PicDB का उपयोग करते हुए महीने", "कुल भुगतान"
+                "PikDB का उपयोग करते हुए महीने", "कुल भुगतान"
             ],
             saved: "कुल बचत",
             month: "महीना",

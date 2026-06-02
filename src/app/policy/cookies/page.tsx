@@ -20,12 +20,12 @@ export default function CookiesPolicyPage() {
 
                     {/* Title */}
                     <h1 className="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-6">
-                        How we use cookies at PicDB
+                        How we use cookies at PikDB
                     </h1>
 
                     {/* Subtitle */}
                     <p className="text-gray-700 text-center mb-12">
-                        This Cookies Policy explains how PicDB uses cookies and similar tracking technologies to enhance user experience and functionality.
+                        This Cookies Policy explains how PikDB uses cookies and similar tracking technologies to enhance user experience and functionality.
                     </p>
 
                     {/* Updated Date */}
@@ -35,7 +35,7 @@ export default function CookiesPolicyPage() {
 
                     {/* Body */}
                     <p className="mb-8">
-                        At <strong>PicDB</strong>, we use cookies to improve your experience, track preferences, and enhance security. This Cookies Policy provides details on how and why we use cookies.
+                        At <strong>PikDB</strong>, we use cookies to improve your experience, track preferences, and enhance security. This Cookies Policy provides details on how and why we use cookies.
                     </p>
 
                     {/* Section */}
@@ -63,7 +63,7 @@ export default function CookiesPolicyPage() {
                     ]} />
 
                     <p className="text-gray-700 mb-8">
-                        However, disabling cookies may impact the functionality of PicDB.
+                        However, disabling cookies may impact the functionality of PikDB.
                     </p>
 
                     {/* Section */}
@@ -73,12 +73,12 @@ export default function CookiesPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={5} title="Content Disclaimer" body={[
-                        "Important: PicDB is a software platform only. We do not own or control user-uploaded content:"
+                        "Important: PikDB is a software platform only. We do not own or control user-uploaded content:"
                     ]} points={[
                         "All uploaded content remains the property of the uploader.",
-                        "PicDB is not responsible for user-generated content.",
+                        "PikDB is not responsible for user-generated content.",
                         "For content issues, contact support@arkynox.com for swift removal.",
-                        "Legal disputes regarding content should be addressed with content owners, not PicDB platform."
+                        "Legal disputes regarding content should be addressed with content owners, not PikDB platform."
                     ]} />
 
                     {/* Section */}

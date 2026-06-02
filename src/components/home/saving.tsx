@@ -127,7 +127,7 @@ export function SavingsCalculator({text}: { text: any }) {
           <motion.div variants={fadeIn} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <motion.div whileHover={{ scale: 1.03 }} className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-lg">
               <div className="flex items-center justify-between mb-4">
-                <h4 className="text-xl font-bold">PicDB</h4>
+                <h4 className="text-xl font-bold">PikDB</h4>
                 <div className="p-2 bg-white/20 rounded-lg">
                   <DollarSign className="w-5 h-5" />
                 </div>

@@ -91,7 +91,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-gray-300 text-sm">
-              We're excited to announce a new update that increases upload limits and improves the user experience of PicDB!
+              We're excited to announce a new update that increases upload limits and improves the user experience of PikDB!
             </p>
           </div>
         </div>
@@ -100,13 +100,13 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 flex items-center">
             <img
-              src="/assets/logo/PicDB.png"
+              src="/assets/logo/PikDB.png"
               width={20}
               height={20}
               alt="logo"
               className="rounded-full overflow-hidden bg-white"
             />
-            <span className="ml-2 text-sm">PicDB, A product of Arkynox - 2024-25.</span>
+            <span className="ml-2 text-sm">PikDB, A product of Arkynox - 2024-25.</span>
           </div>
 
           <div className="flex space-x-4">

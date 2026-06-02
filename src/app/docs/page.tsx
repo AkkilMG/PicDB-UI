@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Book, Upload, Download, Users, Navigation, HelpCircle, Sparkles, Zap } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Documentation - PicDB",
-  description: "Learn how to use PicDB with step-by-step guides covering uploads, downloads, navigation, and more.",
+  title: "Documentation - PikDB",
+  description: "Learn how to use PikDB with step-by-step guides covering uploads, downloads, navigation, and more.",
   robots: { index: true, follow: true },
   alternates: { canonical: "https://www.pikdb.com/docs" },
 };
@@ -23,7 +23,7 @@ const docsSections = [
   {
     id: "how-to-download",
     title: "How to Download",
-    description: "Learn how to download images from PicDB",
+    description: "Learn how to download images from PikDB",
     icon: <Download className="w-6 h-6" />,
     href: "/docs/how-to-download",
     color: "from-orange-500 to-red-500",
@@ -31,7 +31,7 @@ const docsSections = [
   {
     id: "navigation-guide",
     title: "Navigation Guide",
-    description: "Navigate through PicDB like a pro",
+    description: "Navigate through PikDB like a pro",
     icon: <Navigation className="w-6 h-6" />,
     href: "/docs/navigation-guide",
     color: "from-teal-500 to-cyan-500",
@@ -63,13 +63,13 @@ export default function DocsPage() {
             <div className="relative">
               <Sparkles className="w-8 h-8 text-blue-500 animate-spin-slow absolute -top-2 -left-2" />
               <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">
-                PicDB Documentation
+                PikDB Documentation
               </h1>
               <Zap className="w-6 h-6 text-purple-500 animate-bounce absolute -bottom-1 -right-2" />
             </div>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to know about using PicDB effectively. Find guides, tutorials, and answers to common
+            Everything you need to know about using PikDB effectively. Find guides, tutorials, and answers to common
             questions.
           </p>
         </div>
@@ -86,7 +86,7 @@ export default function DocsPage() {
                 <CardTitle className="text-3xl font-bold">Quick Start</CardTitle>
               </div>
               <CardDescription className="text-blue-100 text-lg">
-                New to PicDB? Start here to get up and running quickly.
+                New to PikDB? Start here to get up and running quickly.
               </CardDescription>
             </CardHeader>
             <CardContent className="relative z-10">
@@ -105,7 +105,7 @@ export default function DocsPage() {
                   className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm transition-all duration-300 hover:scale-105"
                   asChild
                 >
-                  <Link href="/docs/what-is-picdb">What is PicDB?</Link>
+                  <Link href="/docs/what-is-PikDB">What is PikDB?</Link>
                 </Button>
               </div>
             </CardContent>

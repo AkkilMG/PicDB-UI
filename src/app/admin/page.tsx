@@ -31,7 +31,7 @@ export default function AdminSignInPage() {
 
               <div className="mt-8 text-justify text-sm text-muted-foreground">
                 <p>
-                  Welcome to PicDB Admin Panel! Managing admin side of picdb.
+                  Welcome to PikDB Admin Panel! Managing admin side of PikDB.
                 </p>
               </div>
             </div>

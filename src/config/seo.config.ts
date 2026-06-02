@@ -2,20 +2,20 @@
 
 
 export const SEO = {
-  title: "PicDB - Free Picture Storage",
-  description: "PicDB is a free, anonymously and fast picture storage web application built by Arkynox.",
+  title: "PikDB - Free Picture Storage",
+  description: "PikDB is a free, anonymously and fast picture storage web application built by Arkynox.",
   canonical: "https://www.pikdb.com/",
   openGraph: {
     type: "website",
     url: "https://www.pikdb.com/",
-    title: "PicDB - Free Picture Storage",
-    description: "Store images anonymously with PicDB, a fast and secure picture storage service.",
+    title: "PikDB - Free Picture Storage",
+    description: "Store images anonymously with PikDB, a fast and secure picture storage service.",
     images: [
       {
         url: "/assets/seo/website.png",
         width: 1200,
         height: 630,
-        alt: "PicDB Website",
+        alt: "PikDB Website",
       },
     ],
   },

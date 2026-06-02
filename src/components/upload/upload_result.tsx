@@ -55,7 +55,7 @@ export default function UploadResult({ view, link, title, close }: UploadResultP
     };
     const handleShare = async (url: string) => {
         const shareData = {
-          title: "PicDB",
+          title: "PikDB",
           text: `Hey 👋, check out this image my friend.`,
           url: url, // Include one of the links to ensure Web Share API compatibility
         };

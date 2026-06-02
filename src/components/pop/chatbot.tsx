@@ -17,7 +17,7 @@ interface Message {
 }
 
 const predefinedQuestions = [
-  "What is picdb?",
+  "What is PikDB?",
   "Why is it free?",
   // "How to upload?",
   // "How to navigate to the upload?",
@@ -87,12 +87,12 @@ export default function ChatBot() {
     let botResponse: Message
 
     // Provide specific responses for certain questions
-    if (question === "What is picdb?") {
+    if (question === "What is PikDB?") {
       botResponse = {
         id: `bot-${Date.now()}`,
         role: "assistant",
         content:
-          "PicDB is a free, safe and secured image database and management platform. It doesn't require any login and allows you to upload, organize, and share images easily. You can also use group rooms for collaborative image sharing!",
+          "PikDB is a free, safe and secured image database and management platform. It doesn't require any login and allows you to upload, organize, and share images easily. You can also use group rooms for collaborative image sharing!",
         timestamp: new Date(),
       }
     } else if (question === "Why is it free?") {
@@ -100,7 +100,7 @@ export default function ChatBot() {
         id: `bot-${Date.now()}`,
         role: "assistant",
         content:
-          "PicDB is currently free because the application is in beta and demo phase, not yet completed. Once we finish development, we'll offer higher limits and an authenticated website with paid plans, while keeping the freemium version free with the same current limits.",
+          "PikDB is currently free because the application is in beta and demo phase, not yet completed. Once we finish development, we'll offer higher limits and an authenticated website with paid plans, while keeping the freemium version free with the same current limits.",
         timestamp: new Date(),
       }
     } else {

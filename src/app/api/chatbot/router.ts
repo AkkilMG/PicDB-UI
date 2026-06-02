@@ -6,10 +6,10 @@ export const maxDuration = 30
 export async function POST(req: Request) {
   const { messages } = await req.json()
 
-  const systemPrompt = `You are a helpful customer support assistant for PicDB, an image database and management platform. 
+  const systemPrompt = `You are a helpful customer support assistant for PikDB, an image database and management platform. 
 
-Key information about PicDB:
-- PicDB is a free image database and management platform
+Key information about PikDB:
+- PikDB is a free image database and management platform
 - It allows users to upload, organize, and share images
 - Features include group rooms for collaborative image sharing
 - Users can easily navigate to upload sections and download images

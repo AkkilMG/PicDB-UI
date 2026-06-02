@@ -144,7 +144,7 @@ export default function AnalysisMain() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Analytics Dashboard</h1>
-          <p className="text-gray-600 mt-1">Comprehensive overview of your PicDB usage</p>
+          <p className="text-gray-600 mt-1">Comprehensive overview of your PikDB usage</p>
         </div>
         <Button onClick={fetchAnalytics} variant="outline">
           <Activity className="h-4 w-4 mr-2" />

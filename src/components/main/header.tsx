@@ -48,7 +48,7 @@ const Header = () => {
       <nav className="sticky top-0 bg-black z-20">
         <div className="container mx-auto flex justify-between items-center">
           <div className="ml-8">
-            <img draggable={false} onClick={() => window.location.href = "/"} src='/assets/images/letter.png' alt='PicDB logo' width={100} height={40} />
+            <img draggable={false} onClick={() => window.location.href = "/"} src='/assets/images/letter.png' alt='PikDB logo' width={100} height={40} />
           </div>
           <div className="mr-8 flex items-center space-x-4">
             {button}    

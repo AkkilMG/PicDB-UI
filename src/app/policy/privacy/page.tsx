@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Subtitle */}
                     <p className="text-gray-700 text-center mb-12">
-                        Learn more about how PicDB collects and uses data and your rights as a PicDB user.
+                        Learn more about how PikDB collects and uses data and your rights as a PikDB user.
                     </p>
 
                     {/* Updated Date */}
@@ -35,7 +35,7 @@ export default function PrivacyPolicyPage() {
 
                     {/* Body */}
                     <p className="mb-8">
-                    Thank you for using <strong>PicDB! At Arkynox</strong>, we are committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your personal data when you use our website, software, and services ("Services").
+                    Thank you for using <strong>PikDB! At Arkynox</strong>, we are committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your personal data when you use our website, software, and services ("Services").
                     </p>
 
                     {/* Section */}
@@ -43,9 +43,9 @@ export default function PrivacyPolicyPage() {
                         "We collect the following information to provide, improve, secure, and enhance our Services."
                     ]} details={[
                         { title: "Account Information", body: "When you create an account, we may collect details such as:", points: ["Name", "Email address","Password (encrypted)"] },
-                        { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links", "IMPORTANT: PicDB does not own any uploaded content - we only provide the software platform", "All content ownership remains with the uploader", "We are not responsible for the content uploaded by users"] },
+                        { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links", "IMPORTANT: PikDB does not own any uploaded content - we only provide the software platform", "All content ownership remains with the uploader", "We are not responsible for the content uploaded by users"] },
                         { title: "Usage Information", body: "We collect information on how you use our Services, including:", points: ["Image upload/download activity","File size and storage usage","Sharing and encryption preferences"]},
-                        { title: "Device & Technical Data", body: "When you access PicDB, we may collect:", points: ["IP address", "Browser type and Device type", "Referring web pages", "Cookies and tracking technologies"] },
+                        { title: "Device & Technical Data", body: "When you access PikDB, we may collect:", points: ["IP address", "Browser type and Device type", "Referring web pages", "Cookies and tracking technologies"] },
                         { title: "Communications & Support", body: "If you contact support, we collect the details of your request and any related correspondence to assist you better."},
                         // { title: "", body: "", points: },
                     ]} />
@@ -77,7 +77,7 @@ export default function PrivacyPolicyPage() {
                     ]} details={[
                         { title: "Third-Party Service Providers", body: "We use trusted partners for hosting, payment processing, and analytics. These providers must follow strict privacy safeguards.",  },
                         { title: "Legal & Security Reasons", body: "We may disclose your data if required by law, to protect our rights, or to prevent fraud, abuse, or security threats.",  },
-                        { title: "Business Transfers", body: "If PicDB undergoes a merger, acquisition, or asset sale, your data may be transferred. We will notify you of such changes.", },
+                        { title: "Business Transfers", body: "If PikDB undergoes a merger, acquisition, or asset sale, your data may be transferred. We will notify you of such changes.", },
                     ]} />
 
                     {/* Section */}
@@ -118,19 +118,19 @@ export default function PrivacyPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={8} title="Content Ownership & Platform Disclaimer" body={[
-                        "Important: PicDB is a software platform that provides storage and sharing services. We do not own any user-uploaded content:"
+                        "Important: PikDB is a software platform that provides storage and sharing services. We do not own any user-uploaded content:"
                     ]} points={[
                         "All uploaded content remains the sole property of the uploader.",
-                        "PicDB only owns the software platform itself, not the content stored on it.",
+                        "PikDB only owns the software platform itself, not the content stored on it.",
                         "We are not responsible for user-generated content or its compliance with laws.",
                         "If content violates rights or laws, contact support@arkynox.com for swift removal.",
                         "User identification may be limited due to our platform's anonymous features.",
-                        "Legal disputes regarding content should be addressed with content owners, not PicDB."
+                        "Legal disputes regarding content should be addressed with content owners, not PikDB."
                     ]} />
 
                     {/* Section */}
                     <PolicyBody no={9} title="International Data Transfers" body={[
-                        "PicDB operates globally, but based out of India. By using our Services, you agree that your data may be stored and processed in countries where our servers or partners or service providers are located. We ensure compliance with applicable \"data protection laws (e.g., GDPR, CCPA).\" If you have questions or concerns about data, please contact us."
+                        "PikDB operates globally, but based out of India. By using our Services, you agree that your data may be stored and processed in countries where our servers or partners or service providers are located. We ensure compliance with applicable \"data protection laws (e.g., GDPR, CCPA).\" If you have questions or concerns about data, please contact us."
                     ]} />
 
                     {/* Section */}

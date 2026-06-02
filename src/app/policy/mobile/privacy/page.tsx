@@ -24,7 +24,7 @@ export default function MobilePrivacyPolicyPage() {
 
                     {/* Subtitle */}
                     <p className="text-gray-700 text-center mb-12">
-                        Learn more about how PicDB collects and uses data from our mobile application and your rights as a PicDB user.
+                        Learn more about how PikDB collects and uses data from our mobile application and your rights as a PikDB user.
                     </p>
 
                     {/* Updated Date */}
@@ -34,7 +34,7 @@ export default function MobilePrivacyPolicyPage() {
 
                     {/* Body */}
                     <p className="mb-8">
-                    Thank you for using <strong>PicDB! At Arkynox</strong>, we are committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your personal data when you use our mobile application, website, software, and services ("Services").
+                    Thank you for using <strong>PikDB! At Arkynox</strong>, we are committed to protecting your privacy. This Privacy Policy describes how we collect, use, and handle your personal data when you use our mobile application, website, software, and services ("Services").
                     </p>
 
                     {/* Section */}
@@ -42,9 +42,9 @@ export default function MobilePrivacyPolicyPage() {
                         "We collect the following information to provide, improve, secure, and enhance our Services."
                     ]} details={[
                         { title: "Account Information", body: "When you create an account, we may collect details such as:", points: ["Name", "Phone identifiers"] },
-                        { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links", "IMPORTANT: PicDB does not own any uploaded content - we only provide the software platform", "All content ownership remains with the uploader", "We are not responsible for the content uploaded by users"] },
+                        { title: "Uploaded Content (\"Your Images\")", body: "Our Services allow you to upload, store, encrypt, and share images. We process and store this content to:", points: ["Enable seamless access to your images", "Provide encryption and security features", "Generate view and download links", "IMPORTANT: PikDB does not own any uploaded content - we only provide the software platform", "All content ownership remains with the uploader", "We are not responsible for the content uploaded by users"] },
                         { title: "Usage Information", body: "We collect information on how you use our Services, including:", points: ["Image upload/download activity","File size and storage usage","Sharing preferences"]},
-                        { title: "Device & Technical Data", body: "When you access PicDB through our mobile app, we may collect:", points: ["Mobile network information", "IP address", "Crash data and performance reports"] },
+                        { title: "Device & Technical Data", body: "When you access PikDB through our mobile app, we may collect:", points: ["Mobile network information", "IP address", "Crash data and performance reports"] },
                         { title: "Mobile Permissions", body: "Our app may request permissions to access certain features on your device, such as:", points: ["<strong>Camera:</strong> To allow you to capture and upload photos directly.", "<strong>Storage/Photos:</strong> To allow you to upload images from your device's gallery.", "You can manage these permissions in your device settings."] },
                         { title: "Communications & Support", body: "If you contact support, we collect the details of your request and any related correspondence to assist you better."},
                     ]} />
@@ -67,7 +67,7 @@ export default function MobilePrivacyPolicyPage() {
                     ]} details={[
                         { title: "Third-Party Service Providers", body: "We use trusted partners for hosting, payment processing, and analytics. These providers must follow strict privacy safeguards.",  },
                         { title: "Legal & Security Reasons", body: "We may disclose your data if required by law, to protect our rights, or to prevent fraud, abuse, or security threats.",  },
-                        { title: "Business Transfers", body: "If PicDB undergoes a merger, acquisition, or asset sale, your data may be transferred. We will notify you of such changes.", },
+                        { title: "Business Transfers", body: "If PikDB undergoes a merger, acquisition, or asset sale, your data may be transferred. We will notify you of such changes.", },
                     ]} />
 
                     {/* Section */}
@@ -113,7 +113,7 @@ export default function MobilePrivacyPolicyPage() {
 
                     {/* Section */}
                     <PolicyBody no={8} title="International Data Transfers" body={[
-                        "PicDB operates globally, but based out of India. By using our Services, you agree that your data may be stored and processed in countries where our servers or partners or service providers are located. We ensure compliance with applicable \"data protection laws (e.g., GDPR, CCPA).\" If you have questions or concerns about data, please contact us."
+                        "PikDB operates globally, but based out of India. By using our Services, you agree that your data may be stored and processed in countries where our servers or partners or service providers are located. We ensure compliance with applicable \"data protection laws (e.g., GDPR, CCPA).\" If you have questions or concerns about data, please contact us."
                     ]} />
 
                     {/* Section */}

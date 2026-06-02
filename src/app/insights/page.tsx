@@ -175,7 +175,7 @@ export default function Insights() {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Insights & Analytics</h1>
-            <p className="text-gray-600">Detailed overview of your PicDB usage and activity</p>
+            <p className="text-gray-600">Detailed overview of your PikDB usage and activity</p>
           </div>
 
           {/* Overview Cards */}
