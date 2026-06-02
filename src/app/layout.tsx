@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import RootClient from '@/components/root-client';
+import { keywords } from "@/config/seo.config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | PikDB by Arkynox",
   },
   description: "PikDB is a free, anonymously and fast picture storage web application built by Arkynox. Store, organize, and access your images easily from any device.",
-  keywords: ["image storage", "photo storage", "picture storage", "free storage", "anonymous storage", "secure storage", "PikDB", "Arkynox"],
+  keywords: keywords,
   authors: [{ name: "Arkynox" }],
   creator: "Arkynox",
   metadataBase: new URL("https://www.pikdb.com"),
