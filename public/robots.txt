@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://picdb.arkynox.com/sitemap.xml
+Sitemap: https://www.pikdb.com/sitemap.xml

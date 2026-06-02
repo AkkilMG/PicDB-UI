@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Documentation - PicDB",
   description: "Learn how to use PicDB with step-by-step guides covering uploads, downloads, navigation, and more.",
   robots: { index: true, follow: true },
-  alternates: { canonical: "https://picdb.arkynox.com/docs" },
+  alternates: { canonical: "https://www.pikdb.com/docs" },
 };
 
 const docsSections = [

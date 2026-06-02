@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/test', '/private/'],
     }],
-    sitemap: 'https://picdb.arkynox.com/sitemap.xml',
+    sitemap: 'https://www.pikdb.com/sitemap.xml',
   }
 }

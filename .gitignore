@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+/resources
 
 /pages/
 /pages/api/

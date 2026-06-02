@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   keywords: ["image storage", "photo storage", "picture storage", "free storage", "anonymous storage", "secure storage", "PicDB", "Arkynox"],
   authors: [{ name: "Arkynox" }],
   creator: "Arkynox",
-  metadataBase: new URL("https://picdb.arkynox.com"),
+  metadataBase: new URL("https://www.pikdb.com"),
   robots: {
     index: true,
     follow: true,
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://picdb.arkynox.com",
+    url: "https://www.pikdb.com",
     title: "PicDB - Free Picture Storage",
     description: "Store your images anonymously with PicDB",
     siteName: "PicDB",
     images: [{
-      url: "https://picdb.arkynox.com/assets/seo/website.png",
+      url: "https://www.pikdb.com/assets/seo/website.png",
       width: 1200,
       height: 630,
     }],
@@ -47,10 +47,10 @@ export const metadata: Metadata = {
     site: "@ArkynoxTech",
     title: "PicDB - Free Picture Storage",
     description: "Store your images anonymously with PicDB",
-    images: ["https://picdb.arkynox.com/assets/seo/website.png"],
+    images: ["https://www.pikdb.com/assets/seo/website.png"],
   },
   alternates: {
-    canonical: "https://picdb.arkynox.com",
+    canonical: "https://www.pikdb.com",
   },
 };
 
@@ -71,7 +71,7 @@ export default function RootLayout({
         <meta name="author" content="Arkynox" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://picdb.arkynox.com/" />
+        <meta property="og:url" content="https://www.pikdb.com/" />
         <meta property="og:title" content="PicDB - Free Picture Storage" />
         <meta property="og:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
         <meta property="og:image" content="/assets/seo/website.png" />
@@ -81,16 +81,16 @@ export default function RootLayout({
         <meta name="twitter:site" content="@ArkynoxTech" />
         <meta name="twitter:title" content="PicDB - Free Picture Storage" />
         <meta name="twitter:description" content="Store your images anonymously with PicDB, a fast and easy-to-use picture storage service built with Next.js." />
-        <meta name="twitter:image" content="https://picdb.arkynox.com/assets/seo/website.png" />
+        <meta name="twitter:image" content="https://www.pikdb.com/assets/seo/website.png" />
 
-        <link rel="canonical" href="https://picdb.arkynox.com" />
+        <link rel="canonical" href="https://www.pikdb.com" />
 
 
         {/* JSON-LD Structured Data for Organization (server-rendered) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `{"@context":"https://schema.org","@type":"Organization","name":"Arkynox","url":"https://picdb.arkynox.com","logo":"https://picdb.arkynox.com/assets/logo/PicDB.png"}`
+            __html: `{"@context":"https://schema.org","@type":"Organization","name":"Arkynox","url":"https://www.pikdb.com","logo":"https://www.pikdb.com/assets/logo/PicDB.png"}`
           }}
         />
 
