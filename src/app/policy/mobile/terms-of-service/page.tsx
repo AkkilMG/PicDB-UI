@@ -11,7 +11,7 @@ export default function MobileTermsOfServicePage() {
             <div className="font-sans antialiased bg-white text-gray-900">
                 <div className="max-w-4xl mx-auto px-4 py-10 sm:py-20">
 
-                    {/* ===== HEADER ===== */}
+                    {/* ===== HEADER ===== */} 
                     <div className="text-center mb-6 sm:mb-12">
                         <span className="inline-block bg-blue-100 text-blue-800 text-sm py-2 px-4 rounded-full font-medium">
                         Terms of Service (Mobile)
