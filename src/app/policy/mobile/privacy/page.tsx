@@ -110,7 +110,7 @@ export default function MobilePrivacyPolicyPage() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr className="bg-red-50"><td className="border border-gray-300 p-3 font-medium">Your name</td><td className="border border-gray-300 p-3"><span className="text-red-600 font-bold">No</span></td><td className="border border-gray-300 p-3">We don't need it — you stay anonymous</td></tr>
+                                <tr className="bg-red-50"><td className="border border-gray-300 p-3 font-medium">Your name</td><td className="border border-gray-300 p-3"><span className="text-red-600 font-bold">Partially Yes</span></td><td className="border border-gray-300 p-3">We don't need your actual name — you stay anonymous</td></tr>
                                 <tr><td className="border border-gray-300 p-3 font-medium">Your email</td><td className="border border-gray-300 p-3"><span className="text-red-600 font-bold">No</span></td><td className="border border-gray-300 p-3">Only if you voluntarily contact support</td></tr>
                                 <tr className="bg-red-50"><td className="border border-gray-300 p-3 font-medium">Your phone number</td><td className="border border-gray-300 p-3"><span className="text-red-600 font-bold">No</span></td><td className="border border-gray-300 p-3">Not needed for anonymous use</td></tr>
                                 <tr><td className="border border-gray-300 p-3 font-medium">Device ID / IMEI</td><td className="border border-gray-300 p-3"><span className="text-red-600 font-bold">No</span></td><td className="border border-gray-300 p-3">We don't track devices at all</td></tr>
