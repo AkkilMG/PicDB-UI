@@ -8,7 +8,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { X, Send, MessageCircle } from "lucide-react"
 import { VscRefresh } from "react-icons/vsc";
-import { useChat } from "ai/react"
+import { useChat } from "@ai-sdk/react"
+import { DefaultChatTransport } from "ai"
 
 interface Message {
   id: string
@@ -32,10 +33,11 @@ export default function ChatBot() {
   const [open, setOpen] = useState(false)
   const [localMessages, setLocalMessages] = useState<Message[]>([])
   const [showWelcome, setShowWelcome] = useState(true)
+  const [input, setInput] = useState("")
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: "/api/chatbot",
+  const { messages, sendMessage, status } = useChat({
+    transport: new DefaultChatTransport({ api: "/api/chatbot" }),
     onFinish: () => {
       scrollToBottom()
     },
@@ -222,12 +224,17 @@ export default function ChatBot() {
                         : "bg-gray-100 text-gray-800 rounded-bl-none"
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <p className="text-sm whitespace-pre-wrap">
+                      {message.parts
+                        .filter((part) => part.type === "text")
+                        .map((part) => part.text)
+                        .join("")}
+                    </p>
                   </div>
                 </div>
               ))}
 
-              {isLoading && (
+              {(status === "streaming" || status === "submitted") && (
                 <div className="flex justify-start">
                   <div className="bg-gray-100 text-gray-800 rounded-lg rounded-bl-none p-3">
                     <div className="flex space-x-1">
@@ -250,15 +257,20 @@ export default function ChatBot() {
 
             {/* Input Area */}
             <div className="border-t p-4">
-              <form onSubmit={handleSubmit} className="flex space-x-2">
+              <form onSubmit={(e) => {
+                e.preventDefault()
+                if (!input.trim()) return
+                sendMessage({ text: input })
+                setInput("")
+              }} className="flex space-x-2">
                 <Input
                   value={input}
-                  onChange={handleInputChange}
+                  onChange={(e) => setInput(e.target.value)}
                   placeholder="Type your message..."
                   className="flex-1 text-sm"
-                  disabled={isLoading}
+                  disabled={status === "streaming" || status === "submitted"}
                 />
-                <Button type="submit" size="sm" disabled={isLoading || !input.trim()}>
+                <Button type="submit" size="sm" disabled={status === "streaming" || status === "submitted" || !input.trim()}>
                   <Send className="w-4 h-4" />
                 </Button>
               </form>

@@ -21,11 +21,11 @@ For technical questions about uploading, downloading, or using features, provide
 
   const result = streamText({
     model: openai("gpt-4-turbo"),
-    system: systemPrompt,
+    instructions: systemPrompt,
     messages,
     temperature: 0.7,
-    maxTokens: 500,
+    maxOutputTokens: 500,
   })
 
-  return result.toDataStreamResponse()
+  return result.toUIMessageStreamResponse()
 }

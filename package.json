@@ -9,7 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ai-sdk/openai": "^1.3.23",
+    "@ai-sdk/openai": "^4.0.15",
+    "@ai-sdk/react": "^4.0.31",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.14",
@@ -27,7 +28,7 @@
     "@radix-ui/react-tooltip": "^1.2.7",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
-    "ai": "^4.3.18",
+    "ai": "^7.0.28",
     "apexcharts": "^4.5.0",
     "axios": "^1.9.0",
     "bcrypt": "^5.1.1",
@@ -36,10 +37,11 @@
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "jsonwebtoken": "^9.0.2",
+    "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",
     "lucide-react": "^0.511.0",
     "mongodb": "^6.16.0",
-    "next": "15.1.11",
+    "next": "^15.5.20",
     "qrcode.react": "^4.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -50,6 +52,12 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.1.0"
+  },
+  "overrides": {
+    "tar": "^7.5.20",
+    "next": {
+      "postcss": "^8.5.10"
+    }
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
