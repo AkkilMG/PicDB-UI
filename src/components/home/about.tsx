@@ -32,7 +32,7 @@ export default function AboutSection() {
           <div className="mt-12 pt-12 relative lg:mt-0 lg:col-start-2">
             <div className="shadow-2xl rounded-2xl overflow-hidden ">
               <Image
-                src="/dashboard.png"
+                src="/dashboard.webp"
                 alt="Dashboard"
                 width={800}
                 height={600}
@@ -46,7 +46,7 @@ export default function AboutSection() {
           <div className="pt-2 relative lg:mt-0 lg:col-start-1">
             <div className="shadow-2xl rounded-xl overflow-hidden w-48 h-98 mx-auto">
               <Image
-                src="/dashboard-mobile.png"
+                src="/dashboard-mobile.webp"
                 alt="Dashboard Mobile"
                 width={192}
                 height={392}

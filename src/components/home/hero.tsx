@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { enHome, esHome, ruHome, hiHome } from "../../config/text/home.text";
 import { HeroStarRating } from "../testimonials/star";
 import { useLanguage } from "@/contexts/language-context";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const langTextMap = { en: enHome, es: esHome, ru: ruHome, hi: hiHome } as const;
 
@@ -14,25 +15,10 @@ export default function HeroSection({
 }: {
   testimonialsData: any;
 }) {
-  const [device, setDevice] = useState("/assets/images/computer.png");
-  const [windowWidth, setWindowWidth] = useState(0);
+  const isMobile = useMediaQuery(600);
   const { lang } = useLanguage();
   const data = langTextMap[lang] ?? enHome;
-
-  useEffect(() => {
-    const handleResize = () => {
-      setDevice(
-        window.innerWidth < 600
-          ? "/assets/images/computer.png"
-          : "/assets/images/mobile.png"
-      );
-      setWindowWidth(window.innerWidth);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const device = isMobile ? "/assets/images/computer.webp" : "/assets/images/mobile.webp";
 
   return (
     <section className="relative bg-black text-white min-h-screen overflow-hidden">
@@ -85,7 +71,7 @@ export default function HeroSection({
               <div className="rounded-full overflow-hidden w-8 h-8">
                 <Image
                   draggable={false}
-                  src="/assets/images/english.png"
+                  src="/assets/images/english.webp"
                   alt="English"
                   width={32}
                   height={32}
@@ -102,7 +88,7 @@ export default function HeroSection({
               <div className="rounded-full overflow-hidden w-8 h-8">
                 <Image
                   draggable={false}
-                  src="/assets/images/spanish.png"
+                  src="/assets/images/spanish.webp"
                   alt="Spanish"
                   width={32}
                   height={32}
@@ -119,7 +105,7 @@ export default function HeroSection({
               <div className="rounded-full overflow-hidden w-8 h-8">
                 <Image
                   draggable={false}
-                  src="/assets/images/russian.png"
+                  src="/assets/images/russian.webp"
                   alt="Russian"
                   width={32}
                   height={32}
@@ -136,7 +122,7 @@ export default function HeroSection({
               <div className="rounded-full overflow-hidden w-8 h-8">
                 <Image
                   draggable={false}
-                  src="/assets/images/hindi.png"
+                  src="/assets/images/hindi.webp"
                   alt="Hindi"
                   width={32}
                   height={32}
@@ -175,7 +161,7 @@ export default function HeroSection({
         {/* Device Image */}
         <div
           className={`absolute -mt-[62vh] bottom-0 left-1/2 transform -translate-x-1/2 z-0 ${
-            windowWidth < 600
+            isMobile
               ? "w-[400px] lg:w-[420px] xl:w-[440px]"
               : "w-[338px] lg:w-[350px] xl:w-[380px]"
           }`}

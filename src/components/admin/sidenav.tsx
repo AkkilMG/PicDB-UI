@@ -22,7 +22,7 @@ export default function AdminSidenav() {
       {/* Hamburger for mobile */}
       <div className="md:hidden p-4 flex justify-between items-center bg-white border-b shadow-sm">
         <a draggable={false} href="/">
-          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+          <Image draggable={false} src="/assets/images/letter-dark.webp" alt="Logo" width={100} height={40} />
         </a>
         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none">
           {isOpen ? (
@@ -52,7 +52,7 @@ export default function AdminSidenav() {
         {/* Logo & Title */}
         <div>
           <a draggable={false} href="/" className="ml-3 flex items-center">
-            <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={100} height={40} />
+            <Image draggable={false} src="/assets/images/letter-dark.webp" alt="Logo" width={100} height={40} />
           </a>
           <p className="relative mt-1 ml-4 mb-6 text-lg font-semibold text-gray-800">
             Admin Panel

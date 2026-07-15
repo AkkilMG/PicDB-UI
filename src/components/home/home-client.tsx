@@ -1,15 +1,25 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import AboutSection from "@/components/home/about";
 import HeroSection from "@/components/home/hero";
-import { SavingsCalculator } from "@/components/home/saving";
-import { TestimonialsSection } from "@/components/home/testimonials";
-import Footer from "@/components/main/footer";
 import Header from "@/components/main/header";
 import { useLanguage } from "@/contexts/language-context";
 import { enHome, esHome, hiHome, ruHome } from "@/config/text/home.text";
 
+const AboutSection = dynamic(() => import("@/components/home/about"), {
+  loading: () => <div className="min-h-screen bg-gray-50" />,
+});
+const SavingsCalculator = dynamic(
+  () => import("@/components/home/saving").then((m) => ({ default: m.SavingsCalculator })),
+  { loading: () => <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" /> }
+);
+const TestimonialsSection = dynamic(
+  () => import("@/components/home/testimonials").then((m) => ({ default: m.TestimonialsSection })),
+  { loading: () => <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-purple-100" /> }
+);
+const Footer = dynamic(() => import("@/components/main/footer"), {
+  loading: () => <div className="h-64 bg-black" />,
+});
 const ChatBot = dynamic(() => import("@/components/pop/chatbot"), { ssr: false });
 
 const testimonialsData = [

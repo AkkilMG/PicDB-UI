@@ -28,10 +28,10 @@ import { useLanguage } from "@/contexts/language-context";
 const langTextMap = { en: enSideNav, es: esSideNav, ru: ruSideNav, hi: hiSideNav } as const;
 
 const Language = [
-  { id: "en" as const, name: "English", icon: "/assets/images/english.png" },
-  { id: "es" as const, name: "Español", icon: "/assets/images/spanish.png" },
-  { id: "ru" as const, name: "русский", icon: "/assets/images/russian.png" },
-  { id: "hi" as const, name: "हिन्दी", icon: "/assets/images/hindi.png" },
+  { id: "en" as const, name: "English", icon: "/assets/images/english.webp" },
+  { id: "es" as const, name: "Español", icon: "/assets/images/spanish.webp" },
+  { id: "ru" as const, name: "русский", icon: "/assets/images/russian.webp" },
+  { id: "hi" as const, name: "हिन्दी", icon: "/assets/images/hindi.webp" },
 ];
 
 export default function Sidenav() {
@@ -57,7 +57,7 @@ export default function Sidenav() {
       {/* Hamburger for mobile */}
       <div className="md:hidden p-3 sm:p-4 sticky flex justify-between items-center bg-white border-b shadow-sm">
         <Link href="/">
-          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={80} height={32} className="sm:w-[100px] sm:h-[40px]" />
+          <Image draggable={false} src="/assets/images/letter-dark.webp" alt="Logo" width={80} height={32} className="sm:w-[100px] sm:h-[40px]" />
         </Link>
         <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none p-1">
           {isOpen ? (
@@ -78,7 +78,7 @@ export default function Sidenav() {
           ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 md:static md:block`}>
         {/* Logo */}
         <Link href="/" className="ml-2 sm:ml-3 flex items-center">
-          <Image draggable={false} src="/assets/images/letter-dark.png" alt="Logo" width={80} height={32} className="sm:w-[100px] sm:h-[40px]" />
+          <Image draggable={false} src="/assets/images/letter-dark.webp" alt="Logo" width={80} height={32} className="sm:w-[100px] sm:h-[40px]" />
         </Link>
 
         {/* Navigation */}

@@ -7,10 +7,10 @@ import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 
 const Language = [
-  { id: "en" as const, name: "English", icon: "/assets/images/english.png" },
-  { id: "es" as const, name: "Español", icon: "/assets/images/spanish.png" },
-  { id: "ru" as const, name: "русский", icon: "/assets/images/russian.png" },
-  { id: "hi" as const, name: "हिन्दी", icon: "/assets/images/hindi.png" },
+  { id: "en" as const, name: "English", icon: "/assets/images/english.webp" },
+  { id: "es" as const, name: "Español", icon: "/assets/images/spanish.webp" },
+  { id: "ru" as const, name: "русский", icon: "/assets/images/russian.webp" },
+  { id: "hi" as const, name: "हिन्दी", icon: "/assets/images/hindi.webp" },
 ];
 
 const Header = () => {
@@ -43,7 +43,7 @@ const Header = () => {
             <Link href="/">
               <Image
                 draggable={false}
-                src="/assets/images/letter.png"
+                src="/assets/images/letter.webp"
                 alt="PikDB logo"
                 width={100}
                 height={40}

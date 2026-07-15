@@ -1,6 +1,5 @@
 "use client";
 
-
 import { enUpload, esUpload, hiUpload, ruUpload } from '@/config/text/upload.text';
 import {QRCodeSVG} from 'qrcode.react';
 import { useState } from 'react';
@@ -8,33 +7,24 @@ import { useLanguage } from '@/contexts/language-context';
 
 const langTextMap = { en: enUpload, es: esUpload, ru: ruUpload, hi: hiUpload } as const;
 
-
-interface UploadResultProps { view: string; link: string; title: string; close: {close: boolean, setClose: any};}
+interface UploadResultProps { view: string; link: string; title: string; close: {close: boolean, setClose: (v: boolean) => void};}
 
 export default function UploadMobileResult({ view, link, title, close }: UploadResultProps) {
-    const [showSection, setShowSection] = useState('download'); 
-    
+    const [showSection, setShowSection] = useState('download');
+    const [copiedDownload, setCopiedDownload] = useState(false);
+    const [copiedView, setCopiedView] = useState(false);
     const { lang } = useLanguage();
     const data = langTextMap[lang] ?? enUpload;
-    const handleCopyToClipboard = async (clip: any) => {
+
+    const handleCopyToClipboard = async (clip: string, isView: boolean) => {
         try {
             await navigator.clipboard.writeText(clip);
-            if (clip.includes('/v/')) {
-                let copyView = document.getElementById("copyView");
-                if (copyView) {
-                copyView.innerText = data.copied;
-                    setTimeout(() => {
-                        copyView.innerText = data.copy;
-                    }, 1650);
-                }
-                return;
-            }
-            let copyBtn = document.getElementById("copyBtn");
-            if (copyBtn) {
-                copyBtn.innerText = data.copied;
-                setTimeout(() => {
-                    copyBtn.innerText = data.copy;
-                }, 1650);
+            if (isView) {
+                setCopiedView(true);
+                setTimeout(() => setCopiedView(false), 1650);
+            } else {
+                setCopiedDownload(true);
+                setTimeout(() => setCopiedDownload(false), 1650);
             }
         } catch (error) {
             console.log('Failed to copy to clipboard:', error);
@@ -79,8 +69,8 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
                       <label className="text-gray-600 text-sm block mb-1">{data.downloads.link}</label>
                       <div className="flex border rounded-md border-gray-300">
                         <input type="text" value={link} className="flex-1 px-3 py-2 focus:outline-none text-gray-700" readOnly />
-                        <button id="copyBtn" onClick={() => handleCopyToClipboard(link)} className="bg-gray-100 hover:bg-gray-200 px-3 py-2 border-l border-gray-300 text-gray-600 rounded-r-md">
-                          {data.copy}
+                        <button onClick={() => handleCopyToClipboard(link, false)} className="bg-gray-100 hover:bg-gray-200 px-3 py-2 border-l border-gray-300 text-gray-600 rounded-r-md">
+                          {copiedDownload ? data.copied : data.copy}
                         </button>
                         <button onClick={() => window.open(link, '_blank')} className="bg-gray-100 hover:bg-gray-200 px-2 py-2 border-l border-gray-300 text-gray-600 rounded-r-md focus:outline-none">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5 text-grey-100">
@@ -105,7 +95,7 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
                     <p className="text-gray-500 text-sm mb-4">{data.views.description}</p>
                     <div className="flex justify-center mb-4">
                       {link && (
-                        <img draggable={false} src={link || 'assets/icons/error.png'} alt="Preview" className="max-w-full max-h-60 object-cover rounded-lg border"
+                        <img draggable={false} src={link || 'assets/icons/error.webp'} alt="Preview" className="max-w-full max-h-60 object-cover rounded-lg border"
                         />
                       )}
                     </div>
@@ -113,8 +103,8 @@ export default function UploadMobileResult({ view, link, title, close }: UploadR
                       <label className="text-gray-600 text-sm block mb-1">{data.views.link}</label>
                       <div className="flex border rounded-md border-gray-300">
                         <input type="text" value={view} className="flex-1 px-3 py-2 focus:outline-none text-gray-700" readOnly/>
-                        <button id="copyView" onClick={() => handleCopyToClipboard(view)} className="bg-gray-100 hover:bg-gray-200 px-3 py-2 border-l border-gray-300 text-gray-600 rounded-r-md">
-                          {data.copy}
+                        <button onClick={() => handleCopyToClipboard(view, true)} className="bg-gray-100 hover:bg-gray-200 px-3 py-2 border-l border-gray-300 text-gray-600 rounded-r-md">
+                          {copiedView ? data.copied : data.copy}
                         </button>
                         <button onClick={() => window.open(view, '_blank')} className="bg-gray-100 hover:bg-gray-200 px-2 py-2 border-l border-gray-300 text-gray-600 rounded-r-md focus:outline-none">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5 text-grey-100">

@@ -1,8 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { SquareArrowOutUpRight, Star } from "lucide-react"
-import { motion } from "framer-motion"
+import { Star } from "lucide-react"
 
 export function TestimonialsSection({text, testimonialsData}: {text: any, testimonialsData: any}) {
     

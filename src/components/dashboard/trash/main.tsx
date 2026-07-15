@@ -1,7 +1,6 @@
 "use client";
 
-
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Sidenav from '../sidenav';
 import UploadMobileResult from '../../upload/upload_result_mobile';
 import UploadResult from '../../upload/upload_result';
@@ -9,99 +8,68 @@ import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/tex
 import MainDashboardHeader from '../main/header';
 import MainTrashList from './list';
 import { useLanguage } from '@/contexts/language-context';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 const langTextMap = { en: enDashboard, es: esDashboard, ru: ruDashboard, hi: hiDashboard } as const;
 
 export default function Trash() {
-  const [link, setLink] = useState<string>('');
-  const [title, setTitle] = useState<string>('');
-  const [view, setView] = useState<string>('');
-  const [id, setId] = useState<string>('');
-  const [close, setClose] = useState<boolean>(true);
-  const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
+  const [link, setLink] = useState('');
+  const [title, setTitle] = useState('');
+  const [view, setView] = useState('');
+  const [id, setId] = useState('');
+  const [close, setClose] = useState(true);
   const [result, setResult] = useState<any[]>([]);
   const [fullResult, setFullResult] = useState<any[]>([]);
-  const [policy, setPolicy] = useState<boolean>(true);
-
   const { lang } = useLanguage();
-  const data = langTextMap[lang] ?? enDashboard;
+  const data = useMemo(() => langTextMap[lang] ?? enDashboard, [lang]);
+  const isMobile = useMediaQuery(720);
 
   useEffect(() => {
-      const policyAccepted = localStorage.getItem("policyAccepted") === "true";
-      if (!policyAccepted) {
-          setPolicy(false);
-      } else setPolicy(true)
-  }, []);
-  
-  const searchById = (id: String) => {
-      const found = result.find((item: any) => item.id === id.toString());
-      if (found) {
-          setLink(found.link);
-          setTitle(found.title);
-          setView(found.view);
-          setClose(false);
-      }
-  };
-
-  useEffect(() => {
-      const trashLinks = (typeof window !== 'undefined') ? JSON.parse(localStorage.getItem('trash') || '[]') : [];
+    try {
+      const trashLinks = JSON.parse(localStorage.getItem('trash') || '[]');
       setResult(trashLinks);
       setFullResult(trashLinks);
-  }, [])
+    } catch { /* ignore */ }
+  }, []);
 
   useEffect(() => {
-      if (id) {
-          searchById(id);
-      }
-  }, [id]);
-
-  useEffect(() => {
-      if (close) {
-          setId('');
-          setLink('');
-          setTitle('');
-          setView('');
-      }
-  }, [close, view, link, title]);
-  
-  useEffect(() => {
-      const handleResize = () => {
-          if (window.innerWidth <= 720) {
-              setUploadComponent(<UploadMobileResult view={view} link={link} title={title} close={{ close: close, setClose }} />);
-          } else {
-              setUploadComponent(<UploadResult view={view} link={link} title={title} close={{ close: close, setClose }} />);
-          }
-      };
-  
-      handleResize();
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-          window.removeEventListener('resize', handleResize);
-      };
-  }, [view, link, title, close]);
-
-  const deleteList = (id: string) => {
-    const updatedResult = result.filter(item => item.id !== id);
-    setResult(updatedResult);
-    const updatedFullResult = fullResult.filter(item => item.id !== id);
-    setFullResult(updatedFullResult);
-    localStorage.setItem('trash', JSON.stringify(updatedFullResult));
-  };
-
-  
-  const searchForImage = (text: string) => {
-    if (text) {
-      const filteredResult = fullResult.filter(item => item.title.toLowerCase().includes(text.toLowerCase()));
-      setResult(filteredResult);
-    } else {
-      setResult(fullResult);
+    if (!id || close) return;
+    const found = result.find((item: any) => item.id === id);
+    if (found) {
+      setLink(found.link);
+      setTitle(found.title);
+      setView(found.view);
+      setClose(false);
     }
-  }
+  }, [id, result, close]);
+
+  const handleClose = useCallback(() => {
+    setClose(true);
+    setId('');
+    setLink('');
+    setTitle('');
+    setView('');
+  }, []);
+
+  const deleteList = useCallback((id: string) => {
+    setResult(prev => {
+      const updated = prev.filter(item => item.id !== id);
+      setFullResult(updated);
+      localStorage.setItem('trash', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const searchForImage = useCallback((text: string) => {
+    setResult(text ? fullResult.filter(item => item.title.toLowerCase().includes(text.toLowerCase())) : fullResult);
+  }, [fullResult]);
 
   return (
     <>
-    { (id && !close) && (uploadComponent)}
+    { (id && !close) && (isMobile
+      ? <UploadMobileResult view={view} link={link} title={title} close={{ close, setClose: handleClose }} />
+      : <UploadResult view={view} link={link} title={title} close={{ close, setClose: handleClose }} />
+    )}
     <div className="flex flex-col md:flex-row h-screen bg-gray-50">
       <Sidenav />
       <main className="flex-1 p-4 md:p-8">

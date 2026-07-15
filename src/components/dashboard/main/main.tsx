@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Sidenav from '../sidenav';
 import MainDashboardHeader from './header';
 import MainDashboardList from './list';
@@ -11,9 +11,9 @@ import Statistics from './statistics';
 import Joyride, { CallBackProps, STATUS } from "react-joyride";
 import { FaLightbulb } from "react-icons/fa6";
 import { dashboardSteps } from '@/config/steps.tutorial';
-import MainDashboardOverview from './overview';
 import MainDashboardFolders from './folders';
 import { useLanguage } from '@/contexts/language-context';
+import { useMediaQuery } from '@/hooks/use-media-query';
 
 const langTextMap = { en: enDashboard, es: esDashboard, ru: ruDashboard, hi: hiDashboard } as const;
 
@@ -23,94 +23,27 @@ export default function Dashboard() {
   const [view, setView] = useState('');
   const [id, setId] = useState('');
   const [close, setClose] = useState(true);
-  const [uploadComponent, setUploadComponent] = useState<any>(<div></div>);
   const [result, setResult] = useState<any[]>([]);
   const [fullResult, setFullResult] = useState<any[]>([]);
   const [policy, setPolicy] = useState(true);
   const { lang } = useLanguage();
-  const data = langTextMap[lang] ?? enDashboard;
+  const data = useMemo(() => langTextMap[lang] ?? enDashboard, [lang]);
+  const isMobile = useMediaQuery(720);
 
   const [runTutorial, setRunTutorial] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
-
   const [drawerOpen, setDrawerOpen] = useState(true);
 
   useEffect(() => {
     const policyAccepted = localStorage.getItem("policyAccepted") === "true";
     setPolicy(policyAccepted);
-  }, []);
-
-  const searchById = (id: String) => {
-    const found = result.find((item: any) => item.id === id.toString());
-    if (found) {
-      setLink(found.link);
-      setTitle(found.title);
-      setView(found.view);
-      setClose(false);
-    }
-  };
-
-  useEffect(() => {
-    const storedLinks = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('links') || '[]') : [];
-    setResult(storedLinks);
-    setFullResult(storedLinks);
-  }, []);
-
-  useEffect(() => {
-    if (id) searchById(id);
-  }, [id]);
-
-  useEffect(() => {
-    if (close) {
-      setId('');
-      setLink('');
-      setTitle('');
-      setView('');
-    }
-  }, [close, view, link, title]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 720) {
-        setUploadComponent(<UploadMobileResult view={view} link={link} title={title} close={{ close: close, setClose }} />);
-      } else {
-        setUploadComponent(<UploadResult view={view} link={link} title={title} close={{ close: close, setClose }} />);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [view, link, title, close]);
-
-  const deleteList = (id: string) => {
-    const updatedResult = result.filter(item => item.id !== id);
-    setResult(updatedResult);
-    const updatedFullResult = fullResult.filter(item => item.id !== id);
-    setFullResult(updatedFullResult);
-    const trash = localStorage.getItem('trash');
-    const updatedTrash = trash ? [...JSON.parse(trash), ...fullResult.filter(item => item.id === id)] : fullResult.filter(item => item.id === id);
-    localStorage.setItem('trash', JSON.stringify(updatedTrash));
-    localStorage.setItem('links', JSON.stringify(updatedFullResult));
-  };
-
-  const favoriteList = (id: string) => {
-    const updatedResult = result.map(item => item.id === id ? { ...item, favorite: !item.favorite } : item);
-    const updatedFullResult = fullResult.map(item => item.id === id ? { ...item, favorite: !item.favorite } : item);
-    setResult(updatedResult);
-    setFullResult(updatedFullResult);
-    localStorage.setItem('links', JSON.stringify(updatedFullResult));
-  };
-
-  const searchForImage = (text: string) => {
-    setResult(text ? fullResult.filter(item => item.title.toLowerCase().includes(text.toLowerCase())) : fullResult);
-  };
-
-  useEffect(() => {
+    try {
+      const storedLinks = JSON.parse(localStorage.getItem('links') || '[]');
+      setResult(storedLinks);
+      setFullResult(storedLinks);
+    } catch { /* ignore */ }
     setIsClient(true);
-  }, []);
-
-  useEffect(() => {
     const tutorial = localStorage.getItem("tutorial");
     if (tutorial) {
       try {
@@ -119,16 +52,59 @@ export default function Dashboard() {
           setRunTutorial(true);
           localStorage.setItem("tutorial", JSON.stringify({ ...tutorialObj, dashboard: true }));
         }
-      } catch (e) {
-        console.log("Error parsing tutorial data:", e);
-      }
+      } catch { /* ignore */ }
     } else {
       setRunTutorial(true);
       localStorage.setItem("tutorial", JSON.stringify({ upload: false, dashboard: false, trash: false, report: false }));
     }
   }, []);
 
-  const handleJoyrideCallback = (data: CallBackProps) => {
+  useEffect(() => {
+    if (!id || close) return;
+    const found = result.find((item: any) => item.id === id);
+    if (found) {
+      setLink(found.link);
+      setTitle(found.title);
+      setView(found.view);
+      setClose(false);
+    }
+  }, [id, result, close]);
+
+  const handleClose = useCallback(() => {
+    setClose(true);
+    setId('');
+    setLink('');
+    setTitle('');
+    setView('');
+  }, []);
+
+  const deleteList = useCallback((id: string) => {
+    setResult(prev => {
+      const updated = prev.filter(item => item.id !== id);
+      setFullResult(updated);
+      const trash = localStorage.getItem('trash');
+      const trashedItems = prev.filter(item => item.id === id);
+      const updatedTrash = trash ? [...JSON.parse(trash), ...trashedItems] : trashedItems;
+      localStorage.setItem('trash', JSON.stringify(updatedTrash));
+      localStorage.setItem('links', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const favoriteList = useCallback((id: string) => {
+    setResult(prev => {
+      const updated = prev.map(item => item.id === id ? { ...item, favorite: !item.favorite } : item);
+      setFullResult(updated);
+      localStorage.setItem('links', JSON.stringify(updated));
+      return updated;
+    });
+  }, []);
+
+  const searchForImage = useCallback((text: string) => {
+    setResult(text ? fullResult.filter(item => item.title.toLowerCase().includes(text.toLowerCase())) : fullResult);
+  }, [fullResult]);
+
+  const handleJoyrideCallback = useCallback((data: CallBackProps) => {
     const { status, index, type }: any = data;
     if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
       setRunTutorial(false);
@@ -136,20 +112,11 @@ export default function Dashboard() {
     } else {
       setStepIndex(index + (type === "step:after" ? 1 : 0));
     }
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDrawerOpen(false);
-    }, 10000);
-    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (drawerOpen) {
-      const timer = setTimeout(() => {
-        setDrawerOpen(false);
-      }, 10000);
+      const timer = setTimeout(() => setDrawerOpen(false), 10000);
       return () => clearTimeout(timer);
     }
   }, [drawerOpen]);
@@ -178,7 +145,10 @@ export default function Dashboard() {
         </button>
       </div>
 
-      {(id && !close) && uploadComponent}
+      {(id && !close) && (isMobile 
+        ? <UploadMobileResult view={view} link={link} title={title} close={{ close, setClose: handleClose }} />
+        : <UploadResult view={view} link={link} title={title} close={{ close, setClose: handleClose }} />
+      )}
 
       <div className="flex flex-col md:flex-row h-screen bg-gray-50">
         <Sidenav />

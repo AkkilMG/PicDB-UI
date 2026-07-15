@@ -9,10 +9,12 @@ import {
   ListBulletIcon,
 } from "@heroicons/react/24/outline"
 import { Dialog, Transition } from "@headlessui/react"
+import { useMediaQuery } from "@/hooks/use-media-query"
 
 export default function MainDashboardList({ text, data, setId, deleteList}: { text: any; data: any; setId: any; deleteList: any; }) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const isMobile = useMediaQuery(640)
   const [viewMode, setViewMode] = useState<"list" | "grid">("list")
 
   const openModal = (id: string) => {
@@ -133,8 +135,8 @@ export default function MainDashboardList({ text, data, setId, deleteList}: { te
                     </div>
                     <div>
                       <div className="text-sm font-medium text-gray-900">
-                        {file.title.length > (window.innerWidth < 640 ? 10 : 30)
-                          ? file.title.substring(0, window.innerWidth < 640 ? 10 : 30) + "..."
+                        {file.title.length > (isMobile ? 10 : 30)
+                          ? file.title.substring(0, isMobile ? 10 : 30) + "..."
                           : file.title}
                       </div>
                     </div>

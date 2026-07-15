@@ -69,8 +69,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/assets/logo/PikDB.png" />
-        <link rel="apple-touch-icon" href="/assets/logo/PikDB.png" />
+        <link rel="icon" href="/assets/logo/PikDB-favicon.png" />
+        <link rel="apple-touch-icon" href="/assets/logo/PikDB-apple.png" />
         <meta
           name="google-adsense-account"
           content="ca-pub-3201703650411352"
@@ -83,7 +83,7 @@ export default function RootLayout({
               "@type": "Organization",
               name: "Arkynox",
               url: "https://www.pikdb.com",
-              logo: "https://www.pikdb.com/assets/logo/PikDB.png",
+              logo: "https://www.pikdb.com/assets/logo/PikDB.webp",
             }),
           }}
         />

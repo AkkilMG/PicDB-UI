@@ -64,7 +64,7 @@ const Footer = () => {
             <div className="flex space-x-3 mb-2">
               <div className="h-8 w-8 rounded-full overflow-hidden bg-white my-2">
                 <Image
-                  src="/assets/logo/company.png"
+                  src="/assets/logo/company.webp"
                   alt="Arkynox profile"
                   width={32}
                   height={32}
@@ -86,7 +86,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 flex items-center">
             <Image
-              src="/assets/logo/PikDB.png"
+              src="/assets/logo/PikDB.webp"
               width={20}
               height={20}
               alt="logo"
@@ -97,13 +97,13 @@ const Footer = () => {
 
           <div className="flex space-x-4">
             <a href='https://www.linkedin.com/company/Arkynox/' target='_blank' rel="noopener noreferrer" className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
-              <Image draggable={false} src="/assets/icons/linkedin.png" width={24} height={24} alt="LinkedIn" />
+              <Image draggable={false} src="/assets/icons/linkedin.webp" width={24} height={24} alt="LinkedIn" />
             </a>
             <a href='https://github.com/Arkynox' target='_blank' rel="noopener noreferrer" className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
-              <Image draggable={false} src="/assets/icons/github.png" width={24} height={24} alt="GitHub" />
+              <Image draggable={false} src="/assets/icons/github.webp" width={24} height={24} alt="GitHub" />
             </a>
             <a href='https://www.instagram.com/heimancreation/' target='_blank' rel="noopener noreferrer" className="h-8 w-8 bg-gray-100 hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center">
-              <Image draggable={false} src="/assets/icons/instagram.png" width={24} height={24} alt="Instagram" />
+              <Image draggable={false} src="/assets/icons/instagram.webp" width={24} height={24} alt="Instagram" />
             </a>
           </div>
         </div>
