@@ -20,10 +20,11 @@ import { Loader2, User } from "lucide-react"
 interface UsernameModalProps {
   open: boolean
   onUsernameSet: (username: string) => void
+  onClose: () => void
   data: any
 }
 
-export function UsernameModal({ data, open, onUsernameSet }: UsernameModalProps) {
+export function UsernameModal({ data, open, onUsernameSet, onClose }: UsernameModalProps) {
   const [username, setUsername] = useState("")
   const [isLoading, setIsLoading] = useState(false)
  
@@ -37,7 +38,7 @@ export function UsernameModal({ data, open, onUsernameSet }: UsernameModalProps)
   }
 
   return (
-    <Dialog open={open} onOpenChange={() => {}}>
+    <Dialog open={open} onOpenChange={(open) => { if (!open) onClose() }}>
       <DialogContent className="sm:max-w-md"> {/* hideClose */}
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">

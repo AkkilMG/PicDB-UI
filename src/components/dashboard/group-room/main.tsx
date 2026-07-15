@@ -197,6 +197,15 @@ export default function GroupRoomPage() {
     setShowUsernameModal(true)
   }
 
+  const handleUsernameModalClose = () => {
+    const referrer = document.referrer
+    if (referrer && referrer.includes("pikdb.com")) {
+      router.back()
+    } else {
+      window.location.href = "https://pikdb.com/dashboard"
+    }
+  }
+
 
   if (loading) {
     return (
@@ -323,7 +332,7 @@ export default function GroupRoomPage() {
         )}
       </main>
 
-      <UsernameModal data={data} open={showUsernameModal} onUsernameSet={handleUsernameSet} />
+      <UsernameModal data={data} open={showUsernameModal} onUsernameSet={handleUsernameSet} onClose={handleUsernameModalClose} />
 
       <CreateGroupModal data={data} open={showCreateModal} onOpenChange={setShowCreateModal} username={username} />
 
