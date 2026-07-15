@@ -5,30 +5,15 @@ import React, { useEffect, useState } from 'react';
 import Sidenav from '../sidenav';
 import { enReport, esReport, hiReport, ruReport } from '@/config/text/report.text';
 import ReportForm from './form';
+import { useLanguage } from '@/contexts/language-context';
+
+const langTextMap = { en: enReport, es: esReport, ru: ruReport, hi: hiReport } as const;
 
 
 export default function Report() {
   const [policy, setPolicy] = useState<boolean>(true);
-  const [data, setData] = useState(enReport);
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang");
-      if (lang === "es") {
-        setData(esReport);
-      } else if (lang === "ru") {
-        setData(ruReport);
-      } else if (lang === "hi") {
-        setData(hiReport);
-      } else {
-        setData(enReport);
-      }
-    };
-
-    checkLanguage();
-    const intervalId = setInterval(checkLanguage, 2000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enReport;
 
   useEffect(() => {
       const policyAccepted = localStorage.getItem("policyAccepted") === "true";

@@ -3,7 +3,10 @@
 
 import { enUpload, esUpload, hiUpload, ruUpload } from '@/config/text/upload.text';
 import {QRCodeSVG} from 'qrcode.react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useLanguage } from '@/contexts/language-context';
+
+const langTextMap = { en: enUpload, es: esUpload, ru: ruUpload, hi: hiUpload } as const;
 
 
 interface UploadResultProps { view: string; link: string; title: string; close: {close: boolean, setClose: any};}
@@ -11,26 +14,8 @@ interface UploadResultProps { view: string; link: string; title: string; close: 
 export default function UploadMobileResult({ view, link, title, close }: UploadResultProps) {
     const [showSection, setShowSection] = useState('download'); 
     
-    const [data, setData] = useState(enUpload);
-    useEffect(() => {
-      const checkLanguage = () => {
-        const lang = localStorage.getItem("lang");
-        if (lang === "es") {
-          setData(esUpload);
-        } else if (lang === "ru") {
-          setData(ruUpload);
-        } else if (lang === "hi") {
-          setData(hiUpload);
-        } else {
-          setData(enUpload);
-        }
-      };
-  
-      checkLanguage();
-      const intervalId = setInterval(checkLanguage, 2000);
-  
-      return () => clearInterval(intervalId);
-    }, []);
+    const { lang } = useLanguage();
+    const data = langTextMap[lang] ?? enUpload;
     const handleCopyToClipboard = async (clip: any) => {
         try {
             await navigator.clipboard.writeText(clip);

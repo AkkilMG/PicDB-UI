@@ -8,6 +8,9 @@ import UploadResult from '../../upload/upload_result';
 import { enDashboard, esDashboard, hiDashboard, ruDashboard } from '@/config/text/dashboard.text';
 import MainDashboardHeader from '../main/header';
 import MainTrashList from './list';
+import { useLanguage } from '@/contexts/language-context';
+
+const langTextMap = { en: enDashboard, es: esDashboard, ru: ruDashboard, hi: hiDashboard } as const;
 
 export default function Trash() {
   const [link, setLink] = useState<string>('');
@@ -20,26 +23,8 @@ export default function Trash() {
   const [fullResult, setFullResult] = useState<any[]>([]);
   const [policy, setPolicy] = useState<boolean>(true);
 
-  const [data, setData] = useState(enDashboard);
-    useEffect(() => {
-      const checkLanguage = () => {
-        const lang = localStorage.getItem("lang");
-        if (lang === "es") {
-          setData(esDashboard);
-        } else if (lang === "ru") {
-          setData(ruDashboard);
-        } else if (lang === "hi") {
-          setData(hiDashboard);
-        } else {
-          setData(enDashboard);
-        }
-      };
-  
-      checkLanguage();
-      const intervalId = setInterval(checkLanguage, 2000);
-  
-      return () => clearInterval(intervalId);
-    }, []);
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enDashboard;
 
   useEffect(() => {
       const policyAccepted = localStorage.getItem("policyAccepted") === "true";

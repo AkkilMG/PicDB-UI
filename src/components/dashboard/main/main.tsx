@@ -13,6 +13,9 @@ import { FaLightbulb } from "react-icons/fa6";
 import { dashboardSteps } from '@/config/steps.tutorial';
 import MainDashboardOverview from './overview';
 import MainDashboardFolders from './folders';
+import { useLanguage } from '@/contexts/language-context';
+
+const langTextMap = { en: enDashboard, es: esDashboard, ru: ruDashboard, hi: hiDashboard } as const;
 
 export default function Dashboard() {
   const [link, setLink] = useState('');
@@ -24,26 +27,14 @@ export default function Dashboard() {
   const [result, setResult] = useState<any[]>([]);
   const [fullResult, setFullResult] = useState<any[]>([]);
   const [policy, setPolicy] = useState(true);
-  const [data, setData] = useState(enDashboard);
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enDashboard;
 
   const [runTutorial, setRunTutorial] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
 
   const [drawerOpen, setDrawerOpen] = useState(true);
-
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang");
-      if (lang === "es") setData(esDashboard);
-      else if (lang === "ru") setData(ruDashboard);
-      else if (lang === "hi") setData(hiDashboard);
-      else setData(enDashboard);
-    };
-    checkLanguage();
-    const intervalId = setInterval(checkLanguage, 2000);
-    return () => clearInterval(intervalId);
-  }, []);
 
   useEffect(() => {
     const policyAccepted = localStorage.getItem("policyAccepted") === "true";

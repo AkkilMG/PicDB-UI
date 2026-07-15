@@ -1,28 +1,13 @@
 import { enUpload, esUpload, hiUpload, ruUpload } from "@/config/text/upload.text";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/language-context";
+
+const langTextMap = { en: enUpload, es: esUpload, ru: ruUpload, hi: hiUpload } as const;
 
 export default function DropUpload({ uploadFile }: { uploadFile: (file: any) => Promise<any> }) {
     const [dragging, setDragging] = useState(false);
-    const [data, setData] = useState(enUpload);
-      useEffect(() => {
-        const checkLanguage = () => {
-          const lang = localStorage.getItem("lang");
-          if (lang === "es") {
-            setData(esUpload);
-          } else if (lang === "ru") {
-            setData(ruUpload);
-          } else if (lang === "hi") {
-            setData(hiUpload);
-          } else {
-            setData(enUpload);
-          }
-        };
-    
-        checkLanguage();
-        const intervalId = setInterval(checkLanguage, 2000);
-    
-        return () => clearInterval(intervalId);
-      }, []);
+    const { lang } = useLanguage();
+    const data = langTextMap[lang] ?? enUpload;
     useEffect(() => {
         const handleWindowDragOver = (event: any) => {
             setDragging(true);

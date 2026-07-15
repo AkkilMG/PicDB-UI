@@ -17,6 +17,7 @@ import {
 import { Loader2, Eye, EyeOff, Copy, Check } from "lucide-react"
 import { toast } from "@/hooks/use-toast"
 import { useRouter } from "next/navigation"
+import { useLanguage } from "@/contexts/language-context"
 
 interface CreateGroupModalProps {
   open: boolean
@@ -34,21 +35,9 @@ export function CreateGroupModal({ data, open, onOpenChange, username }: CreateG
   const [copiedPassword, setCopiedPassword] = useState(false)
   const [savedGroups, setSavedGroups] = useState<any[]>([])
   const [groupName, setGroupName] = useState("")
-  const [language, setLanguage] = useState("en")
 
   const router = useRouter()
-
-  // Language detection
-  useEffect(() => {
-    const checkLanguage = () => {
-      const selectedLang = localStorage.getItem("selectedLanguage") || "en"
-      setLanguage(selectedLang)
-    }
-    
-    checkLanguage()
-    const interval = setInterval(checkLanguage, 2000)
-    return () => clearInterval(interval)
-  }, [])
+  const { lang } = useLanguage();
 
   
   const saveGroupToLocalStorage = (groupData: any) => {

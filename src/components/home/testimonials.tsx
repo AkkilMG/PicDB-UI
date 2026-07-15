@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import Image from "next/image"
 import { SquareArrowOutUpRight, Star } from "lucide-react"
 import { motion } from "framer-motion"
 

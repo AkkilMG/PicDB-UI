@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -26,6 +28,7 @@ const predefinedQuestions = [
 ]
 
 export default function ChatBot() {
+  const router = useRouter()
   const [open, setOpen] = useState(false)
   const [localMessages, setLocalMessages] = useState<Message[]>([])
   const [showWelcome, setShowWelcome] = useState(true)
@@ -125,15 +128,15 @@ export default function ChatBot() {
 
   const handleButtonClick = (action: string) => {
     if (action === "docs") {
-      window.location.href = "/docs"
+      router.push("/docs")
     } else if (action === "docs_how_to_upload") {
-      window.location.href = "/docs/how-to-upload"
+      router.push("/docs/how-to-upload")
     } else if (action === "docs_how_to_download") {
-      window.location.href = "/docs/how-to-download"
+      router.push("/docs/how-to-download")
     } else if (action === "docs_navigation_guide") {
-      window.location.href = "/docs/navigation-guide"
+      router.push("/docs/navigation-guide")
     } else if (action === "docs_group_rooms") {
-      window.location.href = "/docs/group-rooms"
+      router.push("/docs/group-rooms")
     }
   }
 
@@ -148,9 +151,11 @@ export default function ChatBot() {
       {!open && (
         <div className="cursor-pointer transition-transform hover:scale-110" onClick={() => setOpen(true)}>
           <div className="relative">
-            <img
+            <Image
               src="/assets/icons/Etherea.webp"
               alt="Chat Support"
+              width={64}
+              height={64}
               className="w-16 h-16 shadow-lg"
             />
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>

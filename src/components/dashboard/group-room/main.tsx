@@ -14,6 +14,9 @@ import createGroupData from "@/assets/create.json"
 import joinGroupData from "@/assets/join.json"
 import { fetchGroups, fetchUsername } from "@/lib/group"
 import { enGroup, esGroup, ruGroup, hiGroup } from "@/config/text/group.text"
+import { useLanguage } from "@/contexts/language-context"
+
+const langTextMap = { en: enGroup, es: esGroup, ru: ruGroup, hi: hiGroup } as const;
 
 interface SavedGroup {
   id: string
@@ -32,29 +35,9 @@ export default function GroupRoomPage() {
   const [uid, setUid] = useState<string | null>(null)
   const [savedGroups, setSavedGroups] = useState<SavedGroup[]>([])
   const [loading, setLoading] = useState(true)
-  const [data, setData] = useState(enGroup)
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enGroup;
   const router = useRouter()
-
-  // Language configuration
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang")
-      if (lang === "es") {
-        setData(esGroup)
-      } else if (lang === "ru") {
-        setData(ruGroup)
-      } else if (lang === "hi") {
-        setData(hiGroup)
-      } else {
-        setData(enGroup)
-      }
-    }
-
-    checkLanguage()
-    const intervalId = setInterval(checkLanguage, 2000)
-
-    return () => clearInterval(intervalId)
-  }, [])
 
   const createGroupRef = useRef(null);
   const joinGroupRef = useRef(null);

@@ -1,31 +1,15 @@
 "use client";
-import { enFooter, esFooter, hiFooter, ruFooter } from '@/config/text/footer.text';
-import { useState, useEffect } from 'react';
+import { enFooter, esFooter, hiFooter, ruFooter } from "@/config/text/footer.text";
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useLanguage } from "@/contexts/language-context";
 
-
-import React from 'react';
+const langTextMap = { en: enFooter, es: esFooter, ru: ruFooter, hi: hiFooter } as const;
 
 const Footer = () => {
-  const [data, setData] = useState(enFooter);
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang");
-      if (lang === "es") {
-        setData(esFooter);
-      } else if (lang === "ru") {
-        setData(ruFooter);
-      } else if (lang === "hi") {
-        setData(hiFooter);
-      } else {
-        setData(enFooter);
-      }
-    };
-
-    checkLanguage();
-    const intervalId = setInterval(checkLanguage, 2000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enFooter;
   return (
     <footer className="bg-black text-white py-12">
       <div className="container mx-auto px-4">
@@ -38,7 +22,7 @@ const Footer = () => {
               <ul>
                 {data.services.available.map((service: any, index: number) => (
                   <li key={index} className="mb-1 text-gray-300 text-sm">
-                    <a draggable={false} href={service.link}>{service.title} </a>
+                    <Link href={service.link}>{service.title} </Link>
                   </li>
                 ))}
               </ul>
@@ -48,7 +32,7 @@ const Footer = () => {
               <ul>
                 {data.insights.available.map((insight: any, index: number) => (
                   <li key={index} className="mb-1 text-gray-300 text-sm">
-                    <a draggable={false} href={insight.link}>{insight.title}</a>
+                    <Link href={insight.link}>{insight.title}</Link>
                   </li>
                 ))}
               </ul>
@@ -58,7 +42,7 @@ const Footer = () => {
               <ul>
                 {data.resources.available.map((resource: any, index: number) => (
                   <li key={index} className="mb-1 text-gray-300 text-sm">
-                    <a draggable={false} href={resource.link}>{resource.title}</a>
+                    <Link href={resource.link}>{resource.title}</Link>
                   </li>
                 ))}
               </ul>
@@ -68,7 +52,7 @@ const Footer = () => {
               <ul>
                 {data.legals.available.map((legal: any, index: number) => (
                   <li key={index} className="mb-1 text-gray-300 text-sm">
-                    <a draggable={false} href={legal.link}>{legal.title}</a>
+                    <Link href={legal.link}>{legal.title}</Link>
                   </li>
                 ))}
               </ul>
@@ -79,9 +63,11 @@ const Footer = () => {
           <div className="bg-gray-800 rounded-xl p-4 shadow-lg max-w-full lg:w-[300px]">
             <div className="flex space-x-3 mb-2">
               <div className="h-8 w-8 rounded-full overflow-hidden bg-white my-2">
-                <img
+                <Image
                   src="/assets/logo/company.png"
                   alt="Arkynox profile"
+                  width={32}
+                  height={32}
                   className="w-full h-full p-1 object-cover"
                 />
               </div>
@@ -99,7 +85,7 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 flex items-center">
-            <img
+            <Image
               src="/assets/logo/PikDB.png"
               width={20}
               height={20}
@@ -110,14 +96,14 @@ const Footer = () => {
           </div>
 
           <div className="flex space-x-4">
-            <a draggable={false} href='https://www.linkedin.com/company/Arkynox/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
-              <img draggable={false} src="/assets/icons/linkedin.png" width={24} height={24} alt="instagram" />
+            <a href='https://www.linkedin.com/company/Arkynox/' target='_blank' rel="noopener noreferrer" className="h-8 w-8 bg-gray-100 hover:bg-blue-300 rounded-full flex items-center justify-center">
+              <Image draggable={false} src="/assets/icons/linkedin.png" width={24} height={24} alt="LinkedIn" />
             </a>
-            <a draggable={false} href='https://github.com/Arkynox' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
-              <img draggable={false} src="/assets/icons/github.png" width={24} height={24} alt="facebook" />
+            <a href='https://github.com/Arkynox' target='_blank' rel="noopener noreferrer" className="h-8 w-8 bg-gray-100 hover:bg-teal-200 rounded-full flex items-center justify-center">
+              <Image draggable={false} src="/assets/icons/github.png" width={24} height={24} alt="GitHub" />
             </a>
-            <a draggable={false} href='https://www.instagram.com/heimancreation/' target='_blank' className="h-8 w-8 bg-gray-100 hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center">
-              <img draggable={false} src="/assets/icons/instagram.png" width={24} height={24} alt="twitter" />
+            <a href='https://www.instagram.com/heimancreation/' target='_blank' rel="noopener noreferrer" className="h-8 w-8 bg-gray-100 hover:bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 rounded-full flex items-center justify-center">
+              <Image draggable={false} src="/assets/icons/instagram.png" width={24} height={24} alt="Instagram" />
             </a>
           </div>
         </div>

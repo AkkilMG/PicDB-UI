@@ -6,6 +6,9 @@ import type { ImageMessage, GroupDetails, Member } from "@/lib/types"
 import { GroupDashboard } from "./group-dashboard"
 import { fetchGroups, fetchUsername, updateGroupName } from "@/lib/group"
 import { enGroup, esGroup, ruGroup, hiGroup } from "@/config/text/group.text"
+import { useLanguage } from "@/contexts/language-context"
+
+const langTextMap = { en: enGroup, es: esGroup, ru: ruGroup, hi: hiGroup } as const;
 
 export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
   const [groupDetails, setGroupDetails] = useState<GroupDetails | null>(null)
@@ -15,32 +18,12 @@ export default function GroupRoomIdPage({ params }: { params: Promise<any> }) {
   const [error, setError] = useState("")
   const [username, setUsername] = useState("")
   const [uid, setUid] = useState("") 
-  const [data, setData] = useState(enGroup)
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enGroup;
   const router = useRouter()
   const searchParams = useSearchParams()
   const groupCode = searchParams.get("code")
   const [id, setId] = useState("")
-
-  // Language configuration
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang")
-      if (lang === "es") {
-        setData(esGroup)
-      } else if (lang === "ru") {
-        setData(ruGroup)
-      } else if (lang === "hi") {
-        setData(hiGroup)
-      } else {
-        setData(enGroup)
-      }
-    }
-
-    checkLanguage()
-    const intervalId = setInterval(checkLanguage, 2000)
-
-    return () => clearInterval(intervalId)
-  }, [])
 
   
   useEffect(() => {

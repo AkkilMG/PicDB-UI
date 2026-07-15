@@ -8,6 +8,9 @@ import { enUpload, esUpload, hiUpload, ruUpload } from "@/config/text/upload.tex
 import { FaLightbulb } from "react-icons/fa6"
 import { uploadSteps } from "@/config/steps.tutorial"
 import { X } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
+
+const langTextMap = { en: enUpload, es: esUpload, ru: ruUpload, hi: hiUpload } as const;
 
 export default function Upload({
   uploadFile,
@@ -25,7 +28,8 @@ export default function Upload({
     }>
   >([])
   const [success, setSuccess] = useState<boolean>(false)
-  const [data, setData] = useState(enUpload)
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enUpload;
   const [runTutorial, setRunTutorial] = useState(false)
   const [isClient, setIsClient] = useState(false)
   const [stepIndex, setStepIndex] = useState(0)
@@ -62,25 +66,6 @@ export default function Upload({
       setRunTutorial(true)
       localStorage.setItem("tutorial", JSON.stringify({ upload: false, dashboard: false, trash: false, report: false }))
     }
-  }, [])
-
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang")
-      if (lang === "es") {
-        setData(esUpload)
-      } else if (lang === "ru") {
-        setData(ruUpload)
-      } else if (lang === "hi") {
-        setData(hiUpload)
-      } else {
-        setData(enUpload)
-      }
-    }
-
-    checkLanguage()
-    const intervalId = setInterval(checkLanguage, 2000)
-    return () => clearInterval(intervalId)
   }, [])
 
   const formatFileSize = (size: number) => {

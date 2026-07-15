@@ -7,31 +7,16 @@ import { enNotification, esNotification, hiNotification, ruNotification } from '
 import MainNotifyList from './notify';
 import { getNotification } from '@/lib/notification';
 import NotificationPopup from '@/components/pop/notification';
+import { useLanguage } from '@/contexts/language-context';
+
+const langTextMap = { en: enNotification, es: esNotification, ru: ruNotification, hi: hiNotification } as const;
 
 
 
 export default function Notification() {
   const [policy, setPolicy] = useState<boolean>(true);
-  const [data, setData] = useState(enNotification);
-  useEffect(() => {
-    const checkLanguage = () => {
-      const lang = localStorage.getItem("lang");
-      if (lang === "es") {
-        setData(esNotification);
-      } else if (lang === "ru") {
-        setData(ruNotification);
-      } else if (lang === "hi") {
-        setData(hiNotification);
-      } else {
-        setData(enNotification);
-      }
-    };
-
-    checkLanguage();
-    const intervalId = setInterval(checkLanguage, 2000);
-
-    return () => clearInterval(intervalId);
-  }, []);
+  const { lang } = useLanguage();
+  const data = langTextMap[lang] ?? enNotification;
 
   useEffect(() => {
       const policyAccepted = localStorage.getItem("policyAccepted") === "true";
