@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [{
       userAgent: '*',
       allow: '/',
-      disallow: ['/test', '/private/'],
+      disallow: ['/test/', '/private/'],
     }],
     sitemap: 'https://www.pikdb.com/sitemap.xml',
   }
